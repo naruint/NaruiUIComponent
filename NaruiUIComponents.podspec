@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/naruint/NaruiUIComponent.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/kongbaguni'
   s.ios.deployment_target = '12.0'
-  s.source_files = 'NaruiUIComponents/Classes/**/*'
+  s.source_files = 'NaruiUIComponents/Classes/*/*'
   
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

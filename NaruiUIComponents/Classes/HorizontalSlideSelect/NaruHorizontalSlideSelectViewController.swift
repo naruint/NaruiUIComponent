@@ -20,7 +20,7 @@ public class NaruHorizontalSlideSelectViewController: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var pageLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-    static var viewController:NaruHorizontalSlideSelectViewController {
+    public class var viewController:NaruHorizontalSlideSelectViewController {
         if #available(iOS 13.0, *) {
             return UIStoryboard(name: "NaruHorizontalSlideSelect", bundle: nil).instantiateViewController(identifier: "home")
         } else {
@@ -28,7 +28,7 @@ public class NaruHorizontalSlideSelectViewController: UIViewController {
         }
     }    
     
-    var qustionData:ViewModel? = nil
+    public var qustionData:ViewModel? = nil
     var page = 0
     
     var datas:[AnswerModel] {
@@ -46,7 +46,7 @@ public class NaruHorizontalSlideSelectViewController: UIViewController {
     private var viewModel:QuestionModel? = nil
     
     
-    func setDidConfirm(didConfirm:@escaping(_ result:[Int])->Void) {
+    public func setDidConfirm(didConfirm:@escaping(_ result:[Int])->Void) {
         self._didConfirm = didConfirm
     }
     

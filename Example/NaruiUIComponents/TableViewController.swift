@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NaruiUIComponents
 
 class TableViewController: UITableViewController {
     enum CellType : String, CaseIterable {
@@ -36,6 +37,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch CellType.allCases[indexPath.row] {
         case .horizontalSlideSelect:
+            
             let vc = NaruHorizontalSlideSelectViewController.viewController
             let jsonStr:String = """
 {

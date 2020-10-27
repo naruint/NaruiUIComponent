@@ -13,7 +13,7 @@
         <!--Naru Horizontal Slide Select View Controller-->
         <scene sceneID="GCa-pU-O9a">
             <objects>
-                <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sg9-u2-8HF" customClass="NaruHorizontalSlideSelectViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sg9-u2-8HF" customClass="NaruHorizontalSlideSelectViewController" customModule="NaruiUIComponents" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AGV-C1-lxB">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
                                     <constraint firstAttribute="height" constant="150" id="ydh-PR-YqU"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-aT-57o" customClass="NaruHorizontalSlideSelectView" customModule="NaruiUIComponents_Example" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-aT-57o" customClass="NaruHorizontalSlideSelectView" customModule="NaruiUIComponents" customModuleProvider="target">
                                 <rect key="frame" x="10" y="560" width="370" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="4VS-ee-wwH"/>

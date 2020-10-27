@@ -8,22 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		06E40602F02FEBB52BCBBC10 /* Pods_NaruiUIComponents_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F008AD39898EB9B77DBF8015 /* Pods_NaruiUIComponents_Example.framework */; };
-		1B0C78192547C4B3007728CF /* NaruHorizontalSlideSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C78142547C4B3007728CF /* NaruHorizontalSlideSelectView.xib */; };
-		1B0C781A2547C4B3007728CF /* NaruHorizontalSlideSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C78142547C4B3007728CF /* NaruHorizontalSlideSelectView.xib */; };
-		1B0C781B2547C4B3007728CF /* NaruHorizontalSlideSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78152547C4B3007728CF /* NaruHorizontalSlideSelectViewController.swift */; };
-		1B0C781C2547C4B3007728CF /* NaruHorizontalSlideSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78152547C4B3007728CF /* NaruHorizontalSlideSelectViewController.swift */; };
-		1B0C781F2547C4B3007728CF /* NaruHorizontalSlideSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78172547C4B3007728CF /* NaruHorizontalSlideSelectView.swift */; };
-		1B0C78202547C4B3007728CF /* NaruHorizontalSlideSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78172547C4B3007728CF /* NaruHorizontalSlideSelectView.swift */; };
-		1B0C78212547C4B3007728CF /* NaruHorizontalSlideSelectViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78182547C4B3007728CF /* NaruHorizontalSlideSelectViewControllerViewModel.swift */; };
-		1B0C78222547C4B3007728CF /* NaruHorizontalSlideSelectViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78182547C4B3007728CF /* NaruHorizontalSlideSelectViewControllerViewModel.swift */; };
 		1B0C78262547C519007728CF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78252547C519007728CF /* TableViewController.swift */; };
 		1B0C78272547C519007728CF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78252547C519007728CF /* TableViewController.swift */; };
-		1B0C78302547C688007728CF /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C782F2547C688007728CF /* Color.xcassets */; };
-		1B0C78312547C688007728CF /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C782F2547C688007728CF /* Color.xcassets */; };
-		1B0C78412547CF94007728CF /* UIView+Extensoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78402547CF94007728CF /* UIView+Extensoins.swift */; };
-		1B0C78422547CF94007728CF /* UIView+Extensoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78402547CF94007728CF /* UIView+Extensoins.swift */; };
-		1B0C78482547CFDB007728CF /* NaruHorizontalSlideSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C78472547CFDB007728CF /* NaruHorizontalSlideSelect.storyboard */; };
-		1B0C78492547CFDB007728CF /* NaruHorizontalSlideSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C78472547CFDB007728CF /* NaruHorizontalSlideSelect.storyboard */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -44,14 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B0C78142547C4B3007728CF /* NaruHorizontalSlideSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NaruHorizontalSlideSelectView.xib; sourceTree = "<group>"; };
-		1B0C78152547C4B3007728CF /* NaruHorizontalSlideSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaruHorizontalSlideSelectViewController.swift; sourceTree = "<group>"; };
-		1B0C78172547C4B3007728CF /* NaruHorizontalSlideSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaruHorizontalSlideSelectView.swift; sourceTree = "<group>"; };
-		1B0C78182547C4B3007728CF /* NaruHorizontalSlideSelectViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaruHorizontalSlideSelectViewControllerViewModel.swift; sourceTree = "<group>"; };
 		1B0C78252547C519007728CF /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		1B0C782F2547C688007728CF /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
-		1B0C78402547CF94007728CF /* UIView+Extensoins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensoins.swift"; sourceTree = "<group>"; };
-		1B0C78472547CFDB007728CF /* NaruHorizontalSlideSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NaruHorizontalSlideSelect.storyboard; sourceTree = "<group>"; };
+		1B2817E725480628001AE335 /* NaruiUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NaruiUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B28180025480A03001AE335 /* NaruiUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NaruiUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F42862B62DEE8B15CF09478 /* Pods-NaruiUIComponents_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaruiUIComponents_Tests.release.xcconfig"; path = "Target Support Files/Pods-NaruiUIComponents_Tests/Pods-NaruiUIComponents_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		58CD526C128A45E4AD3A81E9 /* NaruiUIComponents.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NaruiUIComponents.podspec; path = ../NaruiUIComponents.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* NaruiUIComponents_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaruiUIComponents_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,35 +74,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B0C78122547C49E007728CF /* NaruI */ = {
-			isa = PBXGroup;
-			children = (
-				1B0C782F2547C688007728CF /* Color.xcassets */,
-				1B0C78132547C4B3007728CF /* HorizontalSlideSelect */,
-			);
-			path = NaruI;
-			sourceTree = "<group>";
-		};
-		1B0C78132547C4B3007728CF /* HorizontalSlideSelect */ = {
-			isa = PBXGroup;
-			children = (
-				1B0C78142547C4B3007728CF /* NaruHorizontalSlideSelectView.xib */,
-				1B0C78472547CFDB007728CF /* NaruHorizontalSlideSelect.storyboard */,
-				1B0C78152547C4B3007728CF /* NaruHorizontalSlideSelectViewController.swift */,
-				1B0C78172547C4B3007728CF /* NaruHorizontalSlideSelectView.swift */,
-				1B0C78182547C4B3007728CF /* NaruHorizontalSlideSelectViewControllerViewModel.swift */,
-			);
-			path = HorizontalSlideSelect;
-			sourceTree = "<group>";
-		};
-		1B0C783F2547CF94007728CF /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1B0C78402547CF94007728CF /* UIView+Extensoins.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		57F98DABB0301CA82BA1667D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,8 +88,6 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				1B0C783F2547CF94007728CF /* Extensions */,
-				1B0C78122547C49E007728CF /* NaruI */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for NaruiUIComponents */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -209,6 +159,8 @@
 		6769CD002459E1506122C9F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B28180025480A03001AE335 /* NaruiUIComponents.framework */,
+				1B2817E725480628001AE335 /* NaruiUIComponents.framework */,
 				F008AD39898EB9B77DBF8015 /* Pods_NaruiUIComponents_Example.framework */,
 				E123BBECE20EC3390A6FB215 /* Pods_NaruiUIComponents_Tests.framework */,
 			);
@@ -305,11 +257,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				1B0C78482547CFDB007728CF /* NaruHorizontalSlideSelect.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				1B0C78192547C4B3007728CF /* NaruHorizontalSlideSelectView.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				1B0C78302547C688007728CF /* Color.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,9 +266,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B0C78492547CFDB007728CF /* NaruHorizontalSlideSelect.storyboard in Resources */,
-				1B0C781A2547C4B3007728CF /* NaruHorizontalSlideSelectView.xib in Resources */,
-				1B0C78312547C688007728CF /* Color.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,12 +365,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B0C781B2547C4B3007728CF /* NaruHorizontalSlideSelectViewController.swift in Sources */,
 				1B0C78262547C519007728CF /* TableViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				1B0C781F2547C4B3007728CF /* NaruHorizontalSlideSelectView.swift in Sources */,
-				1B0C78212547C4B3007728CF /* NaruHorizontalSlideSelectViewControllerViewModel.swift in Sources */,
-				1B0C78412547CF94007728CF /* UIView+Extensoins.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,12 +375,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B0C781C2547C4B3007728CF /* NaruHorizontalSlideSelectViewController.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
-				1B0C78422547CF94007728CF /* UIView+Extensoins.swift in Sources */,
-				1B0C78202547C4B3007728CF /* NaruHorizontalSlideSelectView.swift in Sources */,
 				1B0C78272547C519007728CF /* TableViewController.swift in Sources */,
-				1B0C78222547C4B3007728CF /* NaruHorizontalSlideSelectViewControllerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

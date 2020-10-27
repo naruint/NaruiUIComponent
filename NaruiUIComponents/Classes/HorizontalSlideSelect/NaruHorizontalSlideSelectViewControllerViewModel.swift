@@ -7,28 +7,28 @@
 
 import Foundation
 extension NaruHorizontalSlideSelectViewController {
-    struct QuestionModel: Codable {
+    public struct QuestionModel: Codable {
         let title:String
         let desc:String
         let confirmtitle:String
     }
     
-    struct AnswerModel : Codable {
+    public struct AnswerModel : Codable {
         let title:String
         let longTitle:String
         let subTitle:String
         let desc:String
     }
 
-    struct QuestionAnswersModel : Codable {
+    public struct QuestionAnswersModel : Codable {
         let question:QuestionModel
         let answers:[AnswerModel]
     }
     
-    struct ViewModel: Codable {
+    public struct ViewModel: Codable {
         let datas:[QuestionAnswersModel]
         
-        static func makeModel(string:String)->ViewModel? {
+        public static func makeModel(string:String)->ViewModel? {
             do {
                 if let data = string.data(using: .utf8) {
                     return try JSONDecoder().decode(
