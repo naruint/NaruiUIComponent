@@ -9,7 +9,7 @@ import UIKit
 
 fileprivate var selectedIndex:[Int:Int] = [:]
 
-class NaruHorizontalSlideSelectViewController: UIViewController {
+public class NaruHorizontalSlideSelectViewController: UIViewController {
 
     @IBOutlet weak var labelContainerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -50,7 +50,7 @@ class NaruHorizontalSlideSelectViewController: UIViewController {
         self._didConfirm = didConfirm
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         if qustionData ==  nil {
             return
