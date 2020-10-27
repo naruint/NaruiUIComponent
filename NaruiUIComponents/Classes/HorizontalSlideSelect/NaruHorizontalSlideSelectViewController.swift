@@ -22,9 +22,9 @@ public class NaruHorizontalSlideSelectViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     public class var viewController:NaruHorizontalSlideSelectViewController {
         if #available(iOS 13.0, *) {
-            return UIStoryboard(name: "NaruHorizontalSlideSelect", bundle: nil).instantiateViewController(identifier: "home")
+            return UIStoryboard(name: "NaruHorizontalSlideSelect", bundle: Bundle(for: NaruHorizontalSlideSelectViewController.self)).instantiateViewController(identifier: "home")
         } else {
-            return UIStoryboard(name: "NaruHorizontalSlideSelect", bundle: nil).instantiateViewController(withIdentifier: "home") as! NaruHorizontalSlideSelectViewController
+            return UIStoryboard(name: "NaruHorizontalSlideSelect", bundle: Bundle(for: NaruHorizontalSlideSelectViewController.self)).instantiateViewController(withIdentifier: "home") as! NaruHorizontalSlideSelectViewController
         }
     }    
     
