@@ -113,6 +113,7 @@ extension NaruHorizontalSlideSelectViewController : NaruHorizontalSlideSelectVie
             }
         }
     }
+    
     func focusChange(isOn: Bool) {
         UIView.animate(withDuration: 0.2) {[weak self] in
             for view in [self?.bottomView] {

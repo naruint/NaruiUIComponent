@@ -97,9 +97,7 @@ class NaruHorizontalSlideSelectView: UIView {
     
     
     func fixLayout(isOn:Bool) {
-        if self.isOn != isOn {
-            delegate?.focusChange(isOn: isOn)
-        }
+        delegate?.focusChange(isOn: isOn)
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {[unowned self] in
             let w = isOn ? 80: stackView.width
             selectLabelBgWidth.constant = w
