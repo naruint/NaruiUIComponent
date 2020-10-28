@@ -35,7 +35,7 @@ extension NaruHorizontalSlideSelectViewController {
                         ViewModel.self, from: data)
                 }
             } catch {
-                print("QuestionAnswersModel \(error.localizedDescription) : \(string)")
+                print("error : \(error.localizedDescription) : \(string)")
             }
             return nil
         }

@@ -11,6 +11,7 @@ import NaruiUIComponents
 class TableViewController: UITableViewController {
     enum CellType : String, CaseIterable {
         case horizontalSlideSelect = "horizontalSlideSelect"
+        case twoDepthFilter = "twoDepthFilter"
     }
     
     override func viewDidLoad() {
@@ -36,8 +37,8 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch CellType.allCases[indexPath.row] {
+        //MARK:horizontalSlideSelect
         case .horizontalSlideSelect:
-            
             let vc = NaruHorizontalSlideSelectViewController.viewController
             let jsonStr:String = """
 {
@@ -136,8 +137,46 @@ class TableViewController: UITableViewController {
 
                 }
             }
-
             navigationController?.pushViewController(vc, animated: true)
+        case .twoDepthFilter:
+            //MARK:twoDepthFilter
+            let jsonStr = """
+{
+            "filters":[
+            {
+                "title":"음악",
+                "subtitles":[
+                    {"title":"국악", "value":0},
+                    {"title":"힙합", "value":0},
+                    {"title":"록", "value":0},
+                    {"title":"클래식", "value":0}
+                ]
+            },
+            {
+                "title":"영화",
+                "subtitles":[
+                    {"title":"한국영화", "value":0},
+                    {"title":"미국영화", "value":0},
+                    {"title":"중국영화", "value":0},
+                    {"title":"인도영화", "value":0}
+                ]
+            },
+            {
+                "title":"운동",
+                "subtitles":[
+                    {"title":"", "value":0},
+                    {"title":"", "value":1},
+                    {"title":"", "value":2},
+                    {"title":"", "value":3},
+                ]
+            }
+            ]
+}
+"""
+            if let data = NaruTwoDepthFilterView.ViewModel.makeModel(string: jsonStr) {
+                print(data)
+            }
+            break
         }
     }
     
