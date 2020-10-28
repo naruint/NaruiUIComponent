@@ -10,8 +10,10 @@
 		06E40602F02FEBB52BCBBC10 /* Pods_NaruiUIComponents_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F008AD39898EB9B77DBF8015 /* Pods_NaruiUIComponents_Example.framework */; };
 		1B0C78262547C519007728CF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78252547C519007728CF /* TableViewController.swift */; };
 		1B0C78272547C519007728CF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C78252547C519007728CF /* TableViewController.swift */; };
+		1B5CBC7D2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CBC7C2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift */; };
+		1B5CBCA825493AEE007093B1 /* InputUITestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */; };
+		1B74DC0C25494C74001FD749 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B74DC0B25494C74001FD749 /* Color.xcassets */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -33,12 +35,14 @@
 		1B0C78252547C519007728CF /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1B2817E725480628001AE335 /* NaruiUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NaruiUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B28180025480A03001AE335 /* NaruiUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NaruiUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B5CBC7C2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoDepthFilterTestTableViewController.swift; sourceTree = "<group>"; };
+		1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUITestTableViewController.swift; sourceTree = "<group>"; };
+		1B74DC0B25494C74001FD749 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		1F42862B62DEE8B15CF09478 /* Pods-NaruiUIComponents_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaruiUIComponents_Tests.release.xcconfig"; path = "Target Support Files/Pods-NaruiUIComponents_Tests/Pods-NaruiUIComponents_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		58CD526C128A45E4AD3A81E9 /* NaruiUIComponents.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NaruiUIComponents.podspec; path = ../NaruiUIComponents.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* NaruiUIComponents_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaruiUIComponents_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -110,10 +114,12 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				1B0C78252547C519007728CF /* TableViewController.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				1B0C78252547C519007728CF /* TableViewController.swift */,
+				1B5CBC7C2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift */,
+				1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				1B74DC0B25494C74001FD749 /* Color.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -257,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				1B74DC0C25494C74001FD749 /* Color.xcassets in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -365,8 +372,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5CBCA825493AEE007093B1 /* InputUITestTableViewController.swift in Sources */,
 				1B0C78262547C519007728CF /* TableViewController.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				1B5CBC7D2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

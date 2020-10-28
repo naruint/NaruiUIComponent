@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,10 +42,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="7sO-Cv-8pd"/>
+                    <connections>
+                        <segue destination="Gfl-Ms-djs" kind="show" identifier="showTwoDepthFIlterTestView" id="2hc-P2-Oi3"/>
+                        <segue destination="IU3-iB-n5d" kind="show" identifier="showInputTest" id="nGV-jm-n6F"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xdW-kN-YHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="-219"/>
+            <point key="canvasLocation" x="74" y="-191"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pcd-OV-fej">
@@ -62,8 +67,194 @@
             </objects>
             <point key="canvasLocation" x="-807" y="-219"/>
         </scene>
+        <!--Two Depth Filter Test Table View Controller-->
+        <scene sceneID="peQ-Z9-zJD">
+            <objects>
+                <tableViewController id="Gfl-Ms-djs" customClass="TwoDepthFilterTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X7G-jR-Hdq">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="rWF-7f-lN9" customClass="NaruTwoDepthFilterView" customModule="NaruiUIComponents">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="150"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="150" id="orD-XV-uet"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MU4-qP-LQC">
+                                <rect key="frame" x="0.0" y="178" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MU4-qP-LQC" id="Or9-ER-7hW">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Gfl-Ms-djs" id="Rru-JB-FTk"/>
+                            <outlet property="delegate" destination="Gfl-Ms-djs" id="df8-RT-tb3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="sTd-Qp-CUm"/>
+                    <connections>
+                        <outlet property="filterView" destination="rWF-7f-lN9" id="IX4-g5-6A0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Vt-GB-X99" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="-220"/>
+        </scene>
+        <!--InputUI Test Table View Controller-->
+        <scene sceneID="zlS-iX-gOY">
+            <objects>
+                <tableViewController id="IU3-iB-n5d" customClass="InputUITestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="nLJ-mv-dU9">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="T61-np-Nu5">
+                            <rect key="frame" x="0.0" y="356" width="390" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <sections>
+                            <tableViewSection id="eBz-eT-OhQ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="yn3-NS-nsO">
+                                        <rect key="frame" x="0.0" y="28" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yn3-NS-nsO" id="eOe-Pi-Bnf">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UL0-0m-Y8q" customClass="NaruTextField" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이름"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="keyboardType">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="boxlineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="UL0-0m-Y8q" secondAttribute="bottom" constant="5" id="9y9-FT-mUS"/>
+                                                <constraint firstItem="UL0-0m-Y8q" firstAttribute="leading" secondItem="eOe-Pi-Bnf" secondAttribute="leading" constant="10" id="LYl-aJ-GjA"/>
+                                                <constraint firstAttribute="trailing" secondItem="UL0-0m-Y8q" secondAttribute="trailing" constant="10" id="QNm-TP-jDu"/>
+                                                <constraint firstItem="UL0-0m-Y8q" firstAttribute="top" secondItem="eOe-Pi-Bnf" secondAttribute="top" constant="5" id="Xtc-kx-Dbl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="NYG-5x-SFc">
+                                        <rect key="frame" x="0.0" y="128" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NYG-5x-SFc" id="mLC-2w-CnX">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhr-z5-Srh" customClass="NaruTextField" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="나이"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="boxlineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yhr-z5-Srh" secondAttribute="trailing" constant="10" id="FXZ-yg-47s"/>
+                                                <constraint firstAttribute="bottom" secondItem="yhr-z5-Srh" secondAttribute="bottom" constant="5" id="aTm-WY-ePc"/>
+                                                <constraint firstItem="yhr-z5-Srh" firstAttribute="top" secondItem="mLC-2w-CnX" secondAttribute="top" constant="5" id="bbL-oC-Glk"/>
+                                                <constraint firstItem="yhr-z5-Srh" firstAttribute="leading" secondItem="mLC-2w-CnX" secondAttribute="leading" constant="10" id="m3C-KJ-8hf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="cM4-Le-nCJ">
+                                        <rect key="frame" x="0.0" y="228" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cM4-Le-nCJ" id="zxo-Rt-DKK">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cQ-xt-0mt" customClass="NaruTextField" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="나이"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="boxlineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3cQ-xt-0mt" firstAttribute="top" secondItem="zxo-Rt-DKK" secondAttribute="top" constant="5" id="NcI-fD-c7B"/>
+                                                <constraint firstItem="3cQ-xt-0mt" firstAttribute="leading" secondItem="zxo-Rt-DKK" secondAttribute="leading" constant="10" id="OL2-pf-U4l"/>
+                                                <constraint firstAttribute="trailing" secondItem="3cQ-xt-0mt" secondAttribute="trailing" constant="10" id="d4N-S8-r4y"/>
+                                                <constraint firstAttribute="bottom" secondItem="3cQ-xt-0mt" secondAttribute="bottom" constant="5" id="igo-s6-jap"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="IU3-iB-n5d" id="QfY-R6-vBG"/>
+                            <outlet property="delegate" destination="IU3-iB-n5d" id="2dR-yX-IwS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Lhz-yp-Jez"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RDW-T2-7UW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="545"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="normalTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="weakTextColor">
+            <color red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
