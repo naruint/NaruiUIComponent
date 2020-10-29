@@ -116,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="T61-np-Nu5">
-                            <rect key="frame" x="0.0" y="356" width="390" height="44"/>
+                            <rect key="frame" x="0.0" y="456" width="390" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
@@ -205,11 +205,68 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cQ-xt-0mt" customClass="NaruTextField" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <rect key="frame" x="10" y="5" width="210" height="90"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="나이"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="생년월일"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="boxlineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5K-Mh-spb" customClass="NaruSelectBoxView" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="230" y="5" width="150" height="90"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="lGD-0Q-z47"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="titles" value="남,여"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="h5K-Mh-spb" secondAttribute="trailing" constant="10" id="868-LX-KdA"/>
+                                                <constraint firstItem="h5K-Mh-spb" firstAttribute="leading" secondItem="3cQ-xt-0mt" secondAttribute="trailing" constant="10" id="Izb-9p-pDy"/>
+                                                <constraint firstItem="3cQ-xt-0mt" firstAttribute="top" secondItem="zxo-Rt-DKK" secondAttribute="top" constant="5" id="NcI-fD-c7B"/>
+                                                <constraint firstItem="3cQ-xt-0mt" firstAttribute="leading" secondItem="zxo-Rt-DKK" secondAttribute="leading" constant="10" id="OL2-pf-U4l"/>
+                                                <constraint firstAttribute="bottom" secondItem="3cQ-xt-0mt" secondAttribute="bottom" constant="5" id="igo-s6-jap"/>
+                                                <constraint firstAttribute="bottom" secondItem="h5K-Mh-spb" secondAttribute="bottom" constant="5" id="mcD-Dj-eef"/>
+                                                <constraint firstItem="h5K-Mh-spb" firstAttribute="top" secondItem="zxo-Rt-DKK" secondAttribute="top" constant="5" id="w6w-jL-dQ7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="IcT-qX-mrZ">
+                                        <rect key="frame" x="0.0" y="328" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IcT-qX-mrZ" id="d4Y-50-y8c">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yN-hh-o9I" customClass="NaruTextField" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이메일"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="keyboardType">
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="NO"/>
@@ -226,10 +283,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="3cQ-xt-0mt" firstAttribute="top" secondItem="zxo-Rt-DKK" secondAttribute="top" constant="5" id="NcI-fD-c7B"/>
-                                                <constraint firstItem="3cQ-xt-0mt" firstAttribute="leading" secondItem="zxo-Rt-DKK" secondAttribute="leading" constant="10" id="OL2-pf-U4l"/>
-                                                <constraint firstAttribute="trailing" secondItem="3cQ-xt-0mt" secondAttribute="trailing" constant="10" id="d4N-S8-r4y"/>
-                                                <constraint firstAttribute="bottom" secondItem="3cQ-xt-0mt" secondAttribute="bottom" constant="5" id="igo-s6-jap"/>
+                                                <constraint firstItem="4yN-hh-o9I" firstAttribute="top" secondItem="d4Y-50-y8c" secondAttribute="top" constant="5" id="0M3-LR-Wgb"/>
+                                                <constraint firstItem="4yN-hh-o9I" firstAttribute="leading" secondItem="d4Y-50-y8c" secondAttribute="leading" constant="10" id="AYN-Ro-w1o"/>
+                                                <constraint firstAttribute="trailing" secondItem="4yN-hh-o9I" secondAttribute="trailing" constant="10" id="CJh-gt-wZq"/>
+                                                <constraint firstAttribute="bottom" secondItem="4yN-hh-o9I" secondAttribute="bottom" constant="5" id="hpb-jw-6st"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -242,10 +299,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Lhz-yp-Jez"/>
+                    <connections>
+                        <outlet property="ageTextField" destination="yhr-z5-Srh" id="S0O-u3-MuL"/>
+                        <outlet property="birthdayTextField" destination="3cQ-xt-0mt" id="yr3-Pc-of5"/>
+                        <outlet property="emailTextField" destination="4yN-hh-o9I" id="tzJ-EL-htn"/>
+                        <outlet property="genderSelectView" destination="h5K-Mh-spb" id="rWt-F5-iPv"/>
+                        <outlet property="nameTextField" destination="UL0-0m-Y8q" id="7vg-Me-fOS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDW-T2-7UW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="545"/>
+            <point key="canvasLocation" x="1113.8461538461538" y="543.83886255924165"/>
         </scene>
     </scenes>
     <resources>

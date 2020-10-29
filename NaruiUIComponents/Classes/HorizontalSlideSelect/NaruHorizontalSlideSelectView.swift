@@ -110,6 +110,7 @@ class NaruHorizontalSlideSelectView: UIView {
                 bottomLabelsContainerView.alpha = isOn ? 0 : 1
                 selectLabelBgView.layer.cornerRadius = w/2
                 selectLabelBgPointView.alpha = isOn ? 1 : 0
+                selectLabelBgPointView.layer.cornerRadius = selectLabelBgPointView.frame.width / 2
                 stackView.alpha = isOn ? 0.1
                     : 1
                 trackView.layer.cornerRadius = isOn  ? 2.5 : 15
