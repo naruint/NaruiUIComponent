@@ -16,6 +16,7 @@ class InputUITestTableViewController: UITableViewController {
     @IBOutlet weak var genderSelectView: NaruSelectBoxView!
     
     @IBOutlet weak var emailTextField: NaruTextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +24,7 @@ class InputUITestTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = self.editButtonItem
      
         for tf in [nameTextField, ageTextField, birthdayTextField] {
-            tf?.textField.returnKeyType = .continue
+            tf?.returnKeyType = .continue
         }
         nameTextField.setReturn { [unowned self] tf in
             _ = ageTextField.becomeFirstResponder()
@@ -34,15 +35,19 @@ class InputUITestTableViewController: UITableViewController {
         birthdayTextField.setReturn { [unowned self] tf in
             _ = emailTextField.becomeFirstResponder()
         }
+        ageTextField.keyboardType = .numberPad
+        emailTextField.keyboardType = .emailAddress
         
-        emailTextField.textField.keyboardType = .emailAddress
-        emailTextField.setRightButton(title: "이메일이 생각 안나나요?") { [unowned self] in
+        emailTextField.setRightButton(title: "이메일이 생각 안나나요?"
+                                      , font: UIFont.systemFont(ofSize: 8)
+                                      , normalColor: .blue
+                                      , highlightedColor: .yellow
+                                      , isHideRightViewWhenInput: true) { [unowned self] in
             let ac = UIAlertController(title: "유감입니다.", message: "잘 생각해보세요", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             present(ac, animated: true, completion: nil)
         }
     }
-
-
+    
 
 }

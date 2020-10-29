@@ -45,32 +45,6 @@ public class NaruTextField: UIView {
         }
     }
     
-    @IBInspectable var returnKeyType:Int {
-        set {
-            textField.returnKeyType = UIReturnKeyType(rawValue: newValue) ?? .default
-        }
-        get {
-            textField.returnKeyType.rawValue
-        }
-    }
-    
-    @IBInspectable var textContentType:String {
-        set {
-            textField.textContentType = UITextContentType(rawValue: newValue)
-        }
-        get {
-            textField.textContentType.rawValue
-        }
-    }
-    
-    @IBInspectable var keyboardType:Int {
-        set {
-            textField.keyboardType = UIKeyboardType(rawValue: newValue) ?? .default
-        }
-        get {
-            textField.keyboardType.rawValue
-        }
-    }
     
     @IBInspectable var placeHolder:String? {
         set {
@@ -124,6 +98,10 @@ public class NaruTextField: UIView {
     
     @objc func onChangeTextField(_ sender:UITextField) {
         fixLayout()
+        let isEmpty = textField.text == nil || textField.text?.isEmpty == true
+        if rightViewMode == .unlessEditing && isHideRightViewWhenInput {
+            textField.rightViewMode = isEmpty ? .unlessEditing : .never
+        }
     }
     
     private func fixLayout() {
@@ -159,17 +137,31 @@ public class NaruTextField: UIView {
     
     //MARK:-
     //MARK:set rightButton
+    /** 텍스트필드 문자를 입력할 경우 rightView 감추기 에 대한 flag*/
+    private var isHideRightViewWhenInput:Bool = false
+    /** 오른쪽 버튼 눌렀을 때 콜백 저장*/
     private var rightButtonCallBack:()->Void = {}
-    public func setRightButton(title:String, font:UIFont = UIFont.systemFont(ofSize: 10), normalColor:UIColor? = nil, highlightedColor:UIColor? = nil, mode:UITextField.ViewMode = .unlessEditing, callBack:@escaping()->Void) {
+    /** rightViewMode  저장*/
+    private var rightViewMode:UITextField.ViewMode = .never
+    /** 오른쪽 버튼 추가하기.*/
+    public func setRightButton(title:String,
+                               font:UIFont = UIFont.systemFont(ofSize: 10),
+                               normalColor:UIColor? = nil,
+                               highlightedColor:UIColor? = nil,
+                               mode:UITextField.ViewMode = .unlessEditing,
+                               isHideRightViewWhenInput:Bool = false,
+                               callBack:@escaping()->Void) {
         let btn = UIButton(type: .custom)
         btn.setTitle(title, for: .normal)
         btn.addTarget(self, action: #selector(self.onTouchupRightButton(_:)), for: .touchUpInside)
         btn.setTitleColor(normalColor ?? textField.textColor, for: .normal)
         btn.setTitleColor(highlightedColor ?? textField.textColor, for: .highlighted)
-        
+        self.isHideRightViewWhenInput = isHideRightViewWhenInput
+        rightViewMode = mode
         textField.rightView = btn
         textField.rightViewMode = mode
         rightButtonCallBack = callBack
+        
     }
     
     @objc func onTouchupRightButton(_ sender:UIButton) {
@@ -190,6 +182,43 @@ public class NaruTextField: UIView {
     public override func becomeFirstResponder() -> Bool {
         textField.becomeFirstResponder()
     }
+    
+    public var returnKeyType:UIReturnKeyType {
+        set {
+            textField.returnKeyType = newValue
+        }
+        get {
+            textField.returnKeyType
+        }
+    }
+    
+    public var textContentType:UITextContentType {
+        set {
+            textField.textContentType = newValue
+        }
+        get {
+            textField.textContentType
+        }
+    }
+    
+    public var keyboardType:UIKeyboardType {
+        set {
+            textField.keyboardType = newValue
+        }
+        get {
+            textField.keyboardType
+        }
+    }
+    
+    public override var inputView: UIView? {
+        set {
+            textField.inputView = newValue
+        }
+        get {
+            textField.inputView
+        }
+    }
+     
 }
 //MARK:-
 //MARK:UITextFieldDelegate
