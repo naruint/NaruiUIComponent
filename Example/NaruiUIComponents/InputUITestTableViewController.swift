@@ -26,6 +26,7 @@ class InputUITestTableViewController: UITableViewController {
         for tf in [nameTextField, ageTextField, birthdayTextField] {
             tf?.returnKeyType = .continue
         }
+        
         nameTextField.setReturn { [unowned self] tf in
             _ = ageTextField.becomeFirstResponder()
         }
@@ -35,8 +36,12 @@ class InputUITestTableViewController: UITableViewController {
         birthdayTextField.setReturn { [unowned self] tf in
             _ = emailTextField.becomeFirstResponder()
         }
+        
         ageTextField.keyboardType = .numberPad
         emailTextField.keyboardType = .emailAddress
+        
+        nameTextField.textContentType = .name
+        emailTextField.textContentType = .emailAddress
         
         emailTextField.setRightButton(title: "이메일이 생각 안나나요?"
                                       , font: UIFont.systemFont(ofSize: 8)
