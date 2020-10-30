@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
 @IBDesignable
 public class NaruTextField: UIView {
     //MARK:-
@@ -56,6 +59,8 @@ public class NaruTextField: UIView {
         }
     }
     //MARK:-
+    let disposeBag = DisposeBag()
+    //MARK:-
     //MARK:arrangeView
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,7 +84,6 @@ public class NaruTextField: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
         addGestureRecognizer(gesture)
-        textField.addTarget(self, action: #selector(onChangeTextField(_:)), for: .editingChanged)
         lineView.alpha = 0.5
         lineView.backgroundColor = lineColor
         textField.delegate = self
@@ -87,6 +91,13 @@ public class NaruTextField: UIView {
         returnCallBack = { [weak self] _ in
             _ = self?.resignFirstResponder()
         }
+        textField.rx.text.orEmpty.bind { [unowned self](string) in
+            fixLayout()
+            let isEmpty = textField.text == nil || textField.text?.isEmpty == true
+            if rightViewMode == .unlessEditing && isHideRightViewWhenInput {
+                textField.rightViewMode = isEmpty ? .unlessEditing : .never
+            }
+        }.disposed(by: disposeBag)
     }
 
     //MARK:-
@@ -95,15 +106,7 @@ public class NaruTextField: UIView {
             textField.becomeFirstResponder()
         }
     }
-    
-    @objc func onChangeTextField(_ sender:UITextField) {
-        fixLayout()
-        let isEmpty = textField.text == nil || textField.text?.isEmpty == true
-        if rightViewMode == .unlessEditing && isHideRightViewWhenInput {
-            textField.rightViewMode = isEmpty ? .unlessEditing : .never
-        }
-    }
-    
+        
     private func fixLayout() {
         if isBoxStyle {
             lineView.isHidden = true
