@@ -13,6 +13,7 @@ class TableViewController: UITableViewController {
         case horizontalSlideSelect = "horizontalSlideSelect"
         case twoDepthFilter = "twoDepthFilter"
         case inputTest = "input test"
+        case showGraph = "showGraph"
     }
     
     override func viewDidLoad() {
@@ -145,7 +146,16 @@ class TableViewController: UITableViewController {
         case .inputTest:
             //MARK:inputTest
             performSegue(withIdentifier: "showInputTest", sender: nil)
+        case .showGraph:
+            performSegue(withIdentifier: "showGraph", sender: nil)
         }
     }
     
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print(scrollView.contentOffset.y)
+        if scrollView.contentOffset.y > 10 {
+            performSegue(withIdentifier: "showGraph", sender: nil)
+        }
+    }
 }

@@ -14,6 +14,7 @@ class InputUITestTableViewController: UITableViewController {
     @IBOutlet weak var ageTextField: NaruTextField!
     @IBOutlet weak var birthdayTextField: NaruTextField!
     @IBOutlet weak var genderSelectView: NaruSelectBoxView!
+    @IBOutlet weak var password: NaruTextField!
     
     @IBOutlet weak var emailTextField: NaruTextField!
 
@@ -36,6 +37,7 @@ class InputUITestTableViewController: UITableViewController {
         birthdayTextField.setReturn { [unowned self] tf in
             _ = emailTextField.becomeFirstResponder()
         }
+        password.isSecureMode = true
         
         ageTextField.keyboardType = .numberPad
         emailTextField.keyboardType = .emailAddress

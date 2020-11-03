@@ -45,6 +45,7 @@
                     <connections>
                         <segue destination="Gfl-Ms-djs" kind="show" identifier="showTwoDepthFIlterTestView" id="2hc-P2-Oi3"/>
                         <segue destination="IU3-iB-n5d" kind="show" identifier="showInputTest" id="nGV-jm-n6F"/>
+                        <segue destination="8u0-zk-73q" kind="presentation" identifier="showGraph" id="OMk-Ob-uis"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xdW-kN-YHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -83,6 +84,11 @@
                                 <constraint firstAttribute="height" constant="150" id="orD-XV-uet"/>
                             </constraints>
                         </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="mjm-UR-2eE" customClass="NaruGraphView" customModule="NaruiUIComponents">
+                            <rect key="frame" x="0.0" y="249.66666793823242" width="390" height="300"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MU4-qP-LQC">
                                 <rect key="frame" x="0.0" y="178" width="390" height="43.666667938232422"/>
@@ -107,6 +113,67 @@
             </objects>
             <point key="canvasLocation" x="1114" y="-220"/>
         </scene>
+        <!--Graph Top Test Table View Controller-->
+        <scene sceneID="qr1-Yg-9zm">
+            <objects>
+                <tableViewController modalPresentationStyle="overFullScreen" id="8u0-zk-73q" customClass="GraphTopTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-lI-cZb">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79500440140845074" colorSpace="custom" customColorSpace="displayP3"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="tgd-Fc-Ku8">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTe-jK-cvI">
+                                    <rect key="frame" x="0.0" y="-700" width="390" height="1000"/>
+                                    <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1000" id="oIs-Dr-sCL"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pk4-nb-aAp" userLabel="graphView" customClass="NaruGraphView" customModule="NaruiUIComponents">
+                                    <rect key="frame" x="0.0" y="172" width="390" height="128"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="B4m-Dy-5ez"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="RTe-jK-cvI" secondAttribute="trailing" id="0iW-7a-Bj6"/>
+                                <constraint firstAttribute="bottom" secondItem="RTe-jK-cvI" secondAttribute="bottom" id="2Na-5e-ebW"/>
+                                <constraint firstAttribute="trailing" secondItem="pk4-nb-aAp" secondAttribute="trailing" id="Fhr-AX-mNv"/>
+                                <constraint firstItem="pk4-nb-aAp" firstAttribute="leading" secondItem="tgd-Fc-Ku8" secondAttribute="leading" id="QrO-Kz-fOY"/>
+                                <constraint firstAttribute="bottom" secondItem="pk4-nb-aAp" secondAttribute="bottom" id="Xwm-t3-fx0"/>
+                                <constraint firstItem="RTe-jK-cvI" firstAttribute="leading" secondItem="tgd-Fc-Ku8" secondAttribute="leading" id="djN-vz-UuU"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oTE-ba-9aH">
+                                <rect key="frame" x="0.0" y="328" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oTE-ba-9aH" id="2hj-Be-Qtp">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8u0-zk-73q" id="6wP-nm-lD3"/>
+                            <outlet property="delegate" destination="8u0-zk-73q" id="1lU-ML-Ym8"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="graphView" destination="pk4-nb-aAp" id="yqe-wy-LBv"/>
+                        <outlet property="headerBgView" destination="RTe-jK-cvI" id="dpw-pb-xLe"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ato-64-7Gz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="577"/>
+        </scene>
         <!--InputUI Test Table View Controller-->
         <scene sceneID="zlS-iX-gOY">
             <objects>
@@ -115,11 +182,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="T61-np-Nu5">
-                            <rect key="frame" x="0.0" y="456" width="390" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
                         <sections>
                             <tableViewSection id="eBz-eT-OhQ">
                                 <cells>
@@ -133,23 +195,23 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UL0-0m-Y8q" customClass="NaruTextField" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="10" y="5" width="370" height="90"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이름"/>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
-                                                            <integer key="value" value="0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="keyboardType">
-                                                            <integer key="value" value="1"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                            <real key="value" value="20"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="focusLineColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="boxlineColor">
-                                                            <color key="value" name="weakTextColor"/>
-                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이름"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -172,20 +234,20 @@
                                                     <rect key="frame" x="10" y="5" width="370" height="90"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="나이"/>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
-                                                            <integer key="value" value="1"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
+                                                            <color key="value" name="weakTextColor"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="focusLineColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="boxlineColor">
-                                                            <color key="value" name="weakTextColor"/>
-                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="나이"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -208,20 +270,20 @@
                                                     <rect key="frame" x="10" y="5" width="210" height="90"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="생년월일"/>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
-                                                            <integer key="value" value="1"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
+                                                            <color key="value" name="weakTextColor"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="focusLineColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="boxlineColor">
-                                                            <color key="value" name="weakTextColor"/>
-                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이메일"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5K-Mh-spb" customClass="NaruSelectBoxView" customModule="NaruiUIComponents">
@@ -262,23 +324,20 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yN-hh-o9I" customClass="NaruTextField" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="10" y="5" width="370" height="90"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이메일"/>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="returnKeyType">
-                                                            <integer key="value" value="0"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
+                                                            <color key="value" name="weakTextColor"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="keyboardType">
-                                                            <integer key="value" value="1"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="NO"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="focusLineColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="boxlineColor">
-                                                            <color key="value" name="weakTextColor"/>
-                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이메일"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -287,6 +346,41 @@
                                                 <constraint firstItem="4yN-hh-o9I" firstAttribute="leading" secondItem="d4Y-50-y8c" secondAttribute="leading" constant="10" id="AYN-Ro-w1o"/>
                                                 <constraint firstAttribute="trailing" secondItem="4yN-hh-o9I" secondAttribute="trailing" constant="10" id="CJh-gt-wZq"/>
                                                 <constraint firstAttribute="bottom" secondItem="4yN-hh-o9I" secondAttribute="bottom" constant="5" id="hpb-jw-6st"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="pWU-2O-bs8">
+                                        <rect key="frame" x="0.0" y="428" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWU-2O-bs8" id="JgH-yR-sXa">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CJ-tJ-58v" customClass="NaruTextField" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="focusLineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="비밀번호"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="4CJ-tJ-58v" secondAttribute="trailing" constant="10" id="W1S-xB-EFb"/>
+                                                <constraint firstItem="4CJ-tJ-58v" firstAttribute="leading" secondItem="JgH-yR-sXa" secondAttribute="leading" constant="10" id="chZ-f5-iCN"/>
+                                                <constraint firstAttribute="bottom" secondItem="4CJ-tJ-58v" secondAttribute="bottom" constant="5" id="dac-Be-m44"/>
+                                                <constraint firstItem="4CJ-tJ-58v" firstAttribute="top" secondItem="JgH-yR-sXa" secondAttribute="top" constant="5" id="id5-7m-D1B"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -305,6 +399,7 @@
                         <outlet property="emailTextField" destination="4yN-hh-o9I" id="tzJ-EL-htn"/>
                         <outlet property="genderSelectView" destination="h5K-Mh-spb" id="rWt-F5-iPv"/>
                         <outlet property="nameTextField" destination="UL0-0m-Y8q" id="7vg-Me-fOS"/>
+                        <outlet property="password" destination="4CJ-tJ-58v" id="Y8I-JS-reC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDW-T2-7UW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -321,6 +416,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

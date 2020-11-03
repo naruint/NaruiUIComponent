@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 public class NaruSelectBoxView: UIView {
     
     override init(frame: CGRect) {

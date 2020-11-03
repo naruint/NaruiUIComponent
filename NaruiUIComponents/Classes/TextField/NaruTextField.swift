@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-@IBDesignable
+//@IBDesignable
 public class NaruTextField: UIView {
     //MARK:-
     //MARK:IBOUtlet
@@ -29,33 +29,38 @@ public class NaruTextField: UIView {
         }
     }
     
-    @IBInspectable var lineColor:UIColor? {
-        set {
-            lineView.backgroundColor = newValue
+    @IBInspectable var normalLineColor:UIColor = .white {
+        didSet {
+            DispatchQueue.main.async {[unowned self]in
+                lineView.backgroundColor = normalLineColor
+            }
         }
-        get {
-            lineView.backgroundColor
+    }
+    @IBInspectable var errorLineColor:UIColor = .red
+    @IBInspectable var focusLineColor:UIColor = .black
+    @IBInspectable var textColor:UIColor = .white {
+        didSet {
+            DispatchQueue.main.async {[unowned self]in
+                textField.textColor = textColor
+                titleLabel.textColor = textColor
+            }
         }
     }
     
-    @IBInspectable var boxlineColor:UIColor = .white
-    @IBInspectable var textColor:UIColor? {
-        set {
-            textField.textColor = newValue
-        }
-        get {
-            textField.textColor
+    @IBInspectable var placeHolder:String? = "" {
+        didSet {
+            DispatchQueue.main.async {[unowned self]in
+                textField.placeholder = placeHolder
+                titleLabel.text = placeHolder
+            }
         }
     }
     
-    
-    @IBInspectable var placeHolder:String? {
-        set {
-            textField.placeholder = newValue
-            titleLabel.text = newValue
-        }
-        get {
-            textField.placeholder
+    public var isError:Bool = false {
+        didSet {
+            DispatchQueue.main.async {[unowned self] in
+                lineView.backgroundColor = isError ? errorLineColor : normalLineColor
+            }
         }
     }
     //MARK:-
@@ -85,7 +90,7 @@ public class NaruTextField: UIView {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
         addGestureRecognizer(gesture)
         lineView.alpha = 0.5
-        lineView.backgroundColor = lineColor
+        lineView.backgroundColor = normalLineColor
         textField.delegate = self
         fixLayout()
         returnCallBack = { [weak self] _ in
@@ -98,6 +103,7 @@ public class NaruTextField: UIView {
                 textField.rightViewMode = isEmpty ? .unlessEditing : .never
             }
         }.disposed(by: disposeBag)
+        
     }
 
     //MARK:-
@@ -111,7 +117,7 @@ public class NaruTextField: UIView {
         if isBoxStyle {
             lineView.isHidden = true
             layer.borderWidth = 1.0
-            layer.borderColor = lineColor?.cgColor ?? UIColor.black.cgColor
+            layer.borderColor = normalLineColor.cgColor
         }
         
         let isHidden = textField.text?.isEmpty ?? true
@@ -127,13 +133,10 @@ public class NaruTextField: UIView {
     }
     
     private func focus(isOn:Bool) {
-        guard let lineColor = lineColor else {
-            return
-        }
         UIView.animate(withDuration: 0.25) {[unowned self] in
             lineView.alpha = isOn ? 1 : 0.5
             if isBoxStyle {
-                layer.borderColor = isOn ? lineColor.cgColor : boxlineColor.cgColor
+                layer.borderColor = isOn ? focusLineColor.cgColor : normalLineColor.cgColor
             }
         }
     }
@@ -220,6 +223,37 @@ public class NaruTextField: UIView {
         get {
             textField.inputView
         }
+    }
+
+    /** 비밀번호 보기 전환하기 버튼*/
+    var switchShowPWDButton:UIButton? = nil
+    
+    /** 비밀번호 보기 뷰가 있는 비밀번호 입력 뷰로 만들기*/
+    public var isSecureMode:Bool = false {
+        didSet {
+            if isSecureMode {
+                setPwdMode()
+            }
+        }
+    }
+    
+    func setPwdMode() {
+        let btn = UIButton(type: .custom)
+        btn.setImage(#imageLiteral(resourceName: "icon24ViewBlack").withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "icon24ViewBlack").withRenderingMode(.alwaysTemplate), for: .selected)
+        btn.isSelected = true
+        textField.isSecureTextEntry = true
+        textField.keyboardType = .asciiCapable
+        btn.tintColor = normalLineColor
+        btn.rx.tap.bind { [unowned self](_) in
+            btn.isSelected.toggle()
+            btn.tintColor = btn.isSelected ? normalLineColor : focusLineColor
+            textField.isSecureTextEntry = btn.isSelected
+        }.disposed(by: disposeBag)
+        switchShowPWDButton = btn
+        textField.rightViewMode = .always
+        textField.rightView = btn
+        textField.clearButtonMode = .always
     }
      
 }
