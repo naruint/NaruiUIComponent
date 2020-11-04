@@ -448,6 +448,76 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="eNS-hN-ivD">
+                                        <rect key="frame" x="0.0" y="608" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eNS-hN-ivD" id="8HN-6m-QbB">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehb-9Q-Z3f" customClass="NaruTermAgreeButton" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="20" y="10" width="350" height="80"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="휴대폰 본인인증 전체동의"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isTotalAgree" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ehb-9Q-Z3f" secondAttribute="bottom" constant="10" id="8fr-LP-uBx"/>
+                                                <constraint firstItem="ehb-9Q-Z3f" firstAttribute="leading" secondItem="8HN-6m-QbB" secondAttribute="leading" constant="20" id="p3b-xS-Jgv"/>
+                                                <constraint firstItem="ehb-9Q-Z3f" firstAttribute="top" secondItem="8HN-6m-QbB" secondAttribute="top" constant="10" id="wRw-D6-M8n"/>
+                                                <constraint firstAttribute="trailing" secondItem="ehb-9Q-Z3f" secondAttribute="trailing" constant="20" id="yjR-Sr-aRV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="rCJ-vG-eiQ">
+                                        <rect key="frame" x="0.0" y="708" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rCJ-vG-eiQ" id="HHh-Ht-cuJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k12-AS-TSp" customClass="NaruTermAgreeButton" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="20" y="10" width="350" height="80"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="개인정보 이용 동의"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="k12-AS-TSp" secondAttribute="trailing" constant="20" id="IDv-c3-4M5"/>
+                                                <constraint firstItem="k12-AS-TSp" firstAttribute="top" secondItem="HHh-Ht-cuJ" secondAttribute="top" constant="10" id="bMy-fj-hh7"/>
+                                                <constraint firstItem="k12-AS-TSp" firstAttribute="leading" secondItem="HHh-Ht-cuJ" secondAttribute="leading" constant="20" id="eXG-fJ-eYX"/>
+                                                <constraint firstAttribute="bottom" secondItem="k12-AS-TSp" secondAttribute="bottom" constant="10" id="sb2-Ul-N7i"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="4mH-us-j8B">
+                                        <rect key="frame" x="0.0" y="808" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4mH-us-j8B" id="x90-cY-g3B">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeO-72-ucV" customClass="NaruTermAgreeButton" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="20" y="10" width="350" height="80"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="고유식별 정보 처리 동의"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xeO-72-ucV" firstAttribute="leading" secondItem="x90-cY-g3B" secondAttribute="leading" constant="20" id="Nw6-Lo-3Kc"/>
+                                                <constraint firstAttribute="bottom" secondItem="xeO-72-ucV" secondAttribute="bottom" constant="10" id="PkB-A7-Lww"/>
+                                                <constraint firstItem="xeO-72-ucV" firstAttribute="top" secondItem="x90-cY-g3B" secondAttribute="top" constant="10" id="cr7-cA-O9v"/>
+                                                <constraint firstAttribute="trailing" secondItem="xeO-72-ucV" secondAttribute="trailing" constant="20" id="pWF-jI-yr8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

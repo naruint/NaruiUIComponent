@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruTermAgreeButton" customModule="NaruiUIComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="bgButton" destination="bXj-3l-mha" id="i2b-rd-w5P"/>
+                <outlet property="bgButtonTrailing" destination="eIo-ms-ec5" id="gab-nr-gKI"/>
+                <outlet property="button" destination="wbA-Xc-rWM" id="BG9-pg-0pc"/>
+                <outlet property="iconImageView" destination="NVH-PF-H4s" id="e3B-qG-eQi"/>
+                <outlet property="titleLabel" destination="mp3-zQ-CPM" id="mLq-EQ-qea"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="514" height="134"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66D-zC-1aR">
+                    <rect key="frame" x="48" y="0.0" width="466" height="134"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mp3-zQ-CPM">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbA-Xc-rWM">
+                            <rect key="frame" x="414" y="0.0" width="52" height="134"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="52" id="GA5-Ve-uLo"/>
+                            </constraints>
+                            <state key="normal" image="icon16IconArrowRGray2"/>
+                        </button>
+                    </subviews>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon16CheckOff" highlightedImage="icon16CheckOnBrand" translatesAutoresizingMaskIntoConstraints="NO" id="NVH-PF-H4s">
+                    <rect key="frame" x="20" y="64" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="Gnp-eL-tpW"/>
+                        <constraint firstAttribute="width" constant="16" id="ioN-hr-g4Q"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXj-3l-mha">
+                    <rect key="frame" x="0.0" y="44" width="514" height="56"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="NVH-PF-H4s" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="0e1-sk-9cq"/>
+                <constraint firstItem="NVH-PF-H4s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="1Rv-nY-gzh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bXj-3l-mha" secondAttribute="bottom" id="1kV-H4-xtr"/>
+                <constraint firstItem="bXj-3l-mha" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="9Oe-rH-xCH"/>
+                <constraint firstItem="66D-zC-1aR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="POe-06-uNv"/>
+                <constraint firstItem="bXj-3l-mha" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Xxb-XM-z1v"/>
+                <constraint firstAttribute="bottom" secondItem="66D-zC-1aR" secondAttribute="bottom" id="atg-Xc-zzO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bXj-3l-mha" secondAttribute="trailing" id="eIo-ms-ec5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="66D-zC-1aR" secondAttribute="trailing" id="umj-yU-zzC"/>
+                <constraint firstItem="66D-zC-1aR" firstAttribute="leading" secondItem="NVH-PF-H4s" secondAttribute="trailing" constant="12" id="v02-Mf-OW9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="108.69565217391305" y="-218.30357142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon16CheckOff" width="16" height="16"/>
+        <image name="icon16CheckOnBrand" width="16" height="16"/>
+        <image name="icon16IconArrowRGray2" width="16" height="16"/>
+    </resources>
+</document>
