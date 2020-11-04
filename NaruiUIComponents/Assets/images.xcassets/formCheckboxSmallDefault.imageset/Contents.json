@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "formCheckboxSmallDefault.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "formCheckboxSmallDefault@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "formCheckboxSmallDefault@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

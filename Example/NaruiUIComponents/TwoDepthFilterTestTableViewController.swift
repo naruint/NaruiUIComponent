@@ -12,7 +12,6 @@ import NaruiUIComponents
 class TwoDepthFilterTestTableViewController: UITableViewController {
 
     @IBOutlet weak var filterView: NaruTwoDepthFilterView!
-    @IBOutlet weak var textField:NaruTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         

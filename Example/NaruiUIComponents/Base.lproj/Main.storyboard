@@ -384,6 +384,38 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="TS2-pe-CGj">
+                                        <rect key="frame" x="0.0" y="528" width="390" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TS2-pe-CGj" id="nOI-os-HGw">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mb-Xg-RZW" customClass="NaruCheckButton" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="10" y="0.0" width="40" height="80"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="rOu-QL-6XE"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X27-6K-me3" customClass="NaruCheckButton" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="60" y="0.0" width="40" height="80"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="61W-Jr-mHv"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3mb-Xg-RZW" firstAttribute="leading" secondItem="nOI-os-HGw" secondAttribute="leading" constant="10" id="2zc-bn-PXV"/>
+                                                <constraint firstAttribute="bottom" secondItem="3mb-Xg-RZW" secondAttribute="bottom" id="4Vd-45-1wh"/>
+                                                <constraint firstItem="3mb-Xg-RZW" firstAttribute="top" secondItem="nOI-os-HGw" secondAttribute="top" id="NyT-Ua-rLp"/>
+                                                <constraint firstAttribute="bottom" secondItem="X27-6K-me3" secondAttribute="bottom" id="S0s-ZG-nkp"/>
+                                                <constraint firstItem="X27-6K-me3" firstAttribute="top" secondItem="nOI-os-HGw" secondAttribute="top" id="Xc2-kL-wxe"/>
+                                                <constraint firstItem="X27-6K-me3" firstAttribute="leading" secondItem="3mb-Xg-RZW" secondAttribute="trailing" constant="10" id="uG0-Wt-w0o"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

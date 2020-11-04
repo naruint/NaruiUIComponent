@@ -20,7 +20,13 @@ class InputUITestTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "UI Input Test"
+        
+        
+        navigationItem.largeTitleDisplayMode = .always        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.sizeToFit()
+        
         self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem
      
