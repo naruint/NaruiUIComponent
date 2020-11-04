@@ -405,13 +405,45 @@
                                                         <constraint firstAttribute="width" constant="40" id="61W-Jr-mHv"/>
                                                     </constraints>
                                                 </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j65-Zh-xXF" customClass="NaruRadioButton" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="110" y="0.0" width="50" height="80"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="tf7-Zg-IMb"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="idx">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="groupid" value="test"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRy-uP-YBH" customClass="NaruRadioButton" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="170" y="0.0" width="50" height="80"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="D9h-eY-eBR"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="idx">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="groupid" value="test"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3mb-Xg-RZW" firstAttribute="leading" secondItem="nOI-os-HGw" secondAttribute="leading" constant="10" id="2zc-bn-PXV"/>
                                                 <constraint firstAttribute="bottom" secondItem="3mb-Xg-RZW" secondAttribute="bottom" id="4Vd-45-1wh"/>
+                                                <constraint firstAttribute="bottom" secondItem="j65-Zh-xXF" secondAttribute="bottom" id="90U-r1-7nV"/>
+                                                <constraint firstItem="xRy-uP-YBH" firstAttribute="top" secondItem="nOI-os-HGw" secondAttribute="top" id="DOz-gm-pRK"/>
+                                                <constraint firstItem="j65-Zh-xXF" firstAttribute="leading" secondItem="X27-6K-me3" secondAttribute="trailing" constant="10" id="E3W-0n-BME"/>
                                                 <constraint firstItem="3mb-Xg-RZW" firstAttribute="top" secondItem="nOI-os-HGw" secondAttribute="top" id="NyT-Ua-rLp"/>
                                                 <constraint firstAttribute="bottom" secondItem="X27-6K-me3" secondAttribute="bottom" id="S0s-ZG-nkp"/>
                                                 <constraint firstItem="X27-6K-me3" firstAttribute="top" secondItem="nOI-os-HGw" secondAttribute="top" id="Xc2-kL-wxe"/>
+                                                <constraint firstAttribute="bottom" secondItem="xRy-uP-YBH" secondAttribute="bottom" id="eUg-sW-SPR"/>
+                                                <constraint firstItem="j65-Zh-xXF" firstAttribute="top" secondItem="nOI-os-HGw" secondAttribute="top" id="r3z-RC-1N9"/>
+                                                <constraint firstItem="xRy-uP-YBH" firstAttribute="leading" secondItem="j65-Zh-xXF" secondAttribute="trailing" constant="10" id="siG-am-3b1"/>
                                                 <constraint firstItem="X27-6K-me3" firstAttribute="leading" secondItem="3mb-Xg-RZW" secondAttribute="trailing" constant="10" id="uG0-Wt-w0o"/>
                                             </constraints>
                                         </tableViewCellContentView>

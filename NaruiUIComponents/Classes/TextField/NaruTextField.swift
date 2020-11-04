@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-//@IBDesignable
+@IBDesignable
 public class NaruTextField: UIView {
     //MARK:-
     //MARK:IBOUtlet
