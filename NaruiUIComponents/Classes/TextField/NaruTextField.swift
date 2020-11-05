@@ -24,7 +24,7 @@ public class NaruTextField: UIView {
     @IBInspectable var isBoxStyle:Bool = false {
         didSet {
             DispatchQueue.main.async { [weak self] in
-                self?.fixLayout()
+                self?.updateUI()
             }
         }
     }
@@ -75,6 +75,7 @@ public class NaruTextField: UIView {
         didSet {
             DispatchQueue.main.async {[unowned self] in
                 lineView.backgroundColor = isError ? errorLineColor : normalLineColor
+                updateUI()
             }
         }
     }
@@ -107,15 +108,18 @@ public class NaruTextField: UIView {
         lineView.alpha = 0.5
         lineView.backgroundColor = normalLineColor
         textField.delegate = self
-        fixLayout()
+        updateUI()
         returnCallBack = { [weak self] _ in
             _ = self?.resignFirstResponder()
         }
         textField.rx.text.orEmpty.bind { [unowned self](string) in
-            fixLayout()
+            updateUI()
             let isEmpty = textField.text == nil || textField.text?.isEmpty == true
             if rightViewMode == .unlessEditing && isHideRightViewWhenInput {
                 textField.rightViewMode = isEmpty ? .unlessEditing : .never
+            }
+            if isError {
+                isError = false
             }
         }.disposed(by: disposeBag)
         
@@ -128,11 +132,12 @@ public class NaruTextField: UIView {
         }
     }
         
-    private func fixLayout() {
+    private func updateUI() {
         if isBoxStyle {
             lineView.isHidden = true
             layer.borderWidth = 1.0
-            layer.borderColor = normalLineColor.cgColor
+            layer.borderColor = isError ? errorLineColor.cgColor : normalLineColor.cgColor
+            
         }
         
         let isHidden = textField.text?.isEmpty ?? true
@@ -151,7 +156,11 @@ public class NaruTextField: UIView {
         UIView.animate(withDuration: 0.25) {[unowned self] in
             lineView.alpha = isOn ? 1 : 0.5
             if isBoxStyle {
-                layer.borderColor = isOn ? focusLineColor.cgColor : normalLineColor.cgColor
+                if isError {
+                    layer.borderColor = errorLineColor.cgColor
+                } else {
+                    layer.borderColor = isOn ? focusLineColor.cgColor : normalLineColor.cgColor
+                }
             }
         }
     }

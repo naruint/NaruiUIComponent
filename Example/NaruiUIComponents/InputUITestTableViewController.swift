@@ -59,6 +59,8 @@ class InputUITestTableViewController: UITableViewController {
                                       , isHideRightViewWhenInput: true) { [unowned self] in
             let ac = UIAlertController(title: "유감입니다.", message: "잘 생각해보세요", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            emailTextField.isError = true
+            _ = emailTextField.becomeFirstResponder()
             present(ac, animated: true, completion: nil)
         }
         
