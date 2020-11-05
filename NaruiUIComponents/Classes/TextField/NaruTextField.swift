@@ -20,7 +20,14 @@ public class NaruTextField: UIView {
     @IBOutlet weak var trailing: NSLayoutConstraint!
     //MARK:-
     //MARK:IBInspectable
-    @IBInspectable var padding:CGFloat = 10.0
+    @IBInspectable var padding:CGFloat = 0.0 {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.updateUI()
+            }
+        }
+    }
+    
     @IBInspectable var isBoxStyle:Bool = false {
         didSet {
             DispatchQueue.main.async { [weak self] in
