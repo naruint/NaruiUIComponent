@@ -10,6 +10,7 @@ import UIKit
 import NaruiUIComponents
 
 class InputUITestTableViewController: UITableViewController {
+    @IBOutlet weak var textView: NaruTextView!
     @IBOutlet weak var nameTextField: NaruTextField!
     @IBOutlet weak var ageTextField: NaruTextField!
     @IBOutlet weak var birthdayTextField: NaruTextField!
@@ -57,6 +58,13 @@ class InputUITestTableViewController: UITableViewController {
                                       , highlightedColor: .yellow
                                       , isHideRightViewWhenInput: true) { [unowned self] in
             let ac = UIAlertController(title: "유감입니다.", message: "잘 생각해보세요", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            present(ac, animated: true, completion: nil)
+        }
+        
+        
+        textView.onTouchupButton { [unowned self] text in
+            let ac = UIAlertController(title: "Test", message: text ?? "", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             present(ac, animated: true, completion: nil)
         }
