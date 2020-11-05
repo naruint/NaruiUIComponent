@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruSimplePinNumberView" customModule="NaruiUIComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="stackView" destination="eA6-HX-kWd" id="dXx-0t-lVk"/>
+                <outlet property="textField" destination="c1J-Cd-TXx" id="RYC-jL-FlP"/>
+                <outletCollection property="circleViews" destination="aHt-zu-IO9" collectionClass="NSMutableArray" id="XZe-A0-VT5"/>
+                <outletCollection property="circleViews" destination="hFO-bg-7Qs" collectionClass="NSMutableArray" id="w8u-92-cTT"/>
+                <outletCollection property="circleViews" destination="67F-me-mcu" collectionClass="NSMutableArray" id="zF8-kt-ZyX"/>
+                <outletCollection property="circleViews" destination="jRU-oE-jpQ" collectionClass="NSMutableArray" id="6SJ-nV-zyV"/>
+                <outletCollection property="circleViews" destination="nDa-nl-pCl" collectionClass="NSMutableArray" id="Sbf-Ow-Lsb"/>
+                <outletCollection property="circleViews" destination="h3V-VE-KO1" collectionClass="NSMutableArray" id="W6B-bf-Qd5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="eA6-HX-kWd">
+                    <rect key="frame" x="144" y="114" width="126" height="16"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHt-zu-IO9">
+                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="kxd-d7-mdR"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFO-bg-7Qs">
+                            <rect key="frame" x="22" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="Qvv-EO-Spa"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67F-me-mcu">
+                            <rect key="frame" x="44" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="Csn-Z7-h2g"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRU-oE-jpQ">
+                            <rect key="frame" x="66" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="Pta-ch-S3c"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDa-nl-pCl">
+                            <rect key="frame" x="88" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="Ydp-we-GrJ"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3V-VE-KO1">
+                            <rect key="frame" x="110" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="zTG-68-23N"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="7zx-qP-0gk"/>
+                    </constraints>
+                </stackView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1J-Cd-TXx">
+                    <rect key="frame" x="144" y="114" width="126" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="c1J-Cd-TXx" firstAttribute="top" secondItem="eA6-HX-kWd" secondAttribute="top" id="Jus-mB-ZOS"/>
+                <constraint firstItem="eA6-HX-kWd" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="QNG-wY-5dv"/>
+                <constraint firstItem="c1J-Cd-TXx" firstAttribute="trailing" secondItem="eA6-HX-kWd" secondAttribute="trailing" id="YTx-PO-9OL"/>
+                <constraint firstItem="c1J-Cd-TXx" firstAttribute="leading" secondItem="eA6-HX-kWd" secondAttribute="leading" id="f4m-lr-tWa"/>
+                <constraint firstItem="c1J-Cd-TXx" firstAttribute="bottom" secondItem="eA6-HX-kWd" secondAttribute="bottom" id="lXc-6R-bwR"/>
+                <constraint firstItem="eA6-HX-kWd" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="o0R-2I-X7V"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="138" y="39"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

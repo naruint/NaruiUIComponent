@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import RxCocoa
 import RxSwift
+import RxCocoa
 
 @IBDesignable
 public class NaruTextField: UIView {

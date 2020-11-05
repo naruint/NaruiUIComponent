@@ -6,8 +6,9 @@
 //
 
 import UIKit
-import RxCocoa
 import RxSwift
+import RxCocoa
+
 @IBDesignable
 public class NaruCheckButton: UIButton {
     let disposeBag = DisposeBag()

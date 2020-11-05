@@ -14,6 +14,7 @@ class TableViewController: UITableViewController {
         case twoDepthFilter = "twoDepthFilter"
         case inputTest = "input test"
         case showGraph = "showGraph"
+        case simplePinNumberView = "simple pinnumber test"
     }
     
     override func viewDidLoad() {
@@ -148,6 +149,8 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: "showInputTest", sender: nil)
         case .showGraph:
             performSegue(withIdentifier: "showGraph", sender: nil)
+        case .simplePinNumberView:
+            performSegue(withIdentifier: "showSimplePinnumber", sender: nil)
         }
     }
     

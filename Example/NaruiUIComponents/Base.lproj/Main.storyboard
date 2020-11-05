@@ -46,6 +46,7 @@
                         <segue destination="Gfl-Ms-djs" kind="show" identifier="showTwoDepthFIlterTestView" id="2hc-P2-Oi3"/>
                         <segue destination="IU3-iB-n5d" kind="show" identifier="showInputTest" id="nGV-jm-n6F"/>
                         <segue destination="8u0-zk-73q" kind="presentation" identifier="showGraph" id="OMk-Ob-uis"/>
+                        <segue destination="z7A-RQ-Hoa" kind="show" identifier="showSimplePinnumber" id="5Tu-8l-eG2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xdW-kN-YHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -649,6 +650,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDW-T2-7UW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1113.8461538461538" y="543.83886255924165"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pp1-Jo-Gy8">
+            <objects>
+                <viewController id="z7A-RQ-Hoa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z4e-UF-mMr"/>
+                        <viewControllerLayoutGuide type="bottom" id="y7p-Xq-4mK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nbu-Dk-iN1">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmG-zP-bPI" customClass="NaruSimplePinNumberView" customModule="NaruiUIComponents">
+                                <rect key="frame" x="46" y="188" width="298" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="PZQ-ao-NOv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAutoFocus" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="offColor">
+                                        <color key="value" name="weakTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="onColor">
+                                        <color key="value" name="normalTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="UmG-zP-bPI" secondAttribute="trailing" constant="30" id="ZeI-q3-vfX"/>
+                            <constraint firstItem="UmG-zP-bPI" firstAttribute="top" secondItem="z4e-UF-mMr" secondAttribute="bottom" constant="100" id="tdD-Y2-CGx"/>
+                            <constraint firstItem="UmG-zP-bPI" firstAttribute="leading" secondItem="nbu-Dk-iN1" secondAttribute="leadingMargin" constant="30" id="uw2-Qi-571"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="AN1-dW-TZt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1T7-DL-WGo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-783" y="565"/>
         </scene>
     </scenes>
     <resources>
