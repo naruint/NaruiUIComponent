@@ -19,6 +19,12 @@ public class NaruRadioButton: UIView {
     @IBInspectable var groupid:String? = nil
     
     let disposeBag = DisposeBag()
+    //MARK:-
+    //MARK:IBInspectable
+    @IBInspectable var normalColor:UIColor = .white
+    @IBInspectable var selectedColor:UIColor = .gray
+    //MARK:-
+    //MARK:IBOutlet
     
     @IBOutlet weak var button:UIButton!
     //MARK:-
@@ -47,13 +53,17 @@ public class NaruRadioButton: UIView {
         button.rx.tap.bind { [unowned self](_) in
             button.isSelected = true
             NotificationCenter.default.post(name: .naruRadioButtonSelect, object: idx)
+            button.tintColor = button.isSelected ? selectedColor : normalColor
         }.disposed(by: disposeBag)
         
+        button.setImage(button.image(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(button.image(for: .selected)?.withRenderingMode(.alwaysTemplate), for: .selected)
         NotificationCenter.default.addObserver(forName: .naruRadioButtonSelect, object: nil, queue: nil) { [weak self](noti) in
             if noti.object as? Int != self?.idx {
                 self?.button.isSelected = false
             }
         }
+        button.tintColor = button.isSelected ? selectedColor : normalColor
     }
 
 }

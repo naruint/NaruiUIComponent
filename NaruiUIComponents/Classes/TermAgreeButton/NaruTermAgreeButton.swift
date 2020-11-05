@@ -30,8 +30,8 @@ public class NaruTermAgreeButton: UIView {
         }
     }
     @IBInspectable var subButtonBGColor:UIColor = UIColor(white: 249/255, alpha: 1.0)
-    @IBInspectable var totalButtonBGColor:UIColor = .white
-    @IBInspectable var totalButtonBorderColor:UIColor = UIColor(white: 220/255, alpha: 1.0)
+    @IBInspectable var totalBGColor:UIColor = .white
+    @IBInspectable var totalBorderColor:UIColor = UIColor(white: 220/255, alpha: 1.0)
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -94,9 +94,9 @@ public class NaruTermAgreeButton: UIView {
         button.isHidden = isTotalAgree
         bgButtonTrailing.constant = isTotalAgree ? 0 : button.frame.width
         if isTotalAgree {
-            backgroundColor = totalButtonBGColor
+            backgroundColor = totalBGColor
             layer.borderWidth = 1.0
-            layer.borderColor = totalButtonBorderColor.cgColor
+            layer.borderColor = totalBorderColor.cgColor
         } else {
             backgroundColor = subButtonBGColor
         }

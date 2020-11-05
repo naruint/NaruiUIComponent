@@ -16,6 +16,10 @@ public class NaruCheckButton: UIButton {
     @IBOutlet weak var button: UIButton!
 
     //MARK:-
+    //MARK:IBInspectable
+    @IBInspectable var normalColor:UIColor = .white
+    @IBInspectable var selectedColor:UIColor = .gray
+    //MARK:-
     //MARK: arrangeView
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,8 +44,12 @@ public class NaruCheckButton: UIButton {
         
         button.rx.tap.bind { [unowned self](_) in
             button.isSelected.toggle()
+            button.tintColor = button.isSelected ? selectedColor : normalColor
         }.disposed(by: disposeBag)
         
+        button.tintColor = button.isSelected ? selectedColor : normalColor
+        button.setImage(button.image(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(button.image(for: .selected)?.withRenderingMode(.alwaysTemplate), for: .selected)
     }
         
 }

@@ -38,12 +38,13 @@ public class NaruTextField: UIView {
     }
     @IBInspectable var errorLineColor:UIColor = .red
     @IBInspectable var focusLineColor:UIColor = .black
-    @IBInspectable var textColor:UIColor = .white {
-        didSet {
-            DispatchQueue.main.async {[unowned self]in
-                textField.textColor = textColor
-                titleLabel.textColor = textColor
-            }
+    
+    @IBInspectable var textColor:UIColor? {
+        set {
+            textField.textColor = newValue
+        }
+        get {
+            textField.textColor
         }
     }
     
@@ -51,8 +52,22 @@ public class NaruTextField: UIView {
         didSet {
             DispatchQueue.main.async {[unowned self]in
                 textField.placeholder = placeHolder
+                textField.attributedPlaceholder = NSAttributedString(
+                    string: placeHolder ?? "",
+                    attributes: [NSAttributedString.Key.foregroundColor : PH_Color])
                 titleLabel.text = placeHolder
             }
+        }
+    }
+    /** place Holder Color*/
+    @IBInspectable var PH_Color:UIColor = .gray
+    /** Place Holder Label Text Color */
+    @IBInspectable var PH_labelColor:UIColor? {
+        set {
+            titleLabel.textColor = newValue
+        }
+        get {
+            titleLabel.textColor
         }
     }
     
