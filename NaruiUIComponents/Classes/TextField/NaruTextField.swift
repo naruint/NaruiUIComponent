@@ -118,9 +118,6 @@ public class NaruTextField: UIView {
             if rightViewMode == .unlessEditing && isHideRightViewWhenInput {
                 textField.rightViewMode = isEmpty ? .unlessEditing : .never
             }
-            if isError {
-                isError = false
-            }
         }.disposed(by: disposeBag)
         
     }
