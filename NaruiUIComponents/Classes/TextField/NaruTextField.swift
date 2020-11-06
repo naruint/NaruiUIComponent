@@ -59,13 +59,11 @@ public class NaruTextField: UIView {
         didSet {
             DispatchQueue.main.async {[unowned self]in
                 textField.placeholder = placeHolder
-                textField.attributedPlaceholder = NSAttributedString(
-                    string: placeHolder ?? "",
-                    attributes: [NSAttributedString.Key.foregroundColor : PH_Color])
                 titleLabel.text = placeHolder
             }
         }
     }
+    
     /** place Holder Color*/
     @IBInspectable var PH_Color:UIColor = .gray
     /** Place Holder Label Text Color */
@@ -78,6 +76,10 @@ public class NaruTextField: UIView {
         }
     }
     
+    @IBInspectable var isRequired:Bool = false
+    @IBInspectable var requiredText:String = "*"
+    @IBInspectable var requiredColor:UIColor = UIColor.green
+    
     public var isError:Bool = false {
         didSet {
             DispatchQueue.main.async {[unowned self] in
@@ -86,6 +88,23 @@ public class NaruTextField: UIView {
             }
         }
     }
+    
+    func setAttributedPlaceHolder() {
+        var attr:NSAttributedString {
+            let str = NSMutableAttributedString()
+            str.append(NSAttributedString(string: placeHolder ?? "" ,
+                                          attributes:[.foregroundColor : PH_Color]))
+            if isRequired {
+                str.append(NSAttributedString(string: requiredText,
+                                              attributes: [.foregroundColor : requiredColor]))
+            }
+            return str
+        }
+        DispatchQueue.main.async {[unowned self] in
+            textField.attributedPlaceholder = attr
+        }
+    }
+    
     //MARK:-
     let disposeBag = DisposeBag()
     //MARK:-
@@ -154,6 +173,7 @@ public class NaruTextField: UIView {
             layout?.constant = padding
         }
         focus(isOn: textField.isFirstResponder)
+        setAttributedPlaceHolder()
     }
     
     private func focus(isOn:Bool) {
