@@ -258,6 +258,12 @@
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이름"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -298,6 +304,12 @@
                                                             <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -334,6 +346,12 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이메일"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5K-Mh-spb" customClass="NaruSelectBoxView" customModule="NaruiUIComponents">
