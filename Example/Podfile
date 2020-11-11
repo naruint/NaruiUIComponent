@@ -10,6 +10,7 @@ target 'NaruiUIComponents_Example' do
     pod 'Nimble'
     pod 'FBSnapshotTestCase'
     pod 'Nimble-Snapshots'
+    pod 'UBottomSheet'
     pod 'RxCocoa'
     pod 'RxSwift'
   end
