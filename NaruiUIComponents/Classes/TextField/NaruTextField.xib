@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="leading" destination="phJ-at-uvv" id="P3k-pZ-oGC"/>
                 <outlet property="lineView" destination="TiS-cE-vYO" id="2H4-Uk-Dk3"/>
+                <outlet property="showPwdButton" destination="Vy1-Ja-FZl" id="5xt-I0-CAU"/>
                 <outlet property="textField" destination="c0T-Ft-roL" id="5TV-JG-Fso"/>
                 <outlet property="titleLabel" destination="seR-w4-dYY" id="mbv-1W-GY2"/>
                 <outlet property="trailing" destination="lnd-Yo-yMx" id="aA3-51-iaT"/>
@@ -45,6 +46,12 @@
                     <color key="textColor" name="normalTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vy1-Ja-FZl">
+                    <rect key="frame" x="31" y="19" width="24" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="passwordViewIconSelected"/>
+                    <state key="selected" image="passwordViewIconSelected"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
@@ -65,6 +72,7 @@
         </view>
     </objects>
     <resources>
+        <image name="passwordViewIconSelected" width="24" height="24"/>
         <namedColor name="normalTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

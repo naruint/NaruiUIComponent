@@ -18,6 +18,7 @@ public class NaruTextField: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var showPwdButton: UIButton!
     //MARK:-
     //MARK:IBInspectable
     @IBInspectable var padding:CGFloat = 0.0 {
@@ -283,8 +284,6 @@ public class NaruTextField: UIView {
         }
     }
 
-    /** 비밀번호 보기 전환하기 버튼*/
-    var switchShowPWDButton:UIButton? = nil
     
     /** 비밀번호 보기 뷰가 있는 비밀번호 입력 뷰로 만들기*/
     public var isSecureMode:Bool = false {
@@ -296,21 +295,26 @@ public class NaruTextField: UIView {
     }
     
     func setPwdMode() {
-        let btn = UIButton(type: .custom)
-        btn.setImage(#imageLiteral(resourceName: "passwordViewIconSelected").withRenderingMode(.alwaysTemplate), for: .normal)
-        btn.setImage(#imageLiteral(resourceName: "passwordViewIconSelected").withRenderingMode(.alwaysTemplate), for: .selected)
-        btn.isSelected = true
+        guard let image = showPwdButton.image(for: .normal) else {
+            return
+        }
+                
+        let button = UIButton()
+        
+        button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(image.withRenderingMode(.alwaysTemplate), for: .selected)
+        button.isSelected = true
         textField.isSecureTextEntry = true
         textField.keyboardType = .asciiCapable
-        btn.tintColor = normalLineColor
-        btn.rx.tap.bind { [unowned self](_) in
-            btn.isSelected.toggle()
-            btn.tintColor = btn.isSelected ? normalLineColor : focusLineColor
-            textField.isSecureTextEntry = btn.isSelected
+        button.tintColor = normalLineColor
+        button.rx.tap.bind { [unowned self](_) in
+            button.isSelected.toggle()
+            button.tintColor = button.isSelected ? normalLineColor : focusLineColor
+            textField.isSecureTextEntry = button.isSelected
         }.disposed(by: disposeBag)
-        switchShowPWDButton = btn
+        button.frame.size = image.size
         textField.rightViewMode = .always
-        textField.rightView = btn
+        textField.rightView = button
         textField.clearButtonMode = .always
     }
      
