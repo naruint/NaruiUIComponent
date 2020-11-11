@@ -297,8 +297,8 @@ public class NaruTextField: UIView {
     
     func setPwdMode() {
         let btn = UIButton(type: .custom)
-        btn.setImage(#imageLiteral(resourceName: "icon24ViewBlack").withRenderingMode(.alwaysTemplate), for: .normal)
-        btn.setImage(#imageLiteral(resourceName: "icon24ViewBlack").withRenderingMode(.alwaysTemplate), for: .selected)
+        btn.setImage(#imageLiteral(resourceName: "passwordViewIconSelected").withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "passwordViewIconSelected").withRenderingMode(.alwaysTemplate), for: .selected)
         btn.isSelected = true
         textField.isSecureTextEntry = true
         textField.keyboardType = .asciiCapable
