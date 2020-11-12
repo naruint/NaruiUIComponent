@@ -10,23 +10,52 @@ import UIKit
 import NaruiUIComponents
 
 class GraphTopTestTableViewController: UITableViewController {
-
+//    let value:Float
+//    let dayOfTheWeek:String
+//    let day:Int
     @IBOutlet weak var headerBgView: UIView!
     @IBOutlet weak var graphView: NaruGraphView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let json = "{\"values\" : [0.4,0.0,0.3,1.0,0.1,1.0,0.7,0.8]}"
+        let json = """
+{ "values" : [
+    {
+    "value":0.4,
+    "date":{"year":2020,"month":10,"day":20}
+    },
+    {
+    "value":1.0,
+    "date":{"year":2020,"month":10,"day":21}
+    },
+    {
+    "value":0.3,
+    "date":{"year":2020,"month":10,"day":22}
+    },
+    {
+    "value":0.0,
+    "date":{"year":2020,"month":10,"day":23}
+    },
+    {
+    "value":1.0,
+    "date":{"year":2020,"month":10,"day":24}
+    },
+    {
+    "value":0.7,
+    "date":{"year":2020,"month":10,"day":25}
+    },
+    {
+    "value":0.1,
+    "date":{"year":2020,"month":10,"day":26}
+    }
+]}
+"""
         if let data = NaruGraphView.ViewModel.makeModel(string: json) {
             graphView.data = data
         }
-        headerBgView.alpha = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.5) {[weak self] in
-            self?.headerBgView.alpha = 1
-        }
     }
 
     // MARK: - Table view data source
@@ -41,19 +70,19 @@ class GraphTopTestTableViewController: UITableViewController {
         return 0
     }
     
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print(scrollView.contentOffset.y)
-        if scrollView.contentOffset.y < -200 {
-            headerBgView.isHidden = true
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
-        let y = scrollView.contentOffset.y
-        let alpha = (y + 200)/100
-        headerBgView.alpha = alpha
-    }
-
+//    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        print(scrollView.contentOffset.y)
+//        if scrollView.contentOffset.y < -200 {
+//            headerBgView.isHidden = true
+//            dismiss(animated: true, completion: nil)
+//        }
+//    }
+//
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print(scrollView.contentOffset.y)
+//        let y = scrollView.contentOffset.y
+//        let alpha = (y + 200)/100
+//        headerBgView.alpha = alpha
+//    }
+//
 }

@@ -117,9 +117,9 @@
         <!--Graph Top Test Table View Controller-->
         <scene sceneID="qr1-Yg-9zm">
             <objects>
-                <tableViewController modalPresentationStyle="overFullScreen" id="8u0-zk-73q" customClass="GraphTopTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8u0-zk-73q" customClass="GraphTopTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-lI-cZb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79500440140845074" colorSpace="custom" customColorSpace="displayP3"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="tgd-Fc-Ku8">
@@ -134,7 +134,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pk4-nb-aAp" userLabel="graphView" customClass="NaruGraphView" customModule="NaruiUIComponents">
-                                    <rect key="frame" x="0.0" y="172" width="390" height="128"/>
+                                    <rect key="frame" x="20" y="172" width="350" height="128"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="128" id="B4m-Dy-5ez"/>
@@ -145,8 +145,8 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="RTe-jK-cvI" secondAttribute="trailing" id="0iW-7a-Bj6"/>
                                 <constraint firstAttribute="bottom" secondItem="RTe-jK-cvI" secondAttribute="bottom" id="2Na-5e-ebW"/>
-                                <constraint firstAttribute="trailing" secondItem="pk4-nb-aAp" secondAttribute="trailing" id="Fhr-AX-mNv"/>
-                                <constraint firstItem="pk4-nb-aAp" firstAttribute="leading" secondItem="tgd-Fc-Ku8" secondAttribute="leading" id="QrO-Kz-fOY"/>
+                                <constraint firstAttribute="trailing" secondItem="pk4-nb-aAp" secondAttribute="trailing" constant="20" id="Fhr-AX-mNv"/>
+                                <constraint firstItem="pk4-nb-aAp" firstAttribute="leading" secondItem="tgd-Fc-Ku8" secondAttribute="leading" constant="20" id="QrO-Kz-fOY"/>
                                 <constraint firstAttribute="bottom" secondItem="pk4-nb-aAp" secondAttribute="bottom" id="Xwm-t3-fx0"/>
                                 <constraint firstItem="RTe-jK-cvI" firstAttribute="leading" secondItem="tgd-Fc-Ku8" secondAttribute="leading" id="djN-vz-UuU"/>
                             </constraints>

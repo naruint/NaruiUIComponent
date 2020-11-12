@@ -26,5 +26,9 @@ public extension String {
         return emailPred.evaluate(with: self)
     }
 
-
+    func getDate(format:String = "yyyy-MM-dd HH:mm:ss")->Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.date(from: self)
+    }
 }
