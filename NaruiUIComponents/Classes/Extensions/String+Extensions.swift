@@ -6,7 +6,7 @@
 //
 
 import Foundation
-extension String {
+public extension String {
     subscript(_ range: CountableRange<Int>) -> String {
         let start = index(startIndex, offsetBy: max(0, range.lowerBound))
         let end = index(start, offsetBy: min(self.count - range.lowerBound,
@@ -18,4 +18,13 @@ extension String {
         let start = index(startIndex, offsetBy: max(0, range.lowerBound))
          return String(self[start...])
     }
+    
+    var isValidEmail:Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: self)
+    }
+
+
 }

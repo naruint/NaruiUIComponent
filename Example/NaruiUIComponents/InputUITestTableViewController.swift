@@ -63,6 +63,15 @@ class InputUITestTableViewController: UITableViewController {
             _ = emailTextField.becomeFirstResponder()
             present(ac, animated: true, completion: nil)
         }
+        emailTextField.setReturn { [unowned self] tf in
+            if tf.text?.isValidEmail == false {
+                let ac = UIAlertController(title: "에러", message: "이메일 형식이 바르지 않습니다", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { [unowned self]o_ in
+                    _ = emailTextField.becomeFirstResponder()
+                }))
+                present(ac, animated: true, completion: nil)
+            }
+        }
         
         
         textView.onTouchupButton { [unowned self] text in
