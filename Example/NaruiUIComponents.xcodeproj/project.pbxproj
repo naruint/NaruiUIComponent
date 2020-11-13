@@ -14,6 +14,7 @@
 		1B5CBCA825493AEE007093B1 /* InputUITestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */; };
 		1B74DC0C25494C74001FD749 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B74DC0B25494C74001FD749 /* Color.xcassets */; };
 		1B8D2DD0254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D2DCF254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift */; };
+		1BAAAE6E255E4D19001FC4BB /* mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1BAAAE6D255E4D19001FC4BB /* mp4 */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -40,6 +41,7 @@
 		1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUITestTableViewController.swift; sourceTree = "<group>"; };
 		1B74DC0B25494C74001FD749 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		1B8D2DCF254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopTestTableViewController.swift; sourceTree = "<group>"; };
+		1BAAAE6D255E4D19001FC4BB /* mp4 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mp4; sourceTree = "<group>"; };
 		1F42862B62DEE8B15CF09478 /* Pods-NaruiUIComponents_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaruiUIComponents_Tests.release.xcconfig"; path = "Target Support Files/Pods-NaruiUIComponents_Tests/Pods-NaruiUIComponents_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		58CD526C128A45E4AD3A81E9 /* NaruiUIComponents.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NaruiUIComponents.podspec; path = ../NaruiUIComponents.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* NaruiUIComponents_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaruiUIComponents_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 				1B8D2DCF254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				1B74DC0B25494C74001FD749 /* Color.xcassets */,
+				1BAAAE6D255E4D19001FC4BB /* mp4 */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -269,6 +272,7 @@
 				1B74DC0C25494C74001FD749 /* Color.xcassets in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				1BAAAE6E255E4D19001FC4BB /* mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
