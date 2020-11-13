@@ -21,8 +21,21 @@ public class NaruRadioButton: UIView {
     let disposeBag = DisposeBag()
     //MARK:-
     //MARK:IBInspectable
-    @IBInspectable var normalColor:UIColor = .white
-    @IBInspectable var selectedColor:UIColor = .gray
+    @IBInspectable var normalColor:UIColor = .white {
+        didSet {
+            DispatchQueue.main.async {[unowned self] in
+                setTintColor()
+            }
+        }
+    }
+
+    @IBInspectable var selectedColor:UIColor = .gray {
+        didSet {
+            DispatchQueue.main.async {[unowned self] in
+                setTintColor()
+            }
+        }
+    }
     //MARK:-
     //MARK:IBOutlet
     
@@ -63,7 +76,10 @@ public class NaruRadioButton: UIView {
                 self?.button.isSelected = false
             }
         }
-        button.tintColor = button.isSelected ? selectedColor : normalColor
+        setTintColor()
     }
 
+    func setTintColor() {
+        button.tintColor = button.isSelected ? selectedColor : normalColor
+    }
 }
