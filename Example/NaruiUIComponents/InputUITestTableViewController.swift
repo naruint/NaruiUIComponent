@@ -19,6 +19,7 @@ class InputUITestTableViewController: UITableViewController {
     
     @IBOutlet weak var emailTextField: NaruTextField!
 
+    @IBOutlet weak var button: NaruGradientButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "UI Input Test"
@@ -78,6 +79,11 @@ class InputUITestTableViewController: UITableViewController {
             let ac = UIAlertController(title: "Test", message: text ?? "", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             present(ac, animated: true, completion: nil)
+        }
+        
+        button.isEnabled = false
+        password.setTextDidChange { [unowned self](string) in
+            button.isEnabled = !string.isEmpty
         }
     }
     

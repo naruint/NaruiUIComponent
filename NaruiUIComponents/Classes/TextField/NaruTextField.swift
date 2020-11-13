@@ -155,6 +155,7 @@ public class NaruTextField: UIView {
             if rightViewMode == .unlessEditing && isHideRightViewWhenInput {
                 textField.rightViewMode = isEmpty ? .unlessEditing : .never
             }
+            textDidChangeCallBack(string)
         }.disposed(by: disposeBag)
         
     }
@@ -236,6 +237,11 @@ public class NaruTextField: UIView {
     private var returnCallBack:(_ textField:UITextField)->Void = {_ in }
     public func setReturn(callback:@escaping(_ textField:UITextField)->Void) {
         returnCallBack = callback
+    }
+    
+    private var textDidChangeCallBack:(_ text:String)->Void = {_ in}
+    public func setTextDidChange(callback:@escaping(_ text:String)->Void) {
+        textDidChangeCallBack = callback
     }
     
     //MARK:-

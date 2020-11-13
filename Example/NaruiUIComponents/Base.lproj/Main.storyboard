@@ -203,6 +203,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="2sx-ve-Gh4">
+                            <rect key="frame" x="0.0" y="1236" width="390" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nP-Np-yzI" customClass="NaruGradientButton" customModule="NaruiUIComponents">
+                                    <rect key="frame" x="20" y="20" width="350" height="60"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="HMe-Sb-3YX"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="버튼 테스트"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                            <color key="value" name="backgroundColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                            <color key="value" name="backgroundColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledTextColor">
+                                            <color key="value" name="backgroundColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledBGColor">
+                                            <color key="value" name="weakTextColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="9nP-Np-yzI" secondAttribute="trailing" constant="20" id="OTy-5o-ioA"/>
+                                <constraint firstItem="9nP-Np-yzI" firstAttribute="leading" secondItem="2sx-ve-Gh4" secondAttribute="leading" constant="20" id="cHJ-Z0-wYv"/>
+                                <constraint firstAttribute="bottom" secondItem="9nP-Np-yzI" secondAttribute="bottom" id="tef-EO-ZCZ"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="eBz-eT-OhQ">
                                 <cells>
@@ -664,6 +698,7 @@
                     <connections>
                         <outlet property="ageTextField" destination="yhr-z5-Srh" id="S0O-u3-MuL"/>
                         <outlet property="birthdayTextField" destination="3cQ-xt-0mt" id="yr3-Pc-of5"/>
+                        <outlet property="button" destination="9nP-Np-yzI" id="gni-q3-3O9"/>
                         <outlet property="emailTextField" destination="4yN-hh-o9I" id="tzJ-EL-htn"/>
                         <outlet property="genderSelectView" destination="h5K-Mh-spb" id="rWt-F5-iPv"/>
                         <outlet property="nameTextField" destination="UL0-0m-Y8q" id="7vg-Me-fOS"/>
