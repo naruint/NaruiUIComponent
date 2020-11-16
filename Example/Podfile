@@ -13,5 +13,6 @@ target 'NaruiUIComponents_Example' do
     pod 'UBottomSheet'
     pod 'RxCocoa'
     pod 'RxSwift'
+    pod 'PhoneNumberKit'
   end
 end
