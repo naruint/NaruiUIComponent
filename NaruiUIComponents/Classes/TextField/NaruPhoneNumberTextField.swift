@@ -12,6 +12,12 @@ import PhoneNumberKit
 
 @IBDesignable
 public class NaruPhoneNumberTextField: UIView {
+    public struct Result {
+        public let carrier:String
+        public let national:String
+        public let e164:String
+    }
+    
     /** 통신사 목록*/
     let carriers:[String] = [
         "SKT","KT","LGU+"
@@ -56,7 +62,22 @@ public class NaruPhoneNumberTextField: UIView {
                 secondTextField.text = newStr
             }
         }.disposed(by: disposeBag)
+        
+        button.rx.tap.bind { [unowned self](_) in
+            guard let carrier = firstTextField.text,
+                  let phoneNumber = secondTextField.text,
+                  let number = try? phoneNumberKit.parse(phoneNumber)
+            else {
+                return
+            }
+            
+            let e164 = phoneNumberKit.format(number, toType: .e164)
+           
+            let result = Result(carrier: carrier, national: phoneNumber, e164: e164)
+            touchupButtonCallBack(result)
+        }.disposed(by: disposeBag)
     }
+    
     let phoneNumberKit = PhoneNumberKit()
     let disposeBag = DisposeBag()
     @IBOutlet weak var titleLabel: UILabel!
@@ -92,6 +113,15 @@ public class NaruPhoneNumberTextField: UIView {
             button.setBackgroundImage(diBtnColor.image, for: .disabled)
         }
     }
+    /** button text color*/
+    @IBInspectable var btnTxtColor:UIColor? {
+        set {
+            button.setTitleColor(newValue, for: .normal)
+        }
+        get {
+            button.titleColor(for: .normal)
+        }
+    }
     
     @IBInspectable var titleForBtn:String? {
         set {
@@ -108,6 +138,14 @@ public class NaruPhoneNumberTextField: UIView {
         }
         get {
             titleLabel.text
+        }
+    }
+    @IBInspectable var titleColor:UIColor? {
+        set {
+            titleLabel.textColor = newValue
+        }
+        get {
+            titleLabel.textColor
         }
     }
     /** 포커스 상태의 라인 컬러*/
@@ -127,6 +165,12 @@ public class NaruPhoneNumberTextField: UIView {
         borderColor = isFirstResponder ? foLineColor : noLineColor
     }
     
+    var touchupButtonCallBack:(_ result:Result)->Void = { _ in
+    }
+    
+    public func setTouchupButton(_ callBack:@escaping(_ result:Result)->Void) {
+        touchupButtonCallBack = callBack
+    }
     
 }
 

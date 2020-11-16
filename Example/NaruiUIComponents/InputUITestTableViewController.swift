@@ -19,6 +19,7 @@ class InputUITestTableViewController: UITableViewController {
     
     @IBOutlet weak var emailTextField: NaruTextField!
 
+    @IBOutlet weak var phoneNumberTextField: NaruPhoneNumberTextField!
     @IBOutlet weak var button: NaruGradientButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +85,13 @@ class InputUITestTableViewController: UITableViewController {
         button.isEnabled = false
         password.setTextDidChange { [unowned self](string) in
             button.isEnabled = !string.isEmpty
+        }
+        
+        phoneNumberTextField.setTouchupButton {[unowned self](result) in
+            
+            let ac = UIAlertController(title: "전화번호", message: result.e164, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            present(ac, animated: true, completion: nil)
         }
     }
     

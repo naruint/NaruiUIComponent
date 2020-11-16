@@ -766,6 +766,21 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
                                                             <color key="value" name="weakTextColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noBtnColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="hiBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="diBtnColor">
+                                                            <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -794,6 +809,7 @@
                         <outlet property="genderSelectView" destination="h5K-Mh-spb" id="rWt-F5-iPv"/>
                         <outlet property="nameTextField" destination="UL0-0m-Y8q" id="7vg-Me-fOS"/>
                         <outlet property="password" destination="4CJ-tJ-58v" id="Y8I-JS-reC"/>
+                        <outlet property="phoneNumberTextField" destination="KMv-AR-e4W" id="avr-Kz-2kf"/>
                         <outlet property="textView" destination="xi2-QZ-VdV" id="QZa-oT-0X0"/>
                     </connections>
                 </tableViewController>
