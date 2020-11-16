@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sb0-HP-x5k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sb0-HP-x5k">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -213,7 +213,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="2sx-ve-Gh4">
-                            <rect key="frame" x="0.0" y="1496" width="390" height="80"/>
+                            <rect key="frame" x="0.0" y="1596" width="390" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nP-Np-yzI" customClass="NaruGradientButton" customModule="NaruiUIComponents">
@@ -781,6 +781,9 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="diBtnColor">
                                                             <color key="value" name="sliderTrackColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -789,6 +792,57 @@
                                                 <constraint firstAttribute="bottom" secondItem="KMv-AR-e4W" secondAttribute="bottom" constant="10" id="WMs-ut-R1v"/>
                                                 <constraint firstAttribute="trailing" secondItem="KMv-AR-e4W" secondAttribute="trailing" constant="20" id="nqy-pl-h6r"/>
                                                 <constraint firstItem="KMv-AR-e4W" firstAttribute="top" secondItem="M4b-oo-1TU" secondAttribute="top" constant="10" id="voK-0R-wvw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="WvK-fh-xuq">
+                                        <rect key="frame" x="0.0" y="1468" width="390" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WvK-fh-xuq" id="vrU-0J-mGH">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8o-dy-EL0" customClass="NaruPhoneAuthInputTextField" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="20" y="10" width="350" height="80"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noBtnColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="hiBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="diBtnColor">
+                                                            <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="btnTxtColor">
+                                                            <color key="value" name="backgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="titleForBtn" value="재요청"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="인증번호"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="foLineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="인증번호 입력"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="L8o-dy-EL0" firstAttribute="top" secondItem="vrU-0J-mGH" secondAttribute="top" constant="10" id="FOZ-QU-yyQ"/>
+                                                <constraint firstItem="L8o-dy-EL0" firstAttribute="leading" secondItem="vrU-0J-mGH" secondAttribute="leading" constant="20" id="Udp-gY-5rn"/>
+                                                <constraint firstAttribute="bottom" secondItem="L8o-dy-EL0" secondAttribute="bottom" constant="10" id="WlJ-QC-DWy"/>
+                                                <constraint firstAttribute="trailing" secondItem="L8o-dy-EL0" secondAttribute="trailing" constant="20" id="bRC-va-8Ww"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -809,6 +863,7 @@
                         <outlet property="genderSelectView" destination="h5K-Mh-spb" id="rWt-F5-iPv"/>
                         <outlet property="nameTextField" destination="UL0-0m-Y8q" id="7vg-Me-fOS"/>
                         <outlet property="password" destination="4CJ-tJ-58v" id="Y8I-JS-reC"/>
+                        <outlet property="phoneAuthNumberInput" destination="L8o-dy-EL0" id="54Y-N6-uU8"/>
                         <outlet property="phoneNumberTextField" destination="KMv-AR-e4W" id="avr-Kz-2kf"/>
                         <outlet property="textView" destination="xi2-QZ-VdV" id="QZa-oT-0X0"/>
                     </connections>

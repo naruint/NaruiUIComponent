@@ -180,6 +180,7 @@ public class NaruTextField: UIView {
     private func updateUI() {
         if isBoxStyle {
             lineView.isHidden = true
+            layer.cornerRadius = 2
             layer.borderWidth = 1.0
             layer.borderColor = isError ? errorLineColor.cgColor : normalLineColor.cgColor
             

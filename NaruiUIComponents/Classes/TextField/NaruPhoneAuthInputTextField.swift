@@ -1,5 +1,5 @@
 //
-//  NaruPhoneNumberTextField.swift
+//  NaruPhoneAuthInputTextField.swift
 //  NaruiUIComponents
 //
 //  Created by Changyeol Seo on 2020/11/16.
@@ -11,19 +11,7 @@ import RxSwift
 import PhoneNumberKit
 
 @IBDesignable
-public class NaruPhoneNumberTextField: UIView {
-    public struct Result {
-        public let carrier:String
-        public let national:String
-        public let e164:String
-    }
-    
-    /** 통신사 목록*/
-    let carriers:[String] = [
-        "SKT","KT","LGU+"
-    ]
-    let carriersPicker = UIPickerView()
-    
+public class NaruPhoneAuthInputTextField: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         arrangeView()
@@ -36,7 +24,7 @@ public class NaruPhoneNumberTextField: UIView {
     
     func arrangeView() {
         guard let view = UINib(
-                nibName: String(describing: NaruPhoneNumberTextField.self),
+                nibName: String(describing: NaruPhoneAuthInputTextField.self),
                 bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first as? UIView else {
             return
         }
@@ -44,51 +32,17 @@ public class NaruPhoneNumberTextField: UIView {
         addSubview(view)
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        firstTextField.rightView = downButton
-        firstTextField.rightViewMode = .always
-        for tf in [firstTextField, secondTextField] {
-            tf?.delegate = self
-        }
-        updateUI()
-        firstTextField.inputView = carriersPicker
-        carriersPicker.dataSource = self
-        carriersPicker.delegate = self
-        firstTextField.text = carriers.first
-        
+        textField.isEnabled = false
         button.isEnabled = false
-        secondTextField.rx.text.orEmpty.bind {[unowned self] (string) in
-            button.isEnabled = false
-            if let number = try? phoneNumberKit.parse(string) {
-                let newStr = phoneNumberKit.format(number, toType: .national)
-                print(newStr)
-                secondTextField.text = newStr
-                button.isEnabled = true
-            }
-        }.disposed(by: disposeBag)
-        
-        button.rx.tap.bind { [unowned self](_) in
-            guard let carrier = firstTextField.text,
-                  let phoneNumber = secondTextField.text,
-                  let number = try? phoneNumberKit.parse(phoneNumber)
-            else {
-                return
-            }
-            
-            let e164 = phoneNumberKit.format(number, toType: .e164)
-           
-            let result = Result(carrier: carrier, national: phoneNumber, e164: e164)
-            touchupButtonCallBack(result)
-        }.disposed(by: disposeBag)
+        updateUI()
     }
     
-    let phoneNumberKit = PhoneNumberKit()
     let disposeBag = DisposeBag()
+
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var firstTextField: UITextField!
-    @IBOutlet weak var secondTextField: UITextField!
-    @IBOutlet weak var downButton: UIButton!
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var button:UIButton!
-    
+    @IBOutlet weak var timeCountLabel: UILabel!
     //MARK:-
     //MARK:IBInspectable
     /** normal Btn Color*/
@@ -157,63 +111,86 @@ public class NaruPhoneNumberTextField: UIView {
     @IBInspectable var placeHolderColor:UIColor = .gray {
         didSet {
             if let txt = placeHolder {
-                secondTextField.attributedPlaceholder = NSAttributedString(string: txt, attributes: [.foregroundColor:placeHolderColor])
+                textField.attributedPlaceholder = NSAttributedString(string: txt, attributes: [.foregroundColor:placeHolderColor])
             }
         }
     }
-    
+
     /** 포커스 상태의 라인 컬러*/
     @IBInspectable var foLineColor:UIColor = .black
     /** 보통상태의 라인 컬러*/
     @IBInspectable var noLineColor:UIColor = .gray
     
+    var text:String? {
+        get {
+            textField.text
+        }
+    }
     //MARK:-
-    
     public override var isFirstResponder: Bool {
-        return firstTextField.isFirstResponder || secondTextField.isFirstResponder
+        return textField.isFirstResponder
     }
     
     func updateUI() {
         layer.cornerRadius = 2
         borderWidth = 1
         borderColor = isFirstResponder ? foLineColor : noLineColor
+        button.isEnabled = isTimeOver == false
     }
     
-    var touchupButtonCallBack:(_ result:Result)->Void = { _ in
-    }
+    var touchupButtonCallBack:()->Void = {}
     
-    public func setTouchupButton(_ callBack:@escaping(_ result:Result)->Void) {
+    public func setTouchupButton(_ callBack:@escaping()->Void) {
         touchupButtonCallBack = callBack
     }
     
+    var time:Date? = nil
+    
+    public func startCountDown(interval:TimeInterval) {
+        textField.isEnabled = true
+        textField.becomeFirstResponder()
+        let now = Date().timeIntervalSince1970
+        let newDate = Date(timeIntervalSince1970: now + interval)
+        time = newDate
+        updateTimmer()
+        isTimeOver = false
+    }
+    var isTimeOver:Bool = false
+    
+    func updateTimmer() {
+        guard let t = time else {
+            return
+        }
+        let a = t.timeIntervalSince1970
+        let b = Date().timeIntervalSince1970
+        let interval = Int(a - b)
+        if interval == 0 {
+            isTimeOver = true
+            time = nil
+            updateUI()
+            timeCountLabel.text = "  0:00  "
+            return
+        }
+        let m = Int(interval / 60)
+        let s = interval % 60
+        timeCountLabel.text = String(format: "  %d:%02d  ", m,s)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            self.updateTimmer()
+        }
+    }
 }
 
-extension NaruPhoneNumberTextField : UITextFieldDelegate {
+extension NaruPhoneAuthInputTextField : UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         updateUI()
     }
     public func textFieldDidEndEditing(_ textField: UITextField) {
         updateUI()
     }
-}
 
-
-extension NaruPhoneNumberTextField : UIPickerViewDataSource {
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return carriers.count
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        updateUI()
+        return true
     }
 }
 
-extension NaruPhoneNumberTextField : UIPickerViewDelegate {
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return carriers[row]
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        firstTextField.text = carriers[row]
-        firstTextField.endEditing(true)
-    }
-}
