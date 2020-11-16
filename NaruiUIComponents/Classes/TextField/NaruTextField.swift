@@ -19,6 +19,7 @@ public class NaruTextField: UIView {
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var showPwdButton: UIButton!
+    @IBOutlet weak var textFieldbottomLayout: NSLayoutConstraint!
     //MARK:-
     //MARK:IBInspectable
     @IBInspectable var padding:CGFloat = 0.0 {
@@ -26,6 +27,15 @@ public class NaruTextField: UIView {
             DispatchQueue.main.async { [weak self] in
                 self?.updateUI()
             }
+        }
+    }
+    
+    @IBInspectable var bottomPadding:CGFloat {
+        set {
+            textFieldbottomLayout.constant = newValue
+        }
+        get {
+            textFieldbottomLayout.constant
         }
     }
     
