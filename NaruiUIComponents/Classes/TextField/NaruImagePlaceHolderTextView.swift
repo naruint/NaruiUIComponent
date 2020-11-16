@@ -50,10 +50,10 @@ public class NaruImagePlaceHolderTextView: UIView {
     
     @IBInspectable var lineColor: UIColor? {
         set {
-            lineView.backgroundColor = newValue
+            lineView.subviews.first?.backgroundColor = newValue
         }
         get {
-            lineView.backgroundColor
+            lineView.subviews.first?.backgroundColor
         }
     }
 

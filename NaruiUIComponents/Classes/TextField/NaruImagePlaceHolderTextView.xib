@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,14 +22,24 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-yr-h6X">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-yr-h6X">
                     <rect key="frame" x="0.0" y="44" width="414" height="156"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-u1-emy" userLabel="lineView">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="2"/>
-                            <color key="backgroundColor" name="normalTextColor"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHK-Js-3Pk">
+                                    <rect key="frame" x="7" y="0.0" width="400" height="2"/>
+                                    <color key="backgroundColor" name="normalTextColor"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="KHK-Js-3Pk" secondAttribute="trailing" constant="7" id="8e2-cr-eQw"/>
                                 <constraint firstAttribute="height" constant="2" id="BlY-7O-9U5"/>
+                                <constraint firstItem="KHK-Js-3Pk" firstAttribute="leading" secondItem="zrQ-u1-emy" secondAttribute="leading" constant="7" id="dCd-rM-t6W"/>
+                                <constraint firstAttribute="bottom" secondItem="KHK-Js-3Pk" secondAttribute="bottom" id="iWC-05-rkP"/>
+                                <constraint firstItem="KHK-Js-3Pk" firstAttribute="top" secondItem="zrQ-u1-emy" secondAttribute="top" id="p7i-74-eFM"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -38,17 +48,17 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-rH-D0k">
-                            <rect key="frame" x="0.0" y="11" width="414" height="145"/>
+                            <rect key="frame" x="0.0" y="21" width="414" height="135"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0NV-6b-CAr">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="textColor" systemColor="labelColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WlL-KK-fhP">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </imageView>
                             </subviews>
