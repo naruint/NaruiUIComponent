@@ -29,6 +29,11 @@ public class NaruTermAgreeButton: UIView {
             updateUI()
         }
     }
+    /** 선택했을 때 아웃 라인 컬러*/
+    @IBInspectable var seLineColor:UIColor = .clear
+    /** 미선택시 아웃 라인 컬러*/
+    @IBInspectable var noLineColor:UIColor = .clear
+    
     @IBInspectable var subButtonBGColor:UIColor = UIColor(white: 249/255, alpha: 1.0)
     @IBInspectable var totalBGColor:UIColor = .white
     @IBInspectable var totalBorderColor:UIColor = UIColor(white: 220/255, alpha: 1.0)
@@ -91,12 +96,16 @@ public class NaruTermAgreeButton: UIView {
 
     func updateUI() {
         iconImageView.isHighlighted = isSelected
+        
         button.isHidden = isTotalAgree
         bgButtonTrailing.constant = isTotalAgree ? 0 : button.frame.width
         if isTotalAgree {
             backgroundColor = totalBGColor
             layer.borderWidth = 1.0
             layer.borderColor = totalBorderColor.cgColor
+            if seLineColor != .clear {
+                layer.borderColor = isSelected ? seLineColor.cgColor : noLineColor.cgColor
+            }
         } else {
             backgroundColor = subButtonBGColor
         }
