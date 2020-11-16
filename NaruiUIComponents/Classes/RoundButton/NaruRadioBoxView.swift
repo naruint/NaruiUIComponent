@@ -22,8 +22,20 @@ public class NaruRadioBoxView: UIView {
             button.setTitle(title, for: .normal)
         }
     }
-    @IBInspectable var seColor:UIColor = .white
     @IBInspectable var noColor:UIColor = .white
+    @IBInspectable var seColor:UIColor = .white
+    
+    @IBInspectable var noTitleColor:UIColor? = nil {
+        didSet {
+            button.setTitleColor(noTitleColor ?? noColor, for: .normal)
+        }
+    }
+    @IBInspectable var seTitleColor:UIColor? = nil{
+        didSet {
+            button.setTitleColor(seTitleColor ?? seColor, for: .selected)
+        }
+    }
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
