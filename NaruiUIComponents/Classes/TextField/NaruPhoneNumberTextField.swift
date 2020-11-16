@@ -55,11 +55,14 @@ public class NaruPhoneNumberTextField: UIView {
         carriersPicker.delegate = self
         firstTextField.text = carriers.first
         
+        button.isEnabled = false
         secondTextField.rx.text.orEmpty.bind {[unowned self] (string) in
+            button.isEnabled = false
             if let number = try? phoneNumberKit.parse(string) {
                 let newStr = phoneNumberKit.format(number, toType: .national)
                 print(newStr)
                 secondTextField.text = newStr
+                button.isEnabled = true
             }
         }.disposed(by: disposeBag)
         
