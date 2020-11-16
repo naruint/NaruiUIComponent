@@ -30,16 +30,11 @@ public class NaruTextField: UIView {
             }
         }
     }
-    
-    @IBInspectable var bottomPadding:CGFloat {
-        set {
-            textFieldbottomLayout.constant = newValue
-        }
-        get {
-            textFieldbottomLayout.constant
-        }
-    }
-    
+    /** 내용이 있을 때 아래 여백*/
+    @IBInspectable var b1_padding:CGFloat = 8.0
+    /** 내용이 없을 때 아래 여백*/
+    @IBInspectable var b2_padding:CGFloat = 16.0
+        
     @IBInspectable var isBoxStyle:Bool = false {
         didSet {
             DispatchQueue.main.async { [weak self] in
@@ -189,8 +184,10 @@ public class NaruTextField: UIView {
         }
         
         let isHidden = textField.text?.isEmpty ?? true
+        textFieldbottomLayout.constant = isHidden ? b2_padding : b1_padding
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {[unowned self] in
             titleLabel.alpha = isHidden ? 0 : 1
+            layoutIfNeeded()
         } completion: { (fin) in
             
         }
@@ -199,6 +196,7 @@ public class NaruTextField: UIView {
         }
         focus(isOn: textField.isFirstResponder)
         setAttributedPlaceHolder()
+        
     }
     
     private func focus(isOn:Bool) {
