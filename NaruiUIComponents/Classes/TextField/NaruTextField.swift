@@ -312,14 +312,15 @@ public class NaruTextField: UIView {
     }
     
     func setPwdMode() {
-        guard let image = showPwdButton.image(for: .normal) else {
+        guard let image1 = showPwdButton.image(for: .normal),
+              let image2 = showPwdButton.image(for: .selected) else {
             return
         }
                 
         let button = UIButton()
         
-        button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.setImage(image.withRenderingMode(.alwaysTemplate), for: .selected)
+        button.setImage(image1.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(image2.withRenderingMode(.alwaysTemplate), for: .selected)
         button.isSelected = true
         textField.isSecureTextEntry = true
         textField.keyboardType = .asciiCapable
@@ -329,7 +330,7 @@ public class NaruTextField: UIView {
             button.tintColor = button.isSelected ? normalLineColor : focusLineColor
             textField.isSecureTextEntry = button.isSelected
         }.disposed(by: disposeBag)
-        button.frame.size = image.size
+        button.frame.size = CGSize(width: 40, height: 25)
         textField.rightViewMode = .always
         textField.rightView = button
         textField.clearButtonMode = .always
