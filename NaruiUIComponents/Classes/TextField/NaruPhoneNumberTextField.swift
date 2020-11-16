@@ -152,7 +152,11 @@ public class NaruPhoneNumberTextField: UIView {
         }
     }
     
-    @IBInspectable var placeHolder:String? = nil
+    @IBInspectable var placeHolder:String? = nil {
+        didSet {
+            secondTextField.placeholder = placeHolder
+        }
+    }
     
     @IBInspectable var placeHolderColor:UIColor = .gray {
         didSet {

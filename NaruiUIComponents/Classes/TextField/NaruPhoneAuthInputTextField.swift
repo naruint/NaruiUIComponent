@@ -33,6 +33,7 @@ public class NaruPhoneAuthInputTextField: UIView {
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         textField.isEnabled = false
+        textField.delegate = self
         button.isEnabled = false
         updateUI()
     }

@@ -784,6 +784,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                             <color key="value" name="weakTextColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="010-0000-0000"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
