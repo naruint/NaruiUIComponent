@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruPeopleNumberInputView" customModule="NaruiUIComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="birthdayTextField" destination="0xI-Ri-ceS" id="gqt-4H-Suw"/>
+                <outlet property="bottomStackView" destination="PWx-73-Jvq" id="b9T-Ih-kDF"/>
+                <outlet property="peopleNumberInputContainerView" destination="8m1-Hb-MBt" id="P8o-oU-thV"/>
+                <outlet property="titleLabel" destination="o2J-BY-lKz" id="smc-2Y-IsR"/>
+                <outlet property="topPaddingView" destination="XY6-AS-fho" id="WjO-vd-a1b"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3DS-1i-Cxs">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="V6Y-7n-h3L">
+                    <rect key="frame" x="20" y="0.0" width="374" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XY6-AS-fho">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="14"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="v4q-ZJ-tc3"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2J-BY-lKz">
+                            <rect key="frame" x="0.0" y="14" width="374" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWx-73-Jvq">
+                            <rect key="frame" x="0.0" y="34.5" width="374" height="65.5"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="801012" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0xI-Ri-ceS">
+                                    <rect key="frame" x="0.0" y="0.0" width="70" height="65.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="70" id="FlT-tn-n1S"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQe-Mn-76f">
+                                    <rect key="frame" x="70" y="0.0" width="8" height="65.5"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-HM-bfN">
+                                            <rect key="frame" x="0.0" y="32.5" width="8" height="1"/>
+                                            <color key="backgroundColor" name="normalTextColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="Ezr-HF-r5K"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Bea-HM-bfN" secondAttribute="trailing" id="Hjx-37-aMk"/>
+                                        <constraint firstAttribute="width" constant="8" id="OIf-Oh-Ie1"/>
+                                        <constraint firstItem="Bea-HM-bfN" firstAttribute="centerY" secondItem="bQe-Mn-76f" secondAttribute="centerY" id="tot-nB-7FL"/>
+                                        <constraint firstItem="Bea-HM-bfN" firstAttribute="leading" secondItem="bQe-Mn-76f" secondAttribute="leading" id="u7f-OF-FVh"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8m1-Hb-MBt">
+                                    <rect key="frame" x="78" y="0.0" width="296" height="65.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="7cl-3O-W9S"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="V6Y-7n-h3L" secondAttribute="bottom" id="5Ix-JE-oKt"/>
+                <constraint firstItem="7cl-3O-W9S" firstAttribute="trailing" secondItem="V6Y-7n-h3L" secondAttribute="trailing" constant="20" id="Aen-HU-kXu"/>
+                <constraint firstItem="V6Y-7n-h3L" firstAttribute="leading" secondItem="7cl-3O-W9S" secondAttribute="leading" constant="20" id="Ki8-h3-mHT"/>
+                <constraint firstItem="V6Y-7n-h3L" firstAttribute="top" secondItem="3DS-1i-Cxs" secondAttribute="top" id="NAs-SZ-QXt"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-204" y="56"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="normalTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

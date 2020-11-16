@@ -213,7 +213,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="2sx-ve-Gh4">
-                            <rect key="frame" x="0.0" y="1648" width="390" height="80"/>
+                            <rect key="frame" x="0.0" y="1740" width="390" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nP-Np-yzI" customClass="NaruGradientButton" customModule="NaruiUIComponents">
@@ -927,6 +927,40 @@
                                                 <constraint firstAttribute="bottom" secondItem="L8o-dy-EL0" secondAttribute="bottom" constant="10" id="WlJ-QC-DWy"/>
                                                 <constraint firstAttribute="trailing" secondItem="L8o-dy-EL0" secondAttribute="trailing" constant="20" id="bRC-va-8Ww"/>
                                             </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="G8v-KT-spF">
+                                        <rect key="frame" x="0.0" y="1620" width="390" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G8v-KT-spF" id="6Ht-hq-Op0">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="92"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCu-Mn-PGE" customClass="NaruPeopleNumberInputView" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="20" y="10" width="350" height="72"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="requiredStrig" value="*"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="requiredColor">
+                                                            <color key="value" systemColor="systemGreenColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="주민등록번호 / 외국인등록번호"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zCu-Mn-PGE" firstAttribute="top" secondItem="6Ht-hq-Op0" secondAttribute="top" constant="10" id="EEa-9V-vR4"/>
+                                                <constraint firstAttribute="trailing" secondItem="zCu-Mn-PGE" secondAttribute="trailing" constant="20" id="O6f-Nw-Nfc"/>
+                                                <constraint firstItem="zCu-Mn-PGE" firstAttribute="leading" secondItem="6Ht-hq-Op0" secondAttribute="leading" constant="20" id="tPK-xo-ZiR"/>
+                                                <constraint firstAttribute="bottom" secondItem="zCu-Mn-PGE" secondAttribute="bottom" constant="10" id="wg5-dW-B3g"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="idx">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택1"/>
+                                            </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
