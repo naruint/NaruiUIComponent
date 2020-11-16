@@ -39,6 +39,7 @@ public class NaruPhoneAuthInputTextField: UIView {
     }
     
     let disposeBag = DisposeBag()
+    @IBOutlet weak var clearBtnImageView: UIImageView!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -137,6 +138,7 @@ public class NaruPhoneAuthInputTextField: UIView {
         borderWidth = 1
         borderColor = isFirstResponder ? foLineColor : noLineColor
         button.isEnabled = isTimeOver == false
+        textField.setClearButtonImage(image: clearBtnImageView.image!)
     }
     
     var touchupButtonCallBack:()->Void = {}

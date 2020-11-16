@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruPhoneNumberTextField" customModule="NaruiUIComponents" customModuleProvider="target">
             <connections>
                 <outlet property="button" destination="Wi6-95-8Py" id="gMT-7N-bbW"/>
+                <outlet property="clearImageView" destination="wtw-Gc-B3I" id="fe7-vB-bHU"/>
                 <outlet property="downButton" destination="xk4-ML-fMd" id="GFD-IW-DVe"/>
                 <outlet property="firstTextField" destination="347-Lh-w3R" id="ouP-rJ-nai"/>
                 <outlet property="secondTextField" destination="aBl-UO-shj" id="m7q-jf-hNA"/>
@@ -72,6 +73,10 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon16FormDelete" translatesAutoresizingMaskIntoConstraints="NO" id="wtw-Gc-B3I">
+                    <rect key="frame" x="199" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,6 +94,7 @@
         </view>
     </objects>
     <resources>
+        <image name="icon16FormDelete" width="16" height="16"/>
         <image name="icon24IconArrowDBlack" width="24" height="25"/>
         <namedColor name="backgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

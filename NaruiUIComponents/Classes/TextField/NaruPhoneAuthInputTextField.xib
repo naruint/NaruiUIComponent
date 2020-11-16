@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruPhoneAuthInputTextField" customModule="NaruiUIComponents" customModuleProvider="target">
             <connections>
                 <outlet property="button" destination="qPr-2k-5QP" id="90v-XD-XBE"/>
+                <outlet property="clearBtnImageView" destination="Arg-vv-46a" id="n3d-zs-zC0"/>
                 <outlet property="textField" destination="GUT-mP-1wQ" id="fH3-4g-KGL"/>
                 <outlet property="timeCountLabel" destination="t8b-ug-e8q" id="f9m-k0-I3v"/>
                 <outlet property="titleLabel" destination="UeA-dV-5MJ" id="8Ae-y0-LUV"/>
@@ -64,6 +65,10 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon16FormDelete" translatesAutoresizingMaskIntoConstraints="NO" id="Arg-vv-46a">
+                    <rect key="frame" x="184" y="11" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="R4h-Sv-AeN"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,6 +86,7 @@
         </view>
     </objects>
     <resources>
+        <image name="icon16FormDelete" width="16" height="16"/>
         <namedColor name="backgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

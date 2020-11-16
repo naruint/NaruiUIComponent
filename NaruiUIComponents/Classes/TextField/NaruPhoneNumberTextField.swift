@@ -88,7 +88,7 @@ public class NaruPhoneNumberTextField: UIView {
     @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var button:UIButton!
-    
+    @IBOutlet weak var clearImageView: UIImageView!
     //MARK:-
     //MARK:IBInspectable
     /** normal Btn Color*/
@@ -181,6 +181,7 @@ public class NaruPhoneNumberTextField: UIView {
         layer.cornerRadius = 2
         borderWidth = 1
         borderColor = isFirstResponder ? foLineColor : noLineColor
+        secondTextField.setClearButtonImage(image: clearImageView.image!)
     }
     
     var touchupButtonCallBack:(_ result:Result)->Void = { _ in

@@ -20,6 +20,7 @@ public class NaruTextField: UIView {
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var showPwdButton: UIButton!
     @IBOutlet weak var textFieldbottomLayout: NSLayoutConstraint!
+    @IBOutlet weak var deleteButton: UIButton!
     //MARK:-
     //MARK:IBInspectable
     @IBInspectable var padding:CGFloat = 0.0 {
@@ -178,6 +179,7 @@ public class NaruTextField: UIView {
     }
         
     private func updateUI() {
+        changeDeleteBtn()
         if isBoxStyle {
             lineView.isHidden = true
             layer.cornerRadius = 2
@@ -238,7 +240,7 @@ public class NaruTextField: UIView {
         textField.rightView = btn
         textField.rightViewMode = mode
         rightButtonCallBack = callBack
-        
+        changeDeleteBtn()
     }
     
     @objc func onTouchupRightButton(_ sender:UIButton) {
@@ -309,6 +311,10 @@ public class NaruTextField: UIView {
                 setPwdMode()
             }
         }
+    }
+    
+    private func changeDeleteBtn() {
+        textField.setClearButtonImage(image: deleteButton.image(for: .normal)!)
     }
     
     func setPwdMode() {
