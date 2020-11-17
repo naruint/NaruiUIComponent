@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 /** 주민번호 입력*/
+@IBDesignable
 public class NaruPeopleNumberInputView: UIView {
 
     @IBInspectable var isRequired:Bool = false {
@@ -27,8 +28,20 @@ public class NaruPeopleNumberInputView: UIView {
         }
     }
     
-    @IBInspectable var noColor:UIColor = .gray
-    @IBInspectable var seColor:UIColor = .black
+    @IBInspectable var titleColor:UIColor = .black {
+        didSet {
+            titleLabel.textColor = titleColor
+        }
+    }
+    
+    @IBInspectable var textColor:UIColor = .black {
+        didSet {
+            birthdayTextField.textColor = textColor
+        }
+    }
+    
+    @IBInspectable var noLineColor:UIColor = .gray
+    @IBInspectable var seLineColor:UIColor = .black
     /** 타이틀 라벨*/
     @IBOutlet weak var titleLabel: UILabel!
     /** 생년월일 (주민번호 앞자리)*/
@@ -106,7 +119,7 @@ public class NaruPeopleNumberInputView: UIView {
         titleLabel.attributedText = txt
         
         layer.cornerRadius = 2
-        layer.borderColor = isFocused ? seColor.cgColor : noColor.cgColor
+        layer.borderColor = isFocused ? seLineColor.cgColor : noLineColor.cgColor
         layer.borderWidth = 1
         topPaddingView.isHidden = !isFocused
     }

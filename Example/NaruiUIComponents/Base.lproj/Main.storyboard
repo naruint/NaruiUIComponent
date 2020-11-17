@@ -68,6 +68,10 @@
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="backgroundColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="normalTextColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="voq-qE-wfX" kind="relationship" relationship="rootViewController" id="RBy-Zq-e3M"/>
@@ -128,7 +132,7 @@
             <objects>
                 <tableViewController id="8u0-zk-73q" customClass="GraphTopTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-lI-cZb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79500440140845074" colorSpace="custom" customColorSpace="displayP3"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="tgd-Fc-Ku8">
@@ -211,7 +215,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="nLJ-mv-dU9">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="2sx-ve-Gh4">
                             <rect key="frame" x="0.0" y="1740" width="390" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -239,7 +243,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="backgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="9nP-Np-yzI" secondAttribute="trailing" constant="20" id="OTy-5o-ioA"/>
                                 <constraint firstItem="9nP-Np-yzI" firstAttribute="leading" secondItem="2sx-ve-Gh4" secondAttribute="leading" constant="20" id="cHJ-Z0-wYv"/>
@@ -249,7 +253,7 @@
                         <sections>
                             <tableViewSection id="eBz-eT-OhQ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="C0R-2R-nyN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="C0R-2R-nyN" userLabel="Round select 1">
                                         <rect key="frame" x="0.0" y="28" width="390" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C0R-2R-nyN" id="178-kp-jMS">
@@ -258,7 +262,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIc-ek-ry5" customClass="NaruRadioBoxView" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="10" y="10" width="370" height="60"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="idx">
                                                             <integer key="value" value="0"/>
@@ -292,8 +296,9 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택1"/>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="gTh-k5-btn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="gTh-k5-btn" userLabel="Round select 2">
                                         <rect key="frame" x="0.0" y="108" width="390" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gTh-k5-btn" id="MGS-Oo-Beg">
@@ -302,7 +307,6 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCf-ns-YEf" customClass="NaruRadioBoxView" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="10" y="10" width="370" height="60"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="idx">
                                                             <integer key="value" value="2"/>
@@ -336,8 +340,9 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택2"/>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="goI-3o-wGX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="goI-3o-wGX" userLabel="textView 1">
                                         <rect key="frame" x="0.0" y="188" width="390" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="goI-3o-wGX" id="nt1-U0-xbG">
@@ -346,7 +351,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1x1-gc-yQB" customClass="NaruImagePlaceHolderTextView" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="30" y="21" width="330" height="258"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" name="backgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="placeHolderImage" value="placeHolderImageTest"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -368,8 +373,9 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="1x1-gc-yQB" secondAttribute="bottom" constant="10" id="xGP-sL-L5L"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="dXs-We-cbh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="dXs-We-cbh" userLabel="textView 2">
                                         <rect key="frame" x="0.0" y="488" width="390" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dXs-We-cbh" id="2Yq-Qc-1cA">
@@ -378,7 +384,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xi2-QZ-VdV" customClass="NaruTextView" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="30" y="21" width="330" height="258"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" name="backgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="테스트"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="입력 테스트"/>
@@ -413,8 +419,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="xi2-QZ-VdV" secondAttribute="trailing" constant="10" id="Yhj-6H-20S"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="yn3-NS-nsO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="yn3-NS-nsO" userLabel="name tf">
                                         <rect key="frame" x="0.0" y="788" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yn3-NS-nsO" id="eOe-Pi-Bnf">
@@ -441,6 +448,12 @@
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이름"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
+                                                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -451,8 +464,9 @@
                                                 <constraint firstItem="UL0-0m-Y8q" firstAttribute="top" secondItem="eOe-Pi-Bnf" secondAttribute="top" constant="5" id="Xtc-kx-Dbl"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="NYG-5x-SFc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="NYG-5x-SFc" userLabel="age tf">
                                         <rect key="frame" x="0.0" y="860" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NYG-5x-SFc" id="mLC-2w-CnX">
@@ -461,7 +475,6 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhr-z5-Srh" customClass="NaruTextField" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="10" y="5" width="370" height="62"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
                                                             <color key="value" name="weakTextColor"/>
@@ -481,6 +494,15 @@
                                                             <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
+                                                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -491,8 +513,9 @@
                                                 <constraint firstItem="yhr-z5-Srh" firstAttribute="leading" secondItem="mLC-2w-CnX" secondAttribute="leading" constant="10" id="m3C-KJ-8hf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="cM4-Le-nCJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="cM4-Le-nCJ" userLabel="birthday gender tf">
                                         <rect key="frame" x="0.0" y="932" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cM4-Le-nCJ" id="zxo-Rt-DKK">
@@ -501,7 +524,6 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cQ-xt-0mt" customClass="NaruTextField" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="10" y="5" width="210" height="62"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
                                                             <color key="value" name="weakTextColor"/>
@@ -520,11 +542,16 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="padding">
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5K-Mh-spb" customClass="NaruSelectBoxView" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="230" y="5" width="150" height="62"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="lGD-0Q-z47"/>
                                                     </constraints>
@@ -546,7 +573,7 @@
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLColor">
-                                                            <color key="value" name="weakTextColor"/>
+                                                            <color key="value" name="sliderTrackColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -561,8 +588,9 @@
                                                 <constraint firstItem="h5K-Mh-spb" firstAttribute="top" secondItem="zxo-Rt-DKK" secondAttribute="top" constant="5" id="w6w-jL-dQ7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="IcT-qX-mrZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="IcT-qX-mrZ" userLabel="email tf">
                                         <rect key="frame" x="0.0" y="1004" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IcT-qX-mrZ" id="d4Y-50-y8c">
@@ -605,8 +633,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="4yN-hh-o9I" secondAttribute="bottom" constant="5" id="hpb-jw-6st"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="pWU-2O-bs8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="pWU-2O-bs8" userLabel="password tf">
                                         <rect key="frame" x="0.0" y="1076" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWU-2O-bs8" id="JgH-yR-sXa">
@@ -633,6 +662,12 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="padding">
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -643,8 +678,9 @@
                                                 <constraint firstItem="4CJ-tJ-58v" firstAttribute="top" secondItem="JgH-yR-sXa" secondAttribute="top" constant="5" id="id5-7m-D1B"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="TS2-pe-CGj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="TS2-pe-CGj" userLabel="check, round button ">
                                         <rect key="frame" x="0.0" y="1148" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TS2-pe-CGj" id="nOI-os-HGw">
@@ -653,7 +689,6 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mb-Xg-RZW" customClass="NaruCheckButton" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="10" y="0.0" width="40" height="72"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="rOu-QL-6XE"/>
                                                     </constraints>
@@ -668,7 +703,6 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X27-6K-me3" customClass="NaruCheckButton" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="60" y="0.0" width="40" height="72"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="61W-Jr-mHv"/>
                                                     </constraints>
@@ -683,7 +717,6 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j65-Zh-xXF" customClass="NaruRadioButton" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="110" y="0.0" width="50" height="72"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="tf7-Zg-IMb"/>
                                                     </constraints>
@@ -702,7 +735,6 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRy-uP-YBH" customClass="NaruRadioButton" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="170" y="0.0" width="50" height="72"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="D9h-eY-eBR"/>
                                                     </constraints>
@@ -735,8 +767,9 @@
                                                 <constraint firstItem="X27-6K-me3" firstAttribute="leading" secondItem="3mb-Xg-RZW" secondAttribute="trailing" constant="10" id="uG0-Wt-w0o"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="eNS-hN-ivD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="eNS-hN-ivD" userLabel="term agree 1">
                                         <rect key="frame" x="0.0" y="1220" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eNS-hN-ivD" id="8HN-6m-QbB">
@@ -745,7 +778,6 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehb-9Q-Z3f" customClass="NaruTermAgreeButton" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="20" y="10" width="350" height="52"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="휴대폰 본인인증 전체동의"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isTotalAgree" value="YES"/>
@@ -767,6 +799,9 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
                                                             <color key="value" name="weakTextColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -777,8 +812,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="ehb-9Q-Z3f" secondAttribute="trailing" constant="20" id="yjR-Sr-aRV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="rCJ-vG-eiQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="rCJ-vG-eiQ" userLabel="term agree 2">
                                         <rect key="frame" x="0.0" y="1292" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rCJ-vG-eiQ" id="HHh-Ht-cuJ">
@@ -793,6 +829,9 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="subButtonBGColor">
                                                             <color key="value" name="sliderTrackColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="backgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -803,8 +842,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="k12-AS-TSp" secondAttribute="bottom" constant="10" id="sb2-Ul-N7i"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="4mH-us-j8B">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="4mH-us-j8B" userLabel="term agree 3">
                                         <rect key="frame" x="0.0" y="1364" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4mH-us-j8B" id="x90-cY-g3B">
@@ -819,6 +859,9 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="subButtonBGColor">
                                                             <color key="value" name="sliderTrackColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="backgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -829,8 +872,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="xeO-72-ucV" secondAttribute="trailing" constant="20" id="pWF-jI-yr8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="Drg-4o-nUU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="Drg-4o-nUU" userLabel="phoneNumberInput">
                                         <rect key="frame" x="0.0" y="1436" width="390" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Drg-4o-nUU" id="M4b-oo-1TU">
@@ -879,6 +923,12 @@
                                                             <color key="value" name="weakTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="010-0000-0000"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="btnTxtColor">
+                                                            <color key="value" name="backgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -889,6 +939,7 @@
                                                 <constraint firstItem="KMv-AR-e4W" firstAttribute="top" secondItem="M4b-oo-1TU" secondAttribute="top" constant="10" id="voK-0R-wvw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="WvK-fh-xuq">
                                         <rect key="frame" x="0.0" y="1528" width="390" height="92"/>
@@ -940,6 +991,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="L8o-dy-EL0" secondAttribute="trailing" constant="20" id="bRC-va-8Ww"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="G8v-KT-spF">
                                         <rect key="frame" x="0.0" y="1620" width="390" height="92"/>
@@ -958,6 +1010,18 @@
                                                             <color key="value" systemColor="systemGreenColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="주민등록번호 / 외국인등록번호"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
+                                                            <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seLineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -974,6 +1038,7 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택1"/>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

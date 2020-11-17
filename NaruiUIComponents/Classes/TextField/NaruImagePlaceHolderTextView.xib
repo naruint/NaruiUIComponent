@@ -62,7 +62,6 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="WlL-KK-fhP" firstAttribute="leading" secondItem="p7c-rH-D0k" secondAttribute="leading" id="CGJ-eC-qyx"/>
                                 <constraint firstAttribute="bottom" secondItem="WlL-KK-fhP" secondAttribute="bottom" id="NYz-Nw-Gwj"/>
@@ -78,7 +77,6 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="ERo-yr-h6X" secondAttribute="top" id="3n4-2a-64R"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ERo-yr-h6X" secondAttribute="trailing" id="IJx-ZB-OGQ"/>
@@ -95,9 +93,6 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

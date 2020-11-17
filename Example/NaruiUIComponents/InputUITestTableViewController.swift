@@ -99,4 +99,13 @@ class InputUITestTableViewController: UITableViewController {
     }
     
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        cell.backgroundColor = .clear
+        cell.subviews.first?.backgroundColor = .clear
+        for view in cell.subviews.first?.subviews ?? [] {
+            view.backgroundColor = .clear
+        }
+        return cell
+    }
 }

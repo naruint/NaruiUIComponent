@@ -120,6 +120,8 @@ public class NaruPhoneNumberTextField: UIView {
     @IBInspectable var btnTxtColor:UIColor? {
         set {
             button.setTitleColor(newValue, for: .normal)
+            button.setTitleColor(newValue, for: .selected)
+            button.setTitleColor(newValue, for: .disabled)
         }
         get {
             button.titleColor(for: .normal)
@@ -143,6 +145,7 @@ public class NaruPhoneNumberTextField: UIView {
             titleLabel.text
         }
     }
+    /** 타이틀 라벨 의 텍스트 컬러*/
     @IBInspectable var titleColor:UIColor? {
         set {
             titleLabel.textColor = newValue
@@ -151,7 +154,18 @@ public class NaruPhoneNumberTextField: UIView {
             titleLabel.textColor
         }
     }
-    
+    /** 텍스트 필드의 텍스트 컬러*/
+    @IBInspectable var textColor:UIColor? {
+        set {
+            for tf in [firstTextField, secondTextField] {
+                tf?.textColor = newValue
+            }
+            firstTextField.rightView?.tintColor = newValue
+        }
+        get {
+            firstTextField.textColor
+        }
+    }
     @IBInspectable var placeHolder:String? = nil {
         didSet {
             secondTextField.placeholder = placeHolder
