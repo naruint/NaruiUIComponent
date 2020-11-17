@@ -34,7 +34,7 @@ public class NaruPeopleNumberInputView: UIView {
     
     @IBInspectable var noLineColor:UIColor = .gray
     @IBInspectable var seLineColor:UIColor = .black
-    @IBInspectable var bottomPading:CGFloat = 20
+    @IBInspectable var bottomPading:CGFloat = 8
     
     /** 타이틀 라벨*/
     @IBOutlet weak var titleLabel: UILabel!
