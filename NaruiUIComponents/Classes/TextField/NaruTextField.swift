@@ -184,7 +184,11 @@ public class NaruTextField: UIView {
         }
         
         let isHidden = textField.text?.isEmpty ?? true
-        textFieldbottomLayout.constant = isHidden ? b2_padding : b1_padding
+        if isBoxStyle {
+            textFieldbottomLayout.constant = isHidden ? b2_padding : b1_padding
+        } else {
+            textFieldbottomLayout.constant = 0
+        }
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {[unowned self] in
             titleLabel.alpha = isHidden ? 0 : 1
             layoutIfNeeded()
