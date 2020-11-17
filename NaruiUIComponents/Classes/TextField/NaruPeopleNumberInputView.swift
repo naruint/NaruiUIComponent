@@ -84,14 +84,6 @@ public class NaruPeopleNumberInputView: UIView {
                 firstTextFieldCallBack(string)
                 return
             }
-            if string.count == 6 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    if birthdayTextField.text?.count == 6 {
-                        birthdayTextField.endEditing(true)
-                        firstTextFieldCallBack(string)
-                    }
-                }
-            }
         }.disposed(by: disposeBag)
         birthdayTextField.keyboardType = .numberPad
     }
@@ -125,7 +117,7 @@ public class NaruPeopleNumberInputView: UIView {
     }
     
     
-    func updateUI() {
+    public func updateUI(isFocusedForce:Bool? = nil) {
         bottomStackView.isHidden = !isFocused
         titleLabel.font = UIFont.systemFont(ofSize: isFocused ? 11 : 17)
         titleLabel.text = title
@@ -135,7 +127,8 @@ public class NaruPeopleNumberInputView: UIView {
         }
         
         layer.cornerRadius = 2
-        layer.borderColor = isFocused ? seLineColor.cgColor : noLineColor.cgColor
+        layer.borderColor = isFirstResponder || isFocusedForce == true ? seLineColor.cgColor : noLineColor.cgColor
+        
         layer.borderWidth = 1
         topPaddingView.isHidden = !isFocused
         bottomPaddingLayout.constant = isFocused ? bottomPading : 0
