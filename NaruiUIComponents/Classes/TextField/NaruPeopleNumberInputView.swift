@@ -82,11 +82,29 @@ public class NaruPeopleNumberInputView: UIView {
         updateUI()
         birthdayTextField.rx.text.orEmpty.bind { [unowned self](string) in
             updateUI()
+            if string.count > 6 {
+                let txt = string[0..<6]
+                birthdayTextField.text = txt
+                birthdayTextField.endEditing(true)
+                firstTextFieldCallBack(string)
+            }
+            if string.count == 6 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    if birthdayTextField.text?.count == 6 {
+                        birthdayTextField.endEditing(true)
+                        firstTextFieldCallBack(string)
+                    }
+                }
+            }
         }.disposed(by: disposeBag)
         birthdayTextField.keyboardType = .numberPad
     }
 
 
+    private var firstTextFieldCallBack:(_ result:String)->Void = {_ in }
+    public func onCompleteFirstTextFieldInput(callback:@escaping(_ result:String)->Void) {
+        firstTextFieldCallBack = callback
+    }
 
     public func setPeopleNumberInput(view:UIView?) {
         guard let view = view else {
