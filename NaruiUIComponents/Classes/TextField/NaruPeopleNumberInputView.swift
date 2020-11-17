@@ -13,20 +13,12 @@ import RxCocoa
 @IBDesignable
 public class NaruPeopleNumberInputView: UIView {
 
-    @IBInspectable var isRequired:Bool = false {
-        didSet {
-            updateUI()
-        }
-    }
+    @IBInspectable var isRequired:Bool = false
 
     @IBInspectable var requiredStrig:String = "・"
     @IBInspectable var requiredColor:UIColor = .green
     
-    @IBInspectable var title:String = "" {
-        didSet {
-            updateUI()
-        }
-    }
+    @IBInspectable var title:String = ""
     
     @IBInspectable var titleColor:UIColor = .black {
         didSet {
@@ -42,6 +34,7 @@ public class NaruPeopleNumberInputView: UIView {
     
     @IBInspectable var noLineColor:UIColor = .gray
     @IBInspectable var seLineColor:UIColor = .black
+    @IBInspectable var bottomPading:CGFloat = 22
     
     /** 타이틀 라벨*/
     @IBOutlet weak var titleLabel: UILabel!
@@ -52,6 +45,7 @@ public class NaruPeopleNumberInputView: UIView {
     
     @IBOutlet weak var bottomStackView: UIStackView!
     @IBOutlet weak var topPaddingView: UIView!
+    @IBOutlet weak var bottomPaddingLayout: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
     
@@ -101,7 +95,10 @@ public class NaruPeopleNumberInputView: UIView {
         }.disposed(by: disposeBag)
         birthdayTextField.keyboardType = .numberPad
     }
-
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        updateUI()
+    }
 
     private var firstTextFieldCallBack:(_ result:String)->Void = {_ in }
     public func onCompleteFirstTextFieldInput(callback:@escaping(_ result:String)->Void) {
@@ -133,7 +130,7 @@ public class NaruPeopleNumberInputView: UIView {
         titleLabel.font = UIFont.systemFont(ofSize: isFocused ? 11 : 17)
         titleLabel.text = title
         if isRequired {
-            let attr = title.makeRequiredAttributeString(requiredString: title, color: requiredColor, fontSize: titleLabel.font.pointSize)
+            let attr = title.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor)
             titleLabel.attributedText = attr
         }
         
@@ -141,6 +138,7 @@ public class NaruPeopleNumberInputView: UIView {
         layer.borderColor = isFocused ? seLineColor.cgColor : noLineColor.cgColor
         layer.borderWidth = 1
         topPaddingView.isHidden = !isFocused
+        bottomPaddingLayout.constant = isFocused ? bottomPading : 0
     }
     
     @objc func onTap(_ sender:UITapGestureRecognizer) {

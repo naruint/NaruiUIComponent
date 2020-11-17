@@ -95,20 +95,27 @@ public class NaruPhoneAuthInputTextField: UIView {
         }
     }
     
-    @IBInspectable var title:String? {
-        set {
-            titleLabel.text = newValue
-        }
-        get {
-            titleLabel.text
+    @IBInspectable var title:String? = nil {
+        didSet {
+            titleLabel.text = title
         }
     }
+    
     @IBInspectable var titleColor:UIColor? {
         set {
             titleLabel.textColor = newValue
         }
         get {
             titleLabel.textColor
+        }
+    }
+    
+    @IBInspectable var textColor:UIColor? {
+        set {
+            textField.textColor = newValue
+        }
+        get {
+            textField.textColor
         }
     }
     
@@ -123,7 +130,7 @@ public class NaruPhoneAuthInputTextField: UIView {
     }
 
     /** 포커스 상태의 라인 컬러*/
-    @IBInspectable var foLineColor:UIColor = .black
+    @IBInspectable var seLineColor:UIColor = .black
     /** 보통상태의 라인 컬러*/
     @IBInspectable var noLineColor:UIColor = .gray
     
@@ -140,11 +147,11 @@ public class NaruPhoneAuthInputTextField: UIView {
     func updateUI() {
         layer.cornerRadius = 2
         borderWidth = 1
-        borderColor = isFirstResponder ? foLineColor : noLineColor
+        borderColor = isFirstResponder ? seLineColor : noLineColor
         button.isEnabled = isTimeOver == false
         textField.setClearButtonImage(image: clearBtnImageView.image!)
         if isRequired {
-            titleLabel.attributedText = titleLabel.text?.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor, fontSize: titleLabel.font.pointSize)
+            titleLabel.attributedText = title?.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor)
         }
     }
     

@@ -49,7 +49,6 @@ public class NaruPhoneNumberTextField: UIView {
         for tf in [firstTextField, secondTextField] {
             tf?.delegate = self
         }
-        updateUI()
         firstTextField.inputView = carriersPicker
         carriersPicker.dataSource = self
         carriersPicker.delegate = self
@@ -87,6 +86,8 @@ public class NaruPhoneNumberTextField: UIView {
         titleLabel.autoresizingMask = [.flexibleWidth]
         titleLabel.frame.size.width = carriersPicker.frame.width
         carriersPicker.addSubview(titleLabel)
+        updateUI()
+
     }
     
     let phoneNumberKit = PhoneNumberKit()
@@ -150,12 +151,9 @@ public class NaruPhoneNumberTextField: UIView {
         }
     }
     
-    @IBInspectable var title:String? {
-        set {
-            titleLabel.text = newValue
-        }
-        get {
-            titleLabel.text
+    @IBInspectable var title:String? = "" {
+        didSet {
+            titleLabel.text = title
         }
     }
     /** 타이틀 라벨 의 텍스트 컬러*/
@@ -194,10 +192,17 @@ public class NaruPhoneNumberTextField: UIView {
     }
     
     /** 포커스 상태의 라인 컬러*/
-    @IBInspectable var foLineColor:UIColor = .black
+    @IBInspectable var seLineColor:UIColor = .black
     /** 보통상태의 라인 컬러*/
     @IBInspectable var noLineColor:UIColor = .gray
-    
+
+    //MARK:-
+    //MARK: lifeCycle
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        updateUI()
+    }
+
     //MARK:-
     
     public override var isFirstResponder: Bool {
@@ -207,10 +212,10 @@ public class NaruPhoneNumberTextField: UIView {
     func updateUI() {
         layer.cornerRadius = 2
         borderWidth = 1
-        borderColor = isFirstResponder ? foLineColor : noLineColor
+        borderColor = isFirstResponder ? seLineColor : noLineColor
         secondTextField.setClearButtonImage(image: clearImageView.image!)
         if isRequired {
-            titleLabel.attributedText = titleLabel.text?.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor, fontSize: titleLabel.font.pointSize)
+            titleLabel.attributedText = title?.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor)
         }
     }
     
@@ -220,6 +225,7 @@ public class NaruPhoneNumberTextField: UIView {
     public func setTouchupButton(_ callBack:@escaping(_ result:Result)->Void) {
         touchupButtonCallBack = callBack
     }
+    
     
 }
 

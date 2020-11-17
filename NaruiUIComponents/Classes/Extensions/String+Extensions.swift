@@ -32,13 +32,12 @@ public extension String {
         return formatter.date(from: self)
     }
     
-    func makeRequiredAttributeString(requiredString:String, color:UIColor, fontSize:CGFloat)->NSAttributedString {
+    /** 필수 입력 점 찍어서 attributedString 만들기*/
+    func makeRequiredAttributeString(requiredString:String, color:UIColor)->NSAttributedString {
         let str = NSMutableAttributedString()
         str.append(NSAttributedString(string: self))
-        str.append(NSAttributedString(string: " "))
         str.append(NSAttributedString(string: requiredString, attributes: [
-            .foregroundColor : color,
-            .font : UIFont.systemFont(ofSize: fontSize + 10)
+            .foregroundColor : color
         ]))
         return str as NSAttributedString
     }
