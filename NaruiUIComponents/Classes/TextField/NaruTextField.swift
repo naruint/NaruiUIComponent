@@ -189,12 +189,12 @@ public class NaruTextField: UIView {
         } else {
             textFieldbottomLayout.constant = 0
         }
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {[unowned self] in
+//        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {[unowned self] in
             titleLabel.alpha = isHidden ? 0 : 1
             layoutIfNeeded()
-        } completion: { (fin) in
-            
-        }
+//        } completion: { (fin) in
+//            
+//        }
         for layout in [leading, trailing] {
             layout?.constant = padding
         }
