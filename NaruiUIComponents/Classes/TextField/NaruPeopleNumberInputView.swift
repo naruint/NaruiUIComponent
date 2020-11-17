@@ -29,6 +29,7 @@ public class NaruPeopleNumberInputView: UIView {
     @IBInspectable var textColor:UIColor = .black {
         didSet {
             birthdayTextField.textColor = textColor
+            centerLineView.backgroundColor = textColor
         }
     }
     
@@ -47,6 +48,7 @@ public class NaruPeopleNumberInputView: UIView {
     @IBOutlet weak var topPaddingView: UIView!
     @IBOutlet weak var bottomPaddingLayout: NSLayoutConstraint!
     
+    @IBOutlet weak var centerLineView: UIView!
     let disposeBag = DisposeBag()
     
     //MARK:-
@@ -102,6 +104,7 @@ public class NaruPeopleNumberInputView: UIView {
             return
         }
         view.frame.size = peopleNumberInputContainerView.frame.size
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         peopleNumberInputContainerView.addSubview(view)
     }
     
@@ -116,8 +119,13 @@ public class NaruPeopleNumberInputView: UIView {
         peopleNumberInputCount + (birthdayTextField.text?.count ?? 0) != 0  || isFirstResponder
     }
     
+    public var isFocusedForce:Bool = false {
+        didSet {
+            updateUI()
+        }
+    }
     
-    public func updateUI(isFocusedForce:Bool? = nil) {
+    func updateUI() {
         bottomStackView.isHidden = !isFocused
         titleLabel.font = UIFont.systemFont(ofSize: isFocused ? 11 : 17)
         titleLabel.text = title

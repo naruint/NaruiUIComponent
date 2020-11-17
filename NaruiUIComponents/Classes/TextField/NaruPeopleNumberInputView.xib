@@ -14,6 +14,7 @@
                 <outlet property="birthdayTextField" destination="0xI-Ri-ceS" id="gqt-4H-Suw"/>
                 <outlet property="bottomPaddingLayout" destination="5Ix-JE-oKt" id="WAv-J3-81Q"/>
                 <outlet property="bottomStackView" destination="PWx-73-Jvq" id="b9T-Ih-kDF"/>
+                <outlet property="centerLineView" destination="Bea-HM-bfN" id="YPu-Ht-Mqh"/>
                 <outlet property="peopleNumberInputContainerView" destination="8m1-Hb-MBt" id="P8o-oU-thV"/>
                 <outlet property="titleLabel" destination="o2J-BY-lKz" id="smc-2Y-IsR"/>
                 <outlet property="topPaddingView" destination="XY6-AS-fho" id="WjO-vd-a1b"/>
@@ -40,7 +41,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWx-73-Jvq">
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="PWx-73-Jvq">
                             <rect key="frame" x="0.0" y="34.5" width="437" height="111.5"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0xI-Ri-ceS">
@@ -53,7 +54,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQe-Mn-76f">
-                                    <rect key="frame" x="70" y="0.0" width="8" height="111.5"/>
+                                    <rect key="frame" x="82" y="0.0" width="8" height="111.5"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-HM-bfN">
                                             <rect key="frame" x="0.0" y="55.5" width="8" height="1"/>
@@ -72,7 +73,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8m1-Hb-MBt">
-                                    <rect key="frame" x="78" y="0.0" width="359" height="111.5"/>
+                                    <rect key="frame" x="102" y="0.0" width="335" height="111.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </subviews>

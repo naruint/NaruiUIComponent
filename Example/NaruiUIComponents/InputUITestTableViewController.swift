@@ -21,6 +21,7 @@ class InputUITestTableViewController: UITableViewController {
 
     @IBOutlet weak var phoneNumberTextField: NaruPhoneNumberTextField!
     @IBOutlet weak var phoneAuthNumberInput: NaruPhoneAuthInputTextField!
+    @IBOutlet weak var peopleIdTextField: NaruPeopleNumberInputView!
     @IBOutlet weak var button: NaruGradientButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +97,12 @@ class InputUITestTableViewController: UITableViewController {
 //            present(ac, animated: true, completion: nil)
 //
         }
+        let tf = UITextField()
+        tf.isSecureTextEntry = true
+        tf.delegate = self
+        tf.keyboardType = .numberPad
+        tf.textColor = UIColor(named: "normalTextColor") ?? .blue
+        peopleIdTextField.setPeopleNumberInput(view: tf)
     }
     
 
@@ -107,5 +114,15 @@ class InputUITestTableViewController: UITableViewController {
             view.backgroundColor = .clear
         }
         return cell
+    }
+}
+
+extension InputUITestTableViewController : UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        peopleIdTextField.isFocusedForce = true
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        peopleIdTextField.isFocusedForce = false
     }
 }
