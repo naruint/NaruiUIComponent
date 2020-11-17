@@ -20,7 +20,7 @@ public class NaruPhoneNumberTextField: UIView {
     
     /** 통신사 목록*/
     let carriers:[String] = [
-        "SKT","KT","LGU+"
+        "SKT","KT","LG U+", "SKT 알뜰폰", "KT 알뜰폰", "LG U+ 알뜰폰"
     ]
     let carriersPicker = UIPickerView()
     
@@ -79,6 +79,14 @@ public class NaruPhoneNumberTextField: UIView {
             let result = Result(carrier: carrier, national: phoneNumber, e164: e164)
             touchupButtonCallBack(result)
         }.disposed(by: disposeBag)
+        let titleLabel = UILabel()
+        titleLabel.text = "통신사 선택"
+        titleLabel.textColor = titleColor
+        titleLabel.textAlignment = .center
+        titleLabel.sizeToFit()
+        titleLabel.autoresizingMask = [.flexibleWidth]
+        titleLabel.frame.size.width = carriersPicker.frame.width
+        carriersPicker.addSubview(titleLabel)
     }
     
     let phoneNumberKit = PhoneNumberKit()
@@ -89,6 +97,7 @@ public class NaruPhoneNumberTextField: UIView {
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var button:UIButton!
     @IBOutlet weak var clearImageView: UIImageView!
+    @IBOutlet weak var carrierTfWidth: NSLayoutConstraint!
     //MARK:-
     //MARK:IBInspectable
     /** normal Btn Color*/
@@ -227,6 +236,7 @@ extension NaruPhoneNumberTextField : UIPickerViewDataSource {
 }
 
 extension NaruPhoneNumberTextField : UIPickerViewDelegate {
+    
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return carriers[row]
     }
@@ -234,5 +244,8 @@ extension NaruPhoneNumberTextField : UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         firstTextField.text = carriers[row]
         firstTextField.endEditing(true)
+        carrierTfWidth.constant = firstTextField.sizeThatFits(CGSize(width: .greatestFiniteMagnitude, height: firstTextField.frame.height)).width
+        
+        
     }
 }
