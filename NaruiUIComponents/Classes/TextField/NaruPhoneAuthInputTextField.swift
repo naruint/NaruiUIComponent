@@ -47,6 +47,10 @@ public class NaruPhoneAuthInputTextField: UIView {
     @IBOutlet weak var timeCountLabel: UILabel!
     //MARK:-
     //MARK:IBInspectable
+    @IBInspectable var isRequired:Bool = false
+    @IBInspectable var requiredStrig:String = "・"
+    @IBInspectable var requiredColor:UIColor = .green
+    
     /** normal Btn Color*/
     @IBInspectable var noBtnColor:UIColor = .black {
         didSet {
@@ -139,6 +143,9 @@ public class NaruPhoneAuthInputTextField: UIView {
         borderColor = isFirstResponder ? foLineColor : noLineColor
         button.isEnabled = isTimeOver == false
         textField.setClearButtonImage(image: clearBtnImageView.image!)
+        if isRequired {
+            titleLabel.attributedText = titleLabel.text?.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor, fontSize: titleLabel.font.pointSize)
+        }
     }
     
     var touchupButtonCallBack:()->Void = {}

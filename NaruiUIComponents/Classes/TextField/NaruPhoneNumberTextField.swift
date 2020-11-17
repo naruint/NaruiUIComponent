@@ -100,6 +100,10 @@ public class NaruPhoneNumberTextField: UIView {
     @IBOutlet weak var carrierTfWidth: NSLayoutConstraint!
     //MARK:-
     //MARK:IBInspectable
+    @IBInspectable var isRequired:Bool = false
+    @IBInspectable var requiredStrig:String = "・"
+    @IBInspectable var requiredColor:UIColor = .green
+    
     /** normal Btn Color*/
     @IBInspectable var noBtnColor:UIColor = .black {
         didSet {
@@ -205,6 +209,9 @@ public class NaruPhoneNumberTextField: UIView {
         borderWidth = 1
         borderColor = isFirstResponder ? foLineColor : noLineColor
         secondTextField.setClearButtonImage(image: clearImageView.image!)
+        if isRequired {
+            titleLabel.attributedText = titleLabel.text?.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor, fontSize: titleLabel.font.pointSize)
+        }
     }
     
     var touchupButtonCallBack:(_ result:Result)->Void = { _ in

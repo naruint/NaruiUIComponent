@@ -132,7 +132,6 @@ public class NaruTextView: UIView {
         let str = NSMutableAttributedString()
         str.append(NSAttributedString(string: "\(textView.text.count)", attributes: [.foregroundColor:limitLabelColor1]))
         str.append(NSAttributedString(string: " / \(textlimit)", attributes: [.foregroundColor:limitLabelColor2]))
-
         return str
     }
 }

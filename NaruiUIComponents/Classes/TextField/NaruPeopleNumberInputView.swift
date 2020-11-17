@@ -18,8 +18,8 @@ public class NaruPeopleNumberInputView: UIView {
             updateUI()
         }
     }
-    
-    @IBInspectable var requiredStrig:String = "*"
+
+    @IBInspectable var requiredStrig:String = "・"
     @IBInspectable var requiredColor:UIColor = .green
     
     @IBInspectable var title:String = "" {
@@ -42,6 +42,7 @@ public class NaruPeopleNumberInputView: UIView {
     
     @IBInspectable var noLineColor:UIColor = .gray
     @IBInspectable var seLineColor:UIColor = .black
+    
     /** 타이틀 라벨*/
     @IBOutlet weak var titleLabel: UILabel!
     /** 생년월일 (주민번호 앞자리)*/
@@ -87,6 +88,7 @@ public class NaruPeopleNumberInputView: UIView {
                 birthdayTextField.text = txt
                 birthdayTextField.endEditing(true)
                 firstTextFieldCallBack(string)
+                return
             }
             if string.count == 6 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
@@ -129,12 +131,11 @@ public class NaruPeopleNumberInputView: UIView {
     func updateUI() {
         bottomStackView.isHidden = !isFocused
         titleLabel.font = UIFont.systemFont(ofSize: isFocused ? 11 : 17)
-        let txt = NSMutableAttributedString()
-        txt.append(NSAttributedString(string: title))
+        titleLabel.text = title
         if isRequired {
-            txt.append(NSAttributedString(string: " \(requiredStrig)", attributes: [.foregroundColor:requiredColor]))
+            let attr = title.makeRequiredAttributeString(requiredString: title, color: requiredColor, fontSize: titleLabel.font.pointSize)
+            titleLabel.attributedText = attr
         }
-        titleLabel.attributedText = txt
         
         layer.cornerRadius = 2
         layer.borderColor = isFocused ? seLineColor.cgColor : noLineColor.cgColor

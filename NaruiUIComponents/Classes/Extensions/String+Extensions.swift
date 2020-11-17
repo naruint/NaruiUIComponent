@@ -31,4 +31,15 @@ public extension String {
         formatter.dateFormat = format
         return formatter.date(from: self)
     }
+    
+    func makeRequiredAttributeString(requiredString:String, color:UIColor, fontSize:CGFloat)->NSAttributedString {
+        let str = NSMutableAttributedString()
+        str.append(NSAttributedString(string: self))
+        str.append(NSAttributedString(string: " "))
+        str.append(NSAttributedString(string: requiredString, attributes: [
+            .foregroundColor : color,
+            .font : UIFont.systemFont(ofSize: fontSize + 10)
+        ]))
+        return str as NSAttributedString
+    }
 }
