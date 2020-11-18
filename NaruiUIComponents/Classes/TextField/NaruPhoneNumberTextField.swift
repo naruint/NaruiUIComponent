@@ -34,6 +34,19 @@ public class NaruPhoneNumberTextField: UIView {
         arrangeView()
     }
     
+    public var result:Result? {
+        guard let carrier = firstTextField.text,
+              let phoneNumber = secondTextField.text,
+              let number = try? phoneNumberKit.parse(phoneNumber)
+        else {
+            return nil
+        }
+        
+        let e164 = phoneNumberKit.format(number, toType: .e164)
+       
+        return Result(carrier: carrier, national: phoneNumber, e164: e164)
+    }
+    
     func arrangeView() {
         guard let view = UINib(
                 nibName: String(describing: NaruPhoneNumberTextField.self),
@@ -66,17 +79,9 @@ public class NaruPhoneNumberTextField: UIView {
         }.disposed(by: disposeBag)
         
         button.rx.tap.bind { [unowned self](_) in
-            guard let carrier = firstTextField.text,
-                  let phoneNumber = secondTextField.text,
-                  let number = try? phoneNumberKit.parse(phoneNumber)
-            else {
-                return
+            if let r = result {
+                touchupButtonCallBack(r)
             }
-            
-            let e164 = phoneNumberKit.format(number, toType: .e164)
-           
-            let result = Result(carrier: carrier, national: phoneNumber, e164: e164)
-            touchupButtonCallBack(result)
         }.disposed(by: disposeBag)
         let titleLabel = UILabel()
         titleLabel.text = "통신사 선택"

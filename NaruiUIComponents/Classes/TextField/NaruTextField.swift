@@ -303,6 +303,15 @@ public class NaruTextField: UIView {
         }
     }
     
+    public var text:String? {
+        set {
+            textField.text = newValue
+        }
+        get {
+            textField.text
+        }
+    }
+    
     private func changeDeleteBtn() {
         textField.setClearButtonImage(image: deleteButton.image(for: .normal)!)
     }
