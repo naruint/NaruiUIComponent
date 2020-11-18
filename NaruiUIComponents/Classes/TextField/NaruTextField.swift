@@ -84,7 +84,6 @@ public class NaruTextField: UIView {
     }
     
     @IBInspectable var isRequired:Bool = false
-    @IBInspectable var requiredText:String = "・"
     @IBInspectable var requiredColor:UIColor = UIColor.green
     
     
@@ -99,26 +98,9 @@ public class NaruTextField: UIView {
     }
     
     func setAttributedPlaceHolder() {
-        func attr(color:UIColor,fontSize:CGFloat)->NSAttributedString {
-            let str = NSMutableAttributedString()
-            str.append(NSAttributedString(string: placeHolder ?? "" ,
-                                          attributes:[
-                                            .foregroundColor : color,
-                                            .font:UIFont.systemFont(ofSize: fontSize)
-                                          ]))
-            if isRequired {
-                str.append(NSAttributedString(string: " "))
-                str.append(NSAttributedString(string: requiredText,
-                                              attributes: [
-                                                .foregroundColor : requiredColor,
-                                                .font : UIFont.systemFont(ofSize: fontSize + 10)
-                                              ]))
-            }
-            return str
-        }
         DispatchQueue.main.async {[unowned self] in
-            textField.attributedPlaceholder = attr(color: PH_Color, fontSize: textField.font?.pointSize ?? 10)
-            titleLabel.attributedText = attr(color: PH_labelColor ?? PH_Color , fontSize: titleLabel.font.pointSize)
+            textField.attributedPlaceholder = placeHolder?.makeRequiredAttributeString(textColor: textColor ?? .black, pointColor: PH_labelColor ?? PH_Color, height: textField.font?.pointSize ?? 10)
+            titleLabel.attributedText = placeHolder?.makeRequiredAttributeString(textColor: textColor ?? .black, pointColor: PH_labelColor ?? PH_Color, height: titleLabel.font?.pointSize ?? 10)
         }
     }
     

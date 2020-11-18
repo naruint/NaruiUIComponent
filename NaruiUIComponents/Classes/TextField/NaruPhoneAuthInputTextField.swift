@@ -48,7 +48,6 @@ public class NaruPhoneAuthInputTextField: UIView {
     //MARK:-
     //MARK:IBInspectable
     @IBInspectable var isRequired:Bool = false
-    @IBInspectable var requiredStrig:String = "・"
     @IBInspectable var requiredColor:UIColor = .green
     
     /** normal Btn Color*/
@@ -151,7 +150,7 @@ public class NaruPhoneAuthInputTextField: UIView {
         button.isEnabled = isTimeOver == false
         textField.setClearButtonImage(image: clearBtnImageView.image!)
         if isRequired {
-            titleLabel.attributedText = title?.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor)
+            titleLabel.attributedText = title?.makeRequiredAttributeString(textColor: titleColor ?? .black, pointColor: requiredColor, height: titleLabel.font.pointSize)
         }
     }
     

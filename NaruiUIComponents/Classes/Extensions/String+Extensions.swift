@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import AlamofireImage
+
 public extension String {
     subscript(_ range: CountableRange<Int>) -> String {
         let start = index(startIndex, offsetBy: max(0, range.lowerBound))
@@ -33,12 +35,13 @@ public extension String {
     }
     
     /** 필수 입력 점 찍어서 attributedString 만들기*/
-    func makeRequiredAttributeString(requiredString:String, color:UIColor)->NSAttributedString {
+    func makeRequiredAttributeString(textColor:UIColor, pointColor:UIColor, height:CGFloat)->NSAttributedString {
         let str = NSMutableAttributedString()
-        str.append(NSAttributedString(string: self))
-        str.append(NSAttributedString(string: requiredString, attributes: [
-            .foregroundColor : color
-        ]))
+        str.append(NSAttributedString(string: self, attributes: [NSAttributedString.Key.foregroundColor : textColor]))
+        let attachment = NSTextAttachment()
+        attachment.image = pointColor.circleImage(diameter: 3)
+        attachment.bounds = CGRect(x: 5, y: height / 2 , width: 3, height: 3)
+        str.append(NSAttributedString(attachment: attachment))
         return str as NSAttributedString
     }
 }

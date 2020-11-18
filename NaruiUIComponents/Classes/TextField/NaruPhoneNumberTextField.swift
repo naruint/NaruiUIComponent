@@ -102,7 +102,6 @@ public class NaruPhoneNumberTextField: UIView {
     //MARK:-
     //MARK:IBInspectable
     @IBInspectable var isRequired:Bool = false
-    @IBInspectable var requiredStrig:String = "・"
     @IBInspectable var requiredColor:UIColor = .green
     
     /** normal Btn Color*/
@@ -215,7 +214,7 @@ public class NaruPhoneNumberTextField: UIView {
         borderColor = isFirstResponder ? seLineColor : noLineColor
         secondTextField.setClearButtonImage(image: clearImageView.image!)
         if isRequired {
-            titleLabel.attributedText = title?.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor)
+            titleLabel.attributedText = title?.makeRequiredAttributeString(textColor: titleColor ?? .black, pointColor: requiredColor, height: titleLabel.font.pointSize)
         }
     }
     

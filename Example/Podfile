@@ -14,5 +14,8 @@ target 'NaruiUIComponents_Example' do
     pod 'RxCocoa'
     pod 'RxSwift'
     pod 'PhoneNumberKit'
+    pod 'RxKingfisher'
+    pod 'AlamofireImage'
+
   end
 end

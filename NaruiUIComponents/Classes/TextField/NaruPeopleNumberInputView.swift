@@ -14,8 +14,6 @@ import RxCocoa
 public class NaruPeopleNumberInputView: UIView {
 
     @IBInspectable var isRequired:Bool = false
-
-    @IBInspectable var requiredStrig:String = "・"
     @IBInspectable var requiredColor:UIColor = .green
     
     @IBInspectable var title:String = ""
@@ -130,7 +128,7 @@ public class NaruPeopleNumberInputView: UIView {
         titleLabel.font = UIFont.systemFont(ofSize: isFocused ? 11 : 17)
         titleLabel.text = title
         if isRequired {
-            let attr = title.makeRequiredAttributeString(requiredString: requiredStrig, color: requiredColor)
+            let attr = title.makeRequiredAttributeString(textColor: titleColor, pointColor: requiredColor, height: titleLabel.font.pointSize)
             titleLabel.attributedText = attr
         }
         

@@ -17,4 +17,19 @@ public extension UIColor {
         UIGraphicsEndImageContext()
         return img!
     }
+    
+    func circleImage(diameter: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter, height: diameter), false, 0)
+        let ctx = UIGraphicsGetCurrentContext()!
+        ctx.saveGState()
+        
+        let rect = CGRect(x: 0, y: 0, width: diameter, height: diameter)
+        ctx.setFillColor(self.cgColor)
+        ctx.fillEllipse(in: rect)
+        
+        ctx.restoreGState()
+        let img = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()        
+        return img
+    }
 }
