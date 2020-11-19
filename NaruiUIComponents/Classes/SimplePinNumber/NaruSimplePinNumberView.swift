@@ -15,7 +15,49 @@ public class NaruSimplePinNumberView: UIView {
     //MARK:IBInspectable
     @IBInspectable var onColor:UIColor = .green
     @IBInspectable var offColor:UIColor = .gray
-    @IBInspectable var isAutoFocus:Bool = false
+    @IBInspectable var isSetCustomKeypad:Bool = false {
+        didSet {
+            textField.isEnabled = !isSetCustomKeypad
+        }
+    }
+
+    public var text:String? {
+        set {
+            textField.text = newValue
+            DispatchQueue.main.async { [weak self]in
+                self?.updateUI()
+            }
+        }
+        get {
+            textField.text
+        }
+    }
+    
+    public func append(text:String) {
+        var txt = textField.text ?? ""
+        if txt.count >= circleViews.count {
+            return
+        }
+        txt.append(text)
+        textField.text = txt
+        DispatchQueue.main.async {[weak self]in
+            self?.updateUI()
+        }
+        
+    }
+    
+    public func removeLast() {
+        guard let txt = textField.text else {
+            return
+        }
+        if txt.count > 0 {
+            textField.text = txt[0..<txt.count-1]
+        }
+        DispatchQueue.main.async {[weak self]in
+            self?.updateUI()
+        }
+    }
+    
     //MARK:-
     //MARK:IBOutlet
     @IBOutlet var circleViews: [UIView]!
