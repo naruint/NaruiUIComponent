@@ -14,13 +14,13 @@ import RxSwift
  PlaceHolder 를 이미지로 표시하는 텍스트뷰
  */
 public class NaruImagePlaceHolderTextView: UIView {
-    //MARK:-
-    //MARK:IBOutlet
+    //MARK: - IBOutlet
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var lineView: UIView!
-    //MARK:-
-    //MARK:IBInspectable
+    //MARK: - IBInspectable
+    @IBInspectable var hideTopLine:Bool = false
+
     @IBInspectable var placeHolderImage: UIImage? {
         set {
             imageView.image = newValue
@@ -108,7 +108,7 @@ public class NaruImagePlaceHolderTextView: UIView {
 
 extension NaruImagePlaceHolderTextView : UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
-        lineView.isHidden = false
+        lineView.isHidden = false || hideTopLine
     }
     public func textViewDidEndEditing(_ textView: UITextView) {
         lineView.isHidden = true
