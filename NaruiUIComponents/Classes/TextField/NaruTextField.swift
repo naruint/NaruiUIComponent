@@ -199,17 +199,15 @@ public class NaruTextField: UIView {
     }
     
     private func focus(isOn:Bool) {
-        UIView.animate(withDuration: 0.25) {[unowned self] in
-            lineView.backgroundColor = isOn ? focusLineColor : normalLineColor
+        lineView.backgroundColor = isOn ? focusLineColor : normalLineColor
+        if isError {
+            lineView.backgroundColor = errorLineColor
+        }
+        if isBoxStyle {
             if isError {
-                lineView.backgroundColor = errorLineColor
-            }
-            if isBoxStyle {
-                if isError {
-                    layer.borderColor = errorLineColor.cgColor
-                } else {
-                    layer.borderColor = isOn ? focusLineColor.cgColor : normalLineColor.cgColor
-                }
+                layer.borderColor = errorLineColor.cgColor
+            } else {
+                layer.borderColor = isOn ? focusLineColor.cgColor : normalLineColor.cgColor
             }
         }
     }
