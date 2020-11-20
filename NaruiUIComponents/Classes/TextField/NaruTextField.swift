@@ -99,6 +99,7 @@ public class NaruTextField: UIView {
     
     func setAttributedPlaceHolder() {
         DispatchQueue.main.async {[unowned self] in
+            textField.attributedPlaceholder = NSAttributedString(string: placeHolder ?? "", attributes: [.foregroundColor : PH_Color])
             if isRequired {
                 textField.attributedPlaceholder = placeHolder?.makeRequiredAttributeString(
                     textColor: PH_labelColor ?? PH_Color ,
