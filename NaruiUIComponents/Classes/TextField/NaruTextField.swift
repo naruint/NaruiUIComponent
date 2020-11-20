@@ -173,6 +173,10 @@ public class NaruTextField: UIView {
             layer.borderColor = isError ? errorLineColor.cgColor : normalLineColor.cgColor
             
         }
+        else {
+            lineView.isHidden = false
+            lineView.backgroundColor = isError ? errorLineColor : normalLineColor
+        }
         
         let isHidden = textField.text?.isEmpty ?? true
         if isBoxStyle {
