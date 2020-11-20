@@ -99,14 +99,16 @@ public class NaruTextField: UIView {
     
     func setAttributedPlaceHolder() {
         DispatchQueue.main.async {[unowned self] in
-            textField.attributedPlaceholder = placeHolder?.makeRequiredAttributeString(
-                textColor: PH_labelColor ?? PH_Color ,
-                pointColor: requiredColor,
-                height: textField.font?.pointSize ?? 10)
-            titleLabel.attributedText = placeHolder?.makeRequiredAttributeString(
-                textColor: PH_labelColor ?? PH_Color,
-                pointColor: requiredColor,
-                height: titleLabel.font?.pointSize ?? 10)
+            if isRequired {
+                textField.attributedPlaceholder = placeHolder?.makeRequiredAttributeString(
+                    textColor: PH_labelColor ?? PH_Color ,
+                    pointColor: requiredColor,
+                    height: textField.font?.pointSize ?? 10)
+                titleLabel.attributedText = placeHolder?.makeRequiredAttributeString(
+                    textColor: PH_labelColor ?? PH_Color,
+                    pointColor: requiredColor,
+                    height: titleLabel.font?.pointSize ?? 10)
+            }
         }
     }
     
