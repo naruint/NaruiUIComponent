@@ -139,7 +139,7 @@ public class NaruTextField: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
         addGestureRecognizer(gesture)
-        lineView.alpha = 0.5
+        lineView.alpha = 1.0
         lineView.backgroundColor = normalLineColor
         textField.delegate = self
         updateUI()
@@ -200,7 +200,10 @@ public class NaruTextField: UIView {
     
     private func focus(isOn:Bool) {
         UIView.animate(withDuration: 0.25) {[unowned self] in
-            lineView.alpha = isOn ? 1 : 0.5
+            lineView.backgroundColor = isOn ? focusLineColor : normalLineColor
+            if isError {
+                lineView.backgroundColor = errorLineColor
+            }
             if isBoxStyle {
                 if isError {
                     layer.borderColor = errorLineColor.cgColor
