@@ -27,10 +27,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiS-cE-vYO">
-                    <rect key="frame" x="0.0" y="170" width="484" height="1"/>
+                    <rect key="frame" x="0.0" y="176" width="484" height="2"/>
                     <color key="backgroundColor" name="normalTextColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="Xb9-TC-sha"/>
+                        <constraint firstAttribute="height" constant="2" id="Xb9-TC-sha"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="test" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="c0T-Ft-roL">
@@ -62,11 +62,11 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
-                <constraint firstItem="TiS-cE-vYO" firstAttribute="top" secondItem="c0T-Ft-roL" secondAttribute="bottom" id="595-Hh-SGQ"/>
                 <constraint firstItem="seR-w4-dYY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c0T-Ft-roL" secondAttribute="trailing" id="AV9-Ae-ltb"/>
                 <constraint firstItem="TiS-cE-vYO" firstAttribute="leading" secondItem="c0T-Ft-roL" secondAttribute="leading" id="GU6-co-fEW"/>
                 <constraint firstItem="seR-w4-dYY" firstAttribute="leading" secondItem="c0T-Ft-roL" secondAttribute="leading" id="Prq-Ha-Joy"/>
                 <constraint firstItem="c0T-Ft-roL" firstAttribute="top" secondItem="seR-w4-dYY" secondAttribute="bottom" id="b7b-i5-vGJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="TiS-cE-vYO" secondAttribute="bottom" id="li4-0d-RMu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="c0T-Ft-roL" secondAttribute="trailing" id="lnd-Yo-yMx"/>
                 <constraint firstItem="c0T-Ft-roL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="phJ-at-uvv"/>
                 <constraint firstItem="TiS-cE-vYO" firstAttribute="trailing" secondItem="c0T-Ft-roL" secondAttribute="trailing" id="ubv-mr-Nxw"/>
