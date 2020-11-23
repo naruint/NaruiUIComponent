@@ -15,6 +15,7 @@ class TableViewController: UITableViewController {
         case inputTest = "input test"
         case showGraph = "showGraph"
         case simplePinNumberView = "simple pinnumber test"
+        case mindColorTest = "Mind Color Test"
     }
     let player = NaruVideoPlayer()
     override func viewDidLoad() {
@@ -154,6 +155,8 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: "showGraph", sender: nil)
         case .simplePinNumberView:
             performSegue(withIdentifier: "showSimplePinnumber", sender: nil)
+        case .mindColorTest:
+            performSegue(withIdentifier: "showMindColor", sender: nil)
         }
     }
     
