@@ -1102,10 +1102,10 @@
             </objects>
             <point key="canvasLocation" x="1113.8461538461538" y="543.83886255924165"/>
         </scene>
-        <!--View Controller-->
+        <!--Mind Color Test View Controller-->
         <scene sceneID="CiI-UC-nNL">
             <objects>
-                <viewController id="S4j-6U-A7h" sceneMemberID="viewController">
+                <viewController id="S4j-6U-A7h" customClass="MindColorTestViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z5B-xQ-QnU"/>
                         <viewControllerLayoutGuide type="bottom" id="LUQ-qG-FTh"/>
@@ -1219,30 +1219,40 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-ai-uxd">
                                         <rect key="frame" x="0.0" y="260" width="258" height="110"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMB-N5-uyg" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMB-N5-uyg" customClass="NaruRingProgressView" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="110"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion7"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="무기력"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
-                                                        <color key="value" systemColor="systemOrangeColor"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                                                        <color key="value" name="weakTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                         <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="고구마"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ringWitth">
+                                                        <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsr-yY-DJI" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsr-yY-DJI" customClass="NaruRingProgressView" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="134" y="0.0" width="124" height="110"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion8"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="공허"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
-                                                        <color key="value" systemColor="systemOrangeColor"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="감자"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ringWitth">
+                                                        <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" systemColor="systemPurpleColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                                                        <color key="value" name="weakTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                         <color key="value" name="normalTextColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -1263,6 +1273,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3kp-2o-4ef"/>
+                    <connections>
+                        <outletCollection property="ringProgressView" destination="nMB-N5-uyg" collectionClass="NSMutableArray" id="tZg-Sp-aOY"/>
+                        <outletCollection property="ringProgressView" destination="Qsr-yY-DJI" collectionClass="NSMutableArray" id="qdl-M2-em4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iw8-PW-COa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1457,8 +1471,6 @@
         <image name="etcEmotion4" width="60" height="60"/>
         <image name="etcEmotion5" width="60" height="60"/>
         <image name="etcEmotion6" width="60" height="60"/>
-        <image name="etcEmotion7" width="60" height="60"/>
-        <image name="etcEmotion8" width="60" height="60"/>
         <image name="placeHolderImageTest" width="327" height="144"/>
         <namedColor name="backgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1481,11 +1493,11 @@
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -16,6 +16,7 @@ target 'NaruiUIComponents_Example' do
     pod 'PhoneNumberKit'
     pod 'RxKingfisher'
     pod 'AlamofireImage'
+    pod 'MKRingProgressView'
 
   end
 end

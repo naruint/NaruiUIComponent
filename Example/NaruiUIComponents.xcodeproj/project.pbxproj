@@ -15,6 +15,7 @@
 		1B5CBCA825493AEE007093B1 /* InputUITestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */; };
 		1B74DC0C25494C74001FD749 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B74DC0B25494C74001FD749 /* Color.xcassets */; };
 		1B8D2DD0254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D2DCF254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift */; };
+		1BA61B76256CCF4400FEF4B8 /* MindColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA61B75256CCF4400FEF4B8 /* MindColorTestViewController.swift */; };
 		1BAAAE6E255E4D19001FC4BB /* mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1BAAAE6D255E4D19001FC4BB /* mp4 */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUITestTableViewController.swift; sourceTree = "<group>"; };
 		1B74DC0B25494C74001FD749 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		1B8D2DCF254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopTestTableViewController.swift; sourceTree = "<group>"; };
+		1BA61B75256CCF4400FEF4B8 /* MindColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindColorTestViewController.swift; sourceTree = "<group>"; };
 		1BAAAE6D255E4D19001FC4BB /* mp4 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mp4; sourceTree = "<group>"; };
 		1F42862B62DEE8B15CF09478 /* Pods-NaruiUIComponents_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaruiUIComponents_Tests.release.xcconfig"; path = "Target Support Files/Pods-NaruiUIComponents_Tests/Pods-NaruiUIComponents_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		58CD526C128A45E4AD3A81E9 /* NaruiUIComponents.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NaruiUIComponents.podspec; path = ../NaruiUIComponents.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -121,6 +123,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				1BA61B75256CCF4400FEF4B8 /* MindColorTestViewController.swift */,
 				1B0464F725662579001B1F95 /* SimplePinNumberTestViewController.swift */,
 				1B0C78252547C519007728CF /* TableViewController.swift */,
 				1B5CBC7C2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift */,
@@ -299,6 +302,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MKRingProgressView/MKRingProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/NaruiUIComponents/NaruiUIComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -312,6 +316,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKRingProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NaruiUIComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -357,6 +362,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MKRingProgressView/MKRingProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKingfisher/RxKingfisher.framework",
@@ -374,6 +380,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKRingProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKingfisher.framework",
@@ -422,6 +429,7 @@
 				1B5CBCA825493AEE007093B1 /* InputUITestTableViewController.swift in Sources */,
 				1B0C78262547C519007728CF /* TableViewController.swift in Sources */,
 				1B8D2DD0254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift in Sources */,
+				1BA61B76256CCF4400FEF4B8 /* MindColorTestViewController.swift in Sources */,
 				1B5CBC7D2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				1B0464F825662579001B1F95 /* SimplePinNumberTestViewController.swift in Sources */,
