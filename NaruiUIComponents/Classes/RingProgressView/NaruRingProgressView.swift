@@ -79,6 +79,7 @@ public class NaruRingProgressView: UIView {
         bgImageView.image = forgroundColor.circleImage(diameter: 300)
         progressView.backgroundRingColor = backgroundRingColor
 
+        progressView.shadowOpacity = 0.0
         guard let data = viewModel else {
             return
         }

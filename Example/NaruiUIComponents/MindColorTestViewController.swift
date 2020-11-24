@@ -13,8 +13,8 @@ import NaruiUIComponents
 class MindColorTestViewController : UIViewController {
     @IBOutlet var ringProgressView: [NaruRingProgressView]!
     let ringDatas:[NaruRingProgressView.ViewModel] = [
-        NaruRingProgressView.ViewModel(secondLabelText: "감자", progress: 0.1, forgroundColor: .yellow, ringBackgrouncColor: .gray),
-        NaruRingProgressView.ViewModel(secondLabelText: "고구마", progress: 0.2, forgroundColor: .orange, ringBackgrouncColor: .gray),
+        NaruRingProgressView.ViewModel(secondLabelText: "감자", progress: 0.1, forgroundColor: .yellow, ringBackgrouncColor: UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.1)),
+        NaruRingProgressView.ViewModel(secondLabelText: "고구마", progress: 0.2, forgroundColor: .orange, ringBackgrouncColor: UIColor(red: 1.0, green: 0.0, blue: 0.5, alpha: 0.1))
     ]
     
     override func viewDidLoad() {
