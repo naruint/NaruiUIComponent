@@ -10,20 +10,7 @@ import MKRingProgressView
 
 @IBDesignable
 public class NaruRingProgressView: UIView {
-    public struct ViewModel {
-        public var secondLabelText:String
-        public var progress:Float
-        public var firstLabelText:String {
-            let p = Int(progress * 100)
-            return "\(p)"
-        }
-        public init(secondLabelText:String, progress:Float) {
-            self.secondLabelText = secondLabelText
-            self.progress = progress
-        }
-    }
-
-    public var viewModel:ViewModel? = ViewModel(secondLabelText: "", progress: 0.0) {
+    public var viewModel:ViewModel? = ViewModel(secondLabelText: "", progress: 0.0, forgroundColor: .red, ringBackgrouncColor:.gray ) {
         didSet {
             updateUI()
         }
@@ -42,19 +29,10 @@ public class NaruRingProgressView: UIView {
     }
     @IBInspectable var ringWitth:CGFloat = 6
     
-    @IBInspectable var forgroundColor:UIColor = .red {
-        didSet {
-            progressView.startColor = forgroundColor
-            progressView.endColor = forgroundColor
-            bgImageView.image = forgroundColor.circleImage(diameter: 300)
-        }
-    }
+    @IBInspectable var forgroundColor:UIColor = .red
     
-    @IBInspectable var backgroundRingColor:UIColor = .gray {
-        didSet {
-            progressView.backgroundRingColor = backgroundRingColor
-        }
-    }
+    
+    @IBInspectable var backgroundRingColor:UIColor = .gray
     
     @IBInspectable var textColor:UIColor = .black {
         didSet {
@@ -96,6 +74,11 @@ public class NaruRingProgressView: UIView {
     
     //MARK: -
     func updateUI() {
+        progressView.startColor = forgroundColor
+        progressView.endColor = forgroundColor
+        bgImageView.image = forgroundColor.circleImage(diameter: 300)
+        progressView.backgroundRingColor = backgroundRingColor
+
         guard let data = viewModel else {
             return
         }
@@ -108,7 +91,12 @@ public class NaruRingProgressView: UIView {
         for layout in innerCircleLayouts {
             layout.constant = ringWitth + 6
         }
-
+        
+        progressView.startColor = data.forgroundColor
+        progressView.endColor = data.forgroundColor
+        bgImageView.image = data.forgroundColor.circleImage(diameter: 300)
+        progressView.backgroundRingColor = data.ringBackgrouncColor
+    
     }
     
     public override func layoutSubviews() {
