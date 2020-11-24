@@ -40,14 +40,7 @@ public class NaruRingProgressView: UIView {
             viewModel?.secondLabelText = text
         }
     }
-    @IBInspectable var ringWitth:CGFloat = 4 {
-        didSet {
-            progressView.ringWidth = ringWitth
-            for layout in innerCircleLayouts {
-                layout.constant = ringWitth + 6
-            }
-        }
-    }
+    @IBInspectable var ringWitth:CGFloat = 6
     
     @IBInspectable var forgroundColor:UIColor = .red {
         didSet {
@@ -95,10 +88,10 @@ public class NaruRingProgressView: UIView {
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        updateUI()
         progressView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         progressView.frame.size = progressContainerView.frame.size
         progressContainerView.addSubview(progressView)
+        updateUI()
     }
     
     //MARK: -
@@ -111,8 +104,16 @@ public class NaruRingProgressView: UIView {
         firstLabel.text = data.firstLabelText
         secondLabel.text = data.secondLabelText
         secondLabel.isHidden = data.secondLabelText.isEmpty == true
-        
+        progressView.ringWidth = ringWitth
+        for layout in innerCircleLayouts {
+            layout.constant = ringWitth + 6
+        }
+
     }
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        updateUI()
+    }
     
 }

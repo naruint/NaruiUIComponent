@@ -1233,9 +1233,6 @@
                                                         <color key="value" name="normalTextColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="고구마"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="ringWitth">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsr-yY-DJI" customClass="NaruRingProgressView" customModule="NaruiUIComponents">
@@ -1243,9 +1240,6 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="감자"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="ringWitth">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
                                                         <color key="value" systemColor="systemPurpleColor"/>
                                                     </userDefinedRuntimeAttribute>
