@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -52,7 +51,7 @@
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="r4r-TI-YkW"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="dcg-46-Vrr" firstAttribute="trailing" secondItem="fHY-Oq-ioa" secondAttribute="trailing" id="2ZA-ea-tGh"/>
                 <constraint firstItem="8YA-qh-i2m" firstAttribute="centerX" secondItem="cza-ky-KSh" secondAttribute="centerX" id="4ne-8R-mH9"/>
@@ -78,8 +77,5 @@
     <resources>
         <image name="etcEmotion1" width="60" height="60"/>
         <image name="iconEtcCheck" width="32" height="32"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

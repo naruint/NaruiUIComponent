@@ -17,14 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="backgroundColor2"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="tJv-Jm-YkC">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ai6-02-ez5">
+                                    <rect key="frame" x="10" y="5" width="370" height="35"/>
+                                    <segments>
+                                        <segment title="1"/>
+                                        <segment title="2"/>
+                                        <segment title="3"/>
+                                    </segments>
+                                    <color key="selectedSegmentTintColor" systemColor="systemGreenColor"/>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="ai6-02-ez5" firstAttribute="top" secondItem="tJv-Jm-YkC" secondAttribute="top" constant="5" id="bZf-ex-lhr"/>
+                                <constraint firstItem="ai6-02-ez5" firstAttribute="leading" secondItem="tJv-Jm-YkC" secondAttribute="leading" constant="10" id="cQy-GW-sRL"/>
+                                <constraint firstAttribute="bottom" secondItem="ai6-02-ez5" secondAttribute="bottom" constant="5" id="pKq-J1-m47"/>
+                                <constraint firstAttribute="trailing" secondItem="ai6-02-ez5" secondAttribute="trailing" constant="10" id="uup-qB-zVC"/>
+                            </constraints>
+                        </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="n1D-qe-SBz">
-                            <rect key="frame" x="0.0" y="99.666667938232422" width="390" height="44"/>
+                            <rect key="frame" x="0.0" y="143.66666793823242" width="390" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="CAd-nr-HDY" style="IBUITableViewCellStyleDefault" id="IyT-Zl-6oS">
-                                <rect key="frame" x="0.0" y="28" width="390" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="72" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IyT-Zl-6oS" id="71e-ug-rYx">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
@@ -1100,22 +1122,22 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-vp-5dX" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="110"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion1"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="기대"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
-                                                        <color key="value" systemColor="systemOrangeColor"/>
+                                                        <color key="value" systemColor="systemYellowColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
                                                         <color key="value" name="normalTextColor"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="detailText" value="아주 많이 기대돼요"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="detailText" value="기대돼요"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhV-H5-Hts" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="89.333333333333343" y="0.0" width="79.333333333333343" height="110"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion2"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="즐거움"/>
@@ -1130,10 +1152,13 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bum-Ii-101" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="178.66666666666666" y="0.0" width="79.333333333333343" height="110"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion3"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="뿌듯"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemYellowColor"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
@@ -1146,26 +1171,44 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykR-gi-tzz" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="110"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion4"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="편안"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemTealColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-tb-Ykk" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="89.333333333333343" y="0.0" width="79.333333333333343" height="110"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion5"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="불안"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemTealColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="965-zD-4ti" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="178.66666666666666" y="0.0" width="79.333333333333343" height="110"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion6"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="짜증"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemTealColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
@@ -1178,18 +1221,30 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMB-N5-uyg" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="110"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion7"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="무기력"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemOrangeColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsr-yY-DJI" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="134" y="0.0" width="124" height="110"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion8"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="공허"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemOrangeColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
@@ -1200,7 +1255,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="aqf-EQ-zS1" firstAttribute="top" secondItem="z5B-xQ-QnU" secondAttribute="bottom" constant="20" id="FbS-nh-V8b"/>
                             <constraint firstItem="aqf-EQ-zS1" firstAttribute="leading" secondItem="9aG-er-kpD" secondAttribute="leadingMargin" constant="50" id="PnK-67-MPc"/>
@@ -1434,6 +1489,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

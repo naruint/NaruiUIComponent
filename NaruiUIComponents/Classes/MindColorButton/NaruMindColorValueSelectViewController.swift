@@ -28,7 +28,8 @@ class NaruMindColorValueSelectViewController: UIViewController {
     }
     
 
-    var detailText:String?
+    var viewModel:NaruMindColorButton.ViewModel? = nil
+    
     @IBOutlet weak var textLabel: UILabel!
     
     @IBOutlet weak var valueLabel: UILabel!
@@ -49,16 +50,17 @@ class NaruMindColorValueSelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        slider.rx.value.bind { [weak self](float) in
-            self?.value = Int(float * 100)
+        
+        slider.rx.value.changed.bind { [weak self](float) in
+            self?.viewModel?.value = Int(float * 100)
             self?.updateUI()
         }.disposed(by: disposeBag)
         slider.addTarget(self, action: #selector(self.onSliderValChanged(slider:event:)), for: .valueChanged)
     
         // Do any additional setup after loading the view.
-        updateUI()
+        updateUI(isForce: true)
     }
-    
+        
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateUI()
@@ -91,27 +93,28 @@ class NaruMindColorValueSelectViewController: UIViewController {
         slider.maximumTrackTintColor = colors.first
         slider.thumbTintColor = colors.first
     }
-    
-    private var value:Int = 0
-    
+        
     func setValue(value:Int) {
-        self.value = value
+        self.viewModel?.value = value
         DispatchQueue.main.async {[weak self] in
             self?.updateUI(isForce: true)
         }
     }
     
+   
+    
     func updateUI(isForce:Bool = false) {
-        let p:CGFloat = CGFloat(value)/100
-        
-        print(value)
-        valueLabel.text = "\(value)"
-        textLabel.text = detailText
+        guard let model = self.viewModel else {
+            print("view model not set")
+            return
+        }
+        print("\(#function) value : \(model.value)")
+        let p:CGFloat = CGFloat(model.value)/100
+        valueLabel.text = "\(model.value)"
+        textLabel.text = model.mindHeaderString + model.detailText
         textLabel.alpha = p * 5
         valueLabel.alpha = p * 5
-//        textLabel.isHidden = value == 0
-//        valueLabel.isHidden = value == 0
-        NotificationCenter.default.post(name: .naruMindColorValueDidUpdated, object: NaruMindColorButton.ViewModel(value: value, title: title!))
+        NotificationCenter.default.post(name: .naruMindColorValueDidUpdated, object: viewModel)
         progressHeightLayout.constant = view.frame.height * p
         if isForce {
             slider.value = Float(p)

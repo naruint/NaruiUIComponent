@@ -17,8 +17,34 @@ public class NaruMindColorButton: UIView {
     public weak var targetViewController:UIViewController? = nil
     
     public struct ViewModel {
-        let value:Int
+        var value:Int
         let title:String
+        let detailText:String
+        let isNegativeEmotion:Bool
+        
+        var mindHeaderString:String {
+            if 1 <= value && value <= 20 {
+                return "아주 조금\n"
+            }
+            if 21 <= value && value <= 40 {
+                return "조금 "
+            }
+            if 41 <= value && value <= 60 {
+                if isNegativeEmotion {
+                    return "다소 "
+                }
+                return "나름 "
+            }
+            if 61 <= value && value <= 80 {
+                return "많이 "
+            }
+            if 81 <= value && value <= 100 {
+                return "아주 많이\n"
+            }
+            return ""
+        }
+        
+        
     }
 
     @IBOutlet weak var button: UIButton!
@@ -28,7 +54,7 @@ public class NaruMindColorButton: UIView {
     @IBOutlet weak var checkImageView: UIImageView!
     @IBInspectable var mindColor:UIColor = .red
     @IBInspectable var forgroundColor:UIColor = .black
-    
+    @IBInspectable var isNegativeEmotion:Bool = false
     @IBInspectable var image:UIImage? {
         set {
             imageView.image = newValue
@@ -59,9 +85,10 @@ public class NaruMindColorButton: UIView {
     }
     
     public var viewModel:ViewModel {
-        let title = button.title(for: .normal) ?? "0"
-        
-        return ViewModel(value: NSString(string: title).integerValue, title: text ?? "")
+        return ViewModel(value: progress,
+                         title: text ?? "",
+                         detailText: detailText,
+                         isNegativeEmotion: isNegativeEmotion)
     }
     
     
@@ -104,6 +131,8 @@ public class NaruMindColorButton: UIView {
             }
         }
         checkImageView.isHidden = true
+        label.textColor = forgroundColor
+        valueLabel.textColor = forgroundColor
         
     }  
 
@@ -114,13 +143,12 @@ public class NaruMindColorButton: UIView {
     @IBAction func onTouthUpInsideButton(_ sender: UIButton) {
         isHighlighted = false
         let vc = NaruMindColorValueSelectViewController.viewController
+        vc.viewModel = viewModel
+        print(" set value : \(viewModel.value)")
         vc.colors = [forgroundColor, mindColor]
-        vc.detailText = detailText
-        vc.title = text
-        let p = progress
         let tvc = targetViewController ?? UIApplication.shared.keyWindow?.rootViewController
         tvc?.present(vc, animated: true, completion: {
-            vc.setValue(value: p)
+            vc.updateUI(isForce: true)
         })
     }
     

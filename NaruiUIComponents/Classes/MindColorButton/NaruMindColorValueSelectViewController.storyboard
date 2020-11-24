@@ -43,19 +43,19 @@
                                     <constraint firstItem="I4V-SH-2MR" firstAttribute="leading" secondItem="uL5-Qa-Mq2" secondAttribute="leading" constant="37" id="gMW-jC-RPF"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아주 많이 기대돼요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTo-Uw-QfB">
-                                <rect key="frame" x="141" y="344" width="132.5" height="86"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아주 많이 기대돼요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTo-Uw-QfB">
+                                <rect key="frame" x="141" y="310" width="132.5" height="86"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="83" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-Y7-EcW">
-                                <rect key="frame" x="188.5" y="454" width="37" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="83" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-Y7-EcW">
+                                <rect key="frame" x="188.5" y="420" width="37" height="34"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정의 강도를 조절해 보세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ9-jg-3g0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정의 강도를 조절해 보세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ9-jg-3g0">
                                 <rect key="frame" x="112" y="723" width="190" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -79,7 +79,7 @@
                             <constraint firstItem="WPa-Zj-hNl" firstAttribute="trailing" secondItem="H6f-t2-GnK" secondAttribute="trailing" id="iFG-E9-8Cr"/>
                             <constraint firstItem="tQ9-jg-3g0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WPa-Zj-hNl" secondAttribute="leading" constant="20" id="kH6-pb-WBb"/>
                             <constraint firstItem="uL5-Qa-Mq2" firstAttribute="bottom" secondItem="WPa-Zj-hNl" secondAttribute="bottom" id="m9g-xc-6qz"/>
-                            <constraint firstItem="rTo-Uw-QfB" firstAttribute="top" secondItem="WPa-Zj-hNl" secondAttribute="top" constant="300" id="xa5-sf-GiH"/>
+                            <constraint firstItem="rTo-Uw-QfB" firstAttribute="centerY" secondItem="WPa-Zj-hNl" secondAttribute="centerY" constant="-100" id="tQT-ci-JbF"/>
                             <constraint firstItem="WPa-Zj-hNl" firstAttribute="bottom" secondItem="H6f-t2-GnK" secondAttribute="bottom" id="ywJ-mx-hpH"/>
                         </constraints>
                     </view>

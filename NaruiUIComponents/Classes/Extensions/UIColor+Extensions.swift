@@ -18,6 +18,7 @@ public extension UIColor {
         return img!
     }
     
+    /** 서클 이미지 만들기*/
     func circleImage(diameter: CGFloat) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter, height: diameter), false, 0)
         let ctx = UIGraphicsGetCurrentContext()!
@@ -31,5 +32,26 @@ public extension UIColor {
         let img = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()        
         return img
+    }
+    
+    /** 2중 서클 이미지 만들기*/
+    func circleImage(diameter:CGFloat, innerColor:UIColor, innerDiameter:CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter, height: diameter), false, 0)
+        let ctx = UIGraphicsGetCurrentContext()!
+        ctx.saveGState()
+        
+        let rect = CGRect(x: 0, y: 0, width: diameter, height: diameter)
+        ctx.setFillColor(self.cgColor)
+        ctx.fillEllipse(in: rect)
+        
+        let a = (diameter - innerDiameter) / 2
+        let innerRect = CGRect(x: a, y: a, width: innerDiameter, height: innerDiameter)
+        ctx.setFillColor(innerColor.cgColor)
+        ctx.fillEllipse(in: innerRect)
+        ctx.restoreGState()
+        let img = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return img
+
     }
 }
