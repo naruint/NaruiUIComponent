@@ -55,6 +55,13 @@ public class NaruMindColorButton: UIView {
     @IBInspectable var mindColor:UIColor = .red
     @IBInspectable var forgroundColor:UIColor = .black
     @IBInspectable var isNegativeEmotion:Bool = false
+    
+    public var isEnabled = true {
+        didSet {
+            alpha = isEnabled ? 1.0 : 0.5
+        }
+    }
+    
     @IBInspectable var image:UIImage? {
         set {
             imageView.image = newValue
@@ -137,16 +144,23 @@ public class NaruMindColorButton: UIView {
     }  
 
     @IBAction func onTouchDownButton(_ sender: UIButton) {
+        if isEnabled == false {
+            isHighlighted = false
+            return
+        }
         isHighlighted = true
     }
     
     @IBAction func onTouthUpInsideButton(_ sender: UIButton) {
         isHighlighted = false
+        if isEnabled == false {
+            return
+        }
         let vc = NaruMindColorValueSelectViewController.viewController
         vc.viewModel = viewModel
         print(" set value : \(viewModel.value)")
         vc.colors = [forgroundColor, mindColor]
-        let tvc = targetViewController ?? UIApplication.shared.keyWindow?.rootViewController
+        let tvc = targetViewController ?? UIApplication.shared.lastPresentedViewController
         tvc?.present(vc, animated: true, completion: {
             vc.updateUI(isForce: true)
         })
