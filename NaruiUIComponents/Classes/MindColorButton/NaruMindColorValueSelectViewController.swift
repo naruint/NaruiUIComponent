@@ -59,8 +59,27 @@ class NaruMindColorValueSelectViewController: UIViewController {
     
         // Do any additional setup after loading the view.
         updateUI(isForce: true)
+        textLabel.alpha = 0
+        valueLabel.alpha = 0
+        if viewModel?.value ?? 0 > 0 {
+            showup()
+        }
+    }
+    
+    private func showup() {
+        progressHeightLayout.constant = view.frame.height
+        UIView.animate(withDuration: 0.25) {[weak self]in
+            self?.view.layoutIfNeeded()
+            self?.textLabel.alpha = 1
+            self?.valueLabel.alpha = 1
+        }
     }
         
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag) {
+            NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidDismissed, object: self.viewModel)
+        }
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateUI()
@@ -70,6 +89,7 @@ class NaruMindColorValueSelectViewController: UIViewController {
         if let touchEvent = event.allTouches?.first {
                 switch touchEvent.phase {
                 case .began:
+                    showup()
                     break
                 case .moved:
                     break
@@ -112,15 +132,14 @@ class NaruMindColorValueSelectViewController: UIViewController {
         let p:CGFloat = CGFloat(model.value)/100
         valueLabel.text = "\(model.value)"
         textLabel.text = model.mindHeaderString + model.detailText
-        textLabel.alpha = p * 5
-        valueLabel.alpha = p * 5
-        NotificationCenter.default.post(name: .naruMindColorValueDidUpdated, object: viewModel)
-        progressHeightLayout.constant = view.frame.height * p
         if isForce {
             slider.value = Float(p)
             UIView.animate(withDuration: 0.25) {[weak self]in
                 self?.view.layoutIfNeeded()
             }
+        }
+        else {
+            NotificationCenter.default.post(name: .naruMindColorValueDidUpdated, object: viewModel)
         }
     }
 }

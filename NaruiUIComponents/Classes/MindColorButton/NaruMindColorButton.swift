@@ -9,6 +9,7 @@ import UIKit
 
 public extension Notification.Name {
     static let naruMindColorValueDidUpdated = Notification.Name("naruMindColorValueDidUpdated_observer")
+    static let naruMindColorValueChangeControllerDidDismissed = Notification.Name("naruMindColorValueChangeControllerDidDismissed_observer")
 }
 
 
@@ -142,10 +143,23 @@ public class NaruMindColorButton: UIView {
             }
             if let model = noti.object as? ViewModel {
                 if model.title == s.text {
+                    s.isHighlighted = model.value == 0
                     s.progress = model.value
                 }
             }
         }
+        
+        NotificationCenter.default.addObserver(forName: .naruMindColorValueChangeControllerDidDismissed, object: nil, queue: nil) { [weak self](noti) in
+            guard let s = self else {
+                return
+            }
+            if let model = noti.object as? ViewModel {
+                if model.title == s.text {
+                    s.isHighlighted = false
+                }
+            }
+        }
+        
         checkImageView.isHidden = true
         label.textColor = forgroundColor
         valueLabel.textColor = forgroundColor
@@ -161,7 +175,6 @@ public class NaruMindColorButton: UIView {
     }
     
     @IBAction func onTouthUpInsideButton(_ sender: UIButton) {
-        isHighlighted = false
         if isEnabled == false {
             return
         }
@@ -176,11 +189,11 @@ public class NaruMindColorButton: UIView {
     }
     
     @IBAction func onTouchCancelButton(_ sender: UIButton) {
-        isHighlighted = false
+//        isHighlighted = false
     }
     
     @IBAction func onTouchUpOutside(_ sender: UIButton) {
-        isHighlighted = false
+//        isHighlighted = false
     }
     
     
