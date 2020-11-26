@@ -1115,13 +1115,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aqf-EQ-zS1">
-                                <rect key="frame" x="66" y="160" width="258" height="518"/>
+                                <rect key="frame" x="66" y="160" width="258" height="490"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syf-AG-7TR" customClass="NaruTagCollectionView" customModule="NaruiUIComponents">
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
+                                        <color key="backgroundColor" name="backgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="MXz-gy-vyf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="cell_borderColor">
+                                                <color key="value" name="normalTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="cell_bgColor">
+                                                <color key="value" name="weakTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" name="normalTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nnk-Q9-Zw7" customClass="NaruCirclePointView" customModule="NaruiUIComponents">
-                                        <rect key="frame" x="0.0" y="0.0" width="258" height="128"/>
+                                        <rect key="frame" x="0.0" y="60" width="258" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="bJg-OB-dXH"/>
+                                            <constraint firstAttribute="height" constant="40" id="bJg-OB-dXH"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxLevel">
@@ -1148,7 +1166,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K2D-Ds-TJy">
-                                        <rect key="frame" x="0.0" y="148" width="258" height="110"/>
+                                        <rect key="frame" x="0.0" y="120" width="258" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-vp-5dX" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="110"/>
@@ -1197,7 +1215,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pot-0E-xKM">
-                                        <rect key="frame" x="0.0" y="278" width="258" height="110"/>
+                                        <rect key="frame" x="0.0" y="250" width="258" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykR-gi-tzz" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="110"/>
@@ -1247,7 +1265,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-ai-uxd">
-                                        <rect key="frame" x="0.0" y="408" width="258" height="110"/>
+                                        <rect key="frame" x="0.0" y="380" width="258" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMB-N5-uyg" customClass="NaruRingProgressView" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="110"/>
@@ -1298,6 +1316,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="3kp-2o-4ef"/>
                     <connections>
+                        <outlet property="tagCollectionView" destination="syf-AG-7TR" id="c0w-vN-UtK"/>
                         <outletCollection property="ringProgressView" destination="nMB-N5-uyg" collectionClass="NSMutableArray" id="tZg-Sp-aOY"/>
                         <outletCollection property="ringProgressView" destination="Qsr-yY-DJI" collectionClass="NSMutableArray" id="qdl-M2-em4"/>
                     </connections>

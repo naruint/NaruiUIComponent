@@ -45,4 +45,19 @@ extension UIView {
         }
     }
     
+    func finedView(nibName:String, id:String?)->UIView? {
+        let instantiate = UINib(nibName: nibName,
+              bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil)
+        if id == nil {
+            return instantiate.first as? UIView
+        }
+        
+        for a in instantiate {
+            if id == (a as? UIView)?.restorationIdentifier {
+                return a as? UIView
+            }
+        }
+        return nil
+    }
+
 }
