@@ -38,10 +38,11 @@ public class NaruCirclePointView: UIView {
     
     public override func draw(_ rect: CGRect) {
         print("maxLevel : \(maxLevel), currentLevel: \(currentLevel)")
+        let y = rect.size.height / 2 - circleSize / 2
         for i in 0..<maxLevel {
             let x = circleSize * CGFloat(i) + padding * CGFloat(i)
             let shapeLayer = CAShapeLayer()
-            shapeLayer.path = UIBezierPath(ovalIn: CGRect(x: x, y: 0, width: circleSize, height: circleSize)).cgPath
+            shapeLayer.path = UIBezierPath(ovalIn: CGRect(x: x, y: y, width: circleSize, height: circleSize)).cgPath
             if i > currentLevel {
                 shapeLayer.fillColor = offColor.cgColor
             } else {
