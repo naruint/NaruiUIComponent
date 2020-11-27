@@ -63,7 +63,7 @@ public class NaruTableHeaderDecoView: UIView {
                 for i in 0...max  {
                     let shapeLayer = CAShapeLayer()
                     var y:CGFloat = CGFloat(i) * dashDistance + dashDistance/2
-                    if bottom {
+                    if bottom == false {
                         y = bounds.height - y
                     }
                     shapeLayer.path = UIBezierPath(ovalIn: CGRect(x: x , y: y, width: 2, height: 2)).cgPath
