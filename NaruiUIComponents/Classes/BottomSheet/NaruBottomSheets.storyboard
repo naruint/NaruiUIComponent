@@ -200,6 +200,11 @@
             <point key="canvasLocation" x="23" y="45"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="j6e-p7-7gE">
+            <size key="intrinsicContentSize" width="274" height="26"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="backgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
