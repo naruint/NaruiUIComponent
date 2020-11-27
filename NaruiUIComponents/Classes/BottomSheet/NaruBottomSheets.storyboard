@@ -58,20 +58,36 @@
                                 <rect key="frame" x="0.0" y="126" width="414" height="736"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Jao-Fv-z1Z">
-                                    <rect key="frame" x="0.0" y="122" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="122" width="414" height="90"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIg-Gz-aYI">
-                                            <rect key="frame" x="32" y="0.0" width="350" height="44"/>
+                                            <rect key="frame" x="32" y="40" width="350" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="R6z-VY-dow"/>
+                                            </constraints>
                                             <state key="normal" title="적용">
                                                 <color key="titleColor" name="normalTextColor"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" name="normalTextColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="onTouchUpApplyButton:" destination="nJN-gi-gOx" eventType="touchUpInside" id="G2a-BK-28r"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="kIg-Gz-aYI" firstAttribute="leading" secondItem="Jao-Fv-z1Z" secondAttribute="leading" constant="32" id="BqL-aE-Cw1"/>
-                                        <constraint firstItem="kIg-Gz-aYI" firstAttribute="top" secondItem="Jao-Fv-z1Z" secondAttribute="top" id="ClL-rB-fTm"/>
                                         <constraint firstAttribute="trailing" secondItem="kIg-Gz-aYI" secondAttribute="trailing" constant="32" id="Qqe-PD-tUi"/>
                                         <constraint firstAttribute="bottom" secondItem="kIg-Gz-aYI" secondAttribute="bottom" id="nYA-lh-wev"/>
                                     </constraints>
@@ -192,6 +208,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="applyButton" destination="kIg-Gz-aYI" id="Sdy-mf-3NI"/>
                         <outlet property="tableView" destination="hGb-Yu-o6A" id="P83-3U-hjT"/>
                     </connections>
                 </viewController>
@@ -200,11 +217,6 @@
             <point key="canvasLocation" x="23" y="45"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="j6e-p7-7gE">
-            <size key="intrinsicContentSize" width="274" height="26"/>
-        </designable>
-    </designables>
     <resources>
         <namedColor name="backgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -8,6 +8,7 @@
 import UIKit
 import UBottomSheet
 import TagListView
+
 fileprivate var preSelectedTags:[String:[String]]? = nil
 
 public extension Notification.Name {
@@ -63,6 +64,8 @@ public class NaruBottomSheetTagFilterViewController: UIViewController, Draggable
     }
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var applyButton: UIButton!
+    
     
     public var sheetCoordinator: UBottomSheetCoordinator?
 //    let dataSorce = PullToDismissDataSource()
@@ -76,6 +79,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController, Draggable
         if let tags = preSelectedTags {
             print(tags)
         }
+        applyButton.setBackgroundImage(UIColor(white: 0, alpha: 0.5).image, for: .highlighted)
     }
         
     public func showBottomSheet(targetViewController vc:UIViewController, selectedTags:[String:[String]]? = nil){
@@ -114,6 +118,9 @@ public class NaruBottomSheetTagFilterViewController: UIViewController, Draggable
         return tableView
     }
     
+    @IBAction func onTouchUpApplyButton(_ sender: Any) {
+        sheetCoordinator?.removeSheetChild(item: self)
+    }
 }
 
 extension NaruBottomSheetTagFilterViewController : UITableViewDataSource {
@@ -204,6 +211,7 @@ class NaruBottomSheetTagFilterTableViewCell : UITableViewCell {
             object: selectedTags,
             userInfo: ["title" : data?.title ?? ""] )
     }
+    
 }
 
 class PullToDismissDataSource: UBottomSheetCoordinatorDataSource {
