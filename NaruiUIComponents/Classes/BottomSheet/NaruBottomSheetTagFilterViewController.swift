@@ -65,7 +65,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController, Draggable
     @IBOutlet weak var tableView: UITableView!
     
     public var sheetCoordinator: UBottomSheetCoordinator?
-    let dataSorce = PullToDismissDataSource()
+//    let dataSorce = PullToDismissDataSource()
 
     weak var dimViewController:UIViewController? = nil
     
@@ -77,8 +77,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController, Draggable
             print(tags)
         }
     }
-    
-    
+        
     public func showBottomSheet(targetViewController vc:UIViewController, selectedTags:[String:[String]]? = nil){
         preSelectedTags = selectedTags
         let dimvc = UIViewController()
@@ -88,7 +87,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController, Draggable
         dimViewController?.modalPresentationStyle = .overFullScreen
         
         sheetCoordinator = UBottomSheetCoordinator(parent: vc)
-        sheetCoordinator?.dataSource = dataSorce
+//        sheetCoordinator?.dataSource = dataSorce
         sheetCoordinator?.addSheet(self, to: dimvc, didContainerCreate: { container in
             let f = self.view.frame
             let rect = CGRect(x: f.minX, y: f.minY, width: f.width, height: f.height)
@@ -209,11 +208,11 @@ class NaruBottomSheetTagFilterTableViewCell : UITableViewCell {
 
 class PullToDismissDataSource: UBottomSheetCoordinatorDataSource {
     func sheetPositions(_ availableHeight: CGFloat) -> [CGFloat] {
-        return [0.5, 1.1].map{$0*availableHeight} /// Trick is to set bottom position to any value more than available height such as 1.1*availableHeight
+        return [0.7, 1.1].map{$0*availableHeight} /// Trick is to set bottom position to any value more than available height such as 1.1*availableHeight
     }
     
     func initialPosition(_ availableHeight: CGFloat) -> CGFloat {
-        return availableHeight*0.5
+        return availableHeight*0.7
     }
 }
 
