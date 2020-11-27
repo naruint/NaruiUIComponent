@@ -79,7 +79,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController, Draggable
         if let tags = preSelectedTags {
             print(tags)
         }
-        applyButton.setBackgroundImage(UIColor(white: 0, alpha: 0.5).image, for: .highlighted)
+        applyButton.setBackgroundImage(UIColor(white: 0.5, alpha: 0.5).image, for: .highlighted)
     }
         
     public func showBottomSheet(targetViewController vc:UIViewController, selectedTags:[String:[String]]? = nil){
