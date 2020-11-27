@@ -17,6 +17,6 @@ target 'NaruiUIComponents_Example' do
     pod 'RxKingfisher'
     pod 'AlamofireImage'
     pod 'MKRingProgressView'
-
+    pod 'TagListView'
   end
 end

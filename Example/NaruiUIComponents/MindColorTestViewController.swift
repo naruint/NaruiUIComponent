@@ -26,5 +26,21 @@ class MindColorTestViewController : UIViewController {
         }
         tagCollectionView.tags = ["바보","강아지","고양이","태권브이","고구마","감자"]
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "tag", style: .plain, target: self, action: #selector(self.onTouchUPRightBarButton(_:)))
+        
+        NotificationCenter.default.addObserver(forName: .naruBottomSheetTagFilterSelectionDidChange, object: nil, queue: nil) {[weak self] (noti) in
+        
+            if let tags = noti.object as? [String],
+               let title = noti.userInfo?["title"] as? String {
+                print("tags: \(tags) title : \(title)")
+                if title == "상태" {
+                    self?.tagCollectionView.tags = tags
+                }
+            }
+        }
+    }
+    
+    @objc func onTouchUPRightBarButton(_ sender:UIBarButtonItem) {
+        NaruBottomSheetTagFilterViewController.viewController.showBottomSheet(targetViewController: self , selectedTags: ["상태":tagCollectionView.tags])
     }
 }

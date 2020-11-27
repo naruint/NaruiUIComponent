@@ -37,5 +37,5 @@ Pod::Spec.new do |s|
   s.dependency 'Kingfisher'
   s.dependency 'AlamofireImage'
   s.dependency 'MKRingProgressView'
-
+  s.dependency 'TagListView'
 end

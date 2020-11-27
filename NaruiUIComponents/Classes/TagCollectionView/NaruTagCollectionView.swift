@@ -13,7 +13,11 @@ public class NaruTagCollectionView: UIView {
     @IBInspectable var cell_bgColor:UIColor = .gray
     @IBInspectable var textColor:UIColor = .black
     @IBInspectable var prefix:String = "#"
-    public var tags:[String] = []
+    public var tags:[String] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
 
     //MARK: - arrangeView
     
