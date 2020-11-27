@@ -8,6 +8,7 @@
 import UIKit
 
 @IBDesignable
+/** 동그라미 로 표시하는 난이도*/
 public class NaruCirclePointView: UIView {
 
     @IBInspectable var maxLevel:Int = 3

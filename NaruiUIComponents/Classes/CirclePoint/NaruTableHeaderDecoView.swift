@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
-
+/** 테이블뷰 왼쪽에 세로로 대시라인 그리는 뷰 */
 public class NaruTableHeaderDecoView: UIView {
+    /** 스타일*/
     public enum Style {
         case start
         case middle
@@ -27,6 +28,19 @@ public class NaruTableHeaderDecoView: UIView {
         }
     }
     
+    public var dashDistance: CGFloat = 10 {
+        didSet {
+            redraw()
+        }
+    }
+    
+    public func set(style:Style, text:String? , dashDistance:CGFloat = 10) {
+        self.style = style
+        self.text = text
+        self.dashDistance = dashDistance
+    }
+    
+
     private func redraw() {
         for layer in layer.sublayers ?? [] {
             layer.removeFromSuperlayer()
@@ -43,14 +57,14 @@ public class NaruTableHeaderDecoView: UIView {
         }
         
         func drawDot(color:UIColor) {
-            let max = Int(bounds.height / 10 / 2 - 3)
+            let max = Int(bounds.height / dashDistance / 2 - 3)
             func drawline(bottom:Bool) {
+                let x:CGFloat = CGFloat(bounds.midX - 1)
                 for i in 0...max  {
                     let shapeLayer = CAShapeLayer()
-                    let x:CGFloat = CGFloat(bounds.midX - 1)
-                    var y:CGFloat = CGFloat(i) * 10
+                    var y:CGFloat = CGFloat(i) * dashDistance + dashDistance/2
                     if bottom {
-                        y += bounds.midY + 30
+                        y = bounds.height - y
                     }
                     shapeLayer.path = UIBezierPath(ovalIn: CGRect(x: x , y: y, width: 2, height: 2)).cgPath
                     shapeLayer.fillColor = color.cgColor
@@ -84,4 +98,3 @@ public class NaruTableHeaderDecoView: UIView {
         }
     }
 }
-
