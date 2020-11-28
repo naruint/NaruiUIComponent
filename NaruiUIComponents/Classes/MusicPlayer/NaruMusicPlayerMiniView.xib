@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruMusicPlayerMiniView" customModule="NaruiUIComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButton" destination="eyG-fz-bjq" id="SzE-FR-9KL"/>
+                <outlet property="descLabel" destination="70y-go-EhY" id="jkC-eG-6dq"/>
+                <outlet property="playButton" destination="cVB-5j-obB" id="0Wf-N7-oUX"/>
+                <outlet property="plusButton" destination="Vs9-Sj-RMw" id="7N1-e2-ovk"/>
+                <outlet property="progressView" destination="34G-03-fgH" id="EbX-a4-Khy"/>
+                <outlet property="titleLabel" destination="Moe-cA-6kw" id="VH0-My-0YN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="4Em-uY-OGc">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34G-03-fgH" customClass="MKRingProgressView">
+                    <rect key="frame" x="31" y="56" width="32" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="Mfs-tc-xnO"/>
+                        <constraint firstAttribute="width" constant="32" id="r4o-Nq-o93"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                            <color key="value" name="warmPink"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                            <color key="value" name="candyPink"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                            <color key="value" name="brownGrey"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="allowsAntialiasing" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVB-5j-obB">
+                    <rect key="frame" x="40" y="61" width="16" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="t18-YY-djW"/>
+                    </constraints>
+                    <color key="tintColor" name="white"/>
+                    <state key="normal" image="icon16Play"/>
+                    <state key="selected" image="icon16Pause">
+                        <color key="titleColor" name="white"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vs9-Sj-RMw">
+                    <rect key="frame" x="314" y="59.5" width="24" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="iRq-2h-acG"/>
+                    </constraints>
+                    <color key="tintColor" name="white"/>
+                    <state key="normal" image="icon24PlusWhite">
+                        <color key="titleColor" name="white"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyG-fz-bjq">
+                    <rect key="frame" x="358" y="59.5" width="24" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="Hs2-fo-pTc"/>
+                    </constraints>
+                    <color key="tintColor" name="white"/>
+                    <state key="normal" image="icon24CloseWhite">
+                        <color key="titleColor" name="white"/>
+                    </state>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5zX-bT-OEC">
+                    <rect key="frame" x="83" y="16" width="211" height="68"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-cA-6kw">
+                            <rect key="frame" x="0.0" y="0.0" width="211" height="34"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" name="white"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70y-go-EhY">
+                            <rect key="frame" x="0.0" y="34" width="211" height="34"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                            <color key="textColor" name="brownGrey"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="YAT-4R-A4c"/>
+            <color key="backgroundColor" name="blackTwo"/>
+            <constraints>
+                <constraint firstItem="34G-03-fgH" firstAttribute="leading" secondItem="YAT-4R-A4c" secondAttribute="leading" constant="31" id="3lD-Rk-cdi"/>
+                <constraint firstItem="5zX-bT-OEC" firstAttribute="top" secondItem="4Em-uY-OGc" secondAttribute="top" constant="16" id="DU3-po-cQf"/>
+                <constraint firstItem="34G-03-fgH" firstAttribute="centerY" secondItem="YAT-4R-A4c" secondAttribute="centerY" id="HtL-WN-Qhr"/>
+                <constraint firstItem="cVB-5j-obB" firstAttribute="leading" secondItem="YAT-4R-A4c" secondAttribute="leading" constant="40" id="KGj-lj-dIW"/>
+                <constraint firstAttribute="bottom" secondItem="5zX-bT-OEC" secondAttribute="bottom" constant="16" id="M9g-L4-2uW"/>
+                <constraint firstItem="YAT-4R-A4c" firstAttribute="trailing" secondItem="eyG-fz-bjq" secondAttribute="trailing" constant="32" id="PHx-V7-XWn"/>
+                <constraint firstItem="eyG-fz-bjq" firstAttribute="centerY" secondItem="YAT-4R-A4c" secondAttribute="centerY" id="Uu9-ca-mpZ"/>
+                <constraint firstItem="eyG-fz-bjq" firstAttribute="leading" secondItem="Vs9-Sj-RMw" secondAttribute="trailing" constant="20" id="bWe-2K-kXI"/>
+                <constraint firstItem="cVB-5j-obB" firstAttribute="centerY" secondItem="YAT-4R-A4c" secondAttribute="centerY" id="g90-rP-ar7"/>
+                <constraint firstItem="Vs9-Sj-RMw" firstAttribute="centerY" secondItem="eyG-fz-bjq" secondAttribute="centerY" id="gpa-5s-Pdj"/>
+                <constraint firstItem="5zX-bT-OEC" firstAttribute="leading" secondItem="34G-03-fgH" secondAttribute="trailing" constant="20" id="uRd-Ws-NhG"/>
+                <constraint firstItem="Vs9-Sj-RMw" firstAttribute="leading" secondItem="5zX-bT-OEC" secondAttribute="trailing" constant="20" id="usE-Mo-BXU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-226" y="181"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon16Pause" width="17" height="17"/>
+        <image name="icon16Play" width="17" height="17"/>
+        <image name="icon24CloseWhite" width="25" height="25"/>
+        <image name="icon24PlusWhite" width="25" height="25"/>
+        <namedColor name="blackTwo">
+            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="brownGrey">
+            <color red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="candyPink">
+            <color red="0.99607843137254903" green="0.45490196078431372" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="warmPink">
+            <color red="1" green="0.32941176470588235" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

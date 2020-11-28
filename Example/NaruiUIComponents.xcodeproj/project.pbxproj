@@ -23,6 +23,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9B7394C95F82F947A029E9C9 /* Pods_NaruiUIComponents_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E123BBECE20EC3390A6FB215 /* Pods_NaruiUIComponents_Tests.framework */; };
+		C327E04C25726314003FDBF2 /* UITestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327E04B25726314003FDBF2 /* UITestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		703A66DA44FF5480BC69D249 /* Pods-NaruiUIComponents_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaruiUIComponents_Example.release.xcconfig"; path = "Target Support Files/Pods-NaruiUIComponents_Example/Pods-NaruiUIComponents_Example.release.xcconfig"; sourceTree = "<group>"; };
 		AB80E2484F91A36EBE31E6C7 /* Pods-NaruiUIComponents_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaruiUIComponents_Tests.debug.xcconfig"; path = "Target Support Files/Pods-NaruiUIComponents_Tests/Pods-NaruiUIComponents_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C327E04B25726314003FDBF2 /* UITestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestViewController.swift; sourceTree = "<group>"; };
 		D789340F7B31705F8201BD46 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D977CBD018BDDC7D75C52AD2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E123BBECE20EC3390A6FB215 /* Pods_NaruiUIComponents_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaruiUIComponents_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				1B5CBC7C2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift */,
 				1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */,
 				1B8D2DCF254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift */,
+				C327E04B25726314003FDBF2 /* UITestViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				1B74DC0B25494C74001FD749 /* Color.xcassets */,
 				1BAAAE6D255E4D19001FC4BB /* mp4 */,
@@ -432,6 +435,7 @@
 			files = (
 				1B5CBCA825493AEE007093B1 /* InputUITestTableViewController.swift in Sources */,
 				1B0C78262547C519007728CF /* TableViewController.swift in Sources */,
+				C327E04C25726314003FDBF2 /* UITestViewController.swift in Sources */,
 				1B8D2DD0254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift in Sources */,
 				1BA61B76256CCF4400FEF4B8 /* MindColorTestViewController.swift in Sources */,
 				1B5CBC7D2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift in Sources */,

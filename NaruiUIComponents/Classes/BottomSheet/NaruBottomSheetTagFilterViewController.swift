@@ -251,7 +251,7 @@ class PullToDismissDataSource: UBottomSheetCoordinatorDataSource {
     }
     
     func sheetPositions(_ availableHeight: CGFloat) -> [CGFloat] {
-        return [height,height*2,availableHeight*1.1]//[0.7, 1.1].map{$0*availableHeight} /// Trick is to set bottom position to any value more than available height such as 1.1*availableHeight
+        return [height,height*1.5,height*2,availableHeight*1.1]//[0.7, 1.1].map{$0*availableHeight} /// Trick is to set bottom position to any value more than available height such as 1.1*availableHeight
     }
     
     func initialPosition(_ availableHeight: CGFloat) -> CGFloat {

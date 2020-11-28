@@ -31,6 +31,10 @@ class TableViewController: UITableViewController {
         return 1
     }
     
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        tabBarController?.makeMusicPlayerView()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CellType.allCases.count
