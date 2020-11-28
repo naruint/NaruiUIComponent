@@ -41,6 +41,9 @@ class MindColorTestViewController : UIViewController {
     }
     
     @objc func onTouchUPRightBarButton(_ sender:UIBarButtonItem) {
-        NaruBottomSheetTagFilterViewController.viewController.showBottomSheet(targetViewController: self , selectedTags: ["상태":tagCollectionView.tags])
+        
+        NaruBottomSheetTagFilterViewController.viewController.showBottomSheet(
+            targetViewController: self ,
+            selectedTags: ["상태":tagCollectionView.tags])
     }
 }

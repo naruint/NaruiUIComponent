@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/kongbaguni'
   s.ios.deployment_target = '12.0'
   s.source_files = 'NaruiUIComponents/Classes/*/*'
-  s.resources = 'NaruiUIComponents/Assets/*.{xcassets}'
+  s.resources = 'NaruiUIComponents/Assets/*.{xib,storyboard,xcassets}'
 #  s.resource_bundles = {
 #      'NaruiUIComponents' => [
 #      'NaruiUIComponents/Assets/*.{xib,storyboard,xcassets}',
