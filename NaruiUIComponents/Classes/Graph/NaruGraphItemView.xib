@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruGraphItemView" customModule="NaruiUIComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonView" destination="5rr-Lr-kQc" id="nc0-Ou-UuN"/>
+                <outlet property="dayLabel" destination="5es-OP-bQT" id="HIE-JG-UEs"/>
+                <outlet property="imageView" destination="EQw-bO-u6O" id="irQ-Qe-SLG"/>
+                <outlet property="layoutBarHeight" destination="XA0-0z-EqY" id="e1h-2A-guQ"/>
+                <outlet property="weakDayLabel" destination="sd3-oi-fFU" id="jS5-mp-tZg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Rks-5u-c4Y">
+            <rect key="frame" x="0.0" y="0.0" width="56" height="157"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rr-Lr-kQc">
+                    <rect key="frame" x="0.0" y="44" width="56" height="113"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5es-OP-bQT">
+                    <rect key="frame" x="0.0" y="136" width="56" height="21"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd3-oi-fFU">
+                    <rect key="frame" x="0.0" y="115" width="56" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-bO-u6O">
+                    <rect key="frame" x="10" y="15" width="36" height="100"/>
+                    <color key="backgroundColor" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="XA0-0z-EqY"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="dcb-eE-1kq"/>
+            <constraints>
+                <constraint firstItem="dcb-eE-1kq" firstAttribute="bottom" secondItem="5es-OP-bQT" secondAttribute="bottom" id="3Dl-Rx-F0L"/>
+                <constraint firstItem="sd3-oi-fFU" firstAttribute="top" secondItem="EQw-bO-u6O" secondAttribute="bottom" id="5GH-xX-KaZ"/>
+                <constraint firstItem="dcb-eE-1kq" firstAttribute="trailing" secondItem="sd3-oi-fFU" secondAttribute="trailing" id="DpD-Vs-W0e"/>
+                <constraint firstItem="dcb-eE-1kq" firstAttribute="bottom" secondItem="5rr-Lr-kQc" secondAttribute="bottom" id="Eqr-EK-3IF"/>
+                <constraint firstItem="5es-OP-bQT" firstAttribute="leading" secondItem="dcb-eE-1kq" secondAttribute="leading" id="LXP-l6-nUB"/>
+                <constraint firstItem="EQw-bO-u6O" firstAttribute="leading" secondItem="Rks-5u-c4Y" secondAttribute="leading" constant="10" id="Rue-nM-fqT"/>
+                <constraint firstItem="sd3-oi-fFU" firstAttribute="leading" secondItem="dcb-eE-1kq" secondAttribute="leading" id="Z6O-4P-b2N"/>
+                <constraint firstAttribute="trailing" secondItem="EQw-bO-u6O" secondAttribute="trailing" constant="10" id="ZQ1-W1-7l9"/>
+                <constraint firstItem="dcb-eE-1kq" firstAttribute="trailing" secondItem="5es-OP-bQT" secondAttribute="trailing" id="mVT-eq-iRO"/>
+                <constraint firstItem="dcb-eE-1kq" firstAttribute="trailing" secondItem="5rr-Lr-kQc" secondAttribute="trailing" id="mcI-eK-1YK"/>
+                <constraint firstItem="dcb-eE-1kq" firstAttribute="top" secondItem="5rr-Lr-kQc" secondAttribute="top" id="omq-X7-Yda"/>
+                <constraint firstItem="5es-OP-bQT" firstAttribute="top" secondItem="sd3-oi-fFU" secondAttribute="bottom" id="q3y-WK-7ES"/>
+                <constraint firstItem="dcb-eE-1kq" firstAttribute="leading" secondItem="5rr-Lr-kQc" secondAttribute="leading" id="v8k-ZR-1lF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-155.07246376811597" y="76.674107142857139"/>
+        </view>
+    </objects>
+</document>

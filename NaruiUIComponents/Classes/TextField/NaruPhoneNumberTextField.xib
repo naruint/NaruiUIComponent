@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruPhoneNumberTextField" customModule="NaruiUIComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="button" destination="Wi6-95-8Py" id="gMT-7N-bbW"/>
+                <outlet property="carrierTfWidth" destination="mKw-Dg-qbl" id="9Gx-bs-jgP"/>
+                <outlet property="clearImageView" destination="wtw-Gc-B3I" id="fe7-vB-bHU"/>
+                <outlet property="downButton" destination="xk4-ML-fMd" id="GFD-IW-DVe"/>
+                <outlet property="firstTextField" destination="347-Lh-w3R" id="ouP-rJ-nai"/>
+                <outlet property="secondTextField" destination="aBl-UO-shj" id="m7q-jf-hNA"/>
+                <outlet property="titleLabel" destination="7S1-An-Klh" id="6PY-2R-EK6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wi6-95-8Py">
+                    <rect key="frame" x="329" y="158" width="69" height="28"/>
+                    <color key="backgroundColor" name="normalTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="bqO-sJ-phc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="    Button    ">
+                        <color key="titleColor" name="backgroundColor"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="48F-Du-YYc">
+                    <rect key="frame" x="20" y="159" width="309" height="25"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="SKT" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="347-Lh-w3R">
+                            <rect key="frame" x="0.0" y="0.0" width="65" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="65" id="mKw-Dg-qbl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PlaceHolder" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aBl-UO-shj">
+                            <rect key="frame" x="65" y="0.0" width="244" height="25"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="gIy-Fc-lz7"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk4-ML-fMd">
+                    <rect key="frame" x="0.0" y="0.0" width="24" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" name="normalTextColor"/>
+                    <state key="normal" image="icon24IconArrowDBlack"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7S1-An-Klh">
+                    <rect key="frame" x="20" y="145.5" width="28.5" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon16FormDelete" translatesAutoresizingMaskIntoConstraints="NO" id="wtw-Gc-B3I">
+                    <rect key="frame" x="199" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="7S1-An-Klh" firstAttribute="leading" secondItem="48F-Du-YYc" secondAttribute="leading" id="6eY-n4-XmO"/>
+                <constraint firstItem="48F-Du-YYc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="EbC-ZB-4fm"/>
+                <constraint firstItem="Wi6-95-8Py" firstAttribute="leading" secondItem="48F-Du-YYc" secondAttribute="trailing" id="Nnk-Xi-4rH"/>
+                <constraint firstItem="48F-Du-YYc" firstAttribute="top" secondItem="7S1-An-Klh" secondAttribute="bottom" id="X7g-Ie-6ZI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Wi6-95-8Py" secondAttribute="trailing" constant="16" id="ibN-jy-Nqb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Wi6-95-8Py" secondAttribute="bottom" constant="14" id="mIt-SP-XER"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="48F-Du-YYc" secondAttribute="bottom" constant="16" id="trJ-Z9-bM4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-43" y="87"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon16FormDelete" width="16" height="16"/>
+        <image name="icon24IconArrowDBlack" width="24" height="25"/>
+        <namedColor name="backgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="normalTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

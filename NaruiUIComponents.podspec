@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NaruiUIComponents'
-  s.version          = '0.1.9'
+  s.version          = '0.1.48'
   s.summary          = 'Narui UI Components for iOS'
   s.description      = '나루아이 UI컴포넌트 라이브러리. UI 컴포넌트 개발 및 사용 편의를 위해 만든 라이브러리 입니다.'
   s.homepage         = 'https://github.com/naruint/NaruiUIComponent'
@@ -18,8 +18,24 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/kongbaguni'
   s.ios.deployment_target = '12.0'
   s.source_files = 'NaruiUIComponents/Classes/*/*'
+  s.resources = 'NaruiUIComponents/Assets/*.{xcassets}'
+#  s.resource_bundles = {
+#      'NaruiUIComponents' => [
+#      'NaruiUIComponents/Assets/*.{xib,storyboard,xcassets}',
+#      'NaruiUIComponents/Assets/**/*.imageset',
+#      'NaruiUIComponents/Assets/**/**/*.png'
+#      ]
+#  }
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
+  s.dependency 'RxRelay'
+  s.dependency 'UBottomSheet'
+  s.dependency 'PhoneNumberKit'
+  s.dependency 'RxKingfisher'
+  s.dependency 'Kingfisher'
+  s.dependency 'AlamofireImage'
+  s.dependency 'MKRingProgressView'
+  s.dependency 'TagListView'
 end

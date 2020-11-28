@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sb0-HP-x5k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sb0-HP-x5k">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,10 +16,37 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q17-2F-jlI">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor2"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="tJv-Jm-YkC">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ai6-02-ez5">
+                                    <rect key="frame" x="10" y="5" width="370" height="35"/>
+                                    <segments>
+                                        <segment title="1"/>
+                                        <segment title="2"/>
+                                        <segment title="3"/>
+                                    </segments>
+                                    <color key="selectedSegmentTintColor" systemColor="systemGreenColor"/>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="ai6-02-ez5" firstAttribute="top" secondItem="tJv-Jm-YkC" secondAttribute="top" constant="5" id="bZf-ex-lhr"/>
+                                <constraint firstItem="ai6-02-ez5" firstAttribute="leading" secondItem="tJv-Jm-YkC" secondAttribute="leading" constant="10" id="cQy-GW-sRL"/>
+                                <constraint firstAttribute="bottom" secondItem="ai6-02-ez5" secondAttribute="bottom" constant="5" id="pKq-J1-m47"/>
+                                <constraint firstAttribute="trailing" secondItem="ai6-02-ez5" secondAttribute="trailing" constant="10" id="uup-qB-zVC"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="n1D-qe-SBz">
+                            <rect key="frame" x="0.0" y="143.66666793823242" width="390" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="CAd-nr-HDY" style="IBUITableViewCellStyleDefault" id="IyT-Zl-6oS">
-                                <rect key="frame" x="0.0" y="28" width="390" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="72" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IyT-Zl-6oS" id="71e-ug-rYx">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
@@ -33,7 +60,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" name="backgroundColor2"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -47,19 +76,25 @@
                         <segue destination="IU3-iB-n5d" kind="show" identifier="showInputTest" id="nGV-jm-n6F"/>
                         <segue destination="8u0-zk-73q" kind="presentation" identifier="showGraph" id="OMk-Ob-uis"/>
                         <segue destination="z7A-RQ-Hoa" kind="show" identifier="showSimplePinnumber" id="5Tu-8l-eG2"/>
+                        <segue destination="S4j-6U-A7h" kind="show" identifier="showMindColor" id="vRI-yL-7Nj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xdW-kN-YHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="-191"/>
+            <point key="canvasLocation" x="185" y="-202"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pcd-OV-fej">
             <objects>
                 <navigationController id="sb0-HP-x5k" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Shz-ha-xs9">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Shz-ha-xs9">
+                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="backgroundColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="normalTextColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="voq-qE-wfX" kind="relationship" relationship="rootViewController" id="RBy-Zq-e3M"/>
@@ -67,7 +102,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9h-bv-n4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-807" y="-219"/>
+            <point key="canvasLocation" x="-900" y="-191"/>
         </scene>
         <!--Two Depth Filter Test Table View Controller-->
         <scene sceneID="peQ-Z9-zJD">
@@ -91,13 +126,14 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MU4-qP-LQC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="MU4-qP-LQC">
                                 <rect key="frame" x="0.0" y="178" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MU4-qP-LQC" id="Or9-ER-7hW">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.57546441331814413" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -117,8 +153,8 @@
         <!--Graph Top Test Table View Controller-->
         <scene sceneID="qr1-Yg-9zm">
             <objects>
-                <tableViewController modalPresentationStyle="overFullScreen" id="8u0-zk-73q" customClass="GraphTopTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-lI-cZb">
+                <tableViewController id="8u0-zk-73q" customClass="GraphTopTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-lI-cZb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79500440140845074" colorSpace="custom" customColorSpace="displayP3"/>
@@ -134,7 +170,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pk4-nb-aAp" userLabel="graphView" customClass="NaruGraphView" customModule="NaruiUIComponents">
-                                    <rect key="frame" x="0.0" y="172" width="390" height="128"/>
+                                    <rect key="frame" x="20" y="172" width="350" height="128"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="128" id="B4m-Dy-5ez"/>
@@ -145,22 +181,42 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="RTe-jK-cvI" secondAttribute="trailing" id="0iW-7a-Bj6"/>
                                 <constraint firstAttribute="bottom" secondItem="RTe-jK-cvI" secondAttribute="bottom" id="2Na-5e-ebW"/>
-                                <constraint firstAttribute="trailing" secondItem="pk4-nb-aAp" secondAttribute="trailing" id="Fhr-AX-mNv"/>
-                                <constraint firstItem="pk4-nb-aAp" firstAttribute="leading" secondItem="tgd-Fc-Ku8" secondAttribute="leading" id="QrO-Kz-fOY"/>
+                                <constraint firstAttribute="trailing" secondItem="pk4-nb-aAp" secondAttribute="trailing" constant="20" id="Fhr-AX-mNv"/>
+                                <constraint firstItem="pk4-nb-aAp" firstAttribute="leading" secondItem="tgd-Fc-Ku8" secondAttribute="leading" constant="20" id="QrO-Kz-fOY"/>
                                 <constraint firstAttribute="bottom" secondItem="pk4-nb-aAp" secondAttribute="bottom" id="Xwm-t3-fx0"/>
                                 <constraint firstItem="RTe-jK-cvI" firstAttribute="leading" secondItem="tgd-Fc-Ku8" secondAttribute="leading" id="djN-vz-UuU"/>
                             </constraints>
                         </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oTE-ba-9aH">
-                                <rect key="frame" x="0.0" y="328" width="390" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oTE-ba-9aH" id="2hj-Be-Qtp">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <sections>
+                            <tableViewSection id="6X8-ef-g4i">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oTE-ba-9aH">
+                                        <rect key="frame" x="0.0" y="328" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oTE-ba-9aH" id="2hj-Be-Qtp">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="So0-o4-Ugb">
+                                        <rect key="frame" x="0.0" y="371.66666793823242" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="So0-o4-Ugb" id="S17-pG-xmA">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QUI-px-Q67">
+                                        <rect key="frame" x="0.0" y="415.33333587646484" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QUI-px-Q67" id="nEX-fA-AIj">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="8u0-zk-73q" id="6wP-nm-lD3"/>
                             <outlet property="delegate" destination="8u0-zk-73q" id="1lU-ML-Ym8"/>
@@ -182,12 +238,169 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="nLJ-mv-dU9">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="2sx-ve-Gh4">
+                            <rect key="frame" x="0.0" y="1734" width="390" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nP-Np-yzI" customClass="NaruGradientButton" customModule="NaruiUIComponents">
+                                    <rect key="frame" x="20" y="20" width="350" height="60"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="HMe-Sb-3YX"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="버튼 테스트"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="normalTextColor">
+                                            <color key="value" name="backgroundColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                            <color key="value" name="backgroundColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledTextColor">
+                                            <color key="value" name="backgroundColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledBGColor">
+                                            <color key="value" name="weakTextColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="backgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="9nP-Np-yzI" secondAttribute="trailing" constant="20" id="OTy-5o-ioA"/>
+                                <constraint firstItem="9nP-Np-yzI" firstAttribute="leading" secondItem="2sx-ve-Gh4" secondAttribute="leading" constant="20" id="cHJ-Z0-wYv"/>
+                                <constraint firstAttribute="bottom" secondItem="9nP-Np-yzI" secondAttribute="bottom" id="tef-EO-ZCZ"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="eBz-eT-OhQ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="dXs-We-cbh">
-                                        <rect key="frame" x="0.0" y="28" width="390" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="C0R-2R-nyN" userLabel="Round select 1">
+                                        <rect key="frame" x="0.0" y="28" width="390" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C0R-2R-nyN" id="178-kp-jMS">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIc-ek-ry5" customClass="NaruRadioBoxView" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="10" y="10" width="370" height="60"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="idx">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택1"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noTitleColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seTitleColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fIc-ek-ry5" firstAttribute="leading" secondItem="178-kp-jMS" secondAttribute="leading" constant="10" id="2VR-Im-cFm"/>
+                                                <constraint firstAttribute="trailing" secondItem="fIc-ek-ry5" secondAttribute="trailing" constant="10" id="9K0-wh-Pbq"/>
+                                                <constraint firstAttribute="bottom" secondItem="fIc-ek-ry5" secondAttribute="bottom" constant="10" id="DNe-rJ-StE"/>
+                                                <constraint firstItem="fIc-ek-ry5" firstAttribute="top" secondItem="178-kp-jMS" secondAttribute="top" constant="10" id="Oxm-UD-MNx"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="idx">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택1"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="gTh-k5-btn" userLabel="Round select 2">
+                                        <rect key="frame" x="0.0" y="108" width="390" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gTh-k5-btn" id="MGS-Oo-Beg">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCf-ns-YEf" customClass="NaruRadioBoxView" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="10" y="10" width="370" height="60"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="idx">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택2"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noTitleColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seTitleColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vCf-ns-YEf" firstAttribute="top" secondItem="MGS-Oo-Beg" secondAttribute="top" constant="10" id="ZIQ-Ve-qLT"/>
+                                                <constraint firstAttribute="trailing" secondItem="vCf-ns-YEf" secondAttribute="trailing" constant="10" id="fIk-xi-8To"/>
+                                                <constraint firstAttribute="bottom" secondItem="vCf-ns-YEf" secondAttribute="bottom" constant="10" id="tmm-Xb-Azo"/>
+                                                <constraint firstItem="vCf-ns-YEf" firstAttribute="leading" secondItem="MGS-Oo-Beg" secondAttribute="leading" constant="10" id="uV9-86-BTu"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="idx">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="goI-3o-wGX" userLabel="textView 1">
+                                        <rect key="frame" x="0.0" y="188" width="390" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="goI-3o-wGX" id="nt1-U0-xbG">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1x1-gc-yQB" customClass="NaruImagePlaceHolderTextView" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="30" y="21" width="330" height="258"/>
+                                                    <color key="backgroundColor" name="backgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="placeHolderImage" value="placeHolderImageTest"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                            <real key="value" value="18"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="hideTopLine" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1x1-gc-yQB" firstAttribute="leading" secondItem="nt1-U0-xbG" secondAttribute="leadingMargin" constant="10" id="9R8-Cg-la7"/>
+                                                <constraint firstItem="1x1-gc-yQB" firstAttribute="top" secondItem="nt1-U0-xbG" secondAttribute="topMargin" constant="10" id="Xvu-f6-nYx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1x1-gc-yQB" secondAttribute="trailing" constant="10" id="gWH-J5-tda"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="1x1-gc-yQB" secondAttribute="bottom" constant="10" id="xGP-sL-L5L"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="dXs-We-cbh" userLabel="textView 2">
+                                        <rect key="frame" x="0.0" y="488" width="390" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dXs-We-cbh" id="2Yq-Qc-1cA">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
@@ -195,7 +408,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xi2-QZ-VdV" customClass="NaruTextView" customModule="NaruiUIComponents">
                                                     <rect key="frame" x="30" y="21" width="330" height="258"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" name="backgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="테스트"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="입력 테스트"/>
@@ -230,20 +443,18 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="xi2-QZ-VdV" secondAttribute="trailing" constant="10" id="Yhj-6H-20S"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="yn3-NS-nsO">
-                                        <rect key="frame" x="0.0" y="328" width="390" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="66" id="yn3-NS-nsO" userLabel="name tf">
+                                        <rect key="frame" x="0.0" y="788" width="390" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yn3-NS-nsO" id="eOe-Pi-Bnf">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UL0-0m-Y8q" customClass="NaruTextField" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <rect key="frame" x="10" y="5" width="370" height="56"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="padding">
-                                                            <real key="value" value="20"/>
-                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
                                                             <color key="value" name="weakTextColor"/>
@@ -258,12 +469,16 @@
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이름"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
-                                                            <color key="value" name="weakTextColor"/>
-                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
-                                                            <color key="value" name="weakTextColor"/>
+                                                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="requiredColor">
+                                                            <color key="value" systemColor="systemGreenColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -274,17 +489,17 @@
                                                 <constraint firstItem="UL0-0m-Y8q" firstAttribute="top" secondItem="eOe-Pi-Bnf" secondAttribute="top" constant="5" id="Xtc-kx-Dbl"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="NYG-5x-SFc">
-                                        <rect key="frame" x="0.0" y="428" width="390" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="NYG-5x-SFc" userLabel="age tf">
+                                        <rect key="frame" x="0.0" y="854" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NYG-5x-SFc" id="mLC-2w-CnX">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhr-z5-Srh" customClass="NaruTextField" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <rect key="frame" x="10" y="5" width="370" height="62"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
                                                             <color key="value" name="weakTextColor"/>
@@ -304,11 +519,14 @@
                                                             <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
-                                                            <color key="value" name="weakTextColor"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
-                                                            <color key="value" name="weakTextColor"/>
+                                                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -320,17 +538,17 @@
                                                 <constraint firstItem="yhr-z5-Srh" firstAttribute="leading" secondItem="mLC-2w-CnX" secondAttribute="leading" constant="10" id="m3C-KJ-8hf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="cM4-Le-nCJ">
-                                        <rect key="frame" x="0.0" y="528" width="390" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="cM4-Le-nCJ" userLabel="birthday gender tf">
+                                        <rect key="frame" x="0.0" y="926" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cM4-Le-nCJ" id="zxo-Rt-DKK">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cQ-xt-0mt" customClass="NaruTextField" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="10" y="5" width="210" height="90"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <rect key="frame" x="10" y="5" width="210" height="62"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
                                                             <color key="value" name="weakTextColor"/>
@@ -346,6 +564,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="이메일"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
                                                             <color key="value" name="weakTextColor"/>
                                                         </userDefinedRuntimeAttribute>
@@ -355,8 +576,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5K-Mh-spb" customClass="NaruSelectBoxView" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="230" y="5" width="150" height="90"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <rect key="frame" x="230" y="5" width="150" height="62"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="lGD-0Q-z47"/>
                                                     </constraints>
@@ -378,7 +598,7 @@
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLColor">
-                                                            <color key="value" name="weakTextColor"/>
+                                                            <color key="value" name="sliderTrackColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -393,16 +613,17 @@
                                                 <constraint firstItem="h5K-Mh-spb" firstAttribute="top" secondItem="zxo-Rt-DKK" secondAttribute="top" constant="5" id="w6w-jL-dQ7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="IcT-qX-mrZ">
-                                        <rect key="frame" x="0.0" y="628" width="390" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="IcT-qX-mrZ" userLabel="email tf">
+                                        <rect key="frame" x="0.0" y="998" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IcT-qX-mrZ" id="d4Y-50-y8c">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yN-hh-o9I" customClass="NaruTextField" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <rect key="frame" x="10" y="5" width="370" height="62"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
@@ -424,6 +645,9 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
                                                             <color key="value" systemColor="systemGreenColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -434,16 +658,17 @@
                                                 <constraint firstAttribute="bottom" secondItem="4yN-hh-o9I" secondAttribute="bottom" constant="5" id="hpb-jw-6st"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="pWU-2O-bs8">
-                                        <rect key="frame" x="0.0" y="728" width="390" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="pWU-2O-bs8" userLabel="password tf">
+                                        <rect key="frame" x="0.0" y="1070" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWU-2O-bs8" id="JgH-yR-sXa">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CJ-tJ-58v" customClass="NaruTextField" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="10" y="5" width="370" height="90"/>
+                                                    <rect key="frame" x="10" y="5" width="370" height="62"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBoxStyle" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="normalLineColor">
@@ -459,6 +684,15 @@
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="비밀번호"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_Color">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="PH_labelColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -469,17 +703,17 @@
                                                 <constraint firstItem="4CJ-tJ-58v" firstAttribute="top" secondItem="JgH-yR-sXa" secondAttribute="top" constant="5" id="id5-7m-D1B"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="TS2-pe-CGj">
-                                        <rect key="frame" x="0.0" y="828" width="390" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="TS2-pe-CGj" userLabel="check, round button ">
+                                        <rect key="frame" x="0.0" y="1142" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TS2-pe-CGj" id="nOI-os-HGw">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mb-Xg-RZW" customClass="NaruCheckButton" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="10" y="0.0" width="40" height="80"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <rect key="frame" x="10" y="0.0" width="40" height="72"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="rOu-QL-6XE"/>
                                                     </constraints>
@@ -493,8 +727,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X27-6K-me3" customClass="NaruCheckButton" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="60" y="0.0" width="40" height="80"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <rect key="frame" x="60" y="0.0" width="40" height="72"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="61W-Jr-mHv"/>
                                                     </constraints>
@@ -508,8 +741,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j65-Zh-xXF" customClass="NaruRadioButton" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="110" y="0.0" width="50" height="80"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <rect key="frame" x="110" y="0.0" width="50" height="72"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="tf7-Zg-IMb"/>
                                                     </constraints>
@@ -527,8 +759,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRy-uP-YBH" customClass="NaruRadioButton" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="170" y="0.0" width="50" height="80"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <rect key="frame" x="170" y="0.0" width="50" height="72"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="D9h-eY-eBR"/>
                                                     </constraints>
@@ -561,17 +792,17 @@
                                                 <constraint firstItem="X27-6K-me3" firstAttribute="leading" secondItem="3mb-Xg-RZW" secondAttribute="trailing" constant="10" id="uG0-Wt-w0o"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="eNS-hN-ivD">
-                                        <rect key="frame" x="0.0" y="908" width="390" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="eNS-hN-ivD" userLabel="term agree 1">
+                                        <rect key="frame" x="0.0" y="1214" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eNS-hN-ivD" id="8HN-6m-QbB">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehb-9Q-Z3f" customClass="NaruTermAgreeButton" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="20" y="10" width="350" height="80"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <rect key="frame" x="20" y="10" width="350" height="52"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="휴대폰 본인인증 전체동의"/>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isTotalAgree" value="YES"/>
@@ -587,6 +818,15 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="subButtonBGColor">
                                                             <color key="value" name="sliderTrackColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seLineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -597,21 +837,25 @@
                                                 <constraint firstAttribute="trailing" secondItem="ehb-9Q-Z3f" secondAttribute="trailing" constant="20" id="yjR-Sr-aRV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="rCJ-vG-eiQ">
-                                        <rect key="frame" x="0.0" y="1008" width="390" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="rCJ-vG-eiQ" userLabel="term agree 2">
+                                        <rect key="frame" x="0.0" y="1286" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rCJ-vG-eiQ" id="HHh-Ht-cuJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k12-AS-TSp" customClass="NaruTermAgreeButton" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="20" y="10" width="350" height="80"/>
+                                                    <rect key="frame" x="20" y="10" width="350" height="52"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="개인정보 이용 동의"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="subButtonBGColor">
                                                             <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="backgroundColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -623,21 +867,25 @@
                                                 <constraint firstAttribute="bottom" secondItem="k12-AS-TSp" secondAttribute="bottom" constant="10" id="sb2-Ul-N7i"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="4mH-us-j8B">
-                                        <rect key="frame" x="0.0" y="1108" width="390" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="4mH-us-j8B" userLabel="term agree 3">
+                                        <rect key="frame" x="0.0" y="1358" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4mH-us-j8B" id="x90-cY-g3B">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeO-72-ucV" customClass="NaruTermAgreeButton" customModule="NaruiUIComponents">
-                                                    <rect key="frame" x="20" y="10" width="350" height="80"/>
+                                                    <rect key="frame" x="20" y="10" width="350" height="52"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="고유식별 정보 처리 동의"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="subButtonBGColor">
                                                             <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="backgroundColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -649,6 +897,183 @@
                                                 <constraint firstAttribute="trailing" secondItem="xeO-72-ucV" secondAttribute="trailing" constant="20" id="pWF-jI-yr8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="Drg-4o-nUU" userLabel="phoneNumberInput">
+                                        <rect key="frame" x="0.0" y="1430" width="390" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Drg-4o-nUU" id="M4b-oo-1TU">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="92"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMv-AR-e4W" customClass="NaruPhoneNumberTextField" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="20" y="10" width="350" height="72"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalBtnColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledBtnColor">
+                                                            <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="titleForBtn" value="인증요청"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="핸드폰 번호"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="foLineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noBtnColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="hiBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="diBtnColor">
+                                                            <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="010-0000-0000"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="btnTxtColor">
+                                                            <color key="value" name="backgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="requiredColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KMv-AR-e4W" firstAttribute="leading" secondItem="M4b-oo-1TU" secondAttribute="leading" constant="20" id="9jh-uz-SSk"/>
+                                                <constraint firstAttribute="bottom" secondItem="KMv-AR-e4W" secondAttribute="bottom" constant="10" id="WMs-ut-R1v"/>
+                                                <constraint firstAttribute="trailing" secondItem="KMv-AR-e4W" secondAttribute="trailing" constant="20" id="nqy-pl-h6r"/>
+                                                <constraint firstItem="KMv-AR-e4W" firstAttribute="top" secondItem="M4b-oo-1TU" secondAttribute="top" constant="10" id="voK-0R-wvw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="WvK-fh-xuq">
+                                        <rect key="frame" x="0.0" y="1522" width="390" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WvK-fh-xuq" id="vrU-0J-mGH">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="92"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8o-dy-EL0" customClass="NaruPhoneAuthInputTextField" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="20" y="10" width="350" height="72"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noBtnColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="hiBtnColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="diBtnColor">
+                                                            <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="btnTxtColor">
+                                                            <color key="value" name="backgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="titleForBtn" value="재요청"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="인증번호"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="인증번호 입력"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                            <color key="value" name="weakTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="requiredColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seLineColor">
+                                                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="L8o-dy-EL0" firstAttribute="top" secondItem="vrU-0J-mGH" secondAttribute="top" constant="10" id="FOZ-QU-yyQ"/>
+                                                <constraint firstItem="L8o-dy-EL0" firstAttribute="leading" secondItem="vrU-0J-mGH" secondAttribute="leading" constant="20" id="Udp-gY-5rn"/>
+                                                <constraint firstAttribute="bottom" secondItem="L8o-dy-EL0" secondAttribute="bottom" constant="10" id="WlJ-QC-DWy"/>
+                                                <constraint firstAttribute="trailing" secondItem="L8o-dy-EL0" secondAttribute="trailing" constant="20" id="bRC-va-8Ww"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="G8v-KT-spF">
+                                        <rect key="frame" x="0.0" y="1614" width="390" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G8v-KT-spF" id="6Ht-hq-Op0">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="92"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCu-Mn-PGE" customClass="NaruPeopleNumberInputView" customModule="NaruiUIComponents">
+                                                    <rect key="frame" x="20" y="10" width="350" height="72"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="requiredColor">
+                                                            <color key="value" systemColor="systemGreenColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="주민등록번호 / 외국인등록번호"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
+                                                            <color key="value" name="sliderTrackColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seLineColor">
+                                                            <color key="value" name="normalTextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zCu-Mn-PGE" firstAttribute="top" secondItem="6Ht-hq-Op0" secondAttribute="top" constant="10" id="EEa-9V-vR4"/>
+                                                <constraint firstAttribute="trailing" secondItem="zCu-Mn-PGE" secondAttribute="trailing" constant="20" id="O6f-Nw-Nfc"/>
+                                                <constraint firstItem="zCu-Mn-PGE" firstAttribute="leading" secondItem="6Ht-hq-Op0" secondAttribute="leading" constant="20" id="tPK-xo-ZiR"/>
+                                                <constraint firstAttribute="bottom" secondItem="zCu-Mn-PGE" secondAttribute="bottom" constant="10" id="wg5-dW-B3g"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="idx">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택1"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -662,10 +1087,14 @@
                     <connections>
                         <outlet property="ageTextField" destination="yhr-z5-Srh" id="S0O-u3-MuL"/>
                         <outlet property="birthdayTextField" destination="3cQ-xt-0mt" id="yr3-Pc-of5"/>
+                        <outlet property="button" destination="9nP-Np-yzI" id="gni-q3-3O9"/>
                         <outlet property="emailTextField" destination="4yN-hh-o9I" id="tzJ-EL-htn"/>
                         <outlet property="genderSelectView" destination="h5K-Mh-spb" id="rWt-F5-iPv"/>
                         <outlet property="nameTextField" destination="UL0-0m-Y8q" id="7vg-Me-fOS"/>
                         <outlet property="password" destination="4CJ-tJ-58v" id="Y8I-JS-reC"/>
+                        <outlet property="peopleIdTextField" destination="zCu-Mn-PGE" id="GbB-ag-i24"/>
+                        <outlet property="phoneAuthNumberInput" destination="L8o-dy-EL0" id="54Y-N6-uU8"/>
+                        <outlet property="phoneNumberTextField" destination="KMv-AR-e4W" id="avr-Kz-2kf"/>
                         <outlet property="textView" destination="xi2-QZ-VdV" id="QZa-oT-0X0"/>
                     </connections>
                 </tableViewController>
@@ -673,10 +1102,233 @@
             </objects>
             <point key="canvasLocation" x="1113.8461538461538" y="543.83886255924165"/>
         </scene>
-        <!--View Controller-->
+        <!--Mind Color Test View Controller-->
+        <scene sceneID="CiI-UC-nNL">
+            <objects>
+                <viewController id="S4j-6U-A7h" customClass="MindColorTestViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z5B-xQ-QnU"/>
+                        <viewControllerLayoutGuide type="bottom" id="LUQ-qG-FTh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9aG-er-kpD">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aqf-EQ-zS1">
+                                <rect key="frame" x="66" y="160" width="258" height="490"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syf-AG-7TR" customClass="NaruTagCollectionView" customModule="NaruiUIComponents">
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
+                                        <color key="backgroundColor" name="backgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="MXz-gy-vyf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="cell_borderColor">
+                                                <color key="value" name="normalTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="cell_bgColor">
+                                                <color key="value" name="weakTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" name="normalTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nnk-Q9-Zw7" customClass="NaruCirclePointView" customModule="NaruiUIComponents">
+                                        <rect key="frame" x="0.0" y="60" width="258" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="bJg-OB-dXH"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLevel">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="currentLevel">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="offCircleColor">
+                                                <color key="value" red="0.60212920979999995" green="0.60212920979999995" blue="0.60212920979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="offColor">
+                                                <color key="value" name="sliderTrackColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="onColor">
+                                                <color key="value" systemColor="systemIndigoColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="circleSize">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K2D-Ds-TJy">
+                                        <rect key="frame" x="0.0" y="120" width="258" height="110"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-vp-5dX" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion1"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="기대"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemYellowColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="detailText" value="기대돼요"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhV-H5-Hts" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
+                                                <rect key="frame" x="89.333333333333343" y="0.0" width="79.333333333333343" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion2"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="즐거움"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="detailText" value="즐겁구나"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemYellowColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bum-Ii-101" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
+                                                <rect key="frame" x="178.66666666666666" y="0.0" width="79.333333333333343" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion3"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="뿌듯"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemYellowColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="VXT-Pl-srS"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pot-0E-xKM">
+                                        <rect key="frame" x="0.0" y="250" width="258" height="110"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykR-gi-tzz" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion4"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="편안"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemTealColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-tb-Ykk" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
+                                                <rect key="frame" x="89.333333333333343" y="0.0" width="79.333333333333343" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion5"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="불안"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemTealColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="965-zD-4ti" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
+                                                <rect key="frame" x="178.66666666666666" y="0.0" width="79.333333333333343" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="etcEmotion6"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="짜증"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mindColor">
+                                                        <color key="value" systemColor="systemTealColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="jaN-tV-z9R"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-ai-uxd">
+                                        <rect key="frame" x="0.0" y="380" width="258" height="110"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMB-N5-uyg" customClass="NaruRingProgressView" customModule="NaruiUIComponents">
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                                                        <color key="value" name="weakTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="고구마"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsr-yY-DJI" customClass="NaruRingProgressView" customModule="NaruiUIComponents">
+                                                <rect key="frame" x="134" y="0.0" width="124" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="감자"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="forgroundColor">
+                                                        <color key="value" systemColor="systemPurpleColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                                                        <color key="value" name="weakTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" name="normalTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="5dX-ap-5O1"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aqf-EQ-zS1" firstAttribute="top" secondItem="z5B-xQ-QnU" secondAttribute="bottom" constant="20" id="FbS-nh-V8b"/>
+                            <constraint firstItem="aqf-EQ-zS1" firstAttribute="leading" secondItem="9aG-er-kpD" secondAttribute="leadingMargin" constant="50" id="PnK-67-MPc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aqf-EQ-zS1" secondAttribute="trailing" constant="50" id="vEi-in-0NS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3kp-2o-4ef"/>
+                    <connections>
+                        <outlet property="tagCollectionView" destination="syf-AG-7TR" id="c0w-vN-UtK"/>
+                        <outletCollection property="ringProgressView" destination="nMB-N5-uyg" collectionClass="NSMutableArray" id="tZg-Sp-aOY"/>
+                        <outletCollection property="ringProgressView" destination="Qsr-yY-DJI" collectionClass="NSMutableArray" id="qdl-M2-em4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iw8-PW-COa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2342" y="536"/>
+        </scene>
+        <!--Simple Pin Number Test View Controller-->
         <scene sceneID="pp1-Jo-Gy8">
             <objects>
-                <viewController id="z7A-RQ-Hoa" sceneMemberID="viewController">
+                <viewController id="z7A-RQ-Hoa" customClass="SimplePinNumberTestViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z4e-UF-mMr"/>
                         <viewControllerLayoutGuide type="bottom" id="y7p-Xq-4mK"/>
@@ -686,7 +1338,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmG-zP-bPI" customClass="NaruSimplePinNumberView" customModule="NaruiUIComponents">
-                                <rect key="frame" x="46" y="188" width="298" height="100"/>
+                                <rect key="frame" x="46" y="240" width="298" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="PZQ-ao-NOv"/>
@@ -699,17 +1351,156 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="onColor">
                                         <color key="value" name="normalTextColor"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSetCustomKeypad" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jy5-vI-Sia">
+                                <rect key="frame" x="45" y="410" width="300" height="400"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYI-Ba-7W8">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKC-iD-TTb">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="n0V-AS-Tom"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIf-wn-Qwe">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="S2Q-BN-YkI"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lga-3B-4qc">
+                                                <rect key="frame" x="200" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="xkD-rg-e2k"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="orK-vS-ord"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nqc-3p-FEe">
+                                        <rect key="frame" x="0.0" y="100" width="300" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uq-w0-V25">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Ub4-lj-KVZ"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFe-gg-yLb">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="woY-5H-zPX"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ims-Fg-ezD">
+                                                <rect key="frame" x="200" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Acf-IE-2I0"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="RAj-4g-iag"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJu-Qz-X7Q">
+                                        <rect key="frame" x="0.0" y="200" width="300" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-M6-vOK">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="lEA-XG-3SL"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyg-GH-HSU">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="UqP-ie-V7O"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHu-GG-Kuz">
+                                                <rect key="frame" x="200" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="MRK-kV-w9c"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="vEA-lG-2jL"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElY-na-EM8">
+                                        <rect key="frame" x="0.0" y="300" width="300" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bj-T1-Emx">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="gHh-T8-89b"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMD-oy-thC">
+                                                <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="RXv-Q1-0hv"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQE-LA-Td7">
+                                                <rect key="frame" x="200" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="cWL-Kg-aF9"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="GxC-Xy-Vxb"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="jy5-vI-Sia" firstAttribute="centerX" secondItem="UmG-zP-bPI" secondAttribute="centerX" id="85E-Tk-o7t"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UmG-zP-bPI" secondAttribute="trailing" constant="30" id="ZeI-q3-vfX"/>
+                            <constraint firstItem="y7p-Xq-4mK" firstAttribute="top" secondItem="jy5-vI-Sia" secondAttribute="bottom" id="hZN-uK-81f"/>
                             <constraint firstItem="UmG-zP-bPI" firstAttribute="top" secondItem="z4e-UF-mMr" secondAttribute="bottom" constant="100" id="tdD-Y2-CGx"/>
                             <constraint firstItem="UmG-zP-bPI" firstAttribute="leading" secondItem="nbu-Dk-iN1" secondAttribute="leadingMargin" constant="30" id="uw2-Qi-571"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AN1-dW-TZt"/>
+                    <connections>
+                        <outlet property="pinNumberView" destination="UmG-zP-bPI" id="2Lx-dH-EC0"/>
+                        <outletCollection property="buttons" destination="JKC-iD-TTb" collectionClass="NSMutableArray" id="XpF-En-hfm"/>
+                        <outletCollection property="buttons" destination="PIf-wn-Qwe" collectionClass="NSMutableArray" id="EPj-qV-FgE"/>
+                        <outletCollection property="buttons" destination="lga-3B-4qc" collectionClass="NSMutableArray" id="ph4-0u-b8d"/>
+                        <outletCollection property="buttons" destination="3uq-w0-V25" collectionClass="NSMutableArray" id="qib-O4-eq6"/>
+                        <outletCollection property="buttons" destination="AFe-gg-yLb" collectionClass="NSMutableArray" id="BGK-N2-qKJ"/>
+                        <outletCollection property="buttons" destination="ims-Fg-ezD" collectionClass="NSMutableArray" id="gZ1-sF-LNy"/>
+                        <outletCollection property="buttons" destination="zIk-M6-vOK" collectionClass="NSMutableArray" id="ktt-CG-rYo"/>
+                        <outletCollection property="buttons" destination="Oyg-GH-HSU" collectionClass="NSMutableArray" id="hd1-0X-7uG"/>
+                        <outletCollection property="buttons" destination="kHu-GG-Kuz" collectionClass="NSMutableArray" id="fzK-Ya-6qp"/>
+                        <outletCollection property="buttons" destination="0bj-T1-Emx" collectionClass="NSMutableArray" id="FN4-lO-Ta3"/>
+                        <outletCollection property="buttons" destination="TMD-oy-thC" collectionClass="NSMutableArray" id="o1C-h1-OZn"/>
+                        <outletCollection property="buttons" destination="EQE-LA-Td7" collectionClass="NSMutableArray" id="org-pJ-UAx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1T7-DL-WGo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -717,8 +1508,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="etcEmotion1" width="60" height="60"/>
+        <image name="etcEmotion2" width="60" height="60"/>
+        <image name="etcEmotion3" width="60" height="60"/>
+        <image name="etcEmotion4" width="60" height="60"/>
+        <image name="etcEmotion5" width="60" height="60"/>
+        <image name="etcEmotion6" width="60" height="60"/>
+        <image name="placeHolderImageTest" width="327" height="144"/>
         <namedColor name="backgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="backgroundColor2">
+            <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="normalTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -735,11 +1536,23 @@
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

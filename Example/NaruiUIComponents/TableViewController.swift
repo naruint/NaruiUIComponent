@@ -15,12 +15,16 @@ class TableViewController: UITableViewController {
         case inputTest = "input test"
         case showGraph = "showGraph"
         case simplePinNumberView = "simple pinnumber test"
+        case mindColorTest = "Mind Color Test"
     }
-    
+    let player = NaruVideoPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "home"
-        
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor:UIColor(named: "normalTextColor")!]
+        _ = player.playVideo(fileName: "mp4/intro", fileExt: "mov", targetView: nil, isLoop: true)
+//        player.playVideo(webUrl: "https://www.dropbox.com/s/j2zzbs0pgxhbgmv/2922a71d4576db30dace2febf14d3631371ec204.mp4?dl=1", targetView: nil)
+        tableView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -151,6 +155,8 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: "showGraph", sender: nil)
         case .simplePinNumberView:
             performSegue(withIdentifier: "showSimplePinnumber", sender: nil)
+        case .mindColorTest:
+            performSegue(withIdentifier: "showMindColor", sender: nil)
         }
     }
     
@@ -161,4 +167,5 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: "showGraph", sender: nil)
         }
     }
+    
 }

@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 extension UIView {
+    public func roundCorners(corners: UIRectCorner, radius: CGFloat, rect: CGRect) {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -45,4 +52,19 @@ extension UIView {
         }
     }
     
+    func finedView(nibName:String, id:String?)->UIView? {
+        let instantiate = UINib(nibName: nibName,
+              bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil)
+        if id == nil {
+            return instantiate.first as? UIView
+        }
+        
+        for a in instantiate {
+            if id == (a as? UIView)?.restorationIdentifier {
+                return a as? UIView
+            }
+        }
+        return nil
+    }
+
 }

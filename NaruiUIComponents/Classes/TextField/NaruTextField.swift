@@ -18,6 +18,9 @@ public class NaruTextField: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var showPwdButton: UIButton!
+    @IBOutlet weak var textFieldbottomLayout: NSLayoutConstraint!
+    @IBOutlet weak var deleteButton: UIButton!
     //MARK:-
     //MARK:IBInspectable
     @IBInspectable var padding:CGFloat = 0.0 {
@@ -27,7 +30,11 @@ public class NaruTextField: UIView {
             }
         }
     }
-    
+    /** 내용이 있을 때 아래 여백*/
+    @IBInspectable var b1_padding:CGFloat = 8.0
+    /** 내용이 없을 때 아래 여백*/
+    @IBInspectable var b2_padding:CGFloat = 16.0
+        
     @IBInspectable var isBoxStyle:Bool = false {
         didSet {
             DispatchQueue.main.async { [weak self] in
@@ -77,7 +84,6 @@ public class NaruTextField: UIView {
     }
     
     @IBInspectable var isRequired:Bool = false
-    @IBInspectable var requiredText:String = "・"
     @IBInspectable var requiredColor:UIColor = UIColor.green
     
     
@@ -92,26 +98,18 @@ public class NaruTextField: UIView {
     }
     
     func setAttributedPlaceHolder() {
-        func attr(color:UIColor,fontSize:CGFloat)->NSAttributedString {
-            let str = NSMutableAttributedString()
-            str.append(NSAttributedString(string: placeHolder ?? "" ,
-                                          attributes:[
-                                            .foregroundColor : color,
-                                            .font:UIFont.systemFont(ofSize: fontSize)
-                                          ]))
-            if isRequired {
-                str.append(NSAttributedString(string: " "))
-                str.append(NSAttributedString(string: requiredText,
-                                              attributes: [
-                                                .foregroundColor : requiredColor,
-                                                .font : UIFont.systemFont(ofSize: fontSize + 10)
-                                              ]))
-            }
-            return str
-        }
         DispatchQueue.main.async {[unowned self] in
-            textField.attributedPlaceholder = attr(color: PH_Color, fontSize: textField.font?.pointSize ?? 10)
-            titleLabel.attributedText = attr(color: PH_labelColor ?? PH_Color , fontSize: titleLabel.font.pointSize)
+            textField.attributedPlaceholder = NSAttributedString(string: placeHolder ?? "", attributes: [.foregroundColor : PH_Color])
+            if isRequired {
+                textField.attributedPlaceholder = placeHolder?.makeRequiredAttributeString(
+                    textColor: PH_labelColor ?? PH_Color ,
+                    pointColor: requiredColor,
+                    height: textField.font?.pointSize ?? 10)
+                titleLabel.attributedText = placeHolder?.makeRequiredAttributeString(
+                    textColor: PH_labelColor ?? PH_Color,
+                    pointColor: requiredColor,
+                    height: titleLabel.font?.pointSize ?? 10)
+            }
         }
     }
     
@@ -141,7 +139,7 @@ public class NaruTextField: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
         addGestureRecognizer(gesture)
-        lineView.alpha = 0.5
+        lineView.alpha = 1.0
         lineView.backgroundColor = normalLineColor
         textField.delegate = self
         updateUI()
@@ -154,6 +152,7 @@ public class NaruTextField: UIView {
             if rightViewMode == .unlessEditing && isHideRightViewWhenInput {
                 textField.rightViewMode = isEmpty ? .unlessEditing : .never
             }
+            textDidChangeCallBack(string)
         }.disposed(by: disposeBag)
         
     }
@@ -166,35 +165,49 @@ public class NaruTextField: UIView {
     }
         
     private func updateUI() {
+        changeDeleteBtn()
         if isBoxStyle {
             lineView.isHidden = true
+            layer.cornerRadius = 2
             layer.borderWidth = 1.0
             layer.borderColor = isError ? errorLineColor.cgColor : normalLineColor.cgColor
             
         }
+        else {
+            lineView.isHidden = false
+            lineView.backgroundColor = isError ? errorLineColor : normalLineColor
+        }
         
         let isHidden = textField.text?.isEmpty ?? true
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {[unowned self] in
-            titleLabel.alpha = isHidden ? 0 : 1
-        } completion: { (fin) in
-            
+        if isBoxStyle {
+            textFieldbottomLayout.constant = isHidden ? b2_padding : b1_padding
+        } else {
+            textFieldbottomLayout.constant = 0
         }
+//        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {[unowned self] in
+            titleLabel.alpha = isHidden ? 0 : 1
+            layoutIfNeeded()
+//        } completion: { (fin) in
+//            
+//        }
         for layout in [leading, trailing] {
             layout?.constant = padding
         }
         focus(isOn: textField.isFirstResponder)
         setAttributedPlaceHolder()
+        
     }
     
     private func focus(isOn:Bool) {
-        UIView.animate(withDuration: 0.25) {[unowned self] in
-            lineView.alpha = isOn ? 1 : 0.5
-            if isBoxStyle {
-                if isError {
-                    layer.borderColor = errorLineColor.cgColor
-                } else {
-                    layer.borderColor = isOn ? focusLineColor.cgColor : normalLineColor.cgColor
-                }
+        lineView.backgroundColor = isOn ? focusLineColor : normalLineColor
+        if isError {
+            lineView.backgroundColor = errorLineColor
+        }
+        if isBoxStyle {
+            if isError {
+                layer.borderColor = errorLineColor.cgColor
+            } else {
+                layer.borderColor = isOn ? focusLineColor.cgColor : normalLineColor.cgColor
             }
         }
     }
@@ -225,7 +238,7 @@ public class NaruTextField: UIView {
         textField.rightView = btn
         textField.rightViewMode = mode
         rightButtonCallBack = callBack
-        
+        changeDeleteBtn()
     }
     
     @objc func onTouchupRightButton(_ sender:UIButton) {
@@ -235,6 +248,11 @@ public class NaruTextField: UIView {
     private var returnCallBack:(_ textField:UITextField)->Void = {_ in }
     public func setReturn(callback:@escaping(_ textField:UITextField)->Void) {
         returnCallBack = callback
+    }
+    
+    private var textDidChangeCallBack:(_ text:String)->Void = {_ in}
+    public func setTextDidChange(callback:@escaping(_ text:String)->Void) {
+        textDidChangeCallBack = callback
     }
     
     //MARK:-
@@ -283,8 +301,6 @@ public class NaruTextField: UIView {
         }
     }
 
-    /** 비밀번호 보기 전환하기 버튼*/
-    var switchShowPWDButton:UIButton? = nil
     
     /** 비밀번호 보기 뷰가 있는 비밀번호 입력 뷰로 만들기*/
     public var isSecureMode:Bool = false {
@@ -295,22 +311,41 @@ public class NaruTextField: UIView {
         }
     }
     
+    public var text:String? {
+        set {
+            textField.text = newValue
+        }
+        get {
+            textField.text
+        }
+    }
+    
+    private func changeDeleteBtn() {
+        textField.setClearButtonImage(image: deleteButton.image(for: .normal)!)
+    }
+    
     func setPwdMode() {
-        let btn = UIButton(type: .custom)
-        btn.setImage(#imageLiteral(resourceName: "icon24ViewBlack").withRenderingMode(.alwaysTemplate), for: .normal)
-        btn.setImage(#imageLiteral(resourceName: "icon24ViewBlack").withRenderingMode(.alwaysTemplate), for: .selected)
-        btn.isSelected = true
+        guard let image1 = showPwdButton.image(for: .normal),
+              let image2 = showPwdButton.image(for: .selected) else {
+            return
+        }
+                
+        let button = UIButton()
+        
+        button.setImage(image1.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(image2.withRenderingMode(.alwaysTemplate), for: .selected)
+        button.isSelected = true
         textField.isSecureTextEntry = true
         textField.keyboardType = .asciiCapable
-        btn.tintColor = normalLineColor
-        btn.rx.tap.bind { [unowned self](_) in
-            btn.isSelected.toggle()
-            btn.tintColor = btn.isSelected ? normalLineColor : focusLineColor
-            textField.isSecureTextEntry = btn.isSelected
+        button.tintColor = normalLineColor
+        button.rx.tap.bind { [unowned self](_) in
+            button.isSelected.toggle()
+            button.tintColor = button.isSelected ? normalLineColor : focusLineColor
+            textField.isSecureTextEntry = button.isSelected
         }.disposed(by: disposeBag)
-        switchShowPWDButton = btn
+        button.frame.size = CGSize(width: 40, height: 25)
         textField.rightViewMode = .always
-        textField.rightView = btn
+        textField.rightView = button
         textField.clearButtonMode = .always
     }
      

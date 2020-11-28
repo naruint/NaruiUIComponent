@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NaruMindColorButton" customModule="NaruiUIComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="button" destination="cza-ky-KSh" id="Rdg-8b-cNa"/>
+                <outlet property="checkImageView" destination="dcg-46-Vrr" id="PiV-pW-P53"/>
+                <outlet property="imageView" destination="fHY-Oq-ioa" id="gqZ-hP-b1d"/>
+                <outlet property="label" destination="8YA-qh-i2m" id="I9u-OE-2VR"/>
+                <outlet property="valueLabel" destination="ued-7z-ruN" id="vi0-bJ-MqY"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9rZ-DC-Ijn">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cza-ky-KSh">
+                    <rect key="frame" x="0.0" y="44" width="100" height="84"/>
+                    <connections>
+                        <action selector="onTouchCancelButton:" destination="-1" eventType="touchCancel" id="YtU-MK-h3E"/>
+                        <action selector="onTouchDownButton:" destination="-1" eventType="touchDown" id="4iv-OS-i0O"/>
+                        <action selector="onTouchUpOutside:" destination="-1" eventType="touchUpOutside" id="Obx-BZ-QJW"/>
+                        <action selector="onTouthUpInsideButton:" destination="-1" eventType="touchUpInside" id="Ca2-3Q-YS1"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YA-qh-i2m">
+                    <rect key="frame" x="35" y="62" width="30.5" height="13.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="etcEmotion1" translatesAutoresizingMaskIntoConstraints="NO" id="fHY-Oq-ioa">
+                    <rect key="frame" x="20" y="0.0" width="60" height="60"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconEtcCheck" translatesAutoresizingMaskIntoConstraints="NO" id="dcg-46-Vrr">
+                    <rect key="frame" x="20" y="0.0" width="60" height="60"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ued-7z-ruN" userLabel="valueLabel">
+                    <rect key="frame" x="20" y="0.0" width="60" height="60"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="r4r-TI-YkW"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="dcg-46-Vrr" firstAttribute="trailing" secondItem="fHY-Oq-ioa" secondAttribute="trailing" id="2ZA-ea-tGh"/>
+                <constraint firstItem="8YA-qh-i2m" firstAttribute="centerX" secondItem="cza-ky-KSh" secondAttribute="centerX" id="4ne-8R-mH9"/>
+                <constraint firstItem="ued-7z-ruN" firstAttribute="trailing" secondItem="fHY-Oq-ioa" secondAttribute="trailing" id="5Ja-d6-51v"/>
+                <constraint firstItem="dcg-46-Vrr" firstAttribute="bottom" secondItem="fHY-Oq-ioa" secondAttribute="bottom" id="96G-bf-amP"/>
+                <constraint firstItem="r4r-TI-YkW" firstAttribute="trailing" secondItem="cza-ky-KSh" secondAttribute="trailing" id="EPU-M3-64q"/>
+                <constraint firstItem="r4r-TI-YkW" firstAttribute="top" secondItem="cza-ky-KSh" secondAttribute="top" id="Exv-dY-mGx"/>
+                <constraint firstItem="dcg-46-Vrr" firstAttribute="top" secondItem="fHY-Oq-ioa" secondAttribute="top" id="KDY-Iw-j7y"/>
+                <constraint firstItem="ued-7z-ruN" firstAttribute="leading" secondItem="fHY-Oq-ioa" secondAttribute="leading" id="Q8a-HP-rv5"/>
+                <constraint firstItem="ued-7z-ruN" firstAttribute="top" secondItem="fHY-Oq-ioa" secondAttribute="top" id="Wp9-R3-jv3"/>
+                <constraint firstItem="r4r-TI-YkW" firstAttribute="bottom" secondItem="cza-ky-KSh" secondAttribute="bottom" id="aDe-dW-TQH"/>
+                <constraint firstItem="dcg-46-Vrr" firstAttribute="leading" secondItem="fHY-Oq-ioa" secondAttribute="leading" id="bZo-Gj-Po4"/>
+                <constraint firstItem="cza-ky-KSh" firstAttribute="leading" secondItem="r4r-TI-YkW" secondAttribute="leading" id="gbH-yi-oCL"/>
+                <constraint firstItem="fHY-Oq-ioa" firstAttribute="top" secondItem="9rZ-DC-Ijn" secondAttribute="top" id="rbE-vf-qrP"/>
+                <constraint firstItem="fHY-Oq-ioa" firstAttribute="centerX" secondItem="r4r-TI-YkW" secondAttribute="centerX" id="uap-SY-gaj"/>
+                <constraint firstItem="ued-7z-ruN" firstAttribute="bottom" secondItem="fHY-Oq-ioa" secondAttribute="bottom" id="vqy-Qy-3mP"/>
+                <constraint firstItem="8YA-qh-i2m" firstAttribute="top" secondItem="fHY-Oq-ioa" secondAttribute="bottom" constant="2" id="yAk-Jq-JZH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="92.753623188405811" y="91.741071428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="etcEmotion1" width="60" height="60"/>
+        <image name="iconEtcCheck" width="32" height="32"/>
+    </resources>
+</document>

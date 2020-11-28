@@ -29,9 +29,22 @@ public class NaruTermAgreeButton: UIView {
             updateUI()
         }
     }
+    /** 선택했을 때 아웃 라인 컬러*/
+    @IBInspectable var seLineColor:UIColor = .clear
+    /** 미선택시 아웃 라인 컬러*/
+    @IBInspectable var noLineColor:UIColor = .clear
+    
     @IBInspectable var subButtonBGColor:UIColor = UIColor(white: 249/255, alpha: 1.0)
     @IBInspectable var totalBGColor:UIColor = .white
     @IBInspectable var totalBorderColor:UIColor = UIColor(white: 220/255, alpha: 1.0)
+    @IBInspectable var textColor:UIColor? {
+        set {
+            titleLabel.textColor = newValue
+        }
+        get {
+            titleLabel.textColor
+        }
+    }
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -83,22 +96,28 @@ public class NaruTermAgreeButton: UIView {
                 }
             }
         }
-        
-        DispatchQueue.main.async {[unowned self] in 
-            updateUI()
-        }
+        updateUI()
     }
 
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        updateUI()
+    }
+    
     func updateUI() {
         iconImageView.isHighlighted = isSelected
+        
         button.isHidden = isTotalAgree
+   
         bgButtonTrailing.constant = isTotalAgree ? 0 : button.frame.width
+        backgroundColor = subButtonBGColor
         if isTotalAgree {
             backgroundColor = totalBGColor
             layer.borderWidth = 1.0
             layer.borderColor = totalBorderColor.cgColor
-        } else {
-            backgroundColor = subButtonBGColor
+            if seLineColor != .clear {
+                layer.borderColor = isSelected ? seLineColor.cgColor : noLineColor.cgColor
+            }
         }
     }
     

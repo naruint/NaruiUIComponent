@@ -18,8 +18,20 @@ public class NaruCheckButton: UIButton {
 
     //MARK:-
     //MARK:IBInspectable
-    @IBInspectable var normalColor:UIColor = .white
-    @IBInspectable var selectedColor:UIColor = .gray
+    @IBInspectable var normalColor:UIColor = .white {
+        didSet {
+            DispatchQueue.main.async {[unowned self] in
+                setTintColor()
+            }
+        }
+    }
+    @IBInspectable var selectedColor:UIColor = .gray {
+        didSet {
+            DispatchQueue.main.async {[unowned self] in
+                setTintColor()
+            }
+        }
+    }
     //MARK:-
     //MARK: arrangeView
     override init(frame: CGRect) {
@@ -48,9 +60,12 @@ public class NaruCheckButton: UIButton {
             button.tintColor = button.isSelected ? selectedColor : normalColor
         }.disposed(by: disposeBag)
         
-        button.tintColor = button.isSelected ? selectedColor : normalColor
+        setTintColor()
         button.setImage(button.image(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.setImage(button.image(for: .selected)?.withRenderingMode(.alwaysTemplate), for: .selected)
     }
-        
+    
+    func setTintColor() {
+        button.tintColor = button.isSelected ? selectedColor : normalColor
+    }
 }
