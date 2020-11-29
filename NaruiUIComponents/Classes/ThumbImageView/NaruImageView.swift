@@ -68,7 +68,7 @@ public class NaruImageView: UIView {
     public let imageView = UIImageView()
     let shadowView = UIView()
     let dimView = UIView()
-    weak var gl:CAGradientLayer? = nil
+    let gl = CAGradientLayer()
     
     var inset:UIEdgeInsets {
         if dropShadow {
@@ -84,6 +84,8 @@ public class NaruImageView: UIView {
     func initUI() {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
+        dimView.layer.masksToBounds = true
+
         for view in [imageView, shadowView, dimView] {
             view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         }
@@ -109,17 +111,14 @@ public class NaruImageView: UIView {
     
     func makeGradient() {
         if gradientOvery {
-            gl?.removeFromSuperlayer()
-            let gl = CAGradientLayer()
             gl.colors = [UIColor(white: 0, alpha: 0 ).cgColor,UIColor(white: 0, alpha: 0.3).cgColor]
             gl.locations = [0.5, 1.0]
             gl.startPoint = CGPoint(x:0,y:0)
             gl.endPoint = CGPoint(x:0,y:1.0)
             gl.frame = CGRect(x: 0, y: 0, width: dimView.frame.width, height: dimView.frame.height)
             dimView.layer.insertSublayer(gl, at: 0)
-            self.gl = gl
         } else {
-            gl?.removeFromSuperlayer()
+            gl.removeFromSuperlayer()
         }
     }
     
