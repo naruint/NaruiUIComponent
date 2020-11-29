@@ -12,6 +12,55 @@ fileprivate extension Notification.Name {
     static let imageSelectedChange = Notification.Name("imageSelectedChange_observer")
 }
 
+fileprivate func getIsSelected(model:ImageCollectionViewController.ViewModel, selectedModels:Set<ImageCollectionViewController.ViewModel>)->Bool {
+    return selectedModels.firstIndex(where: { (m) -> Bool in
+        return m == model
+    }) != nil
+}
+
+fileprivate func getBottomDecoType(model:ImageCollectionViewController.ViewModel, selectedModels:Set<ImageCollectionViewController.ViewModel>)->NaruImageView.BottomDecoStyle {
+    switch selectedModels.count {
+    case 0:
+        return .none
+    case 1:
+        if selectedModels.first == model {
+            return .play
+        }
+        if selectedModels.first?.group != model.group {
+            return .mix
+        }
+        return .none
+    case 2:
+        if selectedModels.firstIndex(where: { (m) -> Bool in
+            return model == m
+        }) != nil {
+            return .play
+        }
+        return .none
+    default:
+        return .none
+    }
+}
+
+fileprivate func getAlpha(model:ImageCollectionViewController.ViewModel, selectedModels:Set<ImageCollectionViewController.ViewModel>)->CGFloat {
+    switch selectedModels.count {
+    case 2:
+        if selectedModels.firstIndex(where: { (m) -> Bool in
+            return model == m
+        }) != nil {
+            return 1.0
+        }
+        return 0.5
+    case 1:
+        if selectedModels.first?.group != model.group || selectedModels.first == model {
+            return 1.0
+        }
+        return 0.5
+    default:
+        return 1.0
+    }
+}
+
 class ImageCollectionViewController: UICollectionViewController {
     struct ViewModel : Hashable {
         let url:URL?
@@ -27,6 +76,9 @@ class ImageCollectionViewController: UICollectionViewController {
             NotificationCenter.default.post(name: .imageSelectedChange, object: selectedModels)
         }
     }
+    
+   
+
     
     let models = [
         [
@@ -68,53 +120,13 @@ class ImageCollectionViewController: UICollectionViewController {
         let model = models[indexPath.section][indexPath.row]
         cell.viewModel = model
         cell.imageView.setImage(with: model.url)
-        cell.imageView.isSelected = getIsSelected(model: model)
-        cell.imageView.bottomDecoStyle = getBottomDecoType(model: model)
-        cell.imageView.alpha = getAlpha(model: model)
+        cell.imageView.isSelected = getIsSelected(model: model,selectedModels: selectedModels)
+        cell.imageView.bottomDecoStyle = getBottomDecoType(model: model,selectedModels: selectedModels)
+        cell.imageView.alpha = getAlpha(model: model,selectedModels: selectedModels)
         return cell
     }
     
-    func getIsSelected(model:ViewModel)->Bool {
-        return selectedModels.firstIndex(where: { (m) -> Bool in
-            return m == model
-        }) != nil
-    }
-    
-    func getBottomDecoType(model:ViewModel)->NaruImageView.BottomDecoStyle {
-        switch selectedModels.count {
-        case 0:
-            return .none
-        case 1:
-            if selectedModels.first == model {
-                return .play
-            }
-            if selectedModels.first?.group != model.group {
-                return .mix
-            }
-            return .none
-        case 2:
-            if selectedModels.firstIndex(where: { (m) -> Bool in
-                return model == m
-            }) != nil {
-                return .play
-            }
-            return .none
-        default:
-            return .none
-        }
-    }
-    
-    func getAlpha(model:ViewModel)->CGFloat {
-        if selectedModels.count == 2 {
-            if selectedModels.firstIndex(where: { (m) -> Bool in
-                return model == m
-            }) != nil {
-                return 1.0
-            }
-            return 0.5
-        }
-        return 1.0
-    }
+   
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let model = models[indexPath.section][indexPath.row]
@@ -148,11 +160,9 @@ class ImageCollectionViewController: UICollectionViewController {
         default:
             break
         }
-        cell.imageView.isSelected = getIsSelected(model: model)
-        cell.imageView.bottomDecoStyle = getBottomDecoType(model: model)
-        UIView.animate(withDuration: 0.25) {[weak self]in
-            cell.imageView.alpha = self?.getAlpha(model: model) ?? 0
-        }
+        cell.imageView.isSelected = getIsSelected(model: model,selectedModels: selectedModels)
+        cell.imageView.bottomDecoStyle = getBottomDecoType(model: model,selectedModels: selectedModels)
+        cell.imageView.alpha = getAlpha(model: model, selectedModels: selectedModels)
     }
 }
 
@@ -164,26 +174,15 @@ class ImageCollectionViewCell:UICollectionViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         NotificationCenter.default.addObserver(forName: .imageSelectedChange, object: nil, queue: nil) { [weak self] (noti) in
-            guard let model = self?.viewModel else {
+            guard let model = self?.viewModel ,
+                  let models = noti.object as? Set<ImageCollectionViewController.ViewModel>
+                  else {
                 return
             }
-            self?.imageView.alpha = 1.0
-            if let models = noti.object as? Set<ImageCollectionViewController.ViewModel> {
-                if self?.imageView.isSelected == false {
-                    if models.count >= 2 || models.count == 0 {
-                        self?.imageView.bottomDecoStyle = .none
-                        if models.count == 2 {
-                            UIView.animate(withDuration: 0.25) {
-                                self?.imageView.alpha = 0.5
-                            }
-                        }
-                    }
-                    else if models.first?.group != model.group {
-                        self?.imageView.bottomDecoStyle = .mix
-                    } else {
-                        self?.imageView.bottomDecoStyle = .none
-                    }
-                }
+            self?.imageView.isSelected = getIsSelected(model: model,selectedModels: models)
+            self?.imageView.bottomDecoStyle = getBottomDecoType(model: model,selectedModels: models)
+            UIView.animate(withDuration: 0.25) {
+                self?.imageView.alpha = getAlpha(model: model, selectedModels: models)
             }
         }
         

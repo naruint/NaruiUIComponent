@@ -191,16 +191,28 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <view key="backgroundView" contentMode="scaleToFill" id="ONH-Ea-5Ch" customClass="NaruDotLineView" customModule="NaruiUIComponents">
+                        <view key="backgroundView" contentMode="scaleToFill" id="ONH-Ea-5Ch">
                             <rect key="frame" x="0.0" y="-140" width="390" height="844"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rM-re-xBZ" customClass="NaruDotLineView" customModule="NaruiUIComponents">
+                                    <rect key="frame" x="0.0" y="70" width="390" height="774"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="5rM-re-xBZ" secondAttribute="trailing" id="M7d-1V-iOy"/>
+                                <constraint firstItem="5rM-re-xBZ" firstAttribute="leading" secondItem="ONH-Ea-5Ch" secondAttribute="leading" id="tmb-Ix-OLL"/>
+                                <constraint firstAttribute="bottom" secondItem="5rM-re-xBZ" secondAttribute="bottom" id="xSr-Au-4b9"/>
+                                <constraint firstItem="5rM-re-xBZ" firstAttribute="top" secondItem="ONH-Ea-5Ch" secondAttribute="top" constant="70" id="ytz-ZX-rCN"/>
+                            </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="dashDistance">
                                     <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
-                                    <real key="value" value="10"/>
+                                    <real key="value" value="100"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
                                     <real key="value" value="10"/>
