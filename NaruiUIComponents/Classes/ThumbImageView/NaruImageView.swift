@@ -1,0 +1,164 @@
+//
+//  NaruImageView.swift
+//  NaruiUIComponents
+//
+//  Created by Changyul Seo on 2020/11/29.
+//
+
+import UIKit
+import Kingfisher
+
+@IBDesignable
+public class NaruImageView: UIView {
+    public var isSelected:Bool = false {
+        didSet {
+            makeDropShadow()
+        }
+    }
+    
+    @IBInspectable var dimColor:UIColor = UIColor(white: 0, alpha: 0.15)
+    @IBInspectable var gradientOvery:Bool = true {
+        didSet {
+            
+            makeGradient()
+        }
+    }
+    
+    @IBInspectable var dropShadow:Bool = false {
+        didSet {
+            initUI()
+        }
+    }
+    
+    @IBInspectable var placeHolder:UIImage? {
+        set {
+            imageView.image = newValue
+        }
+        get {
+            imageView.image
+        }
+    }
+    
+    @IBInspectable var btn_inset_top:CGFloat = 0
+    @IBInspectable var btn_inset_left:CGFloat = 23 + 5
+    @IBInspectable var btn_inset_bottom:CGFloat = 23 + 18
+    @IBInspectable var btn_inset_right:CGFloat = 23 + 5
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        initUI()
+    }
+    
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initUI()
+    }
+    
+    public let imageView = UIImageView()
+    let shadowView = UIView()
+    let dimView = UIView()
+    weak var gl:CAGradientLayer? = nil
+    
+    var inset:UIEdgeInsets {
+        if dropShadow {
+            return UIEdgeInsets(top: btn_inset_top, left: btn_inset_left , bottom: btn_inset_right, right: btn_inset_bottom)
+        }
+        return .zero
+    }
+    
+    public func setImage(with: Source?) {
+        imageView.kf.setImage(with: with, placeholder: placeHolder)
+    }
+    
+    func initUI() {
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        shadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(shadowView)
+        addSubview(imageView)
+        imageView.addSubview(dimView)
+        dimView.translatesAutoresizingMaskIntoConstraints = false
+        dimView.backgroundColor = dimColor
+      
+        updateConstraints()
+        backgroundColor = .clear
+        fixImageViewFrame()
+        let gesture = UITapGestureRecognizer( target: self, action: #selector(self.onTap(gesture:)))
+        addGestureRecognizer(gesture)
+        shadowView.alpha = 0
+    }
+    
+    @objc func onTap(gesture:UITapGestureRecognizer) {
+        isSelected.toggle()
+    }
+    
+    public override func updateConstraints() {
+        super.updateConstraints()
+        dimView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
+        dimView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
+        dimView.topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
+        dimView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+    }
+    
+    func makeGradient() {
+        if gradientOvery {
+            gl?.removeFromSuperlayer()
+            let gl = CAGradientLayer()
+            gl.colors = [UIColor(white: 0, alpha: 0 ).cgColor,UIColor(white: 0, alpha: 0.3).cgColor]
+            gl.locations = [0.5, 1.0]
+            gl.startPoint = CGPoint(x:0,y:0)
+            gl.endPoint = CGPoint(x:0,y:1.0)
+            gl.frame = CGRect(x: 0, y: 0, width: dimView.frame.width, height: dimView.frame.height)
+            dimView.layer.insertSublayer(gl, at: 0)
+            self.gl = gl
+        } else {
+            gl?.removeFromSuperlayer()
+        }
+        
+    }
+    
+    func makeDropShadow() {
+        if dropShadow {
+            shadowView.layer.shadowColor = UIColor.black.cgColor //UIColor(white: 0, alpha: 0.35).cgColor
+            shadowView.layer.shadowOffset = CGSize(width: 5, height: 18)
+            shadowView.layer.shadowRadius = 22
+            shadowView.layer.shadowOpacity = 0.5
+            shadowView.backgroundColor = .black
+            shadowView.layer.cornerRadius = 2
+            imageView.layer.borderWidth = 3
+            imageView.layer.borderColor = UIColor.white.cgColor
+            imageView.layer.cornerRadius = 2
+            shadowView.isHidden = false
+            UIView.animate(withDuration: 0.5) {[weak self]in
+                let isSelected = self?.isSelected ?? false
+                self?.shadowView.alpha = isSelected ? 1 : 0
+            }
+        }
+        else {
+            shadowView.isHidden = true
+        }
+    }
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        fixImageViewFrame()
+        makeGradient()
+        makeDropShadow()
+        updateConstraints()
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        fixImageViewFrame()
+        makeGradient()
+        makeDropShadow()
+        updateConstraints()
+    }
+    
+    func fixImageViewFrame() {
+        imageView.frame = CGRect(x: inset.left, y: inset.top, width: bounds.width - inset.left - inset.right, height: bounds.height - inset.top - inset.bottom)
+        shadowView.frame = CGRect(x: imageView.frame.origin.x + 2, y: imageView.frame.origin.y + 2, width: imageView.frame.width - 4, height: imageView.frame.height - 4)
+    }
+    
+}
