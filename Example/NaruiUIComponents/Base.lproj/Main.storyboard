@@ -268,6 +268,7 @@
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="imageView" destination="NxL-2q-3yW" id="IgF-n0-2SX"/>
+                                    <outlet property="titleLabel" destination="0d0-Hf-50s" id="ag7-ML-Nab"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

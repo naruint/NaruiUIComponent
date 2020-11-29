@@ -123,6 +123,7 @@ class ImageCollectionViewController: UICollectionViewController {
         cell.imageView.isSelected = getIsSelected(model: model,selectedModels: selectedModels)
         cell.imageView.bottomDecoStyle = getBottomDecoType(model: model,selectedModels: selectedModels)
         cell.imageView.alpha = getAlpha(model: model,selectedModels: selectedModels)
+        cell.titleLabel.text = "고양이 \(model.group)"
         return cell
     }
     
@@ -171,6 +172,7 @@ class ImageCollectionViewCell:UICollectionViewCell {
     var viewModel:ImageCollectionViewController.ViewModel? = nil
     @IBOutlet weak var imageView: NaruImageView!
     
+    @IBOutlet weak var titleLabel: UILabel!
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         NotificationCenter.default.addObserver(forName: .imageSelectedChange, object: nil, queue: nil) { [weak self] (noti) in
