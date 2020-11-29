@@ -29,6 +29,7 @@ public class NaruImageView: UIView {
             initUI()
         }
     }
+    @IBInspectable var shadowColor:UIColor = UIColor.black
     @IBInspectable var shadowSize:CGFloat = 11
     @IBInspectable var shadowOffsetX:CGFloat = 5
     @IBInspectable var shadowOffsetY:CGFloat = 18
@@ -46,10 +47,10 @@ public class NaruImageView: UIView {
     }
     
     var btn_inset_left:CGFloat {
-        shadowSize * range - shadowOffsetX
+        shadowSize * range + shadowOffsetX
     }
     var btn_inset_bottom:CGFloat {
-        shadowSize * range  + shadowOffsetY
+        shadowSize * range + shadowOffsetY
     }
     var btn_inset_right:CGFloat {
         shadowSize * range + shadowOffsetX
@@ -124,7 +125,7 @@ public class NaruImageView: UIView {
         bottomDecoImageView.layer.cornerRadius = 12
         bottomDecoImageView.backgroundColor = .white
         bottomDecoImageView.contentMode = .center
-        bottomDecoImageView.layer.shadowColor = UIColor.black.cgColor
+        bottomDecoImageView.layer.shadowColor = shadowColor.cgColor
         bottomDecoImageView.layer.shadowRadius = 5
         bottomDecoImageView.layer.shadowOpacity = 0.15
     }
@@ -166,7 +167,7 @@ public class NaruImageView: UIView {
     
     func makeDropShadow() {
         if dropShadow {
-            shadowView.layer.shadowColor = UIColor.black.cgColor
+            shadowView.layer.shadowColor = shadowColor.cgColor
             shadowView.layer.shadowOffset = CGSize(width: shadowOffsetX, height: shadowOffsetY)
             shadowView.layer.shadowRadius = shadowSize
             shadowView.layer.shadowOpacity = 0.35

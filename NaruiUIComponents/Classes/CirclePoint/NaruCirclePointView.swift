@@ -17,7 +17,7 @@ public class NaruCirclePointView: UIView {
     @IBInspectable var onColor:UIColor = .red
     @IBInspectable var circleSize:CGFloat = 7
     @IBInspectable var padding:CGFloat = 4
-    
+
     var colors:[UIColor] {
         var result:[UIColor] = []
         for i in 0..<maxLevel {

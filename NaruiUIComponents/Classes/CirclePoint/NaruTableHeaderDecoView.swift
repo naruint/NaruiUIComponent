@@ -34,10 +34,17 @@ public class NaruTableHeaderDecoView: UIView {
         }
     }
     
-    public func set(style:Style, text:String? , dashDistance:CGFloat = 10) {
+    public var circleColor: UIColor? = .black {
+        didSet {
+            redraw()
+        }
+    }
+    
+    public func set(style:Style, text:String? , circleColor:UIColor?, dashDistance:CGFloat = 10) {
         self.style = style
         self.text = text
         self.dashDistance = dashDistance
+        self.circleColor = circleColor
     }
     
 
@@ -93,7 +100,7 @@ public class NaruTableHeaderDecoView: UIView {
             label.textAlignment = .center
             layer.addSublayer(label.layer)
         } else {
-            drawCircle(size: 11, color: .black)
+            drawCircle(size: 11, color: circleColor ?? .black)
             drawCircle(size: 4, color: .white)
         }
     }

@@ -111,6 +111,9 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="dropShadow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="touchSelectEnable" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.072984602070000001" green="0.45950765539999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Le-My-TbV" customClass="NaruImageView" customModule="NaruiUIComponents">
@@ -188,6 +191,25 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <view key="backgroundView" contentMode="scaleToFill" id="ONH-Ea-5Ch" customClass="NaruDotLineView" customModule="NaruiUIComponents">
+                            <rect key="frame" x="0.0" y="-140" width="390" height="844"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="dashDistance">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="dotSize">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="fOS-5f-bgM" customClass="ImageCollectionViewCell" customModule="NaruiUIComponents_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
@@ -209,6 +231,9 @@
                                                 <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="dimColor">
                                                     <color key="value" systemColor="systemPinkColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" name="normalTextColor"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -338,7 +363,7 @@
             <objects>
                 <tableViewController id="8u0-zk-73q" customClass="GraphTopTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-lI-cZb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79500440140845074" colorSpace="custom" customColorSpace="displayP3"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="tgd-Fc-Ku8">
