@@ -110,6 +110,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="dropShadow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="touchSelectEnable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Le-My-TbV" customClass="NaruImageView" customModule="NaruiUIComponents">
@@ -118,6 +119,7 @@
                                                     <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="dropShadow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="touchSelectEnable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
