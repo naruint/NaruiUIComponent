@@ -187,7 +187,7 @@
                         <color key="backgroundColor" name="veryLightPink"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="J8g-KQ-BPs">
                             <size key="itemSize" width="200" height="200"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
@@ -224,7 +224,7 @@
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="fOS-5f-bgM" customClass="ImageCollectionViewCell" customModule="NaruiUIComponents_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
+                                <rect key="frame" x="0.0" y="50" width="180" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FpQ-r5-7iZ">
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
@@ -272,6 +272,27 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="OIg-Fn-1cw" customClass="ImageCollectionHeader" customModule="NaruiUIComponents_Example" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP5-7v-DyS">
+                                    <rect key="frame" x="28" y="8" width="46" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                    <color key="textColor" name="normalTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="nP5-7v-DyS" firstAttribute="top" secondItem="OIg-Fn-1cw" secondAttribute="topMargin" id="6GB-cD-NHf"/>
+                                <constraint firstItem="nP5-7v-DyS" firstAttribute="leading" secondItem="OIg-Fn-1cw" secondAttribute="leadingMargin" constant="20" id="FCV-iG-4K1"/>
+                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="nP5-7v-DyS" secondAttribute="trailing" constant="20" id="WAp-0e-BkP"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="nP5-7v-DyS" secondAttribute="bottom" id="aUz-Vw-wEj"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="nP5-7v-DyS" id="4DB-lF-KPC"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="GNC-BT-PmO" id="aIO-2W-hrY"/>
                             <outlet property="delegate" destination="GNC-BT-PmO" id="gzB-n5-wJ4"/>
