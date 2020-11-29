@@ -65,10 +65,26 @@ public class NaruImageView: UIView {
         initUI()
     }
     
+    public enum BottomDecoStyle {
+        case play
+        case mix
+        case none
+    }
+    
+    public var bottomDecoStyle: BottomDecoStyle = .none {
+        didSet {
+            DispatchQueue.main.async {[weak self]in
+                self?.fixImageViewFrame()
+            }
+        }
+    }
+    
     public let imageView = UIImageView()
     let shadowView = UIView()
     let dimView = UIView()
     let gl = CAGradientLayer()
+    
+    let bottomDecoImageView = UIImageView()
     
     var inset:UIEdgeInsets {
         if dropShadow {
@@ -92,20 +108,46 @@ public class NaruImageView: UIView {
         addSubview(shadowView)
         addSubview(imageView)
         addSubview(dimView)
+        addSubview(bottomDecoImageView)
         dimView.backgroundColor = dimColor
       
         backgroundColor = .clear
-        let gesture = UITapGestureRecognizer( target: self, action: #selector(self.onTap(gesture:)))
-        addGestureRecognizer(gesture)
         shadowView.alpha = 0
         fixImageViewFrame()
 
+        bottomDecoImageView.translatesAutoresizingMaskIntoConstraints = false
+       
+        bottomDecoImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        bottomDecoImageView.centerYAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -2).isActive = true
+        bottomDecoImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        bottomDecoImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        bottomDecoImageView.layer.cornerRadius = 12
+        bottomDecoImageView.backgroundColor = .white
+        bottomDecoImageView.contentMode = .center
+        bottomDecoImageView.layer.shadowColor = UIColor.black.cgColor
+        bottomDecoImageView.layer.shadowRadius = 5
+        bottomDecoImageView.layer.shadowOpacity = 0.15
+    }
+
+    weak var tapGesture:UITapGestureRecognizer? = nil
+
+    @IBInspectable var touchSelectEnable:Bool = false {
+        didSet {
+            if touchSelectEnable {
+                let gesture = UITapGestureRecognizer( target: self, action: #selector(self.onTap(gesture:)))
+                self.tapGesture = gesture
+                addGestureRecognizer(gesture)
+            }
+            else if let g = tapGesture {
+                removeGestureRecognizer(g)                
+            }
+        }
     }
     
-    @IBInspectable var touchSelectEnable:Bool = true
-    
     @objc func onTap(gesture:UITapGestureRecognizer) {
-        isSelected.toggle()
+        if touchSelectEnable {
+            isSelected.toggle()
+        }
     }
     
     
@@ -131,11 +173,11 @@ public class NaruImageView: UIView {
             shadowView.backgroundColor = .black
             shadowView.layer.cornerRadius = 2
             imageView.layer.borderWidth = 3
-            imageView.layer.borderColor = UIColor.white.cgColor
+            imageView.layer.borderColor = isSelected ? UIColor.white.cgColor : UIColor.clear.cgColor
             imageView.layer.cornerRadius = 2
             dimView.layer.cornerRadius = 2
             dimView.layer.borderWidth = 3
-            dimView.layer.borderColor = UIColor.white.cgColor
+            dimView.layer.borderColor = isSelected ? UIColor.white.cgColor : UIColor.clear.cgColor
             
             shadowView.isHidden = false
             UIView.animate(withDuration: 0.5) {[weak self]in
@@ -166,6 +208,18 @@ public class NaruImageView: UIView {
         imageView.frame = CGRect(x: inset.left, y: inset.top, width: bounds.width - inset.left - inset.right, height: bounds.height - inset.top - inset.bottom)
         dimView.frame = imageView.frame
         shadowView.frame = CGRect(x: imageView.frame.origin.x + 2, y: imageView.frame.origin.y + 2, width: imageView.frame.width - 4, height: imageView.frame.height - 4)
+        
+        switch bottomDecoStyle {
+        case .none:
+            bottomDecoImageView.isHidden = true
+        case .mix:
+            bottomDecoImageView.isHidden = false
+            bottomDecoImageView.image = UIImage(named: "icon16Mix",in: Bundle(for: NaruImageView.self), compatibleWith: nil)
+            
+        case .play:
+            bottomDecoImageView.isHidden = false
+            bottomDecoImageView.image = UIImage(named: "icon16Sound",in: Bundle(for: NaruImageView.self), compatibleWith: nil)
+        }
     }
     
 }

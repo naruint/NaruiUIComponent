@@ -57,55 +57,27 @@ class ImageCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCollectionViewCell
         let image = imageURLS[indexPath.row]
         cell.imageView.setImage(with: image)
+        cell.imageView.bottomDecoStyle = .mix
         // Configure the cell
     
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell
-        cell.isSelected.toggle()
-        
+        cell.imageView.isSelected.toggle()
+        cell.imageView.bottomDecoStyle =
+            cell.imageView.isSelected ? .play : .mix
     }
 }
 
 
 class ImageCollectionViewCell:UICollectionViewCell {
     @IBOutlet weak var imageView: NaruImageView!
-    override var isSelected: Bool {
-        didSet {
-            imageView.isSelected = isSelected
-        }
-    }
+//    override var isSelected: Bool {
+//        didSet {
+//            imageView.isSelected = isSelected
+//        }
+//    }
 }
