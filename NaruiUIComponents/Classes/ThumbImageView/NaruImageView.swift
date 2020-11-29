@@ -29,7 +29,9 @@ public class NaruImageView: UIView {
             initUI()
         }
     }
-    
+    @IBInspectable var shadowSize:CGFloat = 15
+    @IBInspectable var shadowOffsetX:CGFloat = 5
+    @IBInspectable var shadowOffsetY:CGFloat = 18
     @IBInspectable var placeHolder:UIImage? {
         set {
             imageView.image = newValue
@@ -39,10 +41,19 @@ public class NaruImageView: UIView {
         }
     }
     
-    @IBInspectable var btn_inset_top:CGFloat = 0
-    @IBInspectable var btn_inset_left:CGFloat = 23 + 5
-    @IBInspectable var btn_inset_bottom:CGFloat = 23 + 18
-    @IBInspectable var btn_inset_right:CGFloat = 23 + 5
+    var btn_inset_top:CGFloat {
+        shadowSize * 2 - shadowOffsetY
+    }
+    
+    var btn_inset_left:CGFloat {
+        shadowSize * 2 - shadowOffsetX
+    }
+    var btn_inset_bottom:CGFloat {
+        shadowSize * 2  + shadowOffsetY
+    }
+    var btn_inset_right:CGFloat {
+        shadowSize * 2 + shadowOffsetX
+    }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,12 +72,12 @@ public class NaruImageView: UIView {
     
     var inset:UIEdgeInsets {
         if dropShadow {
-            return UIEdgeInsets(top: btn_inset_top, left: btn_inset_left , bottom: btn_inset_right, right: btn_inset_bottom)
+            return UIEdgeInsets(top: btn_inset_top, left: btn_inset_left , bottom: btn_inset_bottom, right: btn_inset_right)
         }
         return .zero
     }
     
-    public func setImage(with: Source?) {
+    public func setImage(with: Resource?) {
         imageView.kf.setImage(with: with, placeholder: placeHolder)
     }
     
@@ -88,6 +99,8 @@ public class NaruImageView: UIView {
         addGestureRecognizer(gesture)
         shadowView.alpha = 0
     }
+    
+    @IBInspectable var touchSelectEnable:Bool = true
     
     @objc func onTap(gesture:UITapGestureRecognizer) {
         isSelected.toggle()
@@ -121,8 +134,8 @@ public class NaruImageView: UIView {
     func makeDropShadow() {
         if dropShadow {
             shadowView.layer.shadowColor = UIColor.black.cgColor //UIColor(white: 0, alpha: 0.35).cgColor
-            shadowView.layer.shadowOffset = CGSize(width: 5, height: 18)
-            shadowView.layer.shadowRadius = 22
+            shadowView.layer.shadowOffset = CGSize(width: shadowOffsetX, height: shadowOffsetY)
+            shadowView.layer.shadowRadius = shadowSize
             shadowView.layer.shadowOpacity = 0.5
             shadowView.backgroundColor = .black
             shadowView.layer.cornerRadius = 2
