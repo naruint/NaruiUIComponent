@@ -78,6 +78,8 @@
                         <segue destination="8u0-zk-73q" kind="presentation" identifier="showGraph" id="OMk-Ob-uis"/>
                         <segue destination="z7A-RQ-Hoa" kind="show" identifier="showSimplePinnumber" id="5Tu-8l-eG2"/>
                         <segue destination="S4j-6U-A7h" kind="show" identifier="showMindColor" id="vRI-yL-7Nj"/>
+                        <segue destination="J4V-Cj-II1" kind="show" identifier="imageTest1" id="CEt-LG-NLT"/>
+                        <segue destination="GNC-BT-PmO" kind="show" identifier="imageTest2" id="Rhc-63-DcR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xdW-kN-YHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -97,13 +99,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ff7-Ei-pc7">
-                                <rect key="frame" x="16" y="44" width="358" height="717"/>
+                                <rect key="frame" x="16" y="140" width="358" height="621"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sXf-K5-RNU">
-                                        <rect key="frame" x="0.0" y="0.0" width="358" height="232.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="200.33333333333334"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orG-LY-rD4" customClass="NaruImageView" customModule="NaruiUIComponents">
-                                                <rect key="frame" x="0.0" y="0.0" width="174" height="232.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="200.33333333333334"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="dropShadow" value="YES"/>
@@ -111,47 +113,33 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Le-My-TbV" customClass="NaruImageView" customModule="NaruiUIComponents">
-                                                <rect key="frame" x="184" y="0.0" width="174" height="232.33333333333334"/>
+                                                <rect key="frame" x="184" y="0.0" width="174" height="200.33333333333334"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="dropShadow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="dimColor">
-                                                        <color key="value" name="warmPink"/>
-                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uLv-Z6-zRL">
-                                        <rect key="frame" x="0.0" y="242.33333333333331" width="358" height="232.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="210.33333333333331" width="358" height="200.33333333333331"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rT3-BC-t1B" customClass="NaruImageView" customModule="NaruiUIComponents">
-                                                <rect key="frame" x="0.0" y="0.0" width="174" height="232.33333333333334"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="dimColor">
-                                                        <color key="value" name="warmPink"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="dropShadow" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pav-wi-Jc1" customClass="NaruImageView" customModule="NaruiUIComponents">
-                                                <rect key="frame" x="184" y="0.0" width="174" height="232.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="358" height="200.33333333333334"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="dropShadow" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uKd-V3-lI6">
-                                        <rect key="frame" x="0.0" y="484.66666666666657" width="358" height="232.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="420.66666666666657" width="358" height="200.33333333333331"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yl-FV-8NY" customClass="NaruImageView" customModule="NaruiUIComponents">
-                                                <rect key="frame" x="0.0" y="0.0" width="174" height="232.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="200.33333333333334"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="YES"/>
@@ -159,7 +147,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HJ-Xe-0dF" customClass="NaruImageView" customModule="NaruiUIComponents">
-                                                <rect key="frame" x="184" y="0.0" width="174" height="232.33333333333334"/>
+                                                <rect key="frame" x="184" y="0.0" width="174" height="200.33333333333334"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
                                                 </userDefinedRuntimeAttributes>
@@ -178,29 +166,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="dBR-2T-0Bz"/>
+                    <navigationItem key="navigationItem" id="md1-2n-wdO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXQ-gC-SYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1892" y="370"/>
-        </scene>
-        <!--Item 1-->
-        <scene sceneID="uOS-Xd-EjO">
-            <objects>
-                <viewController id="KP7-pv-HAJ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="k2X-Fe-cfn"/>
-                        <viewControllerLayoutGuide type="bottom" id="Had-Vj-nA5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="krg-x8-hpB">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="ZGU-2o-Bg8"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jz6-hX-Yls" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3745" y="370"/>
         </scene>
         <!--Item-->
         <scene sceneID="wjD-EC-aAI">
@@ -210,7 +180,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="sliderTrackColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J8g-KQ-BPs">
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="J8g-KQ-BPs">
                             <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -218,31 +188,43 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="fOS-5f-bgM" customClass="ImageCollectionViewCell" customModule="NaruiUIComponents_Example" customModuleProvider="target">
-                                <rect key="frame" x="95" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FpQ-r5-7iZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxL-2q-3yW" customClass="NaruImageView" customModule="NaruiUIComponents">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="6qY-Ek-2e5"/>
+                                                <constraint firstAttribute="width" constant="180" id="6qY-Ek-2e5"/>
                                                 <constraint firstAttribute="height" constant="200" id="C6E-5h-uE9"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="touchSelectEnable" value="NO"/>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="gradientOvery" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="dropShadow" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="placeHolder" value="imageClassThumbnail"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="dimColor">
+                                                    <color key="value" systemColor="systemPinkColor"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고양이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0d0-Hf-50s">
+                                            <rect key="frame" x="30.000000000000004" y="133" width="36.333333333333343" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <color key="textColor" name="white"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="0d0-Hf-50s" secondAttribute="bottom" constant="50" id="1YX-eo-Tad"/>
                                         <constraint firstItem="NxL-2q-3yW" firstAttribute="leading" secondItem="FpQ-r5-7iZ" secondAttribute="leading" id="20D-jV-e55"/>
                                         <constraint firstAttribute="trailing" secondItem="NxL-2q-3yW" secondAttribute="trailing" id="GSk-0p-Quy"/>
                                         <constraint firstItem="NxL-2q-3yW" firstAttribute="top" secondItem="FpQ-r5-7iZ" secondAttribute="top" id="YiP-QV-6PM"/>
                                         <constraint firstAttribute="bottom" secondItem="NxL-2q-3yW" secondAttribute="bottom" id="cbY-Pc-z1r"/>
+                                        <constraint firstItem="0d0-Hf-50s" firstAttribute="leading" secondItem="FpQ-r5-7iZ" secondAttribute="leading" constant="30" id="gBq-vG-tdx"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0d0-Hf-50s" secondAttribute="trailing" constant="30" id="xEc-YB-bTy"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
@@ -256,6 +238,7 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Item" id="5be-yg-DkL"/>
+                    <navigationItem key="navigationItem" id="9Tn-Lm-b5i"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3V-Iz-sRU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,7 +256,6 @@
                     <connections>
                         <segue destination="sb0-HP-x5k" kind="relationship" relationship="viewControllers" id="FNp-aa-0fd"/>
                         <segue destination="J4V-Cj-II1" kind="relationship" relationship="viewControllers" id="vlJ-Iw-SyA"/>
-                        <segue destination="KP7-pv-HAJ" kind="relationship" relationship="viewControllers" id="dGK-AN-kPj"/>
                         <segue destination="GNC-BT-PmO" kind="relationship" relationship="viewControllers" id="Elg-gy-C0Z"/>
                     </connections>
                 </tabBarController>
@@ -1706,6 +1688,10 @@
             <point key="canvasLocation" x="-783" y="565"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Rhc-63-DcR"/>
+        <segue reference="CEt-LG-NLT"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="etcEmotion1" width="60" height="60"/>
         <image name="etcEmotion2" width="60" height="60"/>
@@ -1730,11 +1716,11 @@
         <namedColor name="veryLightPink">
             <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="warmPink">
-            <color red="1" green="0.32941176470588235" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="weakTextColor">
             <color red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

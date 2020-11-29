@@ -29,7 +29,7 @@ public class NaruImageView: UIView {
             initUI()
         }
     }
-    @IBInspectable var shadowSize:CGFloat = 15
+    @IBInspectable var shadowSize:CGFloat = 11
     @IBInspectable var shadowOffsetX:CGFloat = 5
     @IBInspectable var shadowOffsetY:CGFloat = 18
     @IBInspectable var placeHolder:UIImage? {
@@ -40,19 +40,19 @@ public class NaruImageView: UIView {
             imageView.image
         }
     }
-    
+    var range:CGFloat = 1.9
     var btn_inset_top:CGFloat {
-        shadowSize * 2 - shadowOffsetY
+        shadowSize * range - shadowOffsetY
     }
     
     var btn_inset_left:CGFloat {
-        shadowSize * 2 - shadowOffsetX
+        shadowSize * range - shadowOffsetX
     }
     var btn_inset_bottom:CGFloat {
-        shadowSize * 2  + shadowOffsetY
+        shadowSize * range  + shadowOffsetY
     }
     var btn_inset_right:CGFloat {
-        shadowSize * 2 + shadowOffsetX
+        shadowSize * range + shadowOffsetX
     }
 
     public override init(frame: CGRect) {
@@ -84,20 +84,20 @@ public class NaruImageView: UIView {
     func initUI() {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        shadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        for view in [imageView, shadowView, dimView] {
+            view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        }
         addSubview(shadowView)
         addSubview(imageView)
-        imageView.addSubview(dimView)
-        dimView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(dimView)
         dimView.backgroundColor = dimColor
       
-        updateConstraints()
         backgroundColor = .clear
-        fixImageViewFrame()
         let gesture = UITapGestureRecognizer( target: self, action: #selector(self.onTap(gesture:)))
         addGestureRecognizer(gesture)
         shadowView.alpha = 0
+        fixImageViewFrame()
+
     }
     
     @IBInspectable var touchSelectEnable:Bool = true
@@ -106,13 +106,6 @@ public class NaruImageView: UIView {
         isSelected.toggle()
     }
     
-    public override func updateConstraints() {
-        super.updateConstraints()
-        dimView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
-        dimView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
-        dimView.topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
-        dimView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
-    }
     
     func makeGradient() {
         if gradientOvery {
@@ -128,20 +121,23 @@ public class NaruImageView: UIView {
         } else {
             gl?.removeFromSuperlayer()
         }
-        
     }
     
     func makeDropShadow() {
         if dropShadow {
-            shadowView.layer.shadowColor = UIColor.black.cgColor //UIColor(white: 0, alpha: 0.35).cgColor
+            shadowView.layer.shadowColor = UIColor.black.cgColor
             shadowView.layer.shadowOffset = CGSize(width: shadowOffsetX, height: shadowOffsetY)
             shadowView.layer.shadowRadius = shadowSize
-            shadowView.layer.shadowOpacity = 0.5
+            shadowView.layer.shadowOpacity = 0.35
             shadowView.backgroundColor = .black
             shadowView.layer.cornerRadius = 2
             imageView.layer.borderWidth = 3
             imageView.layer.borderColor = UIColor.white.cgColor
             imageView.layer.cornerRadius = 2
+            dimView.layer.cornerRadius = 2
+            dimView.layer.borderWidth = 3
+            dimView.layer.borderColor = UIColor.white.cgColor
+            
             shadowView.isHidden = false
             UIView.animate(withDuration: 0.5) {[weak self]in
                 let isSelected = self?.isSelected ?? false
@@ -158,7 +154,6 @@ public class NaruImageView: UIView {
         fixImageViewFrame()
         makeGradient()
         makeDropShadow()
-        updateConstraints()
     }
     
     public override func layoutSubviews() {
@@ -166,11 +161,11 @@ public class NaruImageView: UIView {
         fixImageViewFrame()
         makeGradient()
         makeDropShadow()
-        updateConstraints()
     }
     
     func fixImageViewFrame() {
         imageView.frame = CGRect(x: inset.left, y: inset.top, width: bounds.width - inset.left - inset.right, height: bounds.height - inset.top - inset.bottom)
+        dimView.frame = imageView.frame
         shadowView.frame = CGRect(x: imageView.frame.origin.x + 2, y: imageView.frame.origin.y + 2, width: imageView.frame.width - 4, height: imageView.frame.height - 4)
     }
     

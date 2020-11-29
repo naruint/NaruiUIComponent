@@ -16,6 +16,8 @@ class TableViewController: UITableViewController {
         case showGraph = "showGraph"
         case simplePinNumberView = "simple pinnumber test"
         case mindColorTest = "Mind Color Test"
+        case imageTest1 = "imageTest1"
+        case imageTest2 = "imageTest2"
     }
     let player = NaruVideoPlayer()
     override func viewDidLoad() {
@@ -47,7 +49,8 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch CellType.allCases[indexPath.row] {
+        let cellType = CellType.allCases[indexPath.row]
+        switch cellType {
         //MARK:horizontalSlideSelect
         case .horizontalSlideSelect:
             let vc = NaruHorizontalSlideSelectViewController.viewController
@@ -161,6 +164,8 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: "showSimplePinnumber", sender: nil)
         case .mindColorTest:
             performSegue(withIdentifier: "showMindColor", sender: nil)
+        case .imageTest1, .imageTest2:
+            performSegue(withIdentifier: cellType.rawValue, sender: nil) 
         }
     }
     
