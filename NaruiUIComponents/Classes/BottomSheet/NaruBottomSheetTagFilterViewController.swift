@@ -26,23 +26,35 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         print("NaruBottomSheetTagFilterViewController deinit!!")
     }
 
-    struct Model {
-        struct Tag {
-            let text:String
-            let prefix:String?
-            var displayText:String {
+    public struct Model {
+        public struct Tag {
+            public let text:String
+            public let prefix:String?
+            public var displayText:String {
                 return "\(prefix ?? "")\(text)"
             }
+            public init(text:String, prefix:String?) {
+                self.text = text
+                self.prefix = prefix
+            }
         }
-        struct FilterSet {
-            let title:String
-            let isMultipleSelect:Bool
-            let tags:[Tag]
+        public struct FilterSet {
+            public let title:String
+            public let isMultipleSelect:Bool
+            public let tags:[Tag]
+            public init(title:String, isMultipleSelect:Bool, tags:[Tag]) {
+                self.title = title
+                self.isMultipleSelect = isMultipleSelect
+                self.tags = tags
+            }
         }
-      
     }
     
-    var filterSets:[Model.FilterSet] = [
+    public func setFilterSet(set:[Model.FilterSet]) {
+        self.filterSets = set
+    }
+    
+    public var filterSets:[Model.FilterSet] = [
         Model.FilterSet(
             title: "상태", isMultipleSelect: true ,tags: [
                 Model.Tag(text: "숙면", prefix: "#"),
@@ -251,7 +263,7 @@ class PullToDismissDataSource: UBottomSheetCoordinatorDataSource {
     }
     
     func sheetPositions(_ availableHeight: CGFloat) -> [CGFloat] {
-        return [height,height*1.5,height*2,availableHeight*1.1]//[0.7, 1.1].map{$0*availableHeight} /// Trick is to set bottom position to any value more than available height such as 1.1*availableHeight
+        return [height,availableHeight*1.1]//[0.7, 1.1].map{$0*availableHeight} /// Trick is to set bottom position to any value more than available height such as 1.1*availableHeight
     }
     
     func initialPosition(_ availableHeight: CGFloat) -> CGFloat {

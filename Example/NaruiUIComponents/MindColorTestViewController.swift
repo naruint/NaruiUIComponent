@@ -33,7 +33,7 @@ class MindColorTestViewController : UIViewController {
             if let tags = noti.object as? [String],
                let title = noti.userInfo?["title"] as? String {
                 print("tags: \(tags) title : \(title)")
-                if title == "상태" {
+                if title == "태그" {
                     self?.tagCollectionView.tags = tags
                 }
             }
@@ -41,8 +41,31 @@ class MindColorTestViewController : UIViewController {
     }
     
     @objc func onTouchUPRightBarButton(_ sender:UIBarButtonItem) {
-        
-        NaruBottomSheetTagFilterViewController.viewController.showBottomSheet(
+        let vc = NaruBottomSheetTagFilterViewController.viewController
+        vc.setFilterSet(
+            set: [
+                NaruBottomSheetTagFilterViewController.Model.FilterSet(
+                    title: "태그",
+                    isMultipleSelect: true,
+                    tags: [
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "쌀", prefix: "#"),
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "보리", prefix: "#"),
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "귀리", prefix: "#"),
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "귤", prefix: "#"),
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "지리산", prefix: "#"),
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "토종닭", prefix: "#"),
+                    ]),
+                NaruBottomSheetTagFilterViewController.Model.FilterSet(
+                    title: "클래스",
+                    isMultipleSelect: false,
+                    tags: [
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "밥", prefix: nil),
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "국", prefix: nil),
+                        NaruBottomSheetTagFilterViewController.Model.Tag(text: "고기", prefix: nil),
+                    ]),
+            ]
+        )
+        vc.showBottomSheet(
             targetViewController: self ,
             selectedTags: ["상태":tagCollectionView.tags])
     }
