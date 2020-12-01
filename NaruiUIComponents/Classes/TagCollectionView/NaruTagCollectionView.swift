@@ -65,6 +65,6 @@ extension NaruTagCollectionView : UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = prefix + tags[indexPath.row]
         let newSize = NSString(string: text).size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12)])
-        return CGSize(width: newSize.width + 30, height: 28)
+        return CGSize(width: newSize.width + 40, height: 28)
     }
 }
