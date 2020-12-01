@@ -240,6 +240,9 @@ public class NaruAudioPlayer {
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime
         
         DispatchQueue.main.async {[unowned self] in
+            if players.count == 0 {
+                return
+            }
             NotificationCenter.default.post(
                 name: .naruAudioPlayerStatusDidChange,
                 object: PlayTimeInfo(
