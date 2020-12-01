@@ -397,7 +397,7 @@
             <objects>
                 <tableViewController id="8u0-zk-73q" customClass="GraphTopTestTableViewController" customModule="NaruiUIComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-lI-cZb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79500440140845074" colorSpace="custom" customColorSpace="displayP3"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="tgd-Fc-Ku8">
@@ -1356,29 +1356,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syf-AG-7TR" customClass="NaruTagCollectionView" customModule="NaruiUIComponents">
+                                <rect key="frame" x="0.0" y="140" width="390" height="40"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MXz-gy-vyf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="cell_borderColor">
+                                        <color key="value" name="normalTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="cell_bgColor">
+                                        <color key="value" name="weakTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" name="normalTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aqf-EQ-zS1">
-                                <rect key="frame" x="66" y="160" width="258" height="490"/>
+                                <rect key="frame" x="66" y="190" width="258" height="430"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syf-AG-7TR" customClass="NaruTagCollectionView" customModule="NaruiUIComponents">
-                                        <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
-                                        <color key="backgroundColor" name="backgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="MXz-gy-vyf"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="cell_borderColor">
-                                                <color key="value" name="normalTextColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="cell_bgColor">
-                                                <color key="value" name="weakTextColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" name="normalTextColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nnk-Q9-Zw7" customClass="NaruCirclePointView" customModule="NaruiUIComponents">
-                                        <rect key="frame" x="0.0" y="60" width="258" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="bJg-OB-dXH"/>
@@ -1408,7 +1408,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K2D-Ds-TJy">
-                                        <rect key="frame" x="0.0" y="120" width="258" height="110"/>
+                                        <rect key="frame" x="0.0" y="60" width="258" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-vp-5dX" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="110"/>
@@ -1457,7 +1457,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pot-0E-xKM">
-                                        <rect key="frame" x="0.0" y="250" width="258" height="110"/>
+                                        <rect key="frame" x="0.0" y="190" width="258" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykR-gi-tzz" customClass="NaruMindColorButton" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="110"/>
@@ -1507,7 +1507,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-ai-uxd">
-                                        <rect key="frame" x="0.0" y="380" width="258" height="110"/>
+                                        <rect key="frame" x="0.0" y="320" width="258" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMB-N5-uyg" customClass="NaruRingProgressView" customModule="NaruiUIComponents">
                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="110"/>
@@ -1551,8 +1551,11 @@
                         </subviews>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aqf-EQ-zS1" firstAttribute="top" secondItem="z5B-xQ-QnU" secondAttribute="bottom" constant="20" id="FbS-nh-V8b"/>
+                            <constraint firstItem="aqf-EQ-zS1" firstAttribute="top" secondItem="z5B-xQ-QnU" secondAttribute="bottom" constant="50" id="FbS-nh-V8b"/>
                             <constraint firstItem="aqf-EQ-zS1" firstAttribute="leading" secondItem="9aG-er-kpD" secondAttribute="leadingMargin" constant="50" id="PnK-67-MPc"/>
+                            <constraint firstItem="syf-AG-7TR" firstAttribute="leading" secondItem="9aG-er-kpD" secondAttribute="leading" id="UTF-CY-as2"/>
+                            <constraint firstItem="syf-AG-7TR" firstAttribute="top" secondItem="z5B-xQ-QnU" secondAttribute="bottom" id="YDm-3A-9rY"/>
+                            <constraint firstAttribute="trailing" secondItem="syf-AG-7TR" secondAttribute="trailing" id="a0D-WX-Z2o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aqf-EQ-zS1" secondAttribute="trailing" constant="50" id="vEi-in-0NS"/>
                         </constraints>
                     </view>
