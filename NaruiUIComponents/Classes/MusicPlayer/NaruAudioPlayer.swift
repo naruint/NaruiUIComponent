@@ -54,6 +54,8 @@ public class NaruAudioPlayer {
     }
     
     var players:[URL:AVAudioPlayer] = [:]
+    
+    /** 첫번쨰 플레이어를 리턴함.*/
     var player:AVAudioPlayer? {
         if let url = musicUrls.first {
             return players[url]
@@ -279,7 +281,7 @@ public class NaruAudioPlayer {
     }
     
     func updateTime() {
-        guard let player = players.first?.value else {
+        guard let player = self.player else {
             timmerSwitch = false
             return
         }

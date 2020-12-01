@@ -102,16 +102,16 @@ class ImageCollectionViewController: UICollectionViewController {
                       musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
                       group: "B"),
             ViewModel(url: URL(string: "https://img2.quasarzone.com/editor/2020/08/29/fe477ba0e01ca8d38d28650b9a11b108.jpg"),
-                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/3zxrrryqh0s3u1i/music5.mp3?dl=1"),
                       group: "B"),
             ViewModel(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBZ0U7sYvpeZbinWr7sX_xdkS5AhosCzNB1A&usqp=CAU"),
-                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/op5tk9kte5saafn/music3.mp3?dl=1"),
                       group: "B"),
             ViewModel(url: URL(string: "https://cdn.pixabay.com/photo/2019/10/14/09/39/cat-4548385_960_720.jpg"),
-                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/9dtmsf4r1jxctst/music2.mp3?dl=1"),
                       group: "B"),
             ViewModel(url: URL(string: "https://t1.daumcdn.net/cfile/blog/1676324D4DE12D7415"),
-                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/t4i0c2jbknbf7j6/music1.mp3?dl=1"),
                       group: "B")
         ]
     ]
