@@ -53,7 +53,13 @@ public class NaruAudioPlayer {
         return result
     }
     
-    var players:[URL:AVAudioPlayer] = [:]
+    var players:[URL:AVAudioPlayer] = [:] {
+        didSet {
+            if players.count == 0 {
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+            }
+        }
+    }
     
     /** 첫번쨰 플레이어를 리턴함.*/
     var player:AVAudioPlayer? {
