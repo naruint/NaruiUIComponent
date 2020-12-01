@@ -78,7 +78,7 @@ class ImageCollectionViewController: UICollectionViewController {
         }
     }
     
-   
+    let playerView = NaruMusicPlayerMiniView()
 
     
     let models = [
@@ -162,13 +162,14 @@ class ImageCollectionViewController: UICollectionViewController {
             }) == nil {
                 selectedModels.insert(model)
                 NaruAudioPlayer.shared.insertMusic(url: model.musicURL, isFirstTrack: model.group == "B")
+                playerView.showPlayer()
             } else {
                 selectedModels.remove(model)
                 NaruAudioPlayer.shared.removeMusic(url: model.musicURL)
             }
         }
         
-        NaruAudioPlayer.shared.play()
+        NaruAudioPlayer.shared.play { }
         
         switch selectedModels.count {
         case 2:
@@ -193,8 +194,7 @@ class ImageCollectionViewController: UICollectionViewController {
         cell.imageView.bottomDecoStyle = getBottomDecoType(model: model,selectedModels: selectedModels)
         cell.imageView.alpha = getAlpha(model: model, selectedModels: selectedModels)
         
-        NaruAudioPlayer.shared.setupNowPlaying(title: "test", subTitle: "산들바람 솔솔", artworkImageURL: URL(string: "https://i.pinimg.com/originals/34/6e/df/346edf41cf7de5ba8a37d34a4771a4f0.jpg"))
-        NaruAudioPlayer.shared.play()
+        NaruAudioPlayer.shared.play(title: "test", subTitle: "산들바람 솔솔", artworkImageURL: URL(string: "https://i.pinimg.com/originals/34/6e/df/346edf41cf7de5ba8a37d34a4771a4f0.jpg"))
         
     }
 }

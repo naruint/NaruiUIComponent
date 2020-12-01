@@ -104,4 +104,23 @@ public class NaruMusicPlayerMiniView: UIView {
         
     }
     
+    
+    public func showPlayer() {
+        var tapbarHeight:CGFloat = 0
+
+        if let vc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
+            tapbarHeight = vc.tabBar.frame.height
+        }
+        
+        let bottomHeight:CGFloat =  tapbarHeight
+
+        autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        let newFrame = CGRect(x: 0, y: UIScreen.main.bounds.height - bottomHeight - 72 , width: UIScreen.main.bounds.width, height: 72)
+        frame = newFrame
+    
+        UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(self)
+
+    }
+    
+    
 }

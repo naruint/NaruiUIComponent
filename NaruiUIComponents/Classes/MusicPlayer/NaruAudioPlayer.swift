@@ -54,6 +54,12 @@ public class NaruAudioPlayer {
     }
     
     var players:[URL:AVAudioPlayer] = [:]
+    var player:AVAudioPlayer? {
+        if let url = musicUrls.first {
+            return players[url]
+        }
+        return nil
+    }
     
     var title:String? = nil
     var subTitle:String? = nil
@@ -73,7 +79,9 @@ public class NaruAudioPlayer {
             if musicUrls.count == 0 {
                 return .noActionableNowPlayingItem
             }
-            play()
+            play{
+                
+            }
             return .success
         }
         commandCenter.pauseCommand.addTarget { [unowned self] (event) -> MPRemoteCommandHandlerStatus in
@@ -87,9 +95,22 @@ public class NaruAudioPlayer {
         commandCenter.previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
             return .noActionableNowPlayingItem
         }
+        
         commandCenter.nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
             return .noActionableNowPlayingItem
         }
+                
+        commandCenter.changePlaybackPositionCommand.addTarget { [unowned self](event) -> MPRemoteCommandHandlerStatus in
+            print(event)
+            if let p = player {
+                p.currentTime = (event as? MPChangePlaybackPositionCommandEvent)?.positionTime ?? 0
+                return .success
+            }
+            return .noActionableNowPlayingItem
+        }
+        
+        
+
     }
     
     public func insertMusic(url:URL?, isFirstTrack:Bool) {
@@ -133,11 +154,19 @@ public class NaruAudioPlayer {
         if isPlaying {
             pause()
         } else {
-            play()
+            play{
+                
+            }
         }
     }
     
-    public func play() {
+    public func play(title:String,subTitle:String, artworkImageURL:URL?) {
+        play { [unowned self] in
+            setupNowPlaying(title: title, subTitle: subTitle, artworkImageURL: artworkImageURL)
+        }
+    }
+    
+    public func play(prepareAudio:@escaping()->Void) {
         print("audio play : \(players))")
         func playMusic() {
             for player in players.values {
@@ -162,6 +191,8 @@ public class NaruAudioPlayer {
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {[unowned self] in
                         playMusic()
                         updateTime()
+                        prepareAudio()
+                        self.timmerSwitch = true
                     }
                 }
             } else {
@@ -178,7 +209,8 @@ public class NaruAudioPlayer {
                             player.prepareToPlay()
                             players[url] = player
                             playMusic()
-                            updateTime()
+                            prepareAudio()
+                            self.timmerSwitch = true
                         }
                     }
                 }
@@ -198,21 +230,23 @@ public class NaruAudioPlayer {
         }
     }
    
-    public func setupNowPlaying(title:String,subTitle:String, artworkImageURL:URL?) {
+    func setupNowPlaying(title:String,subTitle:String, artworkImageURL:URL?) {
         func setNowPlay(artwork:UIImage) {
             var nowPlayingInfo:[String:Any] = [:]
             nowPlayingInfo[MPMediaItemPropertyTitle] = title
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: artwork.size, requestHandler: { (size) -> UIImage in
                 return artwork
             })
-            if let item = playerItems.first {
-                nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = item.currentTime().seconds
-                nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = item.duration.seconds
+            if let p = self.player {
+                nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = p.currentTime
+                nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = p.duration
+                nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = p.rate
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                    setNowPlay(artwork: artwork)
+                }
             }
-            if let player = players.first?.value {
-                nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
-            }
-            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
         }
 
         
@@ -235,15 +269,23 @@ public class NaruAudioPlayer {
         }
         
     }
-
+    
+    var timmerSwitch = false {
+        didSet {
+            if timmerSwitch == true && oldValue == false {
+                updateTime()
+            }
+        }
+    }
     
     func updateTime() {
         guard let player = players.first?.value else {
+            timmerSwitch = false
             return
         }
         let value:Float = Float(player.currentTime / player.duration)
         print("updateTime : \( player.currentTime) \(player.duration) \(value)")
-        DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
+        DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
             self?.updateTime()
         }
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime
