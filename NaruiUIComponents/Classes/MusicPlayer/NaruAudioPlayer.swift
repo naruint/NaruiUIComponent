@@ -9,7 +9,7 @@ import Foundation
 import AVKit
 import MediaPlayer
 import Alamofire
-extension Notification.Name {
+public extension Notification.Name {
     static let naruAudioPlayerStatusDidChange = Notification.Name("naruAudioPlayerStatusDidChange_observer")
 }
 /**
@@ -102,18 +102,21 @@ public class NaruAudioPlayer {
         }
     }
     
-    public func removeMusic(url:URL) {
-        if let index = musicUrls.firstIndex(where: { (u) -> Bool in
+    public func removeMusic(url:URL?) {
+        if let url = url, let index = musicUrls.firstIndex(where: { (u) -> Bool in
             return u == url
         }) {
-            musicUrls.remove(at: index)
             players[url]?.stop()
             players[url] = nil
+            musicUrls.remove(at: index)
         }
     }
     
     public func removeAllMusic() {
         musicUrls.removeAll()
+        for player in players.values {
+            player.stop()
+        }
         players.removeAll()
     }
     
@@ -141,11 +144,17 @@ public class NaruAudioPlayer {
                 player.play()
             }
         }
-        if players.values.count > 0 {
+        var needPrepareURL:[URL] = []
+        for url in musicUrls {
+            if players[url] == nil {
+                needPrepareURL.append(url)
+            }
+        }
+        if needPrepareURL.count == 0 {
             playMusic()
             return
         }
-        for url in musicUrls {
+        for url in needPrepareURL {
             if url.isFileURL {
                 if let player = try? AVAudioPlayer(contentsOf: url) {
                     player.prepareToPlay()
@@ -163,9 +172,9 @@ public class NaruAudioPlayer {
                             object: progress)
                     })
                     .responseURL { [unowned self] (response) in
-                    if let url = response.fileURL {
-                        print(url.absoluteString)
-                        if let player = try? AVAudioPlayer(contentsOf: url) {
+                    if let fileUrl = response.fileURL {
+                        print(fileUrl.absoluteString)
+                        if let player = try? AVAudioPlayer(contentsOf: fileUrl) {
                             player.prepareToPlay()
                             players[url] = player
                             playMusic()
@@ -234,7 +243,7 @@ public class NaruAudioPlayer {
         }
         let value:Float = Float(player.currentTime / player.duration)
         print("updateTime : \( player.currentTime) \(player.duration) \(value)")
-        DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
+        DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
             self?.updateTime()
         }
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime

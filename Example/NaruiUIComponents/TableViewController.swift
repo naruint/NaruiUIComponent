@@ -35,7 +35,6 @@ class TableViewController: UITableViewController {
     
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
-        tabBarController?.makeMusicPlayerView()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

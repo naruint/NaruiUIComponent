@@ -11,19 +11,18 @@ public extension UITabBarController {
         guard let top = tabBar.superview else {
             return
         }
-        
-        let view = top.subviews.filter { (view) -> Bool in
-            return view.isKind(of: NaruMusicPlayerMiniView.self) == true
-        }.first ?? NaruMusicPlayerMiniView()
-        
-        if view.superview != top {
+        let tag = 18372
+        let view = top.viewWithTag(tag) as? NaruMusicPlayerMiniView ?? NaruMusicPlayerMiniView()
+        if view.tag != tag {
             top.addSubview(view)
+            view.tag = tag
         }
         
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.leadingAnchor.constraint(equalTo: top.leadingAnchor).isActive = true
-        view.trailingAnchor.constraint(equalTo: top.trailingAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: top.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        view.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        let bottomHeight:CGFloat =  tabBar.isHidden ? top.safeAreaInsets.bottom : tabBar.frame.height
+        
+        let newFrame = CGRect(x: 0, y: UIScreen.main.bounds.height - bottomHeight - 72 , width: UIScreen.main.bounds.width, height: 72)
+        view.frame = newFrame
+        
     }
 }

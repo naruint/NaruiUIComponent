@@ -64,6 +64,7 @@ fileprivate func getAlpha(model:ImageCollectionViewController.ViewModel, selecte
 class ImageCollectionViewController: UICollectionViewController {
     struct ViewModel : Hashable {
         let url:URL?
+        let musicURL:URL?
         let group:String
         
         public static func == (lhs: ViewModel, rhs: ViewModel) -> Bool {
@@ -82,17 +83,36 @@ class ImageCollectionViewController: UICollectionViewController {
     
     let models = [
         [
-            ViewModel(url: URL(string: "https://i.pinimg.com/originals/34/6e/df/346edf41cf7de5ba8a37d34a4771a4f0.jpg"), group: "A"),
-            ViewModel(url: URL(string: "https://file3.instiz.net/data/file3/2018/06/21/b/4/0/b40633dd9df9e4ab4371b6a4f8801cdd.jpg"), group: "A"),
-            ViewModel(url: URL(string: "https://i.pinimg.com/originals/68/94/93/6894931eb3e93f6d6ef2dd000d8acdc6.jpg"), group: "A"),
-            ViewModel(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1B4uflzH2bZd3i1edrC2Td9JWtXTP48k7AQ&usqp=CAU"), group: "A"),
+            ViewModel(url:
+                        URL(string: "https://i.pinimg.com/originals/34/6e/df/346edf41cf7de5ba8a37d34a4771a4f0.jpg"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/6lrki8rfyx0hi1r/effect1.mp3?dl=1"),
+                      group: "A"),
+            ViewModel(url: URL(string: "https://file3.instiz.net/data/file3/2018/06/21/b/4/0/b40633dd9df9e4ab4371b6a4f8801cdd.jpg"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/6lrki8rfyx0hi1r/effect1.mp3?dl=1"),
+                      group: "A"),
+            ViewModel(url: URL(string: "https://i.pinimg.com/originals/68/94/93/6894931eb3e93f6d6ef2dd000d8acdc6.jpg"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/6lrki8rfyx0hi1r/effect1.mp3?dl=1"),
+                      group: "A"),
+            ViewModel(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1B4uflzH2bZd3i1edrC2Td9JWtXTP48k7AQ&usqp=CAU"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/6lrki8rfyx0hi1r/effect1.mp3?dl=1"),
+                      group: "A")
  
         ], [
-            ViewModel(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-owPs2ltRxvf749lE3FwkOAx03put-HqjYw&usqp=CAU"), group: "B"),
-            ViewModel(url: URL(string: "https://img2.quasarzone.com/editor/2020/08/29/fe477ba0e01ca8d38d28650b9a11b108.jpg"), group: "B"),
-            ViewModel(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBZ0U7sYvpeZbinWr7sX_xdkS5AhosCzNB1A&usqp=CAU"), group: "B"),
-            ViewModel(url: URL(string: "https://cdn.pixabay.com/photo/2019/10/14/09/39/cat-4548385_960_720.jpg"), group: "B"),
-            ViewModel(url: URL(string: "https://t1.daumcdn.net/cfile/blog/1676324D4DE12D7415"),group: "B")
+            ViewModel(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-owPs2ltRxvf749lE3FwkOAx03put-HqjYw&usqp=CAU"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      group: "B"),
+            ViewModel(url: URL(string: "https://img2.quasarzone.com/editor/2020/08/29/fe477ba0e01ca8d38d28650b9a11b108.jpg"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      group: "B"),
+            ViewModel(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBZ0U7sYvpeZbinWr7sX_xdkS5AhosCzNB1A&usqp=CAU"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      group: "B"),
+            ViewModel(url: URL(string: "https://cdn.pixabay.com/photo/2019/10/14/09/39/cat-4548385_960_720.jpg"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      group: "B"),
+            ViewModel(url: URL(string: "https://t1.daumcdn.net/cfile/blog/1676324D4DE12D7415"),
+                      musicURL: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"),
+                      group: "B")
         ]
     ]
     
@@ -141,11 +161,15 @@ class ImageCollectionViewController: UICollectionViewController {
                 m == model
             }) == nil {
                 selectedModels.insert(model)
+                NaruAudioPlayer.shared.insertMusic(url: model.musicURL, isFirstTrack: model.group == "B")
             } else {
                 selectedModels.remove(model)
+                NaruAudioPlayer.shared.removeMusic(url: model.musicURL)
             }
         }
-
+        
+        NaruAudioPlayer.shared.play()
+        
         switch selectedModels.count {
         case 2:
             if selectedModels.firstIndex(where: { (m) -> Bool in
@@ -168,6 +192,10 @@ class ImageCollectionViewController: UICollectionViewController {
         cell.imageView.isSelected = getIsSelected(model: model,selectedModels: selectedModels)
         cell.imageView.bottomDecoStyle = getBottomDecoType(model: model,selectedModels: selectedModels)
         cell.imageView.alpha = getAlpha(model: model, selectedModels: selectedModels)
+        
+        NaruAudioPlayer.shared.setupNowPlaying(title: "test", subTitle: "산들바람 솔솔", artworkImageURL: URL(string: "https://i.pinimg.com/originals/34/6e/df/346edf41cf7de5ba8a37d34a4771a4f0.jpg"))
+        NaruAudioPlayer.shared.play()
+        
     }
 }
 
