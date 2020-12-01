@@ -38,6 +38,10 @@ class MindColorTestViewController : UIViewController {
                 }
             }
         }
+        NaruAudioPlayer.shared.insertMusic(url: URL(string: "https://www.dropbox.com/s/6lrki8rfyx0hi1r/effect1.mp3?dl=1"), isFirstTrack: false)
+        NaruAudioPlayer.shared.insertMusic(url: URL(string: "https://www.dropbox.com/s/jryrixqfe8zupn5/music4.mp3?dl=1"), isFirstTrack: true)
+        NaruAudioPlayer.shared.setupNowPlaying(title: "test", subTitle: "산들바람 솔솔", artworkImageURL: URL(string: "https://i.pinimg.com/originals/34/6e/df/346edf41cf7de5ba8a37d34a4771a4f0.jpg"))
+        NaruAudioPlayer.shared.play()
     }
     
     @objc func onTouchUPRightBarButton(_ sender:UIBarButtonItem) {

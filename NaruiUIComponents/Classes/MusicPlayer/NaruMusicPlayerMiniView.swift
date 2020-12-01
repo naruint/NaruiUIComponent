@@ -12,7 +12,6 @@ import RxSwift
 
 
 public extension Notification.Name {
-    static let naruMusicPlayerMiniDataUpdate = Notification.Name("naruMusicPlayerMiniDataUpdate_observer")
     static let naruMusicPlayerMiniCotrollerMessage = Notification.Name("naruMusicPlayerMiniCotrollerMessage_observer")
 }
 
@@ -61,15 +60,10 @@ public class NaruMusicPlayerMiniView: UIView {
         addSubview(view)
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        playButton.rx.tap.bind { [unowned self](_) in
+        alpha = 0
+        playButton.rx.tap.bind { [unowned self](_) in            
+            NaruAudioPlayer.shared.toggle()
             playButton.isSelected.toggle()
-            if playButton.isSelected {
-                NotificationCenter.default.post(name: .naruMusicPlayerMiniCotrollerMessage, object: "play")
-            }
-            else {
-                NotificationCenter.default.post(name: .naruMusicPlayerMiniCotrollerMessage, object: "pause")
-            }
         }.disposed(by: disposeBag)
         
         plusButton.rx.tap.bind { (_) in
@@ -77,17 +71,34 @@ public class NaruMusicPlayerMiniView: UIView {
         }.disposed(by: disposeBag)
         
         closeButton.rx.tap.bind { [unowned self](_) in
-            NotificationCenter.default.post(name: .naruMusicPlayerMiniCotrollerMessage, object: "close")
-            removeFromSuperview()
+            NaruAudioPlayer.shared.stop()
+            NaruAudioPlayer.shared.removeAllMusic()
+            alpha = 0
         }.disposed(by: disposeBag)
-        
-        NotificationCenter.default.addObserver(forName: .naruMusicPlayerMiniDataUpdate, object: nil, queue: nil) { [weak self](noti) in
-            if let data = noti.object as? ViewModel {
+        func showup() {
+            if alpha == 0 {
+                UIView.animate(withDuration: 0.25) { [weak self] in
+                    self?.alpha = 1
+                }
+            }
+        }
+      
+        NotificationCenter.default.addObserver(forName: .naruAudioPlayerStatusDidChange, object: nil, queue: nil) { [weak self](noti) in
+            if let progress = noti.object as? Progress {
+                let total = progress.totalUnitCount
+                let complete = progress.completedUnitCount
+                let progress = Double(complete) / Double(total)
+                self?.progressView.progress = progress
+                self?.titleLabel.text = "loading"
+                self?.descLabel.text = "\(complete) / \(total)"
+                showup()
+            }
+            if let data = noti.object as? NaruAudioPlayer.PlayTimeInfo {
+                self?.playButton.isSelected = data.isPlaying
                 self?.titleLabel.text = data.title
-                self?.descLabel.text = data.desc
-                self?.progressView.progress = data.progress
-                self?.titleLabel.isHidden = data.title == nil
-                self?.descLabel.isHidden = data.desc == nil
+                self?.descLabel.text = "\(data.subTitle ?? "") · \(data.duration.formatted_ms_String ?? "")"
+                self?.progressView.progress = Double(data.progress)
+                showup()
             }
         }
         
