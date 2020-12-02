@@ -59,8 +59,8 @@ public class NaruAudioPlayer {
             case 0:
                 MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
             case 2:
-                firstPlayer?.numberOfLoops = 1
-                secondPlayer?.numberOfLoops = 0
+                firstPlayer?.numberOfLoops = 0
+                secondPlayer?.numberOfLoops = -1
             default:
                 break
             }
