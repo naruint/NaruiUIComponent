@@ -117,7 +117,15 @@ public class NaruAudioPlayer {
             return .noActionableNowPlayingItem
         }
         
-        
+        NotificationCenter.default.addObserver(forName: .naruFileDownloadProgressDidChange, object: nil, queue: nil) { (noti) in
+            if let info = noti.userInfo {
+                if let progress = info["progress"] as? Progress {
+                    NotificationCenter.default.post(
+                        name: .naruAudioPlayerStatusDidChange,
+                        object: progress)
+                }
+            }
+        }
 
     }
     
@@ -204,14 +212,8 @@ public class NaruAudioPlayer {
                     }
                 }
             } else {
-                AF.download(url)
-                    .downloadProgress(closure: { (progress) in
-                        NotificationCenter.default.post(
-                            name: .naruAudioPlayerStatusDidChange,
-                            object: progress)
-                    })
-                    .responseURL { [unowned self] (response) in
-                    if let fileUrl = response.fileURL {
+                NaruFileDownloadManager().download(url: url) {[unowned self] (fileUrl) in
+                    if let fileUrl = fileUrl {
                         print(fileUrl.absoluteString)
                         if let player = try? AVAudioPlayer(contentsOf: fileUrl) {
                             player.prepareToPlay()
