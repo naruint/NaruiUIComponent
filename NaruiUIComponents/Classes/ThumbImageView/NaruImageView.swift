@@ -10,9 +10,18 @@ import Kingfisher
 
 @IBDesignable
 public class NaruImageView: UIView {
+    var selectedCallBack:(_ isSelected:Bool)->Void = { _ in }
+    /** 선택 바뀜 콜백*/
+    public func onSelectedChange(callback:@escaping(_ isSelected:Bool)->Void) {
+        selectedCallBack = callback
+    }
+    
     public var isSelected:Bool = false {
         didSet {
             makeDropShadow()
+            if oldValue != isSelected {
+                selectedCallBack(isSelected)
+            }
         }
     }
     

@@ -320,6 +320,10 @@ public class NaruAudioPlayer {
             if players.count == 0 {
                 return
             }
+            if firstPlayer?.isPlaying == false {
+                secondPlayer?.stop()
+                timmerSwitch = false
+            }
             NotificationCenter.default.post(
                 name: .naruAudioPlayerStatusDidChange,
                 object: PlayTimeInfo(
