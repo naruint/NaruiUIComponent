@@ -30,7 +30,7 @@ class TableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func didMove(toParent parent: UIViewController?) {
@@ -38,13 +38,24 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CellType.allCases.count
+        switch section {
+        case 0:
+            return 1
+        default:
+            return CellType.allCases.count
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = CellType.allCases[indexPath.row].rawValue
+        switch indexPath.section {
+        case 0:
+            return tableView.dequeueReusableCell(withIdentifier: "tag", for: indexPath)
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = CellType.allCases[indexPath.row].rawValue
         return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -176,4 +187,12 @@ class TableViewController: UITableViewController {
         }
     }
     
+}
+
+class TagListTableViewCell: UITableViewCell {
+    @IBOutlet weak var tagListView:NaruTagCollectionView!
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        tagListView.tags = ["바보","ㅋㅋ","하하하하"]
+    }
 }

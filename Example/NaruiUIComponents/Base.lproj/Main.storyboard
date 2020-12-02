@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qtg-XC-BDY">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -17,7 +17,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q17-2F-jlI">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="backgroundColor2"/>
+                        <color key="backgroundColor" name="white"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="tJv-Jm-YkC">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -32,7 +32,7 @@
                                     <color key="selectedSegmentTintColor" systemColor="systemGreenColor"/>
                                 </segmentedControl>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="ai6-02-ez5" firstAttribute="top" secondItem="tJv-Jm-YkC" secondAttribute="top" constant="5" id="bZf-ex-lhr"/>
                                 <constraint firstItem="ai6-02-ez5" firstAttribute="leading" secondItem="tJv-Jm-YkC" secondAttribute="leading" constant="10" id="cQy-GW-sRL"/>
@@ -41,13 +41,41 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="n1D-qe-SBz">
-                            <rect key="frame" x="0.0" y="143.66666793823242" width="390" height="44"/>
+                            <rect key="frame" x="0.0" y="187.66666793823242" width="390" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tag" id="Fan-0C-Kn6" customClass="TagListTableViewCell" customModule="NaruiUIComponents_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="390" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fan-0C-Kn6" id="Dli-GD-Xbe">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VqR-GM-JEb" customClass="NaruTagCollectionView" customModule="NaruiUIComponents">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="43.666666666666664" id="Wd1-tz-wGl"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="VqR-GM-JEb" firstAttribute="top" secondItem="Dli-GD-Xbe" secondAttribute="top" id="1rx-Wn-YbV"/>
+                                        <constraint firstItem="VqR-GM-JEb" firstAttribute="leading" secondItem="Dli-GD-Xbe" secondAttribute="leading" id="5TV-GU-IlR"/>
+                                        <constraint firstAttribute="bottom" secondItem="VqR-GM-JEb" secondAttribute="bottom" id="92l-So-nn8"/>
+                                        <constraint firstAttribute="trailing" secondItem="VqR-GM-JEb" secondAttribute="trailing" id="H9A-ub-iSC"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" name="white"/>
+                                <connections>
+                                    <outlet property="tagListView" destination="VqR-GM-JEb" id="uZb-1N-SOm"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="CAd-nr-HDY" style="IBUITableViewCellStyleDefault" id="IyT-Zl-6oS">
-                                <rect key="frame" x="0.0" y="72" width="390" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="116" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IyT-Zl-6oS" id="71e-ug-rYx">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>

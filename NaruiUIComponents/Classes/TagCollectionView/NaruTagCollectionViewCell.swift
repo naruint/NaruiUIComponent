@@ -8,7 +8,7 @@
 import UIKit
 
 public class NaruTagCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var label: UILabel!
+    let label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,13 +22,11 @@ public class NaruTagCollectionViewCell: UICollectionViewCell {
         
     
     func arrangeView() {
-        guard let view = finedView(nibName: String(describing: NaruTagCollectionViewCell.self), id: nil) else {
-            return
-        }
-        view.frame = bounds
-        addSubview(view)
-        view.frame = self.bounds
-        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        label.frame.size = self.frame.size
+        addSubview(label)
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        label.textAlignment = .center
         layer.cornerRadius = 2
         layer.borderWidth = 2
         setColor()
