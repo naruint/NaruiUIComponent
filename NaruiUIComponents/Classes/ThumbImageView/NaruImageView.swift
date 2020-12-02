@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 public protocol NaruImageViewDelegate : class {
-    func naruImageViewSelectedChange(isSelected:Bool)
+    func naruImageViewSelectedChange(view:NaruImageView)
 }
 
 @IBDesignable
@@ -28,7 +28,7 @@ public class NaruImageView: UIView {
         didSet {
             makeDropShadow()
             if oldValue != isSelected && isEnabled {
-                delegate?.naruImageViewSelectedChange(isSelected: isSelected)
+                delegate?.naruImageViewSelectedChange(view:self)
             }
         }
     }
