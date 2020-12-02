@@ -15,7 +15,7 @@ public class NaruImageView: UIView {
     public var isEnabled:Bool = true {
         didSet {
             if oldValue != isEnabled {
-                alpha = isEnabled ? 1 : 0
+                alpha = isEnabled ? 1 : 0.5
             }
         }
     }
