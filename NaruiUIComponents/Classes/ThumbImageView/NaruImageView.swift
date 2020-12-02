@@ -11,15 +11,24 @@ import Kingfisher
 @IBDesignable
 public class NaruImageView: UIView {
     var selectedCallBack:(_ isSelected:Bool)->Void = { _ in }
+    
+    public var isEnabled:Bool = true {
+        didSet {
+            if oldValue != isEnabled {
+                alpha = isEnabled ? 1 : 0
+            }
+        }
+    }
+    
     /** 선택 바뀜 콜백*/
     public func onSelectedChange(callback:@escaping(_ isSelected:Bool)->Void) {
         selectedCallBack = callback
     }
-    
+        
     public var isSelected:Bool = false {
         didSet {
             makeDropShadow()
-            if oldValue != isSelected {
+            if oldValue != isSelected && isEnabled {
                 selectedCallBack(isSelected)
             }
         }
@@ -28,7 +37,6 @@ public class NaruImageView: UIView {
     @IBInspectable var dimColor:UIColor = UIColor(white: 0, alpha: 0.15)
     @IBInspectable var gradientOvery:Bool = true {
         didSet {
-            
             makeGradient()
         }
     }
