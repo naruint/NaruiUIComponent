@@ -55,19 +55,35 @@ public class NaruAudioPlayer {
     
     var players:[URL:AVAudioPlayer] = [:] {
         didSet {
-            if players.count == 0 {
+            switch players.count {
+            case 0:
                 MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+            case 2:
+                firstPlayer?.numberOfLoops = 1
+                secondPlayer?.numberOfLoops = 0
+            default:
+                break
             }
+            
         }
     }
-    
     /** 첫번쨰 플레이어를 리턴함.*/
-    var player:AVAudioPlayer? {
+    var firstPlayer:AVAudioPlayer? {
         if let url = musicUrls.first {
             return players[url]
         }
         return nil
     }
+    
+    var secondPlayer:AVAudioPlayer? {
+        if musicUrls.count == 2 {
+            if let url = musicUrls.last {
+                return players[url]
+            }
+        }
+        return nil
+    }
+
     
     var title:String? = nil
     var subTitle:String? = nil
@@ -110,7 +126,7 @@ public class NaruAudioPlayer {
                 
         commandCenter.changePlaybackPositionCommand.addTarget { [unowned self](event) -> MPRemoteCommandHandlerStatus in
             print(event)
-            if let p = player {
+            if let p = firstPlayer {
                 p.currentTime = (event as? MPChangePlaybackPositionCommandEvent)?.positionTime ?? 0
                 return .success
             }
@@ -247,7 +263,7 @@ public class NaruAudioPlayer {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: artwork.size, requestHandler: { (size) -> UIImage in
                 return artwork
             })
-            if let p = self.player {
+            if let p = self.firstPlayer {
                 nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = p.currentTime
                 nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = p.duration
                 nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = p.rate
@@ -289,7 +305,7 @@ public class NaruAudioPlayer {
     }
     
     func updateTime() {
-        guard let player = self.player else {
+        guard let player = self.firstPlayer else {
             timmerSwitch = false
             return
         }
