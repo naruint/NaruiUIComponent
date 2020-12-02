@@ -163,7 +163,11 @@ public class NaruImageView: UIView {
     
     @objc func onTap(gesture:UITapGestureRecognizer) {
         if touchSelectEnable {
-            isSelected.toggle()
+            if isEnabled == false {
+                isSelected = false
+            } else {
+                isSelected.toggle()
+            }
         }
     }
     
