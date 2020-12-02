@@ -7,10 +7,13 @@
 
 import UIKit
 import Kingfisher
+public protocol NaruImageViewDelegate : class {
+    func naruImageViewSelectedChange(isSelected:Bool)
+}
 
 @IBDesignable
 public class NaruImageView: UIView {
-    var selectedCallBack:(_ isSelected:Bool)->Void = { _ in }
+    public weak var delegate:NaruImageViewDelegate? = nil
     
     public var isEnabled:Bool = true {
         didSet {
@@ -20,16 +23,12 @@ public class NaruImageView: UIView {
         }
     }
     
-    /** 선택 바뀜 콜백*/
-    public func onSelectedChange(callback:@escaping(_ isSelected:Bool)->Void) {
-        selectedCallBack = callback
-    }
         
     public var isSelected:Bool = false {
         didSet {
             makeDropShadow()
             if oldValue != isSelected && isEnabled {
-                selectedCallBack(isSelected)
+                delegate?.naruImageViewSelectedChange(isSelected: isSelected)
             }
         }
     }
