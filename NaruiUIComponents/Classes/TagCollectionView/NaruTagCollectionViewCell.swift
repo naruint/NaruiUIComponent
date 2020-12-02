@@ -50,4 +50,5 @@ public class NaruTagCollectionViewCell: UICollectionViewCell {
         backgroundColor = bgColor
     }
 
+    
 }
