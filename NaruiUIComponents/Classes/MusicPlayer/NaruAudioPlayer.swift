@@ -76,15 +76,15 @@ public class NaruAudioPlayer {
             setLoop()
         }
     }
-    /** 첫번쨰 플레이어를 리턴함.*/
-    var firstPlayer:AVAudioPlayer? {
+    /** 첫번째 플레이어를 리턴함.*/
+    public var firstPlayer:AVAudioPlayer? {
         if let url = musicUrls.first {
             return players[url]
         }
         return nil
     }
-    
-    var secondPlayer:AVAudioPlayer? {
+    /** 두번째 플레이어 리턴함. (믹스일 제생일 경우 BGM부분)*/
+    public var secondPlayer:AVAudioPlayer? {
         if musicUrls.count == 2 {
             if let url = musicUrls.last {
                 return players[url]
