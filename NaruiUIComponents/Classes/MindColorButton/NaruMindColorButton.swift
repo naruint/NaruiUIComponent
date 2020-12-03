@@ -26,7 +26,7 @@ public class NaruMindColorButton: UIView {
         public let detailText:String
         /** 부정적인 감정인가? */
         public let isNegativeEmotion:Bool
-        
+        public let mindColor:UIColor
         var mindHeaderString:String {
             if 1 <= value && value <= 20 {
                 return "아주 조금\n"
@@ -49,11 +49,12 @@ public class NaruMindColorButton: UIView {
             return ""
         }
         
-        public init(value:Int, title:String, detailText:String, isNegativeEmotion:Bool) {
+        public init(value:Int, title:String, detailText:String, isNegativeEmotion:Bool, mindColor:UIColor) {
             self.value = value
             self.title = title
             self.detailText = detailText
             self.isNegativeEmotion = isNegativeEmotion
+            self.mindColor = mindColor
         }
     }
 
@@ -105,7 +106,9 @@ public class NaruMindColorButton: UIView {
         return ViewModel(value: progress,
                          title: text ?? "",
                          detailText: detailText,
-                         isNegativeEmotion: isNegativeEmotion)
+                         isNegativeEmotion: isNegativeEmotion,
+                         mindColor: mindColor
+                         )
     }
     
     

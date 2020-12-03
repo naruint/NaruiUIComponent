@@ -103,6 +103,7 @@ class NaruMindColorValueSelectViewController: UIViewController {
 
 
     func updateUIColors() {
+        
         for view in [bgView, progressBgView] {
             view?.backgroundColor = colors.last
         }
@@ -112,6 +113,13 @@ class NaruMindColorValueSelectViewController: UIViewController {
         slider.minimumTrackTintColor = colors.first
         slider.maximumTrackTintColor = colors.first
         slider.thumbTintColor = colors.first
+        if let model = viewModel {
+            let normalImage = colors.first!.circleImage(diameter: 40, innerColor: model.mindColor, innerDiameter: 8)
+            let highlightedImage = colors.first!.circleImage(diameter: 55, innerColor: model.mindColor, innerDiameter: 18)
+            
+            slider.setThumbImage(normalImage, for: .normal)
+            slider.setThumbImage(highlightedImage, for: .highlighted)
+        }
     }
         
     func setValue(value:Int) {
