@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 public protocol NaruImageViewDelegate : class {
     func naruImageViewSelectedChange(view:NaruImageView)
+    func naruImageViewOnTapImageView(view:NaruImageView)
 }
 
 @IBDesignable
@@ -167,6 +168,7 @@ public class NaruImageView: UIView {
                 isSelected = false
             } else {
                 isSelected.toggle()
+                delegate?.naruImageViewOnTapImageView(view: self)
             }
         }
     }
