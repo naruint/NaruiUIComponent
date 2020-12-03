@@ -309,8 +309,8 @@ public class NaruAudioPlayer {
             timmerSwitch = false
             return
         }
-        let value:Float = Float(player.currentTime / player.duration)
-        print("updateTime : \( player.currentTime) \(player.duration) \(value)")
+//        let value:Float = Float(player.currentTime / player.duration)
+//        print("updateTime : \( player.currentTime) \(player.duration) \(value)")
         DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
             self?.updateTime()
         }

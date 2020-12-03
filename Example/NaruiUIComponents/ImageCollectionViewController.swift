@@ -162,7 +162,7 @@ class ImageCollectionViewController: UICollectionViewController {
             }) == nil {
                 selectedModels.insert(model)
                 NaruAudioPlayer.shared.insertMusic(url: model.musicURL, isFirstTrack: model.group == "B")
-                playerView.showPlayer()
+                playerView.showPlayer(targetViewController: self)
             } else {
                 selectedModels.remove(model)
                 NaruAudioPlayer.shared.removeMusic(url: model.musicURL)

@@ -17,7 +17,20 @@ public extension Notification.Name {
 
 @IBDesignable
 public class NaruMusicPlayerMiniView: UIView {
+    private weak var superTabbarController : UITabBarController? = nil
+    private weak var superViewController: UIViewController? = nil
+
+    var hideBottomBar:Bool = false {
+        didSet {
+            if oldValue != hideBottomBar {
+                UIView.animate(withDuration: 0.25) {[weak self]in
+                    self?.updateFrame()
+                }
+            }
+        }
+    }
     //MARK: - IBOutlet
+    
     @IBOutlet weak var progressView: RingProgressView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
@@ -100,27 +113,37 @@ public class NaruMusicPlayerMiniView: UIView {
                 self?.progressView.progress = Double(data.progress)
                 showup()
             }
+            if let tabbarHide = self?.superTabbarController?.tabBar.isHidden  {
+                self?.hideBottomBar = tabbarHide
+            }
         }
         
     }
     
     
-    public func showPlayer() {
-        var tapbarHeight:CGFloat = 0
-
-        if let vc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
-            tapbarHeight = vc.tabBar.frame.height
+    public func showPlayer(targetViewController:UIViewController) {
+        superTabbarController = targetViewController.tabBarController
+        var tvc = targetViewController
+        if let vc = tvc.tabBarController {
+            tvc = vc
         }
-        
-        let bottomHeight:CGFloat =  tapbarHeight
+        tvc.view.addSubview(self)
+        superViewController = tvc
+        updateFrame()
+    }
+    
+    
+    func updateFrame() {
+        var bottomHeight = superViewController?.view.safeAreaInsets.bottom ?? 0
+        if let vc = superTabbarController {
+            if hideBottomBar == false {
+                bottomHeight =  vc.tabBar.frame.height
+            }
+        }
 
         autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         let newFrame = CGRect(x: 0, y: UIScreen.main.bounds.height - bottomHeight - 72 , width: UIScreen.main.bounds.width, height: 72)
         frame = newFrame
-    
-        UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(self)
-
     }
-    
     
 }
