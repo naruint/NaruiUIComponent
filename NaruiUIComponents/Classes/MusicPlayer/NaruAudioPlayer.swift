@@ -42,6 +42,24 @@ public class NaruAudioPlayer {
         }
     }
     
+    public var isLoopPlayForever:Bool = false {
+        didSet {
+            setLoop()
+        }
+    }
+    
+    func setLoop() {
+        switch players.count {
+        case 0:
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+        case 2:
+            firstPlayer?.numberOfLoops = isLoopPlayForever ? -1 : 0
+            secondPlayer?.numberOfLoops = -1
+        default:
+            break
+        }
+    }
+    
     public static let shared = NaruAudioPlayer()
     public var musicUrls:[URL] = []
     
@@ -55,16 +73,7 @@ public class NaruAudioPlayer {
     
     var players:[URL:AVAudioPlayer] = [:] {
         didSet {
-            switch players.count {
-            case 0:
-                MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
-            case 2:
-                firstPlayer?.numberOfLoops = 0
-                secondPlayer?.numberOfLoops = -1
-            default:
-                break
-            }
-            
+            setLoop()
         }
     }
     /** 첫번쨰 플레이어를 리턴함.*/
@@ -159,9 +168,11 @@ public class NaruAudioPlayer {
         if let url = url, let index = musicUrls.firstIndex(where: { (u) -> Bool in
             return u == url
         }) {
-            players[url]?.stop()
-            players[url] = nil
-            musicUrls.remove(at: index)
+            if let p = players[url] {
+                p.stop()
+                players[url] = nil
+                musicUrls.remove(at: index)
+            }
         }
     }
     
