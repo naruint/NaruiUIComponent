@@ -77,6 +77,7 @@ public class NaruMusicPlayerMiniView: UIView {
         playButton.rx.tap.bind { [unowned self](_) in            
             NaruAudioPlayer.shared.toggle()
             playButton.isSelected.toggle()
+            NotificationCenter.default.post(name: .naruMusicPlayerMiniCotrollerMessage, object: "play")
         }.disposed(by: disposeBag)
         
         plusButton.rx.tap.bind { (_) in
@@ -86,6 +87,7 @@ public class NaruMusicPlayerMiniView: UIView {
         closeButton.rx.tap.bind { [unowned self](_) in
             NaruAudioPlayer.shared.stop()
             NaruAudioPlayer.shared.removeAllMusic()
+            NotificationCenter.default.post(name: .naruMusicPlayerMiniCotrollerMessage, object: "close")
             alpha = 0
         }.disposed(by: disposeBag)
         func showup() {
