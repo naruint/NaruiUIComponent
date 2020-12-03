@@ -267,6 +267,10 @@ public class NaruAudioPlayer {
         }
     }
    
+    public func seek(time:TimeInterval) {
+        firstPlayer?.currentTime = time
+    }
+    
     func setupNowPlaying(title:String,subTitle:String, artworkImageURL:URL?) {
         func setNowPlay(artwork:UIImage) {
             var nowPlayingInfo:[String:Any] = [:]
