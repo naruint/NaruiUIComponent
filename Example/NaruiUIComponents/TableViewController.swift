@@ -18,8 +18,9 @@ class TableViewController: UITableViewController {
         case mindColorTest = "Mind Color Test"
         case imageTest1 = "imageTest1"
         case imageTest2 = "imageTest2"
+        case videoTest = "VideoTest"
     }
-    let player = NaruVideoPlayer()
+    let player = NaruSimpleVideoPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "home"
@@ -175,7 +176,9 @@ class TableViewController: UITableViewController {
         case .mindColorTest:
             performSegue(withIdentifier: "showMindColor", sender: nil)
         case .imageTest1, .imageTest2:
-            performSegue(withIdentifier: cellType.rawValue, sender: nil) 
+            performSegue(withIdentifier: cellType.rawValue, sender: nil)
+        case .videoTest:
+            performSegue(withIdentifier: "Video", sender: nil)
         }
     }
     

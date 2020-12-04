@@ -347,6 +347,7 @@ public class NaruTextField: UIView {
         textField.rightViewMode = .always
         textField.rightView = button
         textField.clearButtonMode = .always
+        
     }
      
 }

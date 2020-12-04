@@ -8,7 +8,7 @@
 import Foundation
 import AVKit
 
-public class NaruVideoPlayer {
+public class NaruSimpleVideoPlayer {
     public init() {
         
     }

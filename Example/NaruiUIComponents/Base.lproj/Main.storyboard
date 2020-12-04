@@ -108,6 +108,7 @@
                         <segue destination="S4j-6U-A7h" kind="show" identifier="showMindColor" id="vRI-yL-7Nj"/>
                         <segue destination="J4V-Cj-II1" kind="show" identifier="imageTest1" id="CEt-LG-NLT"/>
                         <segue destination="GNC-BT-PmO" kind="show" identifier="imageTest2" id="Rhc-63-DcR"/>
+                        <segue destination="sKz-RP-4rY" kind="show" identifier="Video" id="dke-r1-Bau"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xdW-kN-YHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -419,6 +420,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vt-GB-X99" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1114" y="-220"/>
+        </scene>
+        <!--Video-->
+        <scene sceneID="bFg-7L-uND">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Video" id="sKz-RP-4rY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bsB-zh-C63"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ujz-OB-kpr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-561" y="-375"/>
         </scene>
         <!--Graph Top Test Table View Controller-->
         <scene sceneID="qr1-Yg-9zm">
