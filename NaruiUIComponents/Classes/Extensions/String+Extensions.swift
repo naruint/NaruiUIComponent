@@ -7,6 +7,7 @@
 
 import Foundation
 import AlamofireImage
+import CommonCrypto
 
 public extension String {
     subscript(_ range: CountableRange<Int>) -> String {
@@ -15,10 +16,10 @@ public extension String {
                                              range.upperBound - range.lowerBound))
         return String(self[start..<end])
     }
-
+    
     subscript(_ range: CountablePartialRangeFrom<Int>) -> String {
         let start = index(startIndex, offsetBy: max(0, range.lowerBound))
-         return String(self[start...])
+        return String(self[start...])
     }
     
     var isValidEmail:Bool {
@@ -27,7 +28,7 @@ public extension String {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: self)
     }
-
+    
     func getDate(format:String = "yyyy-MM-dd HH:mm:ss")->Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = format
@@ -44,4 +45,44 @@ public extension String {
         str.append(NSAttributedString(attachment: attachment))
         return str as NSAttributedString
     }
+    
+    var sha256:String {
+        func digest(input : NSData) -> NSData {
+            let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
+            var hash = [UInt8](repeating: 0, count: digestLength)
+            CC_SHA256(input.bytes, UInt32(input.length), &hash)
+            return NSData(bytes: hash, length: digestLength)
+        }
+        
+        func hexStringFromData(input: NSData) -> String {
+            var bytes = [UInt8](repeating: 0, count: input.length)
+            input.getBytes(&bytes, length: input.length)
+            
+            var hexString = ""
+            for byte in bytes {
+                hexString += String(format:"%02x", UInt8(byte))
+            }
+            return hexString
+        }
+        
+        if let stringData = self.data(using: String.Encoding.utf8) {
+            return hexStringFromData(input: digest(input: stringData as NSData))
+        }
+        return ""
+    }
+    
+    var sha512:String {
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA512_DIGEST_LENGTH))
+        if let data = data(using: String.Encoding.utf8) {
+            let value =  data as NSData
+            CC_SHA512(value.bytes, CC_LONG(data.count), &digest)
+            
+        }
+        var digestHex = ""
+        for index in 0..<Int(CC_SHA512_DIGEST_LENGTH) {
+            digestHex += String(format: "%02x", digest[index])
+        }
+        return digestHex
+    }
+    
 }
