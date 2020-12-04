@@ -18,5 +18,6 @@ target 'NaruiUIComponents_Example' do
     pod 'AlamofireImage'
     pod 'MKRingProgressView'
     pod 'TagListView'
+    pod 'NVActivityIndicatorView'
   end
 end

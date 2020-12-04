@@ -20,12 +20,12 @@ class TableViewController: UITableViewController {
         case imageTest2 = "imageTest2"
         case videoTest = "VideoTest"
     }
-    let player = NaruSimpleVideoPlayer()
+//    lket player = NaruSimpleVideoPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "home"
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor:UIColor(named: "normalTextColor")!]
-        _ = player.playVideo(fileName: "mp4/intro", fileExt: "mov", targetView: nil, isLoop: true)
+//        _ = player.playVideo(fileName: "mp4/intro", fileExt: "mov", targetView: nil, isLoop: true)
 //        player.playVideo(webUrl: "https://www.dropbox.com/s/j2zzbs0pgxhbgmv/2922a71d4576db30dace2febf14d3631371ec204.mp4?dl=1", targetView: nil)
         tableView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
     }

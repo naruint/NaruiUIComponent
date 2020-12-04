@@ -38,4 +38,6 @@ Pod::Spec.new do |s|
   s.dependency 'AlamofireImage'
   s.dependency 'MKRingProgressView'
   s.dependency 'TagListView'
+  s.dependency 'NVActivityIndicatorView'
+
 end
