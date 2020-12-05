@@ -23,13 +23,14 @@ class TableViewController: UITableViewController {
         case videoTest = "VideoTest"
         case videoTest2 = "VideoTest2"
     }
-//    lket player = NaruSimpleVideoPlayer()
+    let player = NaruSimpleVideoPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "home"
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor:UIColor(named: "normalTextColor")!]
-//        _ = player.playVideo(fileName: "mp4/intro", fileExt: "mov", targetView: nil, isLoop: true)
-//        player.playVideo(webUrl: "https://www.dropbox.com/s/j2zzbs0pgxhbgmv/2922a71d4576db30dace2febf14d3631371ec204.mp4?dl=1", targetView: nil)
+        _ = player.playVideo(fileName: "mp4/intro", fileExt: "mov", targetView: nil, isLoop: true)
+//        player.playVideo(webUrl: "https://www.dropbox.com/s/j2zzbs0pgxhbgmv/2922a71d4576db30dace2febf14d3631371ec204.mp4?dl=1", targetView: nil, isLoop: true)
+        
         tableView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
     }
     
@@ -185,7 +186,7 @@ class TableViewController: UITableViewController {
         case .videoTest2:
             let vc = NaruLandscapeVideoViewController()
             present(vc, animated: true) {
-                vc.playerControllerView.openVideo(viewModel:  NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 40, url: URL(string: "https://player.vimeo.com/external/321159735.hd.mp4?s=81d67fc47ee193f909d25b14ede928283d89d0d1&profile_id=175")!, thumbnailURL: nil))
+                vc.playerControllerView.openVideo(viewModel:  NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 70, url: URL(string: "https://player.vimeo.com/external/321159735.hd.mp4?s=81d67fc47ee193f909d25b14ede928283d89d0d1&profile_id=175")!, thumbnailURL: nil))
             }
                     
         }

@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 
 public class NaruLandscapeVideoViewController: UIViewController {
+    public var isLandscapeOnly:Bool = true
     public var viewModel:NaruVideoControllerView.ViewModel? {
         set {
             playerControllerView.viewModel = newValue

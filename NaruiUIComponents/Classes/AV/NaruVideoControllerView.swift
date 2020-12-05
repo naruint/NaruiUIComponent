@@ -35,8 +35,10 @@ public class NaruVideoControllerView: UIView {
     var viewModel:NaruVideoControllerView.ViewModel? = nil
     weak var fullScreenController:UIViewController? = nil {
         didSet {
-            fullScreenButton.isHidden = fullScreenController != nil
-            backButton.isHidden = fullScreenController == nil
+            if let vc = fullScreenController as? NaruLandscapeVideoViewController {
+                fullScreenButton.isHidden = vc.isLandscapeOnly
+                backButton.isHidden = !vc.isLandscapeOnly
+            }
         }
     }
     
@@ -135,6 +137,7 @@ public class NaruVideoControllerView: UIView {
                 vc.dismiss(animated: true, completion: nil)
             } else {
                 let vc = NaruLandscapeVideoViewController()
+                vc.isLandscapeOnly = false
                 vc.playerControllerView.avPlayer = avPlayer
                 vc.playerControllerView.viewModel = viewModel
                 vc.title = viewModel?.title
