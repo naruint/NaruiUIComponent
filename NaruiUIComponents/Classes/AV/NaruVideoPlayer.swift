@@ -68,7 +68,7 @@ public class NaruVideoPlayer {
     static let shared = NaruVideoPlayer()
     
     var player:AVPlayer? = nil
-    var playerLayer:AVPlayerLayer? = nil
+//    var playerLayer:AVPlayerLayer? = nil
     
     let timer = NaruTimmer()
     var isPlaying:Bool {
@@ -97,9 +97,9 @@ public class NaruVideoPlayer {
   
     }
     
-    func playVideo(webUrl:String, containerView: UIView) {
+    public func playVideo(webUrl:String, containerView: UIView)->AVPlayerLayer? {
         guard let url = URL(string: webUrl) else {
-            return
+            return nil
         }
         let asset = AVAsset(url: url)
         
@@ -109,29 +109,42 @@ public class NaruVideoPlayer {
         
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame.size = containerView.frame.size
-        self.playerLayer = playerLayer
-        containerView.layer.addSublayer(playerLayer)
+        containerView.layer.insertSublayer(playerLayer, at: 0)
         self.player = player
         player.prepareForInterfaceBuilder()
-        player.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            player.play()
+        }
+        return playerLayer
+    }
+    
+    public func makePlayerLayer(containerView:UIView)->AVPlayerLayer? {
+        guard let player = self.player else {
+            return nil
+        }
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame.size = containerView.frame.size
+        containerView.layer.insertSublayer(playerLayer, at: 0)
+        return playerLayer
     }
     
     
-    func pause() {
+    
+    public func pause() {
         player?.pause()
     }
     
-    func play() {        
+    public func play() {
         player?.play()
     }
     
-    func stop() {
+    public func stop() {
         let time = CMTime(value: CMTimeValue(0), timescale: 1000)
         player?.seek(to: time)
         player?.pause()
     }
     
-    func rewindVideo(by seconds: Float64) {
+    public func rewindVideo(by seconds: Float64) {
         if let currentTime = player?.currentTime() {
             var newTime = CMTimeGetSeconds(currentTime) - seconds
             if newTime <= 0 {
@@ -141,7 +154,7 @@ public class NaruVideoPlayer {
         }
     }
 
-    func forwardVideo(by seconds: Float64) {
+    public func forwardVideo(by seconds: Float64) {
         if let currentTime = player?.currentTime(), let duration = player?.currentItem?.duration {
             var newTime = CMTimeGetSeconds(currentTime) + seconds
             if newTime >= CMTimeGetSeconds(duration) {
@@ -151,7 +164,7 @@ public class NaruVideoPlayer {
         }
     }
     
-    func progress(progress:@escaping(_ proress:VideoStatus)->Void) {
+    public func progress(progress:@escaping(_ proress:VideoStatus)->Void) {
         guard let currentItem = player?.currentItem
         else {
             return
@@ -167,7 +180,7 @@ public class NaruVideoPlayer {
         
     }
     
-    func seek(progress:Float) {
+    public func seek(progress:Float) {
         guard let totalTime = player?.currentItem?.duration.seconds else {
             return
         }

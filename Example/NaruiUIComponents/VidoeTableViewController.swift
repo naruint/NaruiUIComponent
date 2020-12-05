@@ -15,10 +15,14 @@ class VideoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         videoController.targetViewController = self
-        videoController.openVideo(viewModel: NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 20, url: URL(string: "https://www.dropbox.com/s/42o0drn3bazca7p/video.mp4?dl=1")!, thumbnailURL: nil))
+        videoController.viewModel = NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 20, url: URL(string: "https://www.dropbox.com/s/42o0drn3bazca7p/video.mp4?dl=1")!, thumbnailURL: nil)
         videoController.isBackButtonHidden = true
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        videoController.openVideo()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -53,7 +53,7 @@
                             <color key="minimumTrackTintColor" name="white"/>
                             <color key="maximumTrackTintColor" name="white20"/>
                         </slider>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqn-4J-YsO">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqn-4J-YsO">
                             <rect key="frame" x="356" y="10" width="44" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="44" id="EIU-h6-7pW"/>
@@ -64,7 +64,7 @@
                                 <color key="titleColor" name="white"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-Ag-dxp">
+                        <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-Ag-dxp">
                             <rect key="frame" x="175" y="96" width="64" height="64"/>
                             <color key="tintColor" name="white"/>
                             <state key="normal" image="iconEtcPlay"/>
@@ -72,7 +72,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTx-vb-0GC">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTx-vb-0GC">
                             <rect key="frame" x="14" y="10" width="44" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Atk-1e-wtB"/>
@@ -108,7 +108,7 @@
                         <constraint firstItem="3NR-bZ-wlR" firstAttribute="leading" secondItem="4oI-Dz-BMV" secondAttribute="leading" constant="24" id="wbm-pg-hpg"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auK-e7-Lw0">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auK-e7-Lw0">
                     <rect key="frame" x="297" y="222" width="95" height="28"/>
                     <color key="tintColor" name="white"/>
                     <state key="normal" image="skipNarationBtn">

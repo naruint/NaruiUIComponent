@@ -8,11 +8,18 @@
 import Foundation
 import UIKit
 
-class NaruLandscapeVideoViewController: UIViewController {
+public class NaruLandscapeVideoViewController: UIViewController {
+    public var viewModel:NaruVideoControllerView.ViewModel? {
+        get {
+            return playerControllerView.viewModel
+        }
+        set {
+            playerControllerView.viewModel = newValue
+        }
+    }
+    public let playerControllerView = NaruVideoControllerView()
     
-    let playerControllerView = NaruVideoControllerView()
-    
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .black
@@ -24,7 +31,7 @@ class NaruLandscapeVideoViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
+    public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

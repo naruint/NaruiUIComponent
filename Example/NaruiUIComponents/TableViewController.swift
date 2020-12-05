@@ -19,6 +19,7 @@ class TableViewController: UITableViewController {
         case imageTest1 = "imageTest1"
         case imageTest2 = "imageTest2"
         case videoTest = "VideoTest"
+        case videoTest2 = "VideoTest2"
     }
 //    lket player = NaruSimpleVideoPlayer()
     override func viewDidLoad() {
@@ -179,6 +180,12 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: cellType.rawValue, sender: nil)
         case .videoTest:
             performSegue(withIdentifier: "Video", sender: nil)
+        case .videoTest2:
+            let vc = NaruLandscapeVideoViewController()
+            vc.viewModel = NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 20, url: URL(string: "https://www.dropbox.com/s/42o0drn3bazca7p/video.mp4?dl=1")!, thumbnailURL: nil)
+            present(vc, animated: true) {
+                vc.playerControllerView.openVideo()
+            }
         }
     }
     

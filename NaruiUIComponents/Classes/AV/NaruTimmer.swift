@@ -11,6 +11,10 @@ public extension Notification.Name {
 }
 
 public class NaruTimmer {
+    static let shared = NaruTimmer()
+    public init() {
+        
+    }
     public enum TimeStempType {
         case start
         case stop
