@@ -7,37 +7,64 @@
 
 import Foundation
 import UIKit
+import AVKit
 
 public class NaruLandscapeVideoViewController: UIViewController {
     public var viewModel:NaruVideoControllerView.ViewModel? {
-        get {
-            return playerControllerView.viewModel
-        }
         set {
             playerControllerView.viewModel = newValue
+            playerControllerView.titleLabel.text = newValue?.title
+        }
+        get {
+            playerControllerView.viewModel
         }
     }
+    
+    public var avPlayer:AVPlayer? {
+        set {
+            playerControllerView.avPlayer = newValue
+            
+        }
+        get {
+            playerControllerView.avPlayer
+        }
+    }
+    
+    deinit {
+        print("deinit NaruLandscapeVideoViewController")
+        playerControllerView.avPlayer = nil
+    }
+    
     public let playerControllerView = NaruVideoControllerView()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        addPlayerController()
         view.backgroundColor = .black
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .fullScreen
-        // Do any additional setup after loading the view.
-        addPlayerController()
-        playerControllerView.targetViewController = self
+
+        NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
+        playerControllerView.fullScreenController = self
+    }
         
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        playerControllerView.layer.sublayers?.first?.frame = playerControllerView.layer.frame
+        playerControllerView.updatePlayBtn()
+        playerControllerView.updateSlider()
     }
     
-    public override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        playerControllerView.addObserver()
     }
-    
-    // orientation
-    
+
+    public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
+        super.dismiss(animated: flag, completion: completion)
+    }
     
     private func addPlayerController() {
         

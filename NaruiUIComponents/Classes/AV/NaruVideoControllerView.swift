@@ -12,42 +12,46 @@ import AVKit
 import NVActivityIndicatorView
 
 public class NaruVideoControllerView: UIView {
-    public var viewModel:ViewModel? = nil {
+    public var kvoRateContext = 0
+    var avPlayer:AVPlayer? = nil {
         didSet {
-            titleLabel.text = viewModel?.title
+            if let avlayer = layer.sublayers?.first as? AVPlayerLayer {
+                avlayer.removeFromSuperlayer()
+            }
+            let avlayer = AVPlayerLayer(player: avPlayer)
+            avlayer.frame = bounds
+            layer.insertSublayer(avlayer, at: 0)
         }
     }
     
     deinit {
-        if landScapeVideoViewController != nil {
-            landScapeVideoViewController = nil
+        print("deinit NaruVideoControllerView")
+    }
+    
+    public var isPlaying:Bool {
+        return avPlayer?.rate != 0 && avPlayer?.error == nil
+    }
+    
+    var viewModel:NaruVideoControllerView.ViewModel? = nil
+    weak var fullScreenController:UIViewController? = nil {
+        didSet {
+            fullScreenButton.isHidden = fullScreenController != nil
+            backButton.isHidden = fullScreenController == nil
         }
     }
     
-    public weak var targetViewController:UIViewController? = nil
     @IBOutlet weak var skipDescButton: UIButton!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var avControllContainerView: UIView!
     @IBOutlet weak var fullScreenButton: UIButton!
-    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    var landScapeVideoViewController:NaruLandscapeVideoViewController? = nil
+    
     let loadingView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-    var playerLayer:AVPlayerLayer? = nil
-    
-    public var isBackButtonHidden:Bool {
-        set {
-            backButton.isHidden = newValue
-        }
-        get {
-            backButton.isHidden
-        }
-    }
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         initUI()
@@ -60,28 +64,17 @@ public class NaruVideoControllerView: UIView {
         
     let disposeBag = DisposeBag()
     var touchSliderLock = false
-        
-    public func openVideo() {
-        guard let url = viewModel?.url else {
-            return
-        }
-        if NaruVideoPlayer.shared.player == nil {
-            playerLayer = NaruVideoPlayer.shared.playVideo(webUrl: url.absoluteString, containerView: self)
-        } else {
-            playerLayer = NaruVideoPlayer.shared.makePlayerLayer(containerView: self)
-        }
-        updatePlayerLayerFrame()
-        NaruVideoPlayer.shared.progress { [weak self] (videoStatus) in
-//            self?.updateUI()
-            self?.slider.setValue(Float(videoStatus.progress), animated: true)
-            
-            self?.playButton.isSelected = NaruVideoPlayer.shared.player?.isPlaying == true
-            if self?.loadingView.isAnimating == true {
-                self?.loadingControll(isLoading: false)
+    
+    var hideDescButton = true {
+        didSet {
+            if oldValue != hideDescButton {
+                UIView.animate(withDuration: 0.5) {[weak self]in
+                    self?.skipDescButton.alpha = self?.hideDescButton ?? false ? 0 : 1
+                }
             }
         }
-        loadingControll(isLoading: true)
     }
+        
     
     private func loadingControll(isLoading:Bool) {
         if isLoading {
@@ -98,16 +91,6 @@ public class NaruVideoControllerView: UIView {
         }
     }
     
-    func updatePlayerLayerFrame()  {
-        guard let playerLayer = self.playerLayer else {
-            return
-        }
-        layer.insertSublayer(playerLayer, at: 0)
-        playerLayer.frame = frame
-        playerLayer.frame.origin = .zero
-        print("updateFrame : \(playerLayer.frame)")
-    }
-
     func initUI() {
         guard let view = UINib(
                 nibName: String(describing: NaruVideoControllerView.self),
@@ -120,13 +103,12 @@ public class NaruVideoControllerView: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(loadingView)
         playButton.layer.zPosition = 100
-        if NaruVideoPlayer.shared.player == nil {
-            titleLabel.text = nil
-            durationLabel.text = nil
-            currentTimeLabel.text = nil
-            slider.isEnabled = false
-            slider.value = 0
-        }
+        titleLabel.text = nil
+        durationLabel.text = nil
+        currentTimeLabel.text = nil
+        slider.isEnabled = false
+        slider.value = 0
+        skipDescButton.alpha = 0
         
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         loadingView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -137,47 +119,39 @@ public class NaruVideoControllerView: UIView {
         
 
         playButton.rx.tap.bind {[unowned self](_) in
-            if NaruVideoPlayer.shared.isPlaying == true {
-                NaruVideoPlayer.shared.pause()
-                updateUI()
-                playButton.isSelected = true
+            if avPlayer?.isPlaying == true {
+                avPlayer?.pause()
             } else {
-                NaruVideoPlayer.shared.play()
-                updateUI()
-                playButton.isSelected = false
+                avPlayer?.play()
             }
         }.disposed(by: disposeBag)
         
         backButton.rx.tap.bind {[unowned self] (_) in
-            NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
-            targetViewController?.dismiss(animated: true, completion: nil)
-            
+            fullScreenController?.dismiss(animated: true, completion: nil)
         }.disposed(by: disposeBag)
         
         fullScreenButton.rx.tap.bind {[unowned self] (_) in
-            if let vc = targetViewController as? NaruLandscapeVideoViewController {
-                vc.playerControllerView.viewModel = self.viewModel
-                
-                NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
-                DispatchQueue.main.async {
-                    vc.dismiss(animated: true) {
-                        updateUI()
-                    }
-                }
+            if let vc = fullScreenController {
+                vc.dismiss(animated: true, completion: nil)
             } else {
-                let landScape = self.landScapeVideoViewController ?? NaruLandscapeVideoViewController()
-                landScape.playerControllerView.viewModel = self.viewModel
-                landScape.playerControllerView.isBackButtonHidden = self.isBackButtonHidden
-                self.landScapeVideoViewController = landScape
-                landScape.modalTransitionStyle = .crossDissolve
-                NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
-                DispatchQueue.main.async {
-                    targetViewController?.present(landScape, animated: true) {
-                        landScape.playerControllerView.openVideo()
-                    }
-                }
+                let vc = NaruLandscapeVideoViewController()
+                vc.playerControllerView.avPlayer = avPlayer
+                vc.playerControllerView.viewModel = viewModel
+                vc.title = viewModel?.title
+                vc.playerControllerView.titleLabel.text = viewModel?.title
+                UIApplication.shared.lastPresentedViewController?.present(vc, animated: true, completion: nil)
+            }
+
+        }.disposed(by: disposeBag)
+
+        skipDescButton.rx.tap.bind { [unowned self](_) in
+            if let viewModel = viewModel {
+                avPlayer?.seek(to: CMTime(seconds: viewModel.endDescTime, preferredTimescale: 1000), completionHandler: { (_) in
+                    updateSlider()
+                })
             }
         }.disposed(by: disposeBag)
+
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onTapGesture(_:)))
         
@@ -189,28 +163,6 @@ public class NaruVideoControllerView: UIView {
        
     }
     
-    
-    func updateUI(){
-        guard let viewModel = self.viewModel, let item = NaruVideoPlayer.shared.player?.currentItem else {
-            return
-        }
-        if let player = self.playerLayer {
-            if player.superlayer != layer {
-                layer.insertSublayer(player, at: 0)
-                player.frame = frame
-                player.frame.origin = .zero
-            }
-        }
-        titleLabel.text = viewModel.title
-        let duration = item.asset.duration.seconds
-        let currentTime:TimeInterval = item.currentTime().seconds
-        durationLabel.text = duration.formatted_ms_String
-        currentTimeLabel.text = currentTime.formatted_ms_String
-        if touchSliderLock == false {
-            slider.setValue(Float(currentTime / duration), animated: true)
-        }
-       
-    }
 
     var tapLock = false
     @objc func onTapGesture(_ gesture:UITapGestureRecognizer) {
@@ -233,11 +185,12 @@ public class NaruVideoControllerView: UIView {
                 case .began:
                     touchSliderLock = true
                 case .ended:
-                    guard let item = NaruVideoPlayer.shared.player?.currentItem else {
+                    guard let item = avPlayer?.currentItem else {
+                        touchSliderLock = false
                         return
                     }
                     let newtime = item.duration.seconds * Double(slider.value)
-                    NaruVideoPlayer.shared.player?.seek(to: CMTime(seconds: newtime, preferredTimescale: item.duration.timescale))
+                    avPlayer?.seek(to: CMTime(seconds: newtime, preferredTimescale: item.duration.timescale))
                     touchSliderLock = false
                 default:
                     break
@@ -245,6 +198,53 @@ public class NaruVideoControllerView: UIView {
             }
     }
     
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let context = context else {
+            return
+        }
+        switch context {
+        case &kvoRateContext:
+            updatePlayBtn()
+        default:
+            break
+        }
+    }
     
+    func updatePlayBtn() {
+        playButton.isSelected = isPlaying
+    }
     
+    func updateSlider() {
+        guard let item = avPlayer?.currentItem , let viewModel = viewModel else {
+            return
+        }
+        let currentTime = item.currentTime().seconds
+        let duration = item.duration.seconds
+        slider.isEnabled = true
+        if touchSliderLock == false {
+            slider.setValue(Float(currentTime / duration), animated: true)
+        }
+        currentTimeLabel.text = currentTime.formatted_ms_String
+        durationLabel.text = duration.formatted_ms_String
+        
+        hideDescButton = !(viewModel.startDescTime < currentTime && currentTime <= viewModel.endDescTime)
+    }
+    
+        
+    public func openVideo(viewModel:ViewModel) {
+        self.viewModel = viewModel
+        let avPlayer = AVPlayer(url: viewModel.url)
+        titleLabel.text = viewModel.title
+        self.avPlayer = avPlayer
+        addObserver()
+        updateSlider()
+        updatePlayBtn()
+    }
+    
+    public func addObserver() {
+        avPlayer?.addObserver(self, forKeyPath: "rate", options: .new, context: &kvoRateContext)
+        avPlayer?.addPeriodicTimeObserver(forInterval: CMTime(value: CMTimeValue(1000), timescale: 1000), queue: nil, using: { [weak self](time) in
+            self?.updateSlider()
+        })
+    }
 }

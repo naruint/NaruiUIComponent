@@ -15,7 +15,7 @@ import UIKit
  */
 public class NaruOrientationHelper {
     public static let shared = NaruOrientationHelper()
-    public var orientationLock = UIInterfaceOrientationMask.all
+    public var orientationLock = UIInterfaceOrientationMask.portrait
     
     public func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
         orientationLock = orientation

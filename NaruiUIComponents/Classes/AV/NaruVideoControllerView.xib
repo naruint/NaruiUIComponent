@@ -28,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oI-Dz-BMV" userLabel="dimView">
-                    <rect key="frame" x="0.0" y="44" width="414" height="256"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="306"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SW-ZR-Klb">
                             <rect key="frame" x="363" y="219" width="27" height="17"/>
@@ -65,7 +65,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-Ag-dxp">
-                            <rect key="frame" x="175" y="96" width="64" height="64"/>
+                            <rect key="frame" x="175" y="91" width="64" height="64"/>
                             <color key="tintColor" name="white"/>
                             <state key="normal" image="iconEtcPlay"/>
                             <state key="selected" image="iconEtcPause">
@@ -90,10 +90,10 @@
                     <color key="backgroundColor" name="black20"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="6SW-ZR-Klb" secondAttribute="trailing" constant="24" id="30v-nD-7LI"/>
-                        <constraint firstAttribute="bottom" secondItem="6SW-ZR-Klb" secondAttribute="bottom" constant="20" id="CFC-gK-AQY"/>
-                        <constraint firstAttribute="bottom" secondItem="3NR-bZ-wlR" secondAttribute="bottom" constant="20" id="Cu3-RU-Ngx"/>
+                        <constraint firstAttribute="bottom" secondItem="6SW-ZR-Klb" secondAttribute="bottom" constant="70" id="CFC-gK-AQY"/>
+                        <constraint firstAttribute="bottom" secondItem="3NR-bZ-wlR" secondAttribute="bottom" constant="70" id="Cu3-RU-Ngx"/>
                         <constraint firstAttribute="trailing" secondItem="cqn-4J-YsO" secondAttribute="trailing" constant="14" id="EQD-HM-gfH"/>
-                        <constraint firstItem="LMa-Ag-dxp" firstAttribute="centerY" secondItem="4oI-Dz-BMV" secondAttribute="centerY" id="FB7-R1-tqU"/>
+                        <constraint firstItem="LMa-Ag-dxp" firstAttribute="centerY" secondItem="4oI-Dz-BMV" secondAttribute="centerY" constant="-30" id="FB7-R1-tqU"/>
                         <constraint firstItem="qWa-bq-QNf" firstAttribute="leading" secondItem="3NR-bZ-wlR" secondAttribute="trailing" constant="12" id="FSs-H1-vo5"/>
                         <constraint firstItem="6SW-ZR-Klb" firstAttribute="leading" secondItem="qWa-bq-QNf" secondAttribute="trailing" constant="12" id="R5S-Z9-gsl"/>
                         <constraint firstItem="cqn-4J-YsO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qsc-NS-DXE" secondAttribute="trailing" constant="20" id="Shp-Hg-9XU"/>
@@ -119,7 +119,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4oI-Dz-BMV" secondAttribute="bottom" id="86E-1u-PAX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4oI-Dz-BMV" secondAttribute="bottom" constant="-50" id="86E-1u-PAX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="auK-e7-Lw0" secondAttribute="trailing" constant="22" id="HIY-Sa-FB6"/>
                 <constraint firstItem="4oI-Dz-BMV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hZp-TL-SED"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4oI-Dz-BMV" secondAttribute="trailing" id="mxx-eL-m6y"/>

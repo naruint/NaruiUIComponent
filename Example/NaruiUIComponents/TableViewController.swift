@@ -7,6 +7,8 @@
 
 import UIKit
 import NaruiUIComponents
+import MobilePlayer
+import AVKit
 
 class TableViewController: UITableViewController {
     enum CellType : String, CaseIterable {
@@ -182,10 +184,10 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: "Video", sender: nil)
         case .videoTest2:
             let vc = NaruLandscapeVideoViewController()
-            vc.viewModel = NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 20, url: URL(string: "https://www.dropbox.com/s/42o0drn3bazca7p/video.mp4?dl=1")!, thumbnailURL: nil)
             present(vc, animated: true) {
-                vc.playerControllerView.openVideo()
+                vc.playerControllerView.openVideo(viewModel:  NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 40, url: URL(string: "https://player.vimeo.com/external/321159735.hd.mp4?s=81d67fc47ee193f909d25b14ede928283d89d0d1&profile_id=175")!, thumbnailURL: nil))
             }
+                    
         }
     }
     

@@ -28,10 +28,13 @@ public class NaruVideoPlayer {
         /** 버퍼링 된 시간(초)*/
         public let bufferedTimes:[CMTimeRange]
         
-        public init(time:Double, duration:Double, bufferedTimes:[CMTimeRange]) {
+        public let playerItem:AVPlayerItem
+        
+        public init(time:Double, duration:Double, bufferedTimes:[CMTimeRange], playerItem:AVPlayerItem) {
             self.time = time
             self.duration = duration
             self.bufferedTimes = bufferedTimes
+            self.playerItem = playerItem
         }
         
         public var progress:CGFloat {
@@ -66,7 +69,7 @@ public class NaruVideoPlayer {
     }
     
     static let shared = NaruVideoPlayer()
-    
+    public var url:URL? = nil
     var player:AVPlayer? = nil
 //    var playerLayer:AVPlayerLayer? = nil
     
@@ -83,7 +86,7 @@ public class NaruVideoPlayer {
                 return
             }
             
-            if s.player?.isPlaying == true {
+            if s.player?.isPlaying == true && item.duration.seconds > 0 {
                 print("timer start")
                 s.timer.start()
             } else {
@@ -101,6 +104,7 @@ public class NaruVideoPlayer {
         guard let url = URL(string: webUrl) else {
             return nil
         }
+        self.url = url
         let asset = AVAsset(url: url)
         
         let playerItem = AVPlayerItem(asset: asset)
@@ -111,10 +115,8 @@ public class NaruVideoPlayer {
         playerLayer.frame.size = containerView.frame.size
         containerView.layer.insertSublayer(playerLayer, at: 0)
         self.player = player
-        player.prepareForInterfaceBuilder()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-            player.play()
-        }
+        
+
         return playerLayer
     }
     
@@ -170,8 +172,13 @@ public class NaruVideoPlayer {
             return
         }
         
-        player?.addPeriodicTimeObserver(forInterval: CMTime(value: CMTimeValue(1000), timescale: 1000), queue: nil, using: { [weak self](time) in
-            progress(VideoStatus(time: currentItem.currentTime().seconds, duration: currentItem.duration.seconds, bufferedTimes: currentItem.loadedTimeRanges as! [CMTimeRange]))
+        player?.addPeriodicTimeObserver(forInterval: CMTime(value: CMTimeValue(500), timescale: 500), queue: nil, using: { [weak self](time) in
+            progress(VideoStatus(
+                time:currentItem.currentTime().seconds,
+                duration: currentItem.duration.seconds,
+                bufferedTimes: currentItem.loadedTimeRanges as! [CMTimeRange],
+                playerItem: currentItem
+            ))
             
             if currentItem.currentTime().seconds == currentItem.duration.seconds {
                 self?.timer.stop()
@@ -191,5 +198,13 @@ public class NaruVideoPlayer {
         }
         print("seek to time \(value) progress : \(progress)")
         player?.seek(to: CMTime(value: CMTimeValue(value * 1000), timescale: 1000))
+    }
+    
+    public func seek(time:TimeInterval) {
+//        guard let item = player?.currentItem else {
+//            return
+//        }
+//        player?.seek(to: CMTime(seconds: time, preferredTimescale: item.currentTime().timescale))
+        player?.seek(to: CMTime(seconds: time, preferredTimescale: 1000))
     }
 }

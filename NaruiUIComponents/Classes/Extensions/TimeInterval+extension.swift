@@ -23,6 +23,9 @@ extension TimeInterval {
     }
     
     func makeString(units:NSCalendar.Unit)->String? {
+        if self.isNaN {
+            return nil
+        }
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = units
