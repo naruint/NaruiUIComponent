@@ -45,7 +45,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
+            return 0
         default:
             return CellType.allCases.count
         }
@@ -54,8 +54,6 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0:
-            return tableView.dequeueReusableCell(withIdentifier: "tag", for: indexPath)
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = CellType.allCases[indexPath.row].rawValue
@@ -186,7 +184,7 @@ class TableViewController: UITableViewController {
         case .videoTest2:
             let vc = NaruLandscapeVideoViewController()
             present(vc, animated: true) {
-                vc.playerControllerView.openVideo(viewModel:  NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 70, url: URL(string: "https://player.vimeo.com/external/321159735.hd.mp4?s=81d67fc47ee193f909d25b14ede928283d89d0d1&profile_id=175")!, thumbnailURL: nil))
+                vc.playerControllerView.openVideo(viewModel:  NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 70, url: URL(string: "https://www.dropbox.com/s/0sc26e8shaukm48/Unicycle%20%EB%A1%9C%EB%9D%BC%ED%83%80%EA%B8%B0.mp4?dl=1")!, thumbnailURL: nil))
             }
                     
         }
