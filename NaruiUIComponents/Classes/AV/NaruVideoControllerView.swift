@@ -10,7 +10,10 @@ import RxCocoa
 import RxSwift
 import AVKit
 import NVActivityIndicatorView
-
+public extension Notification.Name {
+    /** 비디오 시청 시간 측정값을 리턴하는 notification */
+    static let naruVideoWatchFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
+}
 public class NaruVideoControllerView: UIView {
     public var kvoRateContext = 0
     var avPlayer:AVPlayer? = nil {
@@ -26,6 +29,12 @@ public class NaruVideoControllerView: UIView {
     
     deinit {
         subLandScapeController = nil
+        NaruTimmer.shared.stop()
+        if NaruTimmer.shared.timeResult > 0 {
+            NotificationCenter.default.post(name: .naruVideoWatchFinished, object: NaruTimmer.shared.timeResult)
+            print("시청시간 : \(NaruTimmer.shared.timeResult)")
+        }
+        NaruTimmer.shared.reset()
         print("deinit NaruVideoControllerView")
     }
     
@@ -126,8 +135,10 @@ public class NaruVideoControllerView: UIView {
         playButton.rx.tap.bind {[unowned self](_) in
             if avPlayer?.isPlaying == true {
                 avPlayer?.pause()
+                NaruTimmer.shared.stop()
             } else {
                 avPlayer?.play()
+                NaruTimmer.shared.start()
             }
         }.disposed(by: disposeBag)
         
@@ -245,6 +256,7 @@ public class NaruVideoControllerView: UIView {
     
         
     public func openVideo(viewModel:ViewModel) {
+        NaruTimmer.shared.reset()
         self.viewModel = viewModel
         let avPlayer = AVPlayer(url: viewModel.url)
         titleLabel.text = viewModel.title
