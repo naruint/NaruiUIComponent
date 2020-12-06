@@ -144,10 +144,14 @@ public class NaruVideoControllerView: UIView {
         playButton.rx.tap.bind {[unowned self](_) in
             if avPlayer?.isPlaying == true {
                 avPlayer?.pause()
-                NaruTimmer.shared.stop()
             } else {
-                avPlayer?.play()
-                NaruTimmer.shared.start()
+                if avPlayer?.currentItem?.currentTime().seconds ?? 0 > (avPlayer?.currentItem?.duration.seconds ?? 0) - 0.1 {
+                    avPlayer?.seek(to: CMTime.zero, completionHandler: { (fin) in
+                        avPlayer?.play()
+                    })
+                } else {
+                    avPlayer?.play()
+                }
             }
         }.disposed(by: disposeBag)
         
@@ -194,22 +198,32 @@ public class NaruVideoControllerView: UIView {
         slider.setThumbImage(UIColor.white.circleImage(diameter: 14), for: .highlighted)
         slider.addTarget(self, action: #selector(self.onSliderValueChanged(slider:event:)), for: .valueChanged)
        
+        backButton.isHidden = true
     }
     
+    var avControllContainerViewHide = false {
+        didSet {
+            if oldValue != avControllContainerViewHide {
+                let toAlpha:CGFloat = avControllContainerViewHide ? 0 : 1
+                tapLock = true
+                UIView.animate(withDuration: 0.25) {[weak self]in
+                    self?.avControllContainerView.alpha = toAlpha
+                } completion: { [weak self] _ in
+                    self?.tapLock = false
+                }
+            }
+        }
+    }
 
     var tapLock = false
     @objc func onTapGesture(_ gesture:UITapGestureRecognizer) {
-        let toAlpha:CGFloat = avControllContainerView.alpha == 0 ? 1 : 0
         if tapLock {
             return
         }
-        tapLock = true
-        UIView.animate(withDuration: 0.25) {[weak self]in
-            self?.avControllContainerView.alpha = toAlpha
-        } completion: { [weak self] _ in
-            self?.tapLock = false
+        avControllContainerViewHide.toggle()
+        if avControllContainerViewHide == false {
+            lastControllViewShowupTime = Date()
         }
-
     }
     
     @objc func onSliderValueChanged(slider: UISlider, event: UIEvent) {
@@ -243,7 +257,15 @@ public class NaruVideoControllerView: UIView {
         }
     }
     
+    var lastControllViewShowupTime:Date? = nil
+    
     func updatePlayBtn() {
+        if isPlaying == false {
+            NaruTimmer.shared.stop()
+        } else {
+            NaruTimmer.shared.start()
+            lastControllViewShowupTime = Date()
+        }
         playButton.isSelected = isPlaying
     }
     
@@ -263,6 +285,14 @@ public class NaruVideoControllerView: UIView {
         durationLabel.text = duration.formatted_ms_String
         
         hideDescButton = !(viewModel.startDescTime < currentTime && currentTime <= viewModel.endDescTime)
+        
+        if let lastTime = lastControllViewShowupTime?.timeIntervalSince1970 {
+            let now = Date().timeIntervalSince1970
+            if now - lastTime > 5  {
+                avControllContainerViewHide = true
+                lastControllViewShowupTime = nil
+            }
+        }
     }
     
         
