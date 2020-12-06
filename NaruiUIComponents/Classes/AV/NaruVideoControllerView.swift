@@ -26,12 +26,21 @@ public class NaruVideoControllerView: UIView {
             layer.insertSublayer(avlayer, at: 0)
         }
     }
+    private var duration:TimeInterval = 0
+    private var currentTime:TimeInterval = 0
     
     deinit {
         subLandScapeController = nil
         NaruTimmer.shared.stop()
         if NaruTimmer.shared.timeResult > 0 {
-            NotificationCenter.default.post(name: .naruVideoWatchFinished, object: nil, userInfo: ["data" : viewModel!, "time" : NaruTimmer.shared.timeResult])
+            let result = ResultModel(
+                id: viewModel!.id,
+                watchTime: NaruTimmer.shared.timeResult,
+                currentTime: currentTime,
+                duration: duration)
+            NotificationCenter.default.post(
+                name: .naruVideoWatchFinished,
+                object: result)
             print("시청시간 : \(NaruTimmer.shared.timeResult)")
         }
         NaruTimmer.shared.reset()
@@ -243,7 +252,9 @@ public class NaruVideoControllerView: UIView {
             return
         }
         let currentTime = item.currentTime().seconds
+        self.currentTime = currentTime
         let duration = item.duration.seconds
+        self.duration = duration
         slider.isEnabled = true
         if touchSliderLock == false {
             slider.setValue(Float(currentTime / duration), animated: true)

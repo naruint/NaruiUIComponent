@@ -34,12 +34,13 @@ class TableViewController: UITableViewController {
         tableView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
         
         NotificationCenter.default.addObserver(forName: .naruVideoWatchFinished, object: nil, queue: nil) { [weak self](noti) in
-            guard let time = noti.userInfo?["time"] as? TimeInterval,
-                  let data = noti.userInfo?["data"] as? NaruVideoControllerView.ViewModel else {
+            guard let info = noti.object as? NaruVideoControllerView.ResultModel else {
                 return
             }
             
-            let ac = UIAlertController(title: nil, message: "id : \(data.id)  \(data.title) 을(를) \(Int(time)) 초 시청함", preferredStyle: .alert)
+            let ac = UIAlertController(
+                title: nil,
+                message: "id : \(info.id) 비디오를 \(Int(info.watchTime)) 초 시청함 마지막 시청 시각 : \(info.currentTime)초 \(info.isWatchFinish ? "시청완료" : "중간에 그만봄")", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             self?.present(ac, animated: true, completion: nil)
         }

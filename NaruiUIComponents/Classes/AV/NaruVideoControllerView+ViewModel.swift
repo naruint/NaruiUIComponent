@@ -39,4 +39,30 @@ public extension NaruVideoControllerView {
             self.thumbnailURL = thumbnailURL
         }
     }
+    
+    struct ResultModel {
+        /** 영상 아이디*/
+        public let id:String
+        /** 감상시간*/
+        public let watchTime:TimeInterval
+        /** 마지막 타임라인 시각*/
+        public let currentTime:TimeInterval
+        /** 동영상 제생 시간*/
+        public let duration:TimeInterval
+        /** 끝까지 봤나?*/
+        public var isWatchFinish:Bool {
+            currentTime > duration - 1
+        }
+        public init(
+            id:String,
+            watchTime:TimeInterval,
+            currentTime:TimeInterval,
+            duration:TimeInterval
+        ) {
+            self.id = id
+            self.watchTime = watchTime
+            self.currentTime = currentTime
+            self.duration = duration
+        }
+    }
 }
