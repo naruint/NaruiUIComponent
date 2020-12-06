@@ -14,7 +14,12 @@ class VideoTableViewController: UITableViewController {
     @IBOutlet weak var videoController: NaruVideoControllerView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewModel = NaruVideoControllerView.ViewModel(title: "자전거 타자", startDescTime: 10, endDescTime: 70, url: URL(string: "https://player.vimeo.com/external/321159666.hd.mp4?s=772ae60145f3fac0b667dc316fa21105e6062358&profile_id=175")!, thumbnailURL: nil)
+        let viewModel = NaruVideoControllerView.ViewModel(
+            title: "자전거 타자",
+            currentTime: 20,
+            startDescTime: 10,
+            endDescTime: 70,
+            url: URL(string: "https://player.vimeo.com/external/321159666.hd.mp4?s=772ae60145f3fac0b667dc316fa21105e6062358&profile_id=175")!, thumbnailURL: nil)
         
         videoController.openVideo(viewModel: viewModel)
 

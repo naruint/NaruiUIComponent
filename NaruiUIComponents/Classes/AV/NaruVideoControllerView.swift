@@ -25,6 +25,7 @@ public class NaruVideoControllerView: UIView {
     }
     
     deinit {
+        subLandScapeController = nil
         print("deinit NaruVideoControllerView")
     }
     
@@ -51,6 +52,8 @@ public class NaruVideoControllerView: UIView {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
+    
+    var subLandScapeController:NaruLandscapeVideoViewController? = nil
     
     let loadingView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
@@ -136,13 +139,20 @@ public class NaruVideoControllerView: UIView {
             if let vc = fullScreenController {
                 vc.dismiss(animated: true, completion: nil)
             } else {
-                let vc = NaruLandscapeVideoViewController()
+                let vc = subLandScapeController ?? NaruLandscapeVideoViewController()
+                if subLandScapeController == nil {
+                    subLandScapeController = vc
+                } else {
+                    NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
+                }
                 vc.isLandscapeOnly = false
                 vc.playerControllerView.avPlayer = avPlayer
                 vc.playerControllerView.viewModel = viewModel
                 vc.title = viewModel?.title
                 vc.playerControllerView.titleLabel.text = viewModel?.title
                 UIApplication.shared.lastPresentedViewController?.present(vc, animated: true, completion: nil)
+                
+                
             }
 
         }.disposed(by: disposeBag)
@@ -239,6 +249,9 @@ public class NaruVideoControllerView: UIView {
         let avPlayer = AVPlayer(url: viewModel.url)
         titleLabel.text = viewModel.title
         self.avPlayer = avPlayer
+        if viewModel.currentTime > 0 {
+            self.avPlayer?.seek(to: CMTime(seconds: viewModel.currentTime, preferredTimescale: 1000))
+        }
         addObserver()
         updateSlider()
         updatePlayBtn()

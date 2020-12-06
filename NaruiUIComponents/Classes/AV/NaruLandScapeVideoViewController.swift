@@ -62,6 +62,13 @@ public class NaruLandscapeVideoViewController: UIViewController {
         playerControllerView.addObserver()
     }
 
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let pl = playerControllerView.layer.sublayers?.first as? AVPlayerLayer {
+            pl.frame = view.frame
+        }
+    }
+    
     public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
         super.dismiss(animated: flag, completion: completion)

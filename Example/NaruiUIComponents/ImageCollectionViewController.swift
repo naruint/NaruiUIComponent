@@ -66,7 +66,7 @@ class ImageCollectionViewController: UICollectionViewController {
         let url:URL?
         let musicURL:URL?
         let group:String
-        
+
         public static func == (lhs: ViewModel, rhs: ViewModel) -> Bool {
             return lhs.url == rhs.url && lhs.group == rhs.group
         }
