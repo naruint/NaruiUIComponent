@@ -32,6 +32,17 @@ class TableViewController: UITableViewController {
         //        player.playVideo(webUrl: "https://www.dropbox.com/s/j2zzbs0pgxhbgmv/2922a71d4576db30dace2febf14d3631371ec204.mp4?dl=1", targetView: nil, isLoop: true)
         
         tableView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        
+        NotificationCenter.default.addObserver(forName: .naruVideoWatchFinished, object: nil, queue: nil) { [weak self](noti) in
+            guard let time = noti.userInfo?["time"] as? TimeInterval,
+                  let data = noti.userInfo?["data"] as? NaruVideoControllerView.ViewModel else {
+                return
+            }
+            
+            let ac = UIAlertController(title: nil, message: "id : \(data.id)  \(data.title) 을(를) \(Int(time)) 초 시청함", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            self?.present(ac, animated: true, completion: nil)
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -185,7 +196,7 @@ class TableViewController: UITableViewController {
             let vc = NaruLandscapeVideoViewController()
             present(vc, animated: true) {
                 vc.playerControllerView.openVideo(viewModel:  NaruVideoControllerView.ViewModel(
-                                                    
+                                                    id:"001",
                                                     title: "자전거 타자",
                                                     currentTime:20, startDescTime: 10, endDescTime: 70, url: URL(string: "https://www.dropbox.com/s/0sc26e8shaukm48/Unicycle%20%EB%A1%9C%EB%9D%BC%ED%83%80%EA%B8%B0.mp4?dl=1")!, thumbnailURL: nil))
             }

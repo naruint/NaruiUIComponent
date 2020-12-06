@@ -31,7 +31,7 @@ public class NaruVideoControllerView: UIView {
         subLandScapeController = nil
         NaruTimmer.shared.stop()
         if NaruTimmer.shared.timeResult > 0 {
-            NotificationCenter.default.post(name: .naruVideoWatchFinished, object: NaruTimmer.shared.timeResult)
+            NotificationCenter.default.post(name: .naruVideoWatchFinished, object: nil, userInfo: ["data" : viewModel!, "time" : NaruTimmer.shared.timeResult])
             print("시청시간 : \(NaruTimmer.shared.timeResult)")
         }
         NaruTimmer.shared.reset()
