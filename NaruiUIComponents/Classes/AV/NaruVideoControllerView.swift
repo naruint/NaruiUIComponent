@@ -309,11 +309,22 @@ public class NaruVideoControllerView: UIView {
         updateSlider()
         updatePlayBtn()
     }
-    
+
     public func addObserver() {
-        avPlayer?.addObserver(self, forKeyPath: "rate", options: .new, context: &kvoRateContext)
         avPlayer?.addPeriodicTimeObserver(forInterval: CMTime(value: CMTimeValue(1000), timescale: 1000), queue: nil, using: { [weak self](time) in
             self?.updateSlider()
+            if self?.avPlayer?.rate ?? 0 > 0  {
+                self?.registRateObserver()
+            }
         })
+    }
+
+    var isRegistRateObserver = false
+    func registRateObserver() {
+        if isRegistRateObserver == false {
+            avPlayer?.addObserver(self, forKeyPath: "rate", options: .new, context: &kvoRateContext)
+            updatePlayBtn()
+            isRegistRateObserver = true
+        }
     }
 }

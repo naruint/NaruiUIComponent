@@ -39,6 +39,5 @@ Pod::Spec.new do |s|
   s.dependency 'MKRingProgressView'
   s.dependency 'TagListView'
   s.dependency 'NVActivityIndicatorView'
-  s.dependency 'MobilePlayer'
 
 end

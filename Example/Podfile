@@ -19,7 +19,5 @@ target 'NaruiUIComponents_Example' do
     pod 'MKRingProgressView'
     pod 'TagListView'
     pod 'NVActivityIndicatorView'
-    pod 'MobilePlayer'
-    
   end
 end

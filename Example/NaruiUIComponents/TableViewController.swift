@@ -7,7 +7,6 @@
 
 import UIKit
 import NaruiUIComponents
-import MobilePlayer
 import AVKit
 
 class TableViewController: UITableViewController {
