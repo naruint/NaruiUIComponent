@@ -105,7 +105,9 @@ public class NaruTableHeaderDecoView: UIView {
             layer.addSublayer(label.layer)
         } else {
             drawCircle(size: 11, color: circleColor)
-            drawCircle(size: 4, color: .white)
+            if circleColor != nil {
+                drawCircle(size: 4, color: .white)
+            }
         }
     }
 }
