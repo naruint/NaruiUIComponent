@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,8 +12,8 @@
             <connections>
                 <outlet property="bgButton" destination="bXj-3l-mha" id="i2b-rd-w5P"/>
                 <outlet property="bgButtonTrailing" destination="eIo-ms-ec5" id="gab-nr-gKI"/>
-                <outlet property="button" destination="wbA-Xc-rWM" id="BG9-pg-0pc"/>
                 <outlet property="iconImageView" destination="NVH-PF-H4s" id="e3B-qG-eQi"/>
+                <outlet property="rightImageView" destination="O5j-s8-Of7" id="HnE-lY-y2b"/>
                 <outlet property="titleLabel" destination="mp3-zQ-CPM" id="mLq-EQ-qea"/>
             </connections>
         </placeholder>
@@ -31,13 +31,12 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbA-Xc-rWM">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon16IconArrowRGray2" translatesAutoresizingMaskIntoConstraints="NO" id="O5j-s8-Of7">
                             <rect key="frame" x="414" y="0.0" width="52" height="134"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="52" id="GA5-Ve-uLo"/>
+                                <constraint firstAttribute="width" constant="52" id="3h6-rT-c78"/>
                             </constraints>
-                            <state key="normal" image="icon16IconArrowRGray2"/>
-                        </button>
+                        </imageView>
                     </subviews>
                 </stackView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon16CheckOff" highlightedImage="icon16CheckOnBrand" translatesAutoresizingMaskIntoConstraints="NO" id="NVH-PF-H4s">

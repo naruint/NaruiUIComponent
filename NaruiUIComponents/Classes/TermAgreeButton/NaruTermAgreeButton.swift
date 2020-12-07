@@ -48,7 +48,7 @@ public class NaruTermAgreeButton: UIView {
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var bgButton: UIButton!
     @IBOutlet weak var bgButtonTrailing: NSLayoutConstraint!
     //MARK:-
@@ -79,12 +79,9 @@ public class NaruTermAgreeButton: UIView {
             DispatchQueue.main.async {[unowned self]in
                 NotificationCenter.default.post(name: .naruTermAgreeSelectionChange, object: self)
             }
-            didTouthupBgBtn(isSelected)
+            didTouthupBtn(isSelected)
         }.disposed(by: disposeBag)
         
-        button.rx.tap.bind { [unowned self](_) in
-            didTouchupRightBtn()
-        }.disposed(by: disposeBag)
         
         NotificationCenter.default.addObserver(forName: .naruTermAgreeSelectionChange, object: nil, queue: nil) { [weak self](noti) in
             if let btn = noti.object as? NaruTermAgreeButton {
@@ -107,9 +104,10 @@ public class NaruTermAgreeButton: UIView {
     func updateUI() {
         iconImageView.isHighlighted = isSelected
         
-        button.isHidden = isTotalAgree
+        rightImageView.isHidden = isTotalAgree
    
-        bgButtonTrailing.constant = isTotalAgree ? 0 : button.frame.width
+        bgButtonTrailing.constant = 0
+        
         backgroundColor = subButtonBGColor
         if isTotalAgree {
             backgroundColor = totalBGColor
@@ -120,22 +118,18 @@ public class NaruTermAgreeButton: UIView {
             }
         }
     }
-    
-    var didTouchupRightBtn:()->Void = {
-        print("touchup Right btn")
-    }
+        
+    @available(*, deprecated, renamed: "didTouchupBtn", message: "이 메서드는 더이상 작동하지 않습니다.")
     /** 오른쪽 버튼 (꺽쇠) 선택시 콜백 설정*/
-    public func didTouchupRightBtn(didTouch:@escaping()->Void){
-        didTouchupRightBtn = didTouch
-    }
+    public func didTouchupRightBtn(didTouch:@escaping()->Void){}
     
     
-    var didTouthupBgBtn:(_ isSelected:Bool)->Void = { select in
+    var didTouthupBtn:(_ isSelected:Bool)->Void = { select in
         print("touchup BG btn : \(select)")
     }
     /** 전체 버튼 영역 선택시 콜백 설정*/
-    public func didTouchupBgBtn(didTouch:@escaping(_ isSelected:Bool)->Void) {
-        didTouthupBgBtn = didTouch
+    public func didTouchupBtn(didTouch:@escaping(_ isSelected:Bool)->Void) {
+        didTouthupBtn = didTouch
     }
     
 }
