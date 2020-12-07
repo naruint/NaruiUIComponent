@@ -41,7 +41,6 @@ public class NaruTableHeaderDecoView: UIView {
     }
     
     public func set(style:Style, text:String? , circleColor:UIColor?, dashDistance:CGFloat = 10) {
-        self.style = style
         self.text = text
         self.dashDistance = dashDistance
         self.circleColor = circleColor
@@ -56,10 +55,15 @@ public class NaruTableHeaderDecoView: UIView {
     }
 
     public override func draw(_ rect: CGRect) {
-        func drawCircle(size:CGFloat, color:UIColor) {
+        func drawCircle(size:CGFloat, color:UIColor?) {
             let shapeLayer = CAShapeLayer()
-            shapeLayer.path = UIBezierPath(ovalIn: CGRect(x: bounds.midX - size / 2, y: bounds.midY - size / 2, width: size, height: size)).cgPath
-            shapeLayer.fillColor = color.cgColor
+            if let color = color {
+                shapeLayer.path = UIBezierPath(ovalIn: CGRect(x: bounds.midX - size / 2, y: bounds.midY - size / 2, width: size, height: size)).cgPath
+                shapeLayer.fillColor = color.cgColor
+            } else {
+                shapeLayer.path = UIBezierPath(ovalIn: CGRect(x: bounds.midX - 3, y: bounds.midY - 3, width: 6, height: 6)).cgPath
+                shapeLayer.fillColor = UIColor.black.cgColor
+            }
             layer.addSublayer(shapeLayer)
         }
         
@@ -100,7 +104,7 @@ public class NaruTableHeaderDecoView: UIView {
             label.textAlignment = .center
             layer.addSublayer(label.layer)
         } else {
-            drawCircle(size: 11, color: circleColor ?? .black)
+            drawCircle(size: 11, color: circleColor)
             drawCircle(size: 4, color: .white)
         }
     }
