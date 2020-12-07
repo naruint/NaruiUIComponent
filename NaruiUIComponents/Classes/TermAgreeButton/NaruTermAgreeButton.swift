@@ -79,7 +79,7 @@ public class NaruTermAgreeButton: UIView {
             DispatchQueue.main.async {[unowned self]in
                 NotificationCenter.default.post(name: .naruTermAgreeSelectionChange, object: self)
             }
-
+            didTouthupBgBtn(isSelected)
         }.disposed(by: disposeBag)
         
         button.rx.tap.bind { [unowned self](_) in
@@ -122,9 +122,20 @@ public class NaruTermAgreeButton: UIView {
     }
     
     var didTouchupRightBtn:()->Void = {
-        print("TouchUP")
+        print("touchup Right btn")
     }
+    /** 오른쪽 버튼 (꺽쇠) 선택시 콜백 설정*/
     public func didTouchupRightBtn(didTouch:@escaping()->Void){
         didTouchupRightBtn = didTouch
     }
+    
+    
+    var didTouthupBgBtn:(_ isSelected:Bool)->Void = { select in
+        print("touchup BG btn : \(select)")
+    }
+    /** 전체 버튼 영역 선택시 콜백 설정*/
+    public func didTouchupBgBtn(didTouch:@escaping(_ isSelected:Bool)->Void) {
+        didTouthupBgBtn = didTouch
+    }
+    
 }
