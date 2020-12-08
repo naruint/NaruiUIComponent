@@ -40,12 +40,32 @@ public class NaruTableHeaderDecoView: UIView {
         }
     }
     
-    public func set(style:Style, text:String? , circleColor:UIColor?, dashDistance:CGFloat = 10) {
-        self.text = text
-        self.dashDistance = dashDistance
-        self.circleColor = circleColor
+    public var font:UIFont = UIFont.boldSystemFont(ofSize: 14) {
+        didSet {
+            redraw()
+        }
     }
     
+    public var textColor:UIColor = .black {
+        didSet {
+            redraw()
+        }
+    }
+    
+    public func set(style:Style,
+                    text:String?,
+                    circleColor:UIColor?,
+                    font:UIFont = UIFont.boldSystemFont(ofSize: 14),
+                    textColor:UIColor = .black,
+                    dashDistance:CGFloat = 10) {
+        self.style = style
+        self.text = text
+        self.circleColor = circleColor
+        self.font = font
+        self.textColor = textColor
+        self.dashDistance = dashDistance
+    }
+        
 
     private func redraw() {
         for layer in layer.sublayers ?? [] {
@@ -97,8 +117,8 @@ public class NaruTableHeaderDecoView: UIView {
         if let txt = text {
             let label = UILabel()
             label.text = txt
-            label.font = UIFont.boldSystemFont(ofSize: 14)
-            label.textColor = .black
+            label.font = font
+            label.textColor = textColor
             label.sizeToFit()
             label.center = CGPoint(x: bounds.midX, y: bounds.midY)
             label.textAlignment = .center
@@ -111,3 +131,4 @@ public class NaruTableHeaderDecoView: UIView {
         }
     }
 }
+
