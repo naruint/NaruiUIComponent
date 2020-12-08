@@ -20,7 +20,7 @@ class VideoTableViewController: UITableViewController {
             currentTime: 20,
             startDescTime: 10,
             endDescTime: 70,
-            url: URL(string: "https://player.vimeo.com/external/321159666.hd.mp4?s=772ae60145f3fac0b667dc316fa21105e6062358&profile_id=175")!, thumbnailURL: nil)
+            url: URL(string: "https://hrdvod.hanwhalife.com/dr9iuiNLSzKTSs/YS+ZU5ONesC6LDOp0Gt2ZCmFTY3Ldp9Rxbe4F8HsCyroBpxdNcgcdjUxW63FyJ9yROoW7K0rNOgo+KvNyaRVZUMwx+BXbMbdPwZKKbEiScuQoOB7CYDQKHZNw9UY9TVrgm+GRdsZ8vzFMIasJjkGMgjjw7io=")!, thumbnailURL: nil)
         
         videoController.openVideo(viewModel: viewModel)
 
