@@ -231,6 +231,7 @@ public class NaruTextField: UIView {
         let btn = UIButton(type: .custom)
         btn.setTitle(title, for: .normal)
         btn.addTarget(self, action: #selector(self.onTouchupRightButton(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = font
         btn.setTitleColor(normalColor ?? textField.textColor, for: .normal)
         btn.setTitleColor(highlightedColor ?? textField.textColor, for: .highlighted)
         self.isHideRightViewWhenInput = isHideRightViewWhenInput
