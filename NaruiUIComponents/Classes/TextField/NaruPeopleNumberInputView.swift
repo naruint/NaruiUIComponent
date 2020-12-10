@@ -77,7 +77,7 @@ public class NaruPeopleNumberInputView: UIView {
         updateUI()
         birthdayTextField.rx.text.orEmpty.bind { [unowned self](string) in
             updateUI()
-            if string.count > 6 {
+            if string.count >= 6 {
                 let txt = string[0..<6]
                 birthdayTextField.text = txt
                 birthdayTextField.endEditing(true)
