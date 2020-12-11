@@ -66,6 +66,10 @@ public class NaruImagePlaceHolderTextView: UIView {
         }
     }
     
+    public var inputTextView:UITextView {
+        return textView
+    }
+    
     //MARK:-
     //MARK:arrangeView
     override init(frame: CGRect) {
