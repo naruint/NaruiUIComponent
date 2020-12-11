@@ -50,6 +50,10 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-rH-D0k">
                             <rect key="frame" x="0.0" y="21" width="414" height="135"/>
                             <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WlL-KK-fhP">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </imageView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0NV-6b-CAr">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,10 +61,6 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WlL-KK-fhP">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </imageView>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="WlL-KK-fhP" firstAttribute="leading" secondItem="p7c-rH-D0k" secondAttribute="leading" id="CGJ-eC-qyx"/>
