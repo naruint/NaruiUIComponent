@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UIButton {
+public extension UIButton {
     @IBInspectable var isUnderLine:Bool {
         set {
             if let title = self.title(for: .normal) {
