@@ -61,6 +61,10 @@ public class NaruPeopleNumberInputView: UIView {
         arrangeView()
     }
     
+    /** 생년월일 텍스트 필드*/
+    public var firstTextField: UITextField {
+        return birthdayTextField
+    }
     
     func arrangeView() {
         guard let view = UINib(
@@ -87,6 +91,7 @@ public class NaruPeopleNumberInputView: UIView {
         }.disposed(by: disposeBag)
         birthdayTextField.keyboardType = .numberPad
     }
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         updateUI()
