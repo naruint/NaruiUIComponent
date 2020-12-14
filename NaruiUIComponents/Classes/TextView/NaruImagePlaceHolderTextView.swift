@@ -106,6 +106,10 @@ public class NaruImagePlaceHolderTextView: UIView {
         imageView.isHidden = textView.text.isEmpty == false
     }
     
+    public func setPlaceHolderImage(image:UIImage) {
+        imageView.image = image
+    }
+    
     let disposeBag = DisposeBag()
 
 }
