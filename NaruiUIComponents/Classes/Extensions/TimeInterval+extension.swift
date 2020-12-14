@@ -6,7 +6,7 @@
 //
 
 import Foundation
-extension TimeInterval {
+public extension TimeInterval {
     /** 분, 초 포메팅으로 변환 리턴 */
     var formatted_ms_String:String? {
         makeString(units: [.minute, .second])

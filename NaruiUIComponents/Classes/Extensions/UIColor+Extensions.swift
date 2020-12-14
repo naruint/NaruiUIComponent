@@ -8,50 +8,22 @@
 import UIKit
 public extension UIColor {
     var image:UIImage {
-        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        context!.setFillColor(self.cgColor)
-        context!.fill(rect)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return img!
+        return UIImage(color: self)
     }
     
     /** 서클 이미지 만들기*/
     func circleImage(diameter: CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter, height: diameter), false, 0)
-        let ctx = UIGraphicsGetCurrentContext()!
-        ctx.saveGState()
-        
-        let rect = CGRect(x: 0, y: 0, width: diameter, height: diameter)
-        ctx.setFillColor(self.cgColor)
-        ctx.fillEllipse(in: rect)
-        
-        ctx.restoreGState()
-        let img = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()        
-        return img
+        return UIImage(diameter: diameter, fillColor: self)
     }
     
     /** 2중 서클 이미지 만들기*/
     func circleImage(diameter:CGFloat, innerColor:UIColor, innerDiameter:CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter, height: diameter), false, 0)
-        let ctx = UIGraphicsGetCurrentContext()!
-        ctx.saveGState()
-        
-        let rect = CGRect(x: 0, y: 0, width: diameter, height: diameter)
-        ctx.setFillColor(self.cgColor)
-        ctx.fillEllipse(in: rect)
-        
-        let a = (diameter - innerDiameter) / 2
-        let innerRect = CGRect(x: a, y: a, width: innerDiameter, height: innerDiameter)
-        ctx.setFillColor(innerColor.cgColor)
-        ctx.fillEllipse(in: innerRect)
-        ctx.restoreGState()
-        let img = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return img
-
+        return UIImage(diameter: diameter, innerDiameter: innerDiameter, outColor: self, innerColor: innerColor)
+    }
+    
+    /** 라운드 이미지 만들기 (라운드 BG 버튼 만들기 용)*/
+    @available(*, deprecated, renamed: "UIImage()", message: "UIImage(size...)로 수정되었습니다.")
+    func roundImage(cornerRadius:CGFloat, size:CGSize, strockColor:UIColor? = nil, strockWidth:CGFloat = 0)->UIImage {
+        return UIImage(size: size, fillColor: self, cornerRadius: cornerRadius, strockColor: strockColor, strockWidth: strockWidth)
     }
 }
