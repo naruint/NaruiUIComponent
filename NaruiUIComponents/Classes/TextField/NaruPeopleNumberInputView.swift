@@ -79,23 +79,19 @@ public class NaruPeopleNumberInputView: UIView {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
         addGestureRecognizer(gesture)
         updateUI()
+        
         birthdayTextField.rx.text.orEmpty.bind { [unowned self](string) in
             updateUI()
-            if string.count >= 6 {
+            if string.count > 6 {
                 let txt = string[0..<6]
+                birthdayTextField.endEditing(true)
+                firstTextFieldCallBack(txt)
                 birthdayTextField.text = txt
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) { [weak self] in
-                    if self?.birthdayTextField.text?.count ?? 0 >= 6 {
-                        self?.birthdayTextField.endEditing(true)
-                        self?.firstTextFieldCallBack(string)
-                    }
-                }
-                return
             }
         }.disposed(by: disposeBag)
         birthdayTextField.keyboardType = .numberPad
     }
-    
+        
     public override func layoutSubviews() {
         super.layoutSubviews()
         updateUI()
