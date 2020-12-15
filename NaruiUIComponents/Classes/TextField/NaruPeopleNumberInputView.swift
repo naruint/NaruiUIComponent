@@ -84,8 +84,12 @@ public class NaruPeopleNumberInputView: UIView {
             if string.count >= 6 {
                 let txt = string[0..<6]
                 birthdayTextField.text = txt
-                birthdayTextField.endEditing(true)
-                firstTextFieldCallBack(string)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) { [weak self] in
+                    if self?.birthdayTextField.text?.count ?? 0 >= 6 {
+                        self?.birthdayTextField.endEditing(true)
+                        self?.firstTextFieldCallBack(string)
+                    }
+                }
                 return
             }
         }.disposed(by: disposeBag)
