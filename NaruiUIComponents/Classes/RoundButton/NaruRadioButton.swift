@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-extension Notification.Name {
+public extension Notification.Name {
     static let naruRadioButtonSelect = Notification.Name(rawValue: "naruRadioButtonSelect_observer")
 }
 

@@ -12,6 +12,10 @@ import RxCocoa
 @IBDesignable
 public class NaruRadioBoxView: UIView {
 
+    public var radioButton:UIButton {
+        return button
+    }
+    
     @IBOutlet weak var button: UIButton!
     
     let disposeBag = DisposeBag()
