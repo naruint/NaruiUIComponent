@@ -18,6 +18,19 @@ public class NaruRadioButton: UIView {
     @IBInspectable var idx:Int = 0
     @IBInspectable var groupid:String? = nil
     
+    public var isEnable:Bool {
+        set {
+            button.isEnabled = newValue
+        }
+        get {
+            button.isEnabled
+        }
+    }
+    
+    public var radioButton:UIButton {
+        return button
+    }
+    
     let disposeBag = DisposeBag()
     //MARK:-
     //MARK:IBInspectable
