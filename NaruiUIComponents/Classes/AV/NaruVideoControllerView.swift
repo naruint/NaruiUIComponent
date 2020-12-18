@@ -228,21 +228,27 @@ public class NaruVideoControllerView: UIView {
     
     @objc func onSliderValueChanged(slider: UISlider, event: UIEvent) {
         if let touchEvent = event.allTouches?.first {
-                switch touchEvent.phase {
-                case .began:
-                    touchSliderLock = true
-                case .ended:
-                    guard let item = avPlayer?.currentItem else {
-                        touchSliderLock = false
-                        return
-                    }
-                    let newtime = item.duration.seconds * Double(slider.value)
-                    avPlayer?.seek(to: CMTime(seconds: newtime, preferredTimescale: item.duration.timescale))
+        
+            switch touchEvent.phase {
+            case .began:
+                touchSliderLock = true
+            case .ended:
+                guard let item = avPlayer?.currentItem else {
                     touchSliderLock = false
-                default:
-                    break
+                    return
                 }
+                if avPlayer?.rate == 0 || avPlayer?.error != nil {
+                    slider.setValue(0, animated: true)
+                    touchSliderLock = false
+                    return
+                }
+                let newtime = item.duration.seconds * Double(slider.value)
+                avPlayer?.seek(to: CMTime(seconds: newtime, preferredTimescale: item.duration.timescale))
+                touchSliderLock = false
+            default:
+                break
             }
+        }
     }
     
     public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

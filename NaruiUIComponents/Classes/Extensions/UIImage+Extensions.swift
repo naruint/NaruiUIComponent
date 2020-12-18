@@ -16,6 +16,7 @@ public extension UIImage {
     
     /** 그라데이션 라운드 이미지 만듭니다.*/
     convenience init(size: CGSize, gradientPoints: [GradientPoint], start:CGPoint, end:CGPoint, cornerRadius:CGFloat, strockColor:UIColor? = nil, strockWidth:CGFloat = 0) {
+        let size = CGSize(width: size.width/2, height: size.height/2)
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
 
         let ctx = UIGraphicsGetCurrentContext()!
@@ -51,6 +52,7 @@ public extension UIImage {
     
     /** 단색 라운드 이미지 만듭니다.*/
     convenience init(size:CGSize, fillColor:UIColor, cornerRadius:CGFloat,strockColor:UIColor? = nil, strockWidth:CGFloat = 0) {
+        let size = CGSize(width: size.width/2, height: size.height/2)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
@@ -86,11 +88,11 @@ public extension UIImage {
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
         
-        let rect = CGRect(x: 0, y: 0, width: diameter / 2, height: diameter)
+        let rect = CGRect(x: 0, y: 0, width: diameter / 2, height: diameter / 2)
         ctx.setFillColor(outColor.cgColor)
         ctx.fillEllipse(in: rect)
         
-        let a = (diameter - innerDiameter) / 2
+        let a = (diameter - innerDiameter) / 4
         let innerRect = CGRect(x: a, y: a, width: innerDiameter, height: innerDiameter)
         ctx.setFillColor(innerColor.cgColor)
         ctx.fillEllipse(in: innerRect)
@@ -102,11 +104,11 @@ public extension UIImage {
     
     /** 서클 이미지 만들기*/
     convenience init(diameter: CGFloat, fillColor:UIColor) {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter, height: diameter), false, 0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter / 2 , height: diameter / 2), false, 0)
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
         
-        let rect = CGRect(x: 0, y: 0, width: diameter, height: diameter)
+        let rect = CGRect(x: 0, y: 0, width: diameter / 2, height: diameter / 2)
         ctx.setFillColor(fillColor.cgColor)
         ctx.fillEllipse(in: rect)
         
