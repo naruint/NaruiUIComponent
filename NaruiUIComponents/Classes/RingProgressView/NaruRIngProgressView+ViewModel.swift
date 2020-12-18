@@ -17,11 +17,15 @@ extension NaruRingProgressView {
         
         public let forgroundColor:UIColor
         public let ringBackgrouncColor:UIColor
-        public init(secondLabelText:String, progress:Float, forgroundColor:UIColor, ringBackgrouncColor:UIColor) {
+        public init(secondLabelText:String, progress:Float, forgroundColor:UIColor, ringBackgrouncColor:UIColor?) {
             self.secondLabelText = secondLabelText
             self.progress = progress
             self.forgroundColor = forgroundColor
-            self.ringBackgrouncColor = ringBackgrouncColor
+            if let color = ringBackgrouncColor {
+                self.ringBackgrouncColor = color
+            } else {
+                self.ringBackgrouncColor = forgroundColor.withAlphaComponent(0.2)
+            }
         }
     }
 

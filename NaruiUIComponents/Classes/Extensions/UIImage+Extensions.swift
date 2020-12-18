@@ -86,7 +86,7 @@ public extension UIImage {
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
         
-        let rect = CGRect(x: 0, y: 0, width: diameter, height: diameter)
+        let rect = CGRect(x: 0, y: 0, width: diameter / 2, height: diameter)
         ctx.setFillColor(outColor.cgColor)
         ctx.fillEllipse(in: rect)
         
