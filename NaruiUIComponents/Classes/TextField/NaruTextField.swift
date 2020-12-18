@@ -45,8 +45,8 @@ public class NaruTextField: UIView {
     
     @IBInspectable var normalLineColor:UIColor = .white {
         didSet {
-            DispatchQueue.main.async {[unowned self]in
-                lineView.backgroundColor = normalLineColor
+            DispatchQueue.main.async {[weak self]in
+                self?.lineView.backgroundColor = self?.normalLineColor
             }
         }
     }
@@ -64,9 +64,9 @@ public class NaruTextField: UIView {
     
     @IBInspectable var placeHolder:String? = "" {
         didSet {
-            DispatchQueue.main.async {[unowned self]in
-                textField.placeholder = placeHolder
-                titleLabel.text = placeHolder
+            DispatchQueue.main.async {[weak self]in
+                self?.textField.placeholder = self?.placeHolder
+                self?.titleLabel.text = self?.placeHolder
             }
         }
     }
@@ -90,25 +90,31 @@ public class NaruTextField: UIView {
     
     public var isError:Bool = false {
         didSet {
-            DispatchQueue.main.async {[unowned self] in
-                lineView.backgroundColor = isError ? errorLineColor : normalLineColor
-                updateUI()
+            DispatchQueue.main.async {[weak self] in
+                guard let s = self else {
+                    return
+                }
+                s.lineView.backgroundColor = s.isError ? s.errorLineColor : s.normalLineColor
+                s.updateUI()
             }
         }
     }
     
     func setAttributedPlaceHolder() {
-        DispatchQueue.main.async {[unowned self] in
-            textField.attributedPlaceholder = NSAttributedString(string: placeHolder ?? "", attributes: [.foregroundColor : PH_Color])
-            if isRequired {
-                textField.attributedPlaceholder = placeHolder?.makeRequiredAttributeString(
-                    textColor: PH_labelColor ?? PH_Color ,
-                    pointColor: requiredColor,
-                    height: textField.font?.pointSize ?? 10)
-                titleLabel.attributedText = placeHolder?.makeRequiredAttributeString(
-                    textColor: PH_labelColor ?? PH_Color,
-                    pointColor: requiredColor,
-                    height: titleLabel.font?.pointSize ?? 10)
+        DispatchQueue.main.async {[weak self] in
+            guard let s = self else {
+                return
+            }
+            s.textField.attributedPlaceholder = NSAttributedString(string: s.placeHolder ?? "", attributes: [.foregroundColor : s.PH_Color])
+            if s.isRequired {
+                s.textField.attributedPlaceholder = s.placeHolder?.makeRequiredAttributeString(
+                    textColor: s.PH_labelColor ?? s.PH_Color ,
+                    pointColor: s.requiredColor,
+                    height: s.textField.font?.pointSize ?? 10)
+                s.titleLabel.attributedText = s.placeHolder?.makeRequiredAttributeString(
+                    textColor: s.PH_labelColor ?? s.PH_Color,
+                    pointColor: s.requiredColor,
+                    height: s.titleLabel.font?.pointSize ?? 10)
             }
         }
     }
