@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+fileprivate let nativeScale:CGFloat = UIScreen.main.nativeScale
 
 public extension UIImage {
     struct GradientPoint {
@@ -16,7 +17,7 @@ public extension UIImage {
     
     /** 그라데이션 라운드 이미지 만듭니다.*/
     convenience init(size: CGSize, gradientPoints: [GradientPoint], start:CGPoint, end:CGPoint, cornerRadius:CGFloat, strockColor:UIColor? = nil, strockWidth:CGFloat = 0) {
-        let size = CGSize(width: size.width/2, height: size.height/2)
+        let size = CGSize(width: size.width/nativeScale, height: size.height/nativeScale)
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
 
         let ctx = UIGraphicsGetCurrentContext()!
@@ -52,7 +53,7 @@ public extension UIImage {
     
     /** 단색 라운드 이미지 만듭니다.*/
     convenience init(size:CGSize, fillColor:UIColor, cornerRadius:CGFloat,strockColor:UIColor? = nil, strockWidth:CGFloat = 0) {
-        let size = CGSize(width: size.width/2, height: size.height/2)
+        let size = CGSize(width: size.width/nativeScale, height: size.height/nativeScale)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
@@ -84,16 +85,16 @@ public extension UIImage {
     
     /** 2중 서클 이미지 만들기*/
     convenience init(diameter:CGFloat, innerDiameter:CGFloat, outColor:UIColor, innerColor:UIColor) {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter, height: diameter), false, 0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter/nativeScale, height: diameter/nativeScale), false, 0)
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
         
-        let rect = CGRect(x: 0, y: 0, width: diameter / 2, height: diameter / 2)
+        let rect = CGRect(x: 0, y: 0, width: diameter / nativeScale, height: diameter / nativeScale)
         ctx.setFillColor(outColor.cgColor)
         ctx.fillEllipse(in: rect)
         
-        let a = (diameter - innerDiameter) / 4
-        let innerRect = CGRect(x: a, y: a, width: innerDiameter, height: innerDiameter)
+        let a = (diameter - innerDiameter) / nativeScale / 2
+        let innerRect = CGRect(x: a, y: a, width: innerDiameter/nativeScale, height: innerDiameter/nativeScale)
         ctx.setFillColor(innerColor.cgColor)
         ctx.fillEllipse(in: innerRect)
         ctx.restoreGState()
@@ -104,11 +105,11 @@ public extension UIImage {
     
     /** 서클 이미지 만들기*/
     convenience init(diameter: CGFloat, fillColor:UIColor) {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter / 2 , height: diameter / 2), false, 0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter / nativeScale , height: diameter / nativeScale), false, 0)
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
         
-        let rect = CGRect(x: 0, y: 0, width: diameter / 2, height: diameter / 2)
+        let rect = CGRect(x: 0, y: 0, width: diameter / nativeScale, height: diameter / nativeScale)
         ctx.setFillColor(fillColor.cgColor)
         ctx.fillEllipse(in: rect)
         

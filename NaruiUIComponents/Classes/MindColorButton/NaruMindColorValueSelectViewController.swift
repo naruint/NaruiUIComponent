@@ -64,6 +64,12 @@ class NaruMindColorValueSelectViewController: UIViewController {
         if viewModel?.value ?? 0 > 0 {
             showup()
         }
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTapView(_:)))
+        self.view.addGestureRecognizer(gesture)
+    }
+    
+    @objc func onTapView(_ sender:UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
     }
     
     private func showup() {

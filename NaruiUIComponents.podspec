@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '서창열' => 'kongbaguni@gmail.com' }
   s.source           = { :git => 'https://github.com/naruint/NaruiUIComponent.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/kongbaguni'
+  s.social_media_url = 'https://www.facebook.com/kongbaguni/'
   s.ios.deployment_target = '12.0'
   s.source_files = 'NaruiUIComponents/Classes/*/*'
   s.resources = 'NaruiUIComponents/Assets/*.{xib,storyboard,xcassets}'
