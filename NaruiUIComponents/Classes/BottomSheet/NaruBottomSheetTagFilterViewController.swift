@@ -113,11 +113,14 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         }.disposed(by: disposeBag)
     }
         
-    public func setTags(selectedTags:[String:[String]]? = nil){
+    public func setTags(selectedTags:[String:[String]]){
         preSelectedTags = selectedTags
     }
     
-    
+    public func showBottomSheet(targetViewController: UIViewController, selectedTags:[String:[String]]? = nil) {
+        preSelectedTags = selectedTags
+        show(target: targetViewController)
+    }
     
     public func show(target:UIViewController) {
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 17)
