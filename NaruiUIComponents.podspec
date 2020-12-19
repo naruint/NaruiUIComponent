@@ -31,7 +31,6 @@ Pod::Spec.new do |s|
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
   s.dependency 'RxRelay'
-  s.dependency 'UBottomSheet'
   s.dependency 'PhoneNumberKit'
   s.dependency 'RxKingfisher'
   s.dependency 'Kingfisher'
@@ -39,5 +38,6 @@ Pod::Spec.new do |s|
   s.dependency 'MKRingProgressView'
   s.dependency 'TagListView'
   s.dependency 'NVActivityIndicatorView'
+  s.dependency 'PullableSheet'
 
 end

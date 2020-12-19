@@ -8,6 +8,7 @@
 import UIKit
 import NaruiUIComponents
 import AVKit
+import PullableSheet
 
 class TableViewController: UITableViewController {
     enum CellType : String, CaseIterable {
@@ -21,6 +22,8 @@ class TableViewController: UITableViewController {
         case imageTest2 = "imageTest2"
         case videoTest = "VideoTest"
         case videoTest2 = "VideoTest2"
+        case BottomSheetTest = "BottomSheetTest"
+        
     }
     let player = NaruSimpleVideoPlayer()
     override func viewDidLoad() {
@@ -43,6 +46,7 @@ class TableViewController: UITableViewController {
             ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             self?.present(ac, animated: true, completion: nil)
         }
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -201,6 +205,8 @@ class TableViewController: UITableViewController {
                                                     currentTime:20, startDescTime: 10, endDescTime: 70,
                                                     url: URL(string: "https://hrdvod.hanwhalife.com/dr9iuiNLSzKTSs/YS+ZU5ONesC6LDOp0Gt2ZCmFTY3Ldp9Rxbe4F8HsCyroBpxdNcgcdjUxW63FyJ9yROoW7K0rNOgo+KvNyaRVZUMwx+BXbMbdPwZKKbEiScuQoOB7CYDQKHZNw9UY9TVrgm+GRdsZ8vzFMIasJjkGMgjjw7io=")!, thumbnailURL: nil))
             }
+        case .BottomSheetTest:
+            break
             
         }
     }
