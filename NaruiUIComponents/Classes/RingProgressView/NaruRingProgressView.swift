@@ -12,7 +12,9 @@ import MKRingProgressView
 public class NaruRingProgressView: UIView {
     public var viewModel:ViewModel? = ViewModel(secondLabelText: "", progress: 0.0, forgroundColor: .red, ringBackgrouncColor:.gray ) {
         didSet {
-            updateUI()
+            DispatchQueue.main.async {[weak self]in
+                self?.updateUI()
+            }
         }
     }
     
