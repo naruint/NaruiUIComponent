@@ -8,7 +8,6 @@ target 'NaruiUIComponents_Example' do
     pod 'Nimble'
     pod 'FBSnapshotTestCase'
     pod 'Nimble-Snapshots'
-    pod 'UBottomSheet'
     pod 'RxCocoa'
     pod 'RxSwift'
     pod 'PhoneNumberKit'
@@ -17,5 +16,7 @@ target 'NaruiUIComponents_Example' do
     pod 'MKRingProgressView'
     pod 'TagListView'
     pod 'NVActivityIndicatorView'
+    pod 'PullableSheet'
+
   end
 end

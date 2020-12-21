@@ -6,10 +6,10 @@
 //
 
 import UIKit
-import UBottomSheet
 import TagListView
 import RxCocoa
 import RxSwift
+import PullableSheet
 
 fileprivate var preSelectedTags:[String:[String]]? = nil
 
@@ -22,6 +22,7 @@ extension Notification.Name {
 }
 
 public class NaruBottomSheetTagFilterViewController: UIViewController {
+    @IBOutlet var headerView: UIView!
     deinit {
         print("NaruBottomSheetTagFilterViewController deinit!!")
     }
@@ -86,12 +87,11 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var headerLabel: UILabel!
     
-    public var sheetCoordinator: UBottomSheetCoordinator?
-    let dataSorce = PullToDismissDataSource()
-
-    weak var dimViewController:UIViewController? = nil
-    let disposeBag = DisposeBag()
     
+    weak var dimViewController:UIViewController? = nil
+    weak var pullableShtte:PullableSheet? = nil
+    
+    let disposeBag = DisposeBag()
     public override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInsetAdjustmentBehavior = .never
@@ -105,53 +105,67 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
             let th:CGFloat = 82
             let tf = self?.tableView.tableFooterView?.frame.height ?? 0
             print("tableView height : \(h)+\(th)+\(tf) = \(h + th + tf)")
-            if h > 0 {
-                self?.dataSorce.tableViewHeight = h + th + tf
-            }
         }
         
         applyButton.rx.tap.bind { [unowned self](_) in
-            sheetCoordinator?.removeSheetChild(item: self)
+            exit()
+            
         }.disposed(by: disposeBag)
     }
         
-    public func showBottomSheet(targetViewController vc:UIViewController, selectedTags:[String:[String]]? = nil){
+    public func setTags(selectedTags:[String:[String]]){
         preSelectedTags = selectedTags
-        let dimvc = UIViewController()
-        dimViewController = dimvc
-        dimViewController?.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        dimViewController?.modalTransitionStyle = .crossDissolve
-        dimViewController?.modalPresentationStyle = .overFullScreen
+    }
+    
+    public func showBottomSheet(targetViewController: UIViewController, selectedTags:[String:[String]]? = nil) {
+        preSelectedTags = selectedTags
+        show(target: targetViewController)
+    }
+    
+    public func show(target:UIViewController) {
+        headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 17)
         
-        sheetCoordinator = UBottomSheetCoordinator(parent: vc)
-        sheetCoordinator?.dataSource = dataSorce
-        sheetCoordinator?.addSheet(self, to: dimvc, didContainerCreate: { container in
-            let f = self.view.frame
-            let rect = CGRect(x: f.minX, y: f.minY, width: f.width, height: f.height)
-            container.roundCorners(corners: [.topLeft, .topRight], radius: 16, rect: rect)
-        })
-        vc.present(dimvc, animated: true, completion: nil)
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        let sheet = PullableSheet(content: self, topBarStyle: .custom(headerView))
+        sheet.snapPoints = [.min,.custom(y: UIScreen.main.bounds.height - 544
+        ),.max]
+        
+        let dimVC = UIViewController()
+        dimVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTapDim(_:)))
+        dimVC.view.addGestureRecognizer(gesture)
+        
+        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(self.onTapHeader(_:)))
+        headerView.addGestureRecognizer(gesture2)
+        
+        sheet.add(to: dimVC)
+        dimVC.modalPresentationStyle = .overFullScreen
+        target.present(dimVC, animated: true) {
+            sheet.scroll(toY: 200)
+        }
+        dimVC.modalTransitionStyle = .crossDissolve
 
-        //adds pan gesture recognizer to draggableView()
-        sheetCoordinator?.startTracking(item: self)
+
+        dimViewController = dimVC
+        
+        pullableShtte = sheet
+
     }
     
-    public override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        dimViewController?.dismiss(animated: true, completion: nil)
+    @objc func onTapDim(_ sender:UITapGestureRecognizer) {
+        exit()
     }
     
+    @objc func onTapHeader(_ sender:UITapGestureRecognizer) {
+        pullableShtte?.scroll(toY: 200)
+    }
+    
+    private func exit() {
+        pullableShtte?.scroll(toY: UIScreen.main.bounds.height, duration: 0.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {[weak self]in
+            self?.dimViewController?.dismiss(animated: true, completion: nil)
+        }
+    }
    
-}
-
-extension NaruBottomSheetTagFilterViewController : Draggable {
-    public func draggableView() -> UIScrollView? {
-        return tableView
-    }
 }
 
 extension NaruBottomSheetTagFilterViewController : UITableViewDataSource {
@@ -255,22 +269,3 @@ class NaruBottomSheetTagFilterTableViewCell : UITableViewCell {
     }
     
 }
-
-class PullToDismissDataSource: UBottomSheetCoordinatorDataSource {
-    var tableViewHeight:CGFloat = 500
-    var height:CGFloat {
-        UIScreen.main.bounds.height - tableViewHeight
-    }
-    
-    func sheetPositions(_ availableHeight: CGFloat) -> [CGFloat] {
-        return [height,availableHeight*1.1]//[0.7, 1.1].map{$0*availableHeight} /// Trick is to set bottom position to any value more than available height such as 1.1*availableHeight
-    }
-    
-    func initialPosition(_ availableHeight: CGFloat) -> CGFloat {
-        return height
-    }
-    
-    
-  
-}
-
