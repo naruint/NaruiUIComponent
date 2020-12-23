@@ -124,10 +124,11 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
     
     public func show(target:UIViewController) {
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 17)
-        
+        let min = UIScreen.main.bounds.height - 200
+        let max = UIScreen.main.bounds.height - 450
         let sheet = PullableSheet(content: self, topBarStyle: .custom(headerView))
-        sheet.snapPoints = [.min,.custom(y: UIScreen.main.bounds.height - 544
-        ),.max]
+        sheet.snapPoints = [.custom(y: min),.custom(y:max)]
+        sheet.view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         let dimVC = UIViewController()
         dimVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
@@ -139,8 +140,10 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         
         sheet.add(to: dimVC)
         dimVC.modalPresentationStyle = .overFullScreen
+        dimVC.modalTransitionStyle = .crossDissolve
+        sheet.scroll(toY: UIScreen.main.bounds.height)
         target.present(dimVC, animated: true) {
-            sheet.scroll(toY: 200)
+            sheet.scroll(toY: max)
         }
         dimVC.modalTransitionStyle = .crossDissolve
 

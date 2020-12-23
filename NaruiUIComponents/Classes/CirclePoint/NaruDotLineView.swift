@@ -53,27 +53,3 @@ class NaruDotLineView: UIView {
     }
 
 }
-
-// MARK: - StickProgressViewPreview
-
-#if canImport(SwiftUI) && DEBUG
-
-import SwiftUI
-
-@available(iOS 13.0, *)
-struct NaruDotLineViewPreview: PreviewProvider {
-  static var previews: some SwiftUI.View {
-    VStack {
-      UIViewPreview {
-        NaruDotLineView().then {
-            $0.dotSize = 10
-            $0.dashDistance = 10
-        }
-      }
-      .frame(width: 300, height: 300)
-    }
-    .previewLayout(.fixed(width: 320, height: 300))
-  }
-}
-
-#endif
