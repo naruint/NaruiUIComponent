@@ -135,9 +135,6 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTapDim(_:)))
         dimVC.view.addGestureRecognizer(gesture)
         
-        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(self.onTapHeader(_:)))
-        headerView.addGestureRecognizer(gesture2)
-        
         sheet.add(to: dimVC)
         dimVC.modalPresentationStyle = .overFullScreen
         dimVC.modalTransitionStyle = .crossDissolve
@@ -155,11 +152,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
     }
     
     @objc func onTapDim(_ sender:UITapGestureRecognizer) {
-        exit()
-    }
-    
-    @objc func onTapHeader(_ sender:UITapGestureRecognizer) {
-        pullableShtte?.scroll(toY: 200)
+//        exit()
     }
     
     private func exit() {
