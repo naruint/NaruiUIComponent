@@ -18,6 +18,7 @@ public extension Notification.Name {
 }
 
 extension Notification.Name {
+    static let naruBottomSheetTagCellFilterSelectionDidChange = Notification.Name("naruBottomSheetTagCellFilterSelectionDidChange_observer")
     static let naruBottomSheetTableViewCellHeightDidChange = Notification.Name("naruBottomSheetTableViewCellHeightDidChange_observer")
 }
 
@@ -91,6 +92,8 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
     weak var dimViewController:UIViewController? = nil
     weak var pullableShtte:PullableSheet? = nil
     
+    var result:[String:[String]] = [:]
+    
     let disposeBag = DisposeBag()
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,9 +110,17 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
             print("tableView height : \(h)+\(th)+\(tf) = \(h + th + tf)")
         }
         
+        NotificationCenter.default.addObserver(forName: .naruBottomSheetTagCellFilterSelectionDidChange, object: nil, queue: nil) { [weak self](noti) in
+            guard let tags = noti.object as? [String],
+                  let title = noti.userInfo?["title"] as? String else {
+                return
+            }
+            self?.result[title] = tags
+        }
+        
         applyButton.rx.tap.bind { [unowned self](_) in
+            NotificationCenter.default.post(name: .naruBottomSheetTagFilterSelectionDidChange, object: result)
             exit()
-            
         }.disposed(by: disposeBag)
     }
         
@@ -134,7 +145,6 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         dimVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTapDim(_:)))
         dimVC.view.addGestureRecognizer(gesture)
-        
         sheet.add(to: dimVC)
         dimVC.modalPresentationStyle = .overFullScreen
         dimVC.modalTransitionStyle = .crossDissolve
@@ -144,15 +154,17 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         }
         dimVC.modalTransitionStyle = .crossDissolve
 
-
         dimViewController = dimVC
+        
+        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(self.onTapView(_:)))
+        self.view.addGestureRecognizer(gesture2)
         
         pullableShtte = sheet
 
     }
-    
+    @objc func onTapView(_  sender:UITapGestureRecognizer) {}
     @objc func onTapDim(_ sender:UITapGestureRecognizer) {
-//        exit()
+        exit()
     }
     
     private func exit() {
@@ -248,7 +260,6 @@ class NaruBottomSheetTagFilterTableViewCell : UITableViewCell {
                     }
                 }
                 tagView.isSelected.toggle()
-
                 self?.notiResult()
             }
             tagView.onLongPress = { _ in
@@ -259,7 +270,7 @@ class NaruBottomSheetTagFilterTableViewCell : UITableViewCell {
     
     func notiResult() {
         NotificationCenter.default.post(
-            name: .naruBottomSheetTagFilterSelectionDidChange,
+            name: .naruBottomSheetTagCellFilterSelectionDidChange,
             object: selectedTags,
             userInfo: ["title" : data?.title ?? ""] )
     }

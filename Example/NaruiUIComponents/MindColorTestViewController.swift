@@ -31,15 +31,14 @@ class MindColorTestViewController : UIViewController {
         
         NotificationCenter.default.addObserver(forName: .naruBottomSheetTagFilterSelectionDidChange, object: nil, queue: nil) {[weak self] (noti) in
         
-            if let tags = noti.object as? [String],
-               let title = noti.userInfo?["title"] as? String {
-                print("tags: \(tags) title : \(title)")
-                if title == "태그" {
-                    self?.tagCollectionView.tags = tags
+            if let result = noti.object as? [String:[String]] {
+                for list in result {
+                    if list.key == "태그" {
+                        self?.tagCollectionView.tags = list.value
+                    }
                 }
             }
         }
-        
         makeBottomSheet()
                 
     }
