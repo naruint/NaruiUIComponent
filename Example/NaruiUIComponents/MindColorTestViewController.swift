@@ -33,7 +33,7 @@ class MindColorTestViewController : UIViewController {
         
             if let result = noti.object as? [String:[String]] {
                 for list in result {
-                    if list.key == "태그" {
+                    if list.key == "상태" {
                         self?.tagCollectionView.tags = list.value
                     }
                 }
@@ -52,7 +52,7 @@ class MindColorTestViewController : UIViewController {
         tagFiltterView.setFilterSet(
             set: [
                 NaruBottomSheetTagFilterViewController.Model.FilterSet(
-                    title: "태그",
+                    title: "상태",
                     isMultipleSelect: true,
                     tags: [
                         NaruBottomSheetTagFilterViewController.Model.Tag(text: "쌀", prefix: "#"),

@@ -126,6 +126,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         
     public func setTags(selectedTags:[String:[String]]){
         preSelectedTags = selectedTags
+        self.tableView?.reloadData()
     }
     
     public func showBottomSheet(targetViewController: UIViewController, selectedTags:[String:[String]]? = nil) {
