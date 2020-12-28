@@ -16,6 +16,15 @@ public class NaruRadioBoxView: UIView {
         return button
     }
     
+    public var isEnable:Bool {
+        set {
+            radioButton.isEnabled = newValue
+        }
+        get {
+            radioButton.isEnabled
+        }
+    }
+    
     @IBOutlet weak var button: UIButton!
     
     let disposeBag = DisposeBag()
@@ -89,8 +98,13 @@ public class NaruRadioBoxView: UIView {
     }
     
     func updateUI() {
+        alpha = isEnable ? 1 : 0.5
+        
         var color:UIColor {
-            button.isSelected ? seColor : noColor
+            if isEnable == false {
+                return noColor
+            }
+            return button.isSelected ? seColor : noColor
         }
         button.tintColor = color
         layer.borderColor = color.cgColor
