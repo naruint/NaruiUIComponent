@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NaruiUIComponents'
-  s.version          = '0.1.99'
+  s.version          = '0.1.100'
   s.summary          = 'Narui UI Components for iOS'
   s.description      = '나루아이 UI컴포넌트 라이브러리. UI 컴포넌트 개발 및 사용 편의를 위해 만든 라이브러리 입니다.'
   s.homepage         = 'https://github.com/naruint/NaruiUIComponent'
