@@ -23,6 +23,8 @@ public class NaruVideoControllerView: UIView {
             }
             let avlayer = AVPlayerLayer(player: avPlayer)
             avlayer.frame = bounds
+            avlayer.frame.size.width = UIScreen.main.bounds.width
+            avlayer.frame.origin.x = 0
             layer.insertSublayer(avlayer, at: 0)
         }
     }

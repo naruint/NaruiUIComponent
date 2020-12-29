@@ -20,7 +20,7 @@ class VideoTableViewController: UITableViewController {
             currentTime: 20,
             startDescTime: 10,
             endDescTime: 70,
-            url: URL(string: "https://hrdvod.hanwhalife.com/dr9iuiNLSzKTSs/YS+ZU5ONesC6LDOp0Gt2ZCmFTY3Ldp9Rxbe4F8HsCyroBpxdNcgcdjUxW63FyJ9yROoW7K0rNOgo+KvNyaRVZUMwx+BXbMbdPwZKKbEiScuQoOB7CYDQKHZNw9UY9TVrgm+GRdsZ8vzFMIasJjkGMgjjw7io=")!, thumbnailURL: nil)
+            url: URL(string: "https://www.dropbox.com/s/0sc26e8shaukm48/Unicycle%20%EB%A1%9C%EB%9D%BC%ED%83%80%EA%B8%B0.mp4?dl=1")!, thumbnailURL: URL(string: "https://newsimg.hankookilbo.com/cms/articlerelease/2019/04/29/201904291390027161_3.jpg"))
         
         videoController.openVideo(viewModel: viewModel)
 
