@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,6 +19,7 @@
                 <outlet property="playButton" destination="LMa-Ag-dxp" id="P8v-2p-XZO"/>
                 <outlet property="skipDescButton" destination="auK-e7-Lw0" id="TPh-bo-XLm"/>
                 <outlet property="slider" destination="qWa-bq-QNf" id="1Ro-9p-Lo7"/>
+                <outlet property="thumbImageView" destination="lhj-b3-UDx" id="3pU-4H-T6z"/>
                 <outlet property="titleLabel" destination="qsc-NS-DXE" id="S1Q-Ce-FXZ"/>
             </connections>
         </placeholder>
@@ -27,6 +28,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lhj-b3-UDx">
+                    <rect key="frame" x="0.0" y="44" width="414" height="256"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oI-Dz-BMV" userLabel="dimView">
                     <rect key="frame" x="0.0" y="44" width="414" height="306"/>
                     <subviews>
@@ -121,8 +125,12 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4oI-Dz-BMV" secondAttribute="bottom" constant="-50" id="86E-1u-PAX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="auK-e7-Lw0" secondAttribute="trailing" constant="22" id="HIY-Sa-FB6"/>
+                <constraint firstItem="lhj-b3-UDx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HXH-42-j85"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lhj-b3-UDx" secondAttribute="trailing" id="Ny5-qq-DCw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lhj-b3-UDx" secondAttribute="bottom" id="bsR-md-X6Y"/>
                 <constraint firstItem="4oI-Dz-BMV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hZp-TL-SED"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4oI-Dz-BMV" secondAttribute="trailing" id="mxx-eL-m6y"/>
+                <constraint firstItem="lhj-b3-UDx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sZK-fY-iN9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="auK-e7-Lw0" secondAttribute="bottom" constant="50" id="vpc-71-WxI"/>
                 <constraint firstItem="4oI-Dz-BMV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vvj-qZ-cBL"/>
             </constraints>

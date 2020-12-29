@@ -62,6 +62,7 @@ public class NaruVideoControllerView: UIView {
             }
         }
     }
+    @IBOutlet weak var thumbImageView: UIImageView!
     
     @IBOutlet weak var skipDescButton: UIButton!
     @IBOutlet weak var slider: UISlider!
@@ -281,6 +282,7 @@ public class NaruVideoControllerView: UIView {
         guard let item = avPlayer?.currentItem , let viewModel = viewModel else {
             return
         }
+        
         let currentTime = item.currentTime().seconds
         self.currentTime = currentTime
         let duration = item.duration.seconds
@@ -305,6 +307,12 @@ public class NaruVideoControllerView: UIView {
     
         
     public func openVideo(viewModel:ViewModel) {
+        if thumbImageView.image == nil {
+            thumbImageView.kf.setImage(with: viewModel.thumbnailURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self](result) in
+                self?.thumbImageView.isHidden =  self?.thumbImageView.image == nil
+            }
+        }
+        
         NaruTimmer.shared.reset()
         self.viewModel = viewModel
         let avPlayer = AVPlayer(url: viewModel.url)
@@ -320,6 +328,9 @@ public class NaruVideoControllerView: UIView {
 
     public func addObserver() {
         avPlayer?.addPeriodicTimeObserver(forInterval: CMTime(value: CMTimeValue(1000), timescale: 1000), queue: nil, using: { [weak self](time) in
+            UIView.animate(withDuration: 0.25) {
+                self?.thumbImageView.alpha = 0
+            }
             self?.updateSlider()
             if self?.avPlayer?.rate ?? 0 > 0  {
                 self?.registRateObserver()
