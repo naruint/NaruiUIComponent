@@ -47,7 +47,7 @@ class NaruHorizontalSlideSelectView: UIView {
             }
             let x:CGFloat = (trackView.frame.width / CGFloat(datas.count)) * CGFloat(newValue) - (trackView.frame.width / 2) + stackView.frame.width / 2
             selectLabelCenterX.constant = x
-            print(datas[selectedIndex].title)
+            // print(datas[selectedIndex].title)
             stackView.title = datas[selectedIndex].title
             stackView.subTitle = datas[selectedIndex].subTitle
             DispatchQueue.main.async {[unowned self] in
@@ -64,7 +64,7 @@ class NaruHorizontalSlideSelectView: UIView {
             let harf = trackView.frame.width / 2
             let w = trackView.frame.width / CGFloat(datas.count)
             let select = Int((x + harf) / w)
-            print("select: \(select)")
+            // print("select: \(select)")
             if select >= datas.count {
                 _selectedIndex = datas.count - 1
             } else {
@@ -218,7 +218,7 @@ extension NaruHorizontalSlideSelectView : NaruHorizontalSlideSelectViewLabelDele
                 value  = max
             }
             selectLabelCenterX.constant = value //- stackView.frame.width / 2
-            print("select : \(selectedIndex)")
+            // print("select : \(selectedIndex)")
             stackView.title = datas[selectedIndex].title
             stackView.subTitle = datas[selectedIndex].subTitle
         }

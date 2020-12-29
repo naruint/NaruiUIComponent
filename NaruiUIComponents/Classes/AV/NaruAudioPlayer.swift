@@ -101,11 +101,11 @@ public class NaruAudioPlayer {
     public init() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowAirPlay])
-            print("Playback OK")
+            // print("Playback OK")
             try AVAudioSession.sharedInstance().setActive(true)
-            print("Session is Active")
+            // print("Session is Active")
         } catch {
-            print(error)
+            // print(error)
         }
         let commandCenter = MPRemoteCommandCenter.shared()
         commandCenter.playCommand.addTarget { [unowned self] (event) -> MPRemoteCommandHandlerStatus in
@@ -134,7 +134,7 @@ public class NaruAudioPlayer {
         }
                 
         commandCenter.changePlaybackPositionCommand.addTarget { [unowned self](event) -> MPRemoteCommandHandlerStatus in
-            print(event)
+            // print(event)
             if let p = firstPlayer {
                 p.currentTime = (event as? MPChangePlaybackPositionCommandEvent)?.positionTime ?? 0
                 return .success
@@ -210,7 +210,7 @@ public class NaruAudioPlayer {
     }
     
     public func play(prepareAudio:@escaping()->Void) {
-        print("audio play : \(players))")
+        // print("audio play : \(players))")
         func playMusic() {
             for player in players.values {
                 player.play()
@@ -241,7 +241,7 @@ public class NaruAudioPlayer {
             } else {
                 NaruFileDownloadManager().download(url: url) {[unowned self] (fileUrl) in
                     if let fileUrl = fileUrl {
-                        print(fileUrl.absoluteString)
+                        // print(fileUrl.absoluteString)
                         if let player = try? AVAudioPlayer(contentsOf: fileUrl) {
                             player.prepareToPlay()
                             players[url] = player
@@ -325,7 +325,7 @@ public class NaruAudioPlayer {
             return
         }
 //        let value:Float = Float(player.currentTime / player.duration)
-//        print("updateTime : \( player.currentTime) \(player.duration) \(value)")
+//        // print("updateTime : \( player.currentTime) \(player.duration) \(value)")
         DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
             self?.updateTime()
         }

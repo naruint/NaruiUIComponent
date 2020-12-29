@@ -25,7 +25,7 @@ extension Notification.Name {
 public class NaruBottomSheetTagFilterViewController: UIViewController {
     @IBOutlet var headerView: UIView!
     deinit {
-        print("NaruBottomSheetTagFilterViewController deinit!!")
+        // print("NaruBottomSheetTagFilterViewController deinit!!")
     }
 
     public struct Model {
@@ -100,14 +100,14 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         tableView.contentInsetAdjustmentBehavior = .never
         // Do any additional setup after loading the view.
         if let tags = preSelectedTags {
-            print(tags)
+            // print(tags)
         }
         applyButton.setBackgroundImage(UIColor(white: 0.5, alpha: 0.5).image, for: .highlighted)
         NotificationCenter.default.addObserver(forName: .naruBottomSheetTableViewCellHeightDidChange, object: nil, queue: nil) { [weak self](noti) in
             let h = self?.tableView.sizeThatFits(CGSize(width: self?.tableView.frame.width ?? 0, height: CGFloat.greatestFiniteMagnitude)).height ?? 0
             let th:CGFloat = 82
             let tf = self?.tableView.tableFooterView?.frame.height ?? 0
-            print("tableView height : \(h)+\(th)+\(tf) = \(h + th + tf)")
+            // print("tableView height : \(h)+\(th)+\(tf) = \(h + th + tf)")
         }
         
         NotificationCenter.default.addObserver(forName: .naruBottomSheetTagCellFilterSelectionDidChange, object: nil, queue: nil) { [weak self](noti) in

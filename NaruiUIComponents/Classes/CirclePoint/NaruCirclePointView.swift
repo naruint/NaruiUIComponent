@@ -38,7 +38,6 @@ public class NaruCirclePointView: UIView {
     }
     
     public override func draw(_ rect: CGRect) {
-        print("maxLevel : \(maxLevel), currentLevel: \(currentLevel)")
         let y = rect.size.height / 2 - circleSize / 2
         for i in 0..<maxLevel {
             let x = circleSize * CGFloat(i) + padding * CGFloat(i)

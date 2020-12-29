@@ -32,7 +32,7 @@ public class NaruLandscapeVideoViewController: UIViewController {
     }
     
     deinit {
-        print("deinit NaruLandscapeVideoViewController")
+        // print("deinit NaruLandscapeVideoViewController")
         playerControllerView.avPlayer = nil
     }
     

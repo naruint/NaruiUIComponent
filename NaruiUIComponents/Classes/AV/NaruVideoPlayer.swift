@@ -80,17 +80,17 @@ public class NaruVideoPlayer {
     
     init() {
         NotificationCenter.default.addObserver(forName: .AVPlayerItemTimeJumped, object: nil, queue: nil) { [weak self](noti) in
-            print("AVPlayerItemTimeJumped : \(noti)")
+            // print("AVPlayerItemTimeJumped : \(noti)")
             
             guard let s = self, let item = noti.object as? AVPlayerItem else {
                 return
             }
             
             if s.player?.isPlaying == true && item.duration.seconds > 0 {
-                print("timer start")
+                // print("timer start")
                 s.timer.start()
             } else {
-                print("timer stop")
+                // print("timer stop")
                 s.timer.stop()
             }
             if item.currentTime().seconds == item.duration.seconds {
@@ -196,7 +196,7 @@ public class NaruVideoPlayer {
         if value.isNaN {
             return
         }
-        print("seek to time \(value) progress : \(progress)")
+        // print("seek to time \(value) progress : \(progress)")
         player?.seek(to: CMTime(value: CMTimeValue(value * 1000), timescale: 1000))
     }
     

@@ -50,7 +50,7 @@ extension NaruGraphView {
                         ViewModel.self, from: data)
                 }
             } catch {
-                print("error : \(error.localizedDescription) : \(string)")
+                // print("error : \(error.localizedDescription) : \(string)")
             }
             return nil
         }

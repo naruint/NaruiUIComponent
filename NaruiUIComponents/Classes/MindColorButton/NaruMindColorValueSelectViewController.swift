@@ -139,10 +139,10 @@ class NaruMindColorValueSelectViewController: UIViewController {
     
     func updateUI(isForce:Bool = false) {
         guard let model = self.viewModel else {
-            print("view model not set")
+            // print("view model not set")
             return
         }
-        print("\(#function) value : \(model.value)")
+        // print("\(#function) value : \(model.value)")
         let p:CGFloat = CGFloat(model.value)/100
         valueLabel.text = "\(model.value)"
         textLabel.text = model.mindHeaderString + model.detailText

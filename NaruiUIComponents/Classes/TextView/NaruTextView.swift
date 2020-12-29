@@ -112,7 +112,7 @@ public class NaruTextView: UIView {
     }
     
     private var onTouchupButton:(_ text:String?)->Void = { _ in
-        print("touchup button")
+        // print("touchup button")
     }
     /** 하단 버튼 눌렀을 때 콜백*/
     public func onTouchupButton(didTouchup:@escaping(_ text:String?)->Void) {

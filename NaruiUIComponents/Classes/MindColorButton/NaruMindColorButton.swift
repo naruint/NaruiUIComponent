@@ -183,7 +183,7 @@ public class NaruMindColorButton: UIView {
         }
         let vc = NaruMindColorValueSelectViewController.viewController
         vc.viewModel = viewModel
-        print(" set value : \(viewModel.value)")
+        // print(" set value : \(viewModel.value)")
         vc.colors = [forgroundColor, mindColor]
         let tvc = targetViewController ?? UIApplication.shared.lastPresentedViewController
         tvc?.present(vc, animated: true, completion: {

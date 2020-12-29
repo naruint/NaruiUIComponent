@@ -121,7 +121,7 @@ public class NaruGradientButton: UIView {
         gradient.endPoint = CGPoint(x: 1.0, y: 0.51)
         gradient.locations = [0.0,0.2,0.4,0.7,1.0]
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: button.frame.size.width, height: button.frame.size.height)
-        print(gradient.frame)
+        // print(gradient.frame)
         button.layer.insertSublayer(gradient, at: 0)
         button.layer.cornerRadius = 4
         button.layer.masksToBounds = true

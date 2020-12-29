@@ -41,10 +41,10 @@ public class NaruVideoControllerView: UIView {
             NotificationCenter.default.post(
                 name: .naruVideoWatchFinished,
                 object: result)
-            print("시청시간 : \(NaruTimmer.shared.timeResult)")
+            // print("시청시간 : \(NaruTimmer.shared.timeResult)")
         }
         NaruTimmer.shared.reset()
-        print("deinit NaruVideoControllerView")
+        // print("deinit NaruVideoControllerView")
     }
     
     public var isPlaying:Bool {

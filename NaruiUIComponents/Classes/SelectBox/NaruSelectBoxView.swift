@@ -48,7 +48,7 @@ public class NaruSelectBoxView: UIView {
     @IBInspectable var titles:String = "" {
         didSet {
             for (index,title) in titles.components(separatedBy: ",").enumerated() {
-                print(title)
+                // print(title)
                 if index < buttons.count {
                     buttons[index].setTitle(title, for: .normal)
                 }

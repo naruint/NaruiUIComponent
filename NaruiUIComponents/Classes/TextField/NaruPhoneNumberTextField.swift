@@ -72,7 +72,7 @@ public class NaruPhoneNumberTextField: UIView {
             button.isEnabled = false
             if let number = try? phoneNumberKit.parse(string) {
                 let newStr = phoneNumberKit.format(number, toType: .national)
-                print(newStr)
+                // print(newStr)
                 secondTextField.text = newStr
                 button.isEnabled = true
             }

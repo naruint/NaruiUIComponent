@@ -125,7 +125,7 @@ public class NaruTermAgreeButton: UIView {
     
     
     var didTouthupBtn:(_ isSelected:Bool)->Void = { select in
-        print("touchup BG btn : \(select)")
+        // print("touchup BG btn : \(select)")
     }
     /** 전체 버튼 영역 선택시 콜백 설정*/
     public func didTouchupBtn(didTouch:@escaping(_ isSelected:Bool)->Void) {
