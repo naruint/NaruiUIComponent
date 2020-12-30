@@ -35,8 +35,9 @@ public class NaruVideoControllerView: UIView {
         subLandScapeController = nil
         NaruTimmer.shared.stop()
         if NaruTimmer.shared.timeResult > 0 {
-            let result = ResultModel(
+            let result = ResultModel(   
                 id: viewModel!.id,
+                title: viewModel!.title,
                 watchTime: NaruTimmer.shared.timeResult,
                 currentTime: currentTime,
                 duration: duration)

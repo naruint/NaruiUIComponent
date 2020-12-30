@@ -43,6 +43,8 @@ public extension NaruVideoControllerView {
     struct ResultModel {
         /** 영상 아이디*/
         public let id:String
+        /** 영상 제목*/
+        public let title:String
         /** 감상시간*/
         public let watchTime:TimeInterval
         /** 마지막 타임라인 시각*/
@@ -55,11 +57,13 @@ public extension NaruVideoControllerView {
         }
         public init(
             id:String,
+            title:String,
             watchTime:TimeInterval,
             currentTime:TimeInterval,
             duration:TimeInterval
         ) {
             self.id = id
+            self.title = title
             self.watchTime = watchTime
             self.currentTime = currentTime
             self.duration = duration
