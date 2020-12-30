@@ -34,18 +34,20 @@ public class NaruVideoControllerView: UIView {
     deinit {
         subLandScapeController = nil
         NaruTimmer.shared.stop()
-        if NaruTimmer.shared.timeResult > 0 {
-            let result = ResultModel(   
-                id: viewModel!.id,
-                midaDvcd: viewModel!.mdiaDvcd,
-                title: viewModel!.title,
-                watchTime: NaruTimmer.shared.timeResult,
-                currentTime: currentTime,
-                duration: duration)
-            NotificationCenter.default.post(
-                name: .naruVideoWatchFinished,
-                object: result)
-            // print("시청시간 : \(NaruTimmer.shared.timeResult)")
+        if let model = viewModel {
+            if NaruTimmer.shared.timeResult > 0 {
+                let result = ResultModel(
+                    id: model.id,
+                    midaDvcd: model.mdiaDvcd,
+                    title: model.title,
+                    watchTime: NaruTimmer.shared.timeResult,
+                    currentTime: currentTime,
+                    duration: duration)
+                NotificationCenter.default.post(
+                    name: .naruVideoWatchFinished,
+                    object: result)
+                // print("시청시간 : \(NaruTimmer.shared.timeResult)")
+            }
         }
         NaruTimmer.shared.reset()
         // print("deinit NaruVideoControllerView")
