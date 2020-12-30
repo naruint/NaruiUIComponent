@@ -16,7 +16,7 @@ public extension Notification.Name {
 }
 public class NaruVideoControllerView: UIView {
     public var kvoRateContext = 0
-    var avPlayer:AVPlayer? = nil {
+    public var avPlayer:AVPlayer? = nil {
         didSet {
             if let avlayer = layer.sublayers?.first as? AVPlayerLayer {
                 avlayer.removeFromSuperlayer()
@@ -340,6 +340,10 @@ public class NaruVideoControllerView: UIView {
         })
     }
 
+    public func seek(second:Int) {
+        avPlayer?.seek(to: CMTime(seconds: Double(second * 1000), preferredTimescale: 1000))
+    }
+    
     var isRegistRateObserver = false
     func registRateObserver() {
         if isRegistRateObserver == false {
