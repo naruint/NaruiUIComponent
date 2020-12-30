@@ -307,6 +307,10 @@ public class NaruVideoControllerView: UIView {
         }
     }
     
+    public func setThumbImage(url:URL?, placeHolder:UIImage?) {
+        thumbImageView.isHidden = url == nil
+        thumbImageView.kf.setImage(with: url, placeholder: placeHolder)
+    }
         
     public func openVideo(viewModel:ViewModel) {
         if thumbImageView.image == nil {

@@ -10,6 +10,9 @@ import UIKit
 import AVKit
 
 public class NaruLandscapeVideoViewController: UIViewController {
+    public override var prefersStatusBarHidden: Bool { true }
+    public override var prefersHomeIndicatorAutoHidden: Bool { true }
+            
     public var isLandscapeOnly:Bool = true
     public var viewModel:NaruVideoControllerView.ViewModel? {
         set {
@@ -40,7 +43,8 @@ public class NaruLandscapeVideoViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-
+        setNeedsUpdateOfScreenEdgesDeferringSystemGestures()
+        
         addPlayerController()
         view.backgroundColor = .black
         modalTransitionStyle = .crossDissolve
