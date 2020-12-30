@@ -16,13 +16,15 @@ import UIKit
 public class NaruOrientationHelper {
     public static let shared = NaruOrientationHelper()
     public var orientationLock = UIInterfaceOrientationMask.portrait
-    
-    public func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
-        orientationLock = orientation
+    var rotateOrientation:UIInterfaceOrientation = .portrait
+        
+    public func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        self.orientationLock = orientation
+        self.rotateOrientation = rotateOrientation
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
     }
     
-    public func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
-        self.lockOrientation(orientation)
+    public func reload() {
         UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
     }
 }
