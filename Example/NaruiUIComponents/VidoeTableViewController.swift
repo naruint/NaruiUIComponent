@@ -16,6 +16,7 @@ class VideoTableViewController: UITableViewController {
         super.viewDidLoad()
         let viewModel = NaruVideoControllerView.ViewModel(
             id: "002",
+            midaDvcd: "1",
             title: "자전거 타자",
             currentTime: 20,
             startDescTime: 10,

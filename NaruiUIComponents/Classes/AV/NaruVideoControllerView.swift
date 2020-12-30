@@ -37,6 +37,7 @@ public class NaruVideoControllerView: UIView {
         if NaruTimmer.shared.timeResult > 0 {
             let result = ResultModel(   
                 id: viewModel!.id,
+                midaDvcd: viewModel!.mdiaDvcd,
                 title: viewModel!.title,
                 watchTime: NaruTimmer.shared.timeResult,
                 currentTime: currentTime,

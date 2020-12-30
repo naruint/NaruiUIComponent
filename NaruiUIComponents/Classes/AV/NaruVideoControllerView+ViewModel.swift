@@ -10,6 +10,8 @@ public extension NaruVideoControllerView {
     struct ViewModel {
         /** 영상 아이디*/
         public let id:String
+        /** 미이어 구분코드*/
+        public let mdiaDvcd:String
         /** 영상 제목*/
         public let title:String
         /** 제생 시작 시각*/
@@ -24,6 +26,7 @@ public extension NaruVideoControllerView {
         public let thumbnailURL:URL?
         public init(
             id:String,
+            midaDvcd:String,
             title:String,
             currentTime:TimeInterval,
             startDescTime:TimeInterval,
@@ -37,12 +40,15 @@ public extension NaruVideoControllerView {
             self.endDescTime = endDescTime
             self.url = url
             self.thumbnailURL = thumbnailURL
+            self.mdiaDvcd = midaDvcd
         }
     }
     
     struct ResultModel {
         /** 영상 아이디*/
         public let id:String
+        /** 미디어dvcd*/
+        public let midaDvcd:String
         /** 영상 제목*/
         public let title:String
         /** 감상시간*/
@@ -57,6 +63,7 @@ public extension NaruVideoControllerView {
         }
         public init(
             id:String,
+            midaDvcd:String,
             title:String,
             watchTime:TimeInterval,
             currentTime:TimeInterval,
@@ -67,6 +74,7 @@ public extension NaruVideoControllerView {
             self.watchTime = watchTime
             self.currentTime = currentTime
             self.duration = duration
+            self.midaDvcd = midaDvcd
         }
     }
 }
