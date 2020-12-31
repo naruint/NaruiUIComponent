@@ -19,8 +19,10 @@ public class NaruTextField: UIView {
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var showPwdButton: UIButton!
-    @IBOutlet weak var textFieldbottomLayout: NSLayoutConstraint!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var topPaddingView: UIView!
+    @IBOutlet weak var bottomPaddingView: UIView!
+    
     //MARK:-
     //MARK:IBInspectable
     @IBInspectable var padding:CGFloat = 0.0 {
@@ -30,10 +32,6 @@ public class NaruTextField: UIView {
             }
         }
     }
-    /** 내용이 있을 때 아래 여백*/
-    @IBInspectable var b1_padding:CGFloat = 8.0
-    /** 내용이 없을 때 아래 여백*/
-    @IBInspectable var b2_padding:CGFloat = 16.0
         
     @IBInspectable var isBoxStyle:Bool = false {
         didSet {
@@ -185,17 +183,10 @@ public class NaruTextField: UIView {
         }
         
         let isHidden = textField.text?.isEmpty ?? true
-        if isBoxStyle {
-            textFieldbottomLayout.constant = isHidden ? b2_padding : b1_padding
-        } else {
-            textFieldbottomLayout.constant = 0
-        }
-//        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {[unowned self] in
-            titleLabel.alpha = isHidden ? 0 : 1
-            layoutIfNeeded()
-//        } completion: { (fin) in
-//            
-//        }
+        titleLabel.isHidden = isHidden || titleLabel.text?.isEmpty == true
+        topPaddingView.isHidden = titleLabel.isHidden
+        bottomPaddingView.isHidden = titleLabel.isHidden
+        
         for layout in [leading, trailing] {
             layout?.constant = padding
         }

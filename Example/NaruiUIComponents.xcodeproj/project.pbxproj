@@ -264,9 +264,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = QU9EPTU238;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QU9EPTU238;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -625,12 +627,15 @@
 			baseConfigurationReference = F95E47D36ABF7B790452CB89 /* Pods-NaruiUIComponents_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QU9EPTU238;
 				INFOPLIST_FILE = NaruiUIComponents/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 			};
@@ -641,12 +646,15 @@
 			baseConfigurationReference = 703A66DA44FF5480BC69D249 /* Pods-NaruiUIComponents_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QU9EPTU238;
 				INFOPLIST_FILE = NaruiUIComponents/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 			};
@@ -656,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB80E2484F91A36EBE31E6C7 /* Pods-NaruiUIComponents_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = QU9EPTU238;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -678,6 +687,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F42862B62DEE8B15CF09478 /* Pods-NaruiUIComponents_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = QU9EPTU238;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
