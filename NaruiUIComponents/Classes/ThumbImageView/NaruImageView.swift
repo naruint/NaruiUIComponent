@@ -12,7 +12,7 @@ public protocol NaruImageViewDelegate : class {
     func naruImageViewOnTapImageView(view:NaruImageView)
 }
 
-@IBDesignable
+//@IBDesignable
 public class NaruImageView: UIView {
     public weak var delegate:NaruImageViewDelegate? = nil
     

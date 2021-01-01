@@ -15,7 +15,7 @@ public extension Notification.Name {
     static let naruMusicPlayerMiniCotrollerMessage = Notification.Name("naruMusicPlayerMiniCotrollerMessage_observer")
 }
 
-@IBDesignable
+//@IBDesignable
 public class NaruMusicPlayerMiniView: UIView {
     private weak var superTabbarController : UITabBarController? = nil
     private weak var superViewController: UIViewController? = nil

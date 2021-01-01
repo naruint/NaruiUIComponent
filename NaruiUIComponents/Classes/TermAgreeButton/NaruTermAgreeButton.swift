@@ -13,7 +13,7 @@ extension Notification.Name {
     static let naruTermAgreeSelectionChange = Notification.Name(rawValue: "naruTermAgreeSelectionChange_observer")
 }
 
-@IBDesignable
+//@IBDesignable
 public class NaruTermAgreeButton: UIView {
 
     let disposeBag = DisposeBag()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 public class NaruGradientButton: UIView {
     public var isEnabled:Bool {
         set {

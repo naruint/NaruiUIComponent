@@ -8,7 +8,7 @@
 import UIKit
 import MKRingProgressView
 
-@IBDesignable
+//@IBDesignable
 public class NaruRingProgressView: UIView {
     public var viewModel:ViewModel? = ViewModel(secondLabelText: "", progress: 0.0, forgroundColor: .red, ringBackgrouncColor:.gray ) {
         didSet {

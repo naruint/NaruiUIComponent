@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 /** 주민번호 입력*/
-@IBDesignable
+//@IBDesignable
 public class NaruPeopleNumberInputView: UIView {
 
     @IBInspectable var isRequired:Bool = false

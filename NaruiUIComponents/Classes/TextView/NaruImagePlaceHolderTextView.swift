@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-@IBDesignable
+//@IBDesignable
 /**
  PlaceHolder 를 이미지로 표시하는 텍스트뷰
  */

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-@IBDesignable
+//@IBDesignable
 public class NaruTagCollectionView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBInspectable var cell_borderColor:UIColor = .red

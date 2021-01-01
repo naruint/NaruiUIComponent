@@ -13,7 +13,7 @@ public extension Notification.Name {
 }
 
 
-@IBDesignable
+//@IBDesignable
 public class NaruMindColorButton: UIView {
     public weak var targetViewController:UIViewController? = nil
     

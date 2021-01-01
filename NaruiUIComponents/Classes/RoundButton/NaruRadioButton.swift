@@ -13,7 +13,7 @@ public extension Notification.Name {
     static let naruRadioButtonSelect = Notification.Name(rawValue: "naruRadioButtonSelect_observer")
 }
 
-@IBDesignable
+//@IBDesignable
 public class NaruRadioButton: UIView {
     @IBInspectable var idx:Int = 0
     @IBInspectable var groupid:String? = nil

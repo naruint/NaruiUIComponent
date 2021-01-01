@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-@IBDesignable
+//@IBDesignable
 public class NaruRadioBoxView: UIView {
 
     public var radioButton:UIButton {

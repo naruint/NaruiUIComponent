@@ -6,7 +6,7 @@
 //
 
 import UIKit
-@IBDesignable
+//@IBDesignable
 public class NaruTwoDepthFilterView: UIView {
 
     public var data:ViewModel? = nil

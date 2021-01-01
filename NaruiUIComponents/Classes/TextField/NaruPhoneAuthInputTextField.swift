@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import PhoneNumberKit
 
-@IBDesignable
+//@IBDesignable
 public class NaruPhoneAuthInputTextField: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)

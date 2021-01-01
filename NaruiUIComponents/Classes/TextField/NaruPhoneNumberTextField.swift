@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import PhoneNumberKit
 
-@IBDesignable
+//@IBDesignable
 public class NaruPhoneNumberTextField: UIView {
     public struct Result {
         public let carrier:String
