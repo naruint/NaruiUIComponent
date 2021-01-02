@@ -11,6 +11,8 @@ import MediaPlayer
 import Alamofire
 public extension Notification.Name {
     static let naruAudioPlayerStatusDidChange = Notification.Name("naruAudioPlayerStatusDidChange_observer")
+    /** 오디오 청취 시간 측정값을 리턴하는 notification */
+    static let naruAudioPlayFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
 }
 /**
  insertMusic(url:URL?, isFirstTrack:Bool) // 음원 넣기
@@ -18,6 +20,13 @@ public extension Notification.Name {
  setupNowPlaying(title:String, artwrok:UIImage) // 제생하기 
  */
 public class NaruAudioPlayer {
+    public struct TimeResult {
+        public let time:TimeInterval
+        public let seqNo:String
+    }
+    
+    public var seqNo:String = ""
+    
     public struct PlayTimeInfo {
         public let title:String?
         public let subTitle:String?
@@ -161,6 +170,7 @@ public class NaruAudioPlayer {
             } else {
                 musicUrls.append(url)
             }
+            NaruTimmer.shared.reset()
         }
     }
     
@@ -174,6 +184,11 @@ public class NaruAudioPlayer {
                 musicUrls.remove(at: index)
             }
         }
+        if players.count == 0 {
+            NaruTimmer.shared.stop()
+            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo))
+            NaruTimmer.shared.reset()
+        }
     }
     
     public func removeAllMusic() {
@@ -182,6 +197,9 @@ public class NaruAudioPlayer {
             player.stop()
         }
         players.removeAll()
+        NaruTimmer.shared.stop()
+        NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo))
+        NaruTimmer.shared.reset()
     }
     
     public var isPlaying:Bool {
@@ -215,6 +233,7 @@ public class NaruAudioPlayer {
             for player in players.values {
                 player.play()
             }
+            NaruTimmer.shared.start()
         }
         var needPrepareURL:[URL] = []
         for url in musicUrls {
@@ -253,18 +272,19 @@ public class NaruAudioPlayer {
                 }
             }
         }
-        
     }
     
     public func stop() {
         pause()
         players.removeAll()
+        NaruTimmer.shared.stop()
     }
     
     public func pause() {
         for player in players.values {
             player.stop()
         }
+        NaruTimmer.shared.stop()
     }
    
     public func seek(time:TimeInterval) {

@@ -161,6 +161,7 @@ class ImageCollectionViewController: UICollectionViewController {
                 m == model
             }) == nil {
                 selectedModels.insert(model)
+                NaruAudioPlayer.shared.seqNo = "\(model.hashValue)"
                 NaruAudioPlayer.shared.insertMusic(url: model.musicURL, isFirstTrack: model.group == "B")
                 playerView.showPlayer(targetViewController: self)
             } else {

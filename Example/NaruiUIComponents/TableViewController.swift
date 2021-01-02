@@ -47,6 +47,19 @@ class TableViewController: UITableViewController {
             self?.present(ac, animated: true, completion: nil)
         }
         
+        NotificationCenter.default.addObserver(forName: .naruAudioPlayFinished, object: nil, queue: nil) {[weak self] (noti) in
+            guard let time = noti.object as? NaruAudioPlayer.TimeResult else {
+                return
+            }
+            
+            let ac = UIAlertController(
+                title: nil,
+                message: "\(time.seqNo) : \(time.time)초 들었다", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            self?.present(ac, animated: true, completion: nil)
+
+        }
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
