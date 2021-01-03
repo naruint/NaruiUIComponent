@@ -225,12 +225,14 @@ public class NaruAudioPlayer {
     }
     
     public func play(title:String,subTitle:String, artworkImageURL:URL?, seqNo:String) {
+        self.seqNo = seqNo
+        
         play { [unowned self] in
             setupNowPlaying(title: title, subTitle: subTitle, artworkImageURL: artworkImageURL, seqNo: seqNo)
         }
     }
     
-    public func play(prepareAudio:@escaping()->Void) {
+    func play(prepareAudio:@escaping()->Void) {
         // print("audio play : \(players))")
         func playMusic() {
             for player in players.values {
@@ -261,9 +263,8 @@ public class NaruAudioPlayer {
                     }
                 }
             } else {
-                NaruFileDownloadManager().download(url: url) {[unowned self] (fileUrl) in
+                NaruFileDownloadManager().download(key:seqNo,url: url) {[unowned self] (fileUrl) in
                     if let fileUrl = fileUrl {
-                        // print(fileUrl.absoluteString)
                         if let player = try? AVAudioPlayer(contentsOf: fileUrl) {
                             player.prepareToPlay()
                             players[url] = player
