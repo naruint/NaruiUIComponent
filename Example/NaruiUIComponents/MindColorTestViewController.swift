@@ -45,7 +45,7 @@ class MindColorTestViewController : UIViewController {
     
     @objc func onTouchUPRightBarButton(_ sender:UIBarButtonItem) {
         tagFiltterView.setTags(selectedTags: ["상태":tagCollectionView.tags])
-        tagFiltterView.show(target: self)
+        tagFiltterView.show(target: self, snapPoint: [300])
     }
     
     func makeBottomSheet() {

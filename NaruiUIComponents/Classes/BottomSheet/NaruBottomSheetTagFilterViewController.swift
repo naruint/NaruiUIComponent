@@ -129,17 +129,17 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         self.tableView?.reloadData()
     }
     
-    public func showBottomSheet(targetViewController: UIViewController, selectedTags:[String:[String]]? = nil) {
+    public func showBottomSheet(targetViewController: UIViewController, snapPoint:[CGFloat], selectedTags:[String:[String]]? = nil) {
         preSelectedTags = selectedTags
-        show(target: targetViewController)
+        show(target: targetViewController,snapPoint: snapPoint)
     }
     
-    public func show(target:UIViewController) {
+    public func show(target:UIViewController, snapPoint: [CGFloat]) {
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 17)
-        let min = UIScreen.main.bounds.height - 200
-        let max = UIScreen.main.bounds.height - 450
         let sheet = PullableSheet(content: self, topBarStyle: .custom(headerView))
-        sheet.snapPoints = [.custom(y: min),.custom(y:max)]
+        
+        sheet.snapPoints = snapPoint.map{ PullableSheet.SnapPoint.custom(y: $0) }
+        
         sheet.view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         let dimVC = UIViewController()
@@ -151,7 +151,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         dimVC.modalTransitionStyle = .crossDissolve
         sheet.scroll(toY: UIScreen.main.bounds.height)
         target.present(dimVC, animated: true) {
-            sheet.scroll(toY: max)
+            sheet.scroll(toY: snapPoint.sorted().last!)
         }
         dimVC.modalTransitionStyle = .crossDissolve
 
