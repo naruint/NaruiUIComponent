@@ -62,6 +62,8 @@ public class NaruAudioPlayer {
         switch players.count {
         case 0:
             MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+        case 1:
+            firstPlayer?.numberOfLoops = isLoopPlayForever ? -1 : 0
         case 2:
             firstPlayer?.numberOfLoops = isLoopPlayForever ? -1 : 0
             secondPlayer?.numberOfLoops = -1
