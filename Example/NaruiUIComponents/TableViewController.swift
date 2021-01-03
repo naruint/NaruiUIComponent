@@ -54,7 +54,7 @@ class TableViewController: UITableViewController {
             
             let ac = UIAlertController(
                 title: nil,
-                message: "\(time.seqNo) : \(time.time)초 들었다", preferredStyle: .alert)
+                message: "\(time.seqNo)\n\(time.title)\n\(time.time)초 들었다", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             self?.present(ac, animated: true, completion: nil)
 

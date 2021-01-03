@@ -23,9 +23,10 @@ public class NaruAudioPlayer {
     public struct TimeResult {
         public let time:TimeInterval
         public let seqNo:String
+        public let title:String
     }
     
-    public var seqNo:String = ""
+   
     
     public struct PlayTimeInfo {
         public let title:String?
@@ -106,7 +107,9 @@ public class NaruAudioPlayer {
     var title:String? = nil
     var subTitle:String? = nil
     var artworkImageURL:URL? = nil
+    var seqNo:String = ""
     
+
     public init() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowAirPlay])
@@ -186,7 +189,7 @@ public class NaruAudioPlayer {
         }
         if players.count == 0 {
             NaruTimmer.shared.stop()
-            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo))
+            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo, title: title ?? ""))
             NaruTimmer.shared.reset()
         }
     }
@@ -198,7 +201,7 @@ public class NaruAudioPlayer {
         }
         players.removeAll()
         NaruTimmer.shared.stop()
-        NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo))
+        NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo, title: title ?? ""))
         NaruTimmer.shared.reset()
     }
     
@@ -221,9 +224,9 @@ public class NaruAudioPlayer {
         }
     }
     
-    public func play(title:String,subTitle:String, artworkImageURL:URL?) {
+    public func play(title:String,subTitle:String, artworkImageURL:URL?, seqNo:String) {
         play { [unowned self] in
-            setupNowPlaying(title: title, subTitle: subTitle, artworkImageURL: artworkImageURL)
+            setupNowPlaying(title: title, subTitle: subTitle, artworkImageURL: artworkImageURL, seqNo: seqNo)
         }
     }
     
@@ -291,7 +294,7 @@ public class NaruAudioPlayer {
         firstPlayer?.currentTime = time
     }
     
-    func setupNowPlaying(title:String,subTitle:String, artworkImageURL:URL?) {
+    func setupNowPlaying(title:String,subTitle:String, artworkImageURL:URL?, seqNo:String) {
         func setNowPlay(artwork:UIImage) {
             var nowPlayingInfo:[String:Any] = [:]
             nowPlayingInfo[MPMediaItemPropertyTitle] = title
@@ -311,6 +314,7 @@ public class NaruAudioPlayer {
         }
 
         
+        self.seqNo = seqNo
         self.title = title
         self.subTitle = subTitle
         self.artworkImageURL = artworkImageURL

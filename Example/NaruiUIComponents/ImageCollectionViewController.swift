@@ -161,7 +161,6 @@ class ImageCollectionViewController: UICollectionViewController {
                 m == model
             }) == nil {
                 selectedModels.insert(model)
-                NaruAudioPlayer.shared.seqNo = "\(model.hashValue)"
                 NaruAudioPlayer.shared.insertMusic(url: model.musicURL, isFirstTrack: model.group == "B")
                 playerView.showPlayer(targetViewController: self)
             } else {
@@ -170,7 +169,7 @@ class ImageCollectionViewController: UICollectionViewController {
             }
         }
         
-        NaruAudioPlayer.shared.play { }
+        NaruAudioPlayer.shared.play(title: model.musicURL?.absoluteString ?? "음악" , subTitle: "", artworkImageURL: nil, seqNo: "\(model.hashValue)")
         
         switch selectedModels.count {
         case 2:
@@ -195,7 +194,7 @@ class ImageCollectionViewController: UICollectionViewController {
         cell.imageView.bottomDecoStyle = getBottomDecoType(model: model,selectedModels: selectedModels)
         cell.imageView.alpha = getAlpha(model: model, selectedModels: selectedModels)
         
-        NaruAudioPlayer.shared.play(title: "test", subTitle: "산들바람 솔솔", artworkImageURL: URL(string: "https://i.pinimg.com/originals/34/6e/df/346edf41cf7de5ba8a37d34a4771a4f0.jpg"))
+        NaruAudioPlayer.shared.play(title: "test", subTitle: "산들바람 솔솔", artworkImageURL: URL(string: "https://i.pinimg.com/originals/34/6e/df/346edf41cf7de5ba8a37d34a4771a4f0.jpg"), seqNo: "\(model.hashValue)")
         
     }
 }
