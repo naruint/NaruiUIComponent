@@ -93,7 +93,8 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInsetAdjustmentBehavior = .never
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "03Icon24CloseBlack"), style: .plain, target: self, action: #selector(self.onTouchupDismissBtn(_:)))
+        let image = UIImage(named: "03Icon24CloseBlack",in: Bundle(for: NaruBottomSheetTagFilterViewController.self), compatibleWith: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(self.onTouchupDismissBtn(_:)))
         applyButton.setBackgroundImage(UIColor(white: 0.5, alpha: 0.5).image, for: .highlighted)
         
         NotificationCenter.default.addObserver(forName: .naruBottomSheetTagCellFilterSelectionDidChange, object: nil, queue: nil) { [weak self](noti) in
