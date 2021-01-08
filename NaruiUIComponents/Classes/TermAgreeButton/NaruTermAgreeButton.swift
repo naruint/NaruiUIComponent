@@ -22,6 +22,7 @@ public class NaruTermAgreeButton: UIView {
             titleLabel.text = title
         }
     }
+    @IBInspectable var rightButtonEnabled:Bool = false
     
     @IBInspectable var isTotalAgree:Bool = false
     @IBInspectable var isSelected:Bool = false {
@@ -33,24 +34,24 @@ public class NaruTermAgreeButton: UIView {
     @IBInspectable var seLineColor:UIColor = .clear
     /** 미선택시 아웃 라인 컬러*/
     @IBInspectable var noLineColor:UIColor = .clear
+   
     
-    @IBInspectable var subButtonBGColor:UIColor = UIColor(white: 249/255, alpha: 1.0)
-    @IBInspectable var totalBGColor:UIColor = .white
-    @IBInspectable var totalBorderColor:UIColor = UIColor(white: 220/255, alpha: 1.0)
-    @IBInspectable var textColor:UIColor? {
-        set {
-            titleLabel.textColor = newValue
-        }
-        get {
-            titleLabel.textColor
-        }
-    }
+    /** 선택시 텍스트컬러*/
+    @IBInspectable var seTextColor:UIColor = .black
+    /** 미선택시 텍스트컬러*/
+    @IBInspectable var noTextColor:UIColor = .black
+    /** 선택시 배경컬러*/
+    @IBInspectable var seBGColor:UIColor = .white
+    /** 미선택시 배경컬러*/
+    @IBInspectable var noBGColor:UIColor = .white
+
+    
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var rightButton:UIButton!
     @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var bgButton: UIButton!
-    @IBOutlet weak var bgButtonTrailing: NSLayoutConstraint!
     //MARK:-
     //MARK: arrangeView
     override init(frame: CGRect) {
@@ -82,6 +83,9 @@ public class NaruTermAgreeButton: UIView {
             didTouthupBtn(isSelected)
         }.disposed(by: disposeBag)
         
+        rightButton.rx.tap.bind { [unowned self](_) in
+            didTouchupRightBtn()
+        }.disposed(by: disposeBag)
         
         NotificationCenter.default.addObserver(forName: .naruTermAgreeSelectionChange, object: nil, queue: nil) { [weak self](noti) in
             if let btn = noti.object as? NaruTermAgreeButton {
@@ -103,29 +107,32 @@ public class NaruTermAgreeButton: UIView {
     
     func updateUI() {
         iconImageView.isHighlighted = isSelected
+        if isTotalAgree {
+            iconImageView.highlightedImage = UIImage(named: "03Icon16CheckOnWhite",in: Bundle(for: NaruTermAgreeButton.self), compatibleWith: nil)
+        }
         
+        rightButton.isHidden = isTotalAgree || rightButtonEnabled == false
         rightImageView.isHidden = isTotalAgree
    
-        bgButtonTrailing.constant = 0
-        
-        backgroundColor = subButtonBGColor
-        if isTotalAgree {
-            backgroundColor = totalBGColor
-            layer.borderWidth = 1.0
-            layer.borderColor = totalBorderColor.cgColor
-            if seLineColor != .clear {
-                layer.borderColor = isSelected ? seLineColor.cgColor : noLineColor.cgColor
-            }
-        }
+        backgroundColor = isSelected ? seBGColor : noBGColor
+
+        layer.borderWidth = 1.0
+        layer.borderColor = isSelected ? seLineColor.cgColor : noLineColor.cgColor
+        titleLabel.textColor = isSelected ? seTextColor : noTextColor
     }
         
-    @available(*, deprecated, renamed: "didTouchupBtn", message: "이 메서드는 더이상 작동하지 않습니다.")
+    var didTouchupRightBtn:()->Void = {
+        print("touchupRightBtn")
+    }
+    
     /** 오른쪽 버튼 (꺽쇠) 선택시 콜백 설정*/
-    public func didTouchupRightBtn(didTouch:@escaping()->Void){}
+    public func didTouchupRightBtn(didTouch:@escaping()->Void){
+        didTouchupRightBtn = didTouch
+    }
     
     
     var didTouthupBtn:(_ isSelected:Bool)->Void = { select in
-        // print("touchup BG btn : \(select)")
+        print("touchup BG btn : \(select)")
     }
     /** 전체 버튼 영역 선택시 콜백 설정*/
     public func didTouchupBtn(didTouch:@escaping(_ isSelected:Bool)->Void) {

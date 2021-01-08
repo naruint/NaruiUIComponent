@@ -23,6 +23,8 @@ class InputUITestTableViewController: UITableViewController {
     @IBOutlet weak var phoneAuthNumberInput: NaruPhoneAuthInputTextField!
     @IBOutlet weak var peopleIdTextField: NaruPeopleNumberInputView!
     @IBOutlet weak var button: NaruGradientButton!
+    @IBOutlet weak var term2: NaruTermAgreeButton!
+    @IBOutlet weak var term3: NaruTermAgreeButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "UI Input Test"
@@ -103,6 +105,13 @@ class InputUITestTableViewController: UITableViewController {
         tf.keyboardType = .numberPad
         tf.textColor = UIColor(named: "normalTextColor") ?? .blue
         peopleIdTextField.setPeopleNumberInput(view: tf)
+        
+        term3.didTouchupRightBtn {
+            print("tern3 right")
+        }
+        term3.didTouchupBtn { (isSelected) in
+            print("term3 \(isSelected)")
+        }
     }
     
 

@@ -1137,14 +1137,28 @@
                                                             <color key="value" name="sliderTrackColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="seLineColor">
-                                                            <color key="value" name="normalTextColor"/>
+                                                            <color key="value" systemColor="systemPinkColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="noLineColor">
-                                                            <color key="value" name="weakTextColor"/>
+                                                            <color key="value" systemColor="systemGreenColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seTextColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noTextColor">
+                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seBGColor">
+                                                            <color key="value" red="1" green="0.04830961332" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noBGColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="seIconImage" value="icon16CheckOnBrand"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="noIconImage" value="icon16CheckOff"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -1205,6 +1219,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                             <color key="value" name="backgroundColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rightButtonEnabled" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -1413,6 +1428,8 @@
                         <outlet property="peopleIdTextField" destination="zCu-Mn-PGE" id="GbB-ag-i24"/>
                         <outlet property="phoneAuthNumberInput" destination="L8o-dy-EL0" id="54Y-N6-uU8"/>
                         <outlet property="phoneNumberTextField" destination="KMv-AR-e4W" id="avr-Kz-2kf"/>
+                        <outlet property="term2" destination="k12-AS-TSp" id="Q6K-MF-rpz"/>
+                        <outlet property="term3" destination="xeO-72-ucV" id="Pa9-2I-ybZ"/>
                         <outlet property="textView" destination="xi2-QZ-VdV" id="QZa-oT-0X0"/>
                     </connections>
                 </tableViewController>
@@ -1839,6 +1856,8 @@
         <image name="etcEmotion4" width="60" height="60"/>
         <image name="etcEmotion5" width="60" height="60"/>
         <image name="etcEmotion6" width="60" height="60"/>
+        <image name="icon16CheckOff" width="16" height="16"/>
+        <image name="icon16CheckOnBrand" width="16" height="16"/>
         <image name="imageClassThumbnail" width="327" height="150"/>
         <image name="placeHolderImageTest" width="327" height="144"/>
         <namedColor name="backgroundColor">
