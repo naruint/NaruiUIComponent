@@ -34,7 +34,7 @@ public class NaruFileDownloadManager {
             .downloadProgress(closure: { (progress) in
                 NotificationCenter.default.post(
                     name: .naruFileDownloadProgressDidChange,
-                    object: nil, userInfo: ["url":url,"progress":progress])
+                    object: nil, userInfo: ["key":key,"url":url,"progress":progress])
             })
             .responseURL { (response) in
             if let fileUrl = response.fileURL {
