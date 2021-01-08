@@ -155,17 +155,6 @@ public class NaruAudioPlayer {
             }
             return .noActionableNowPlayingItem
         }
-        
-        NotificationCenter.default.addObserver(forName: .naruFileDownloadProgressDidChange, object: nil, queue: nil) { (noti) in
-            if let info = noti.userInfo {
-                if let progress = info["progress"] as? Progress {
-                    NotificationCenter.default.post(
-                        name: .naruAudioPlayerStatusDidChange,
-                        object: progress)
-                }
-            }
-        }
-
     }
     
     public func insertMusic(url:URL?, isFirstTrack:Bool) {
