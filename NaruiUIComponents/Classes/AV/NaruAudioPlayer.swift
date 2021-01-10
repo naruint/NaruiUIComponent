@@ -73,7 +73,20 @@ public class NaruAudioPlayer {
     }
     
     public static let shared = NaruAudioPlayer()
-    public var musicUrls:[URL] = []
+    public var musicUrls:[URL] {
+        get {
+            var result:[URL] = []
+            for url in [firstMusicURL,secondMusicURL] {
+                if let url = url {
+                    result.append(url)
+                }
+            }
+            return result
+        }
+    }
+    var firstMusicURL:URL? = nil
+    var secondMusicURL:URL? = nil
+    
     
     var playerItems:[AVPlayerItem]  {
         var result:[AVPlayerItem] = []
@@ -160,9 +173,15 @@ public class NaruAudioPlayer {
     public func insertMusic(url:URL?, isFirstTrack:Bool) {
         if let url = url {
             if isFirstTrack {
-                musicUrls.insert(url, at: 0)
+                if let furl = firstMusicURL {
+                    removeMusic(url: furl)
+                }
+                firstMusicURL = url
             } else {
-                musicUrls.append(url)
+                if let surl = secondMusicURL {
+                    removeMusic(url: surl)
+                }
+                secondMusicURL = url
             }
             NaruTimmer.shared.reset()
         }
@@ -175,7 +194,12 @@ public class NaruAudioPlayer {
             if let p = players[url] {
                 p.stop()
                 players[url] = nil
-                musicUrls.remove(at: index)
+                switch index {
+                case 0:
+                    firstMusicURL = nil
+                default:
+                    secondMusicURL = nil
+                }
             }
         }
         if players.count == 0 {
@@ -186,13 +210,16 @@ public class NaruAudioPlayer {
     }
     
     public func removeAllMusic() {
-        musicUrls.removeAll()
+        firstMusicURL = nil
+        secondMusicURL = nil
         for player in players.values {
             player.stop()
         }
         players.removeAll()
         NaruTimmer.shared.stop()
-        NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo, title: title ?? ""))
+        if NaruTimmer.shared.timeResult > 0.01 {
+            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo, title: title ?? ""))
+        }
         NaruTimmer.shared.reset()
     }
     
