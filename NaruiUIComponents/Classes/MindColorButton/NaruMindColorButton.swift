@@ -9,7 +9,10 @@ import UIKit
 
 public extension Notification.Name {
     static let naruMindColorValueDidUpdated = Notification.Name("naruMindColorValueDidUpdated_observer")
+    /** 마음건강 컬러 선택 컨트롤러 dismiss*/
     static let naruMindColorValueChangeControllerDidDismissed = Notification.Name("naruMindColorValueChangeControllerDidDismissed_observer")
+    /** 마음건강 컬러 선택 컨트롤러 viewDidLoaded*/
+    static let naruMindColorValueChangeControllerDidLoaded = Notification.Name("naruMindColorValueChangeControllerDidLoaded_observer")
 }
 
 
