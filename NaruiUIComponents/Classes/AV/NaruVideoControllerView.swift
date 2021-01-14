@@ -245,7 +245,7 @@ public class NaruVideoControllerView: UIView {
                     touchSliderLock = false
                     return
                 }
-                if avPlayer?.rate == 0 || avPlayer?.error != nil {
+                if avPlayer?.error != nil || durationLabel.text == "00:00"{
                     slider.setValue(0, animated: true)
                     touchSliderLock = false
                     return
@@ -294,11 +294,12 @@ public class NaruVideoControllerView: UIView {
         self.currentTime = currentTime
         let duration = item.duration.seconds
         self.duration = duration
-        slider.isEnabled = true
         if touchSliderLock == false {
             slider.setValue(Float(currentTime / duration), animated: true)
             currentTimeLabel.text = currentTime.formatted_ms_String
         }
+        slider.isEnabled = duration > 0
+
         durationLabel.text = duration.formatted_ms_String ?? "00:00"
         
         hideDescButton = !(viewModel.startDescTime < currentTime && currentTime <= viewModel.endDescTime)
