@@ -29,6 +29,7 @@ public class NaruVideoControllerView: UIView {
         }
     }
     private var duration:TimeInterval = 0
+    
     private var currentTime:TimeInterval = 0
     
     deinit {
@@ -133,8 +134,8 @@ public class NaruVideoControllerView: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(loadingView)
         playButton.layer.zPosition = 100
-        titleLabel.text = nil
-        durationLabel.text = nil
+        titleLabel.text = currentTime.formatted_ms_String
+        durationLabel.text = duration.formatted_ms_String ?? "00:00"
         currentTimeLabel.text = nil
         slider.isEnabled = false
         slider.value = 0
@@ -253,6 +254,8 @@ public class NaruVideoControllerView: UIView {
                 avPlayer?.seek(to: CMTime(seconds: newtime, preferredTimescale: item.duration.timescale))
                 touchSliderLock = false
             default:
+                print(slider.value)
+                currentTimeLabel.text = (duration * Double(slider.value)).formatted_ms_String
                 break
             }
         }
@@ -294,9 +297,9 @@ public class NaruVideoControllerView: UIView {
         slider.isEnabled = true
         if touchSliderLock == false {
             slider.setValue(Float(currentTime / duration), animated: true)
+            currentTimeLabel.text = currentTime.formatted_ms_String
         }
-        currentTimeLabel.text = currentTime.formatted_ms_String
-        durationLabel.text = duration.formatted_ms_String
+        durationLabel.text = duration.formatted_ms_String ?? "00:00"
         
         hideDescButton = !(viewModel.startDescTime < currentTime && currentTime <= viewModel.endDescTime)
         
