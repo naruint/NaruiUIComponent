@@ -128,14 +128,7 @@ public class NaruAudioPlayer {
     
 
     public init() {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowAirPlay])
-            // print("Playback OK")
-            try AVAudioSession.sharedInstance().setActive(true)
-            // print("Session is Active")
-        } catch {
-            // print(error)
-        }
+       
         let commandCenter = MPRemoteCommandCenter.shared()
         commandCenter.playCommand.addTarget { [unowned self] (event) -> MPRemoteCommandHandlerStatus in
             if musicUrls.count == 0 {
@@ -244,15 +237,24 @@ public class NaruAudioPlayer {
         }
     }
     
-    public func play(title:String,subTitle:String, artworkImageURL:URL?, seqNo:String) {
+    public func play(title:String,subTitle:String, artworkImageURL:URL?, artworkImagePlaceHolder:UIImage ,seqNo:String) {
         self.seqNo = seqNo
         
         play { [unowned self] in
-            setupNowPlaying(title: title, subTitle: subTitle, artworkImageURL: artworkImageURL, seqNo: seqNo)
+            setupNowPlaying(title: title, subTitle: subTitle, artworkImageURL: artworkImageURL, artworkImagePlaceHolder: artworkImagePlaceHolder)
         }
     }
     
     func play(prepareAudio:@escaping()->Void) {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowAirPlay])
+            // print("Playback OK")
+            try AVAudioSession.sharedInstance().setActive(true)
+            // print("Session is Active")
+        } catch {
+            // print(error)
+        }
+        
         // print("audio play : \(players))")
         func playMusic() {
             for player in players.values {
@@ -316,44 +318,21 @@ public class NaruAudioPlayer {
         firstPlayer?.currentTime = time
     }
     
-    func setupNowPlaying(title:String,subTitle:String, artworkImageURL:URL?, seqNo:String) {
-        func setNowPlay(artwork:UIImage) {
-            var nowPlayingInfo:[String:Any] = [:]
-            nowPlayingInfo[MPMediaItemPropertyTitle] = title
-            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: artwork.size, requestHandler: { (size) -> UIImage in
-                return artwork
-            })
-            if let p = self.firstPlayer {
-                nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = p.currentTime
-                nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = p.duration
-                nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = p.rate
-                MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-            } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-                    setNowPlay(artwork: artwork)
-                }
+    func setupNowPlaying(title:String,subTitle:String, artworkImageURL:URL?, artworkImagePlaceHolder:UIImage) {
+        if let p = self.firstPlayer {
+            NowPlayUtill.setupNowPlaying(title: title,
+                                         subTitle: subTitle,
+                                         artworkImageURL: artworkImageURL,
+                                         artworkImagePlaceHolder: artworkImagePlaceHolder,
+                                         currentTime: p.currentTime,
+                                         duration: p.duration,
+                                         rate: p.rate)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {[weak self]in
+                self?.setupNowPlaying(title: title, subTitle: subTitle, artworkImageURL: artworkImageURL, artworkImagePlaceHolder: artworkImagePlaceHolder)
             }
         }
-
         
-        self.seqNo = seqNo
-        self.title = title
-        self.subTitle = subTitle
-        self.artworkImageURL = artworkImageURL
-    
-        if let url = artworkImageURL {
-            let imageView = UIImageView()
-            imageView.kf.setImage(with: url, completionHandler:  { (result) in
-                if let image = imageView.image {
-                    setNowPlay(artwork: image)
-                } else {
-                    setNowPlay(artwork: UIColor.red.circleImage(diameter: 100, innerColor: UIColor.white, innerDiameter: 50))
-                }
-            })
-            
-        } else {
-            setNowPlay(artwork: UIColor.red.circleImage(diameter: 100, innerColor: UIColor.white, innerDiameter: 50))
-        }
         
     }
     
