@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="od8-mZ-PdR">
+                                <rect key="frame" x="0.0" y="862" width="414" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="jLi-w7-hnx"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6f-t2-GnK">
                                 <rect key="frame" x="0.0" y="762" width="414" height="100"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
@@ -67,15 +74,18 @@
                         <constraints>
                             <constraint firstItem="uL5-Qa-Mq2" firstAttribute="leading" secondItem="WPa-Zj-hNl" secondAttribute="leading" id="1qf-gh-5X3"/>
                             <constraint firstItem="H6f-t2-GnK" firstAttribute="leading" secondItem="WPa-Zj-hNl" secondAttribute="leading" id="5ab-VN-8YC"/>
+                            <constraint firstAttribute="trailing" secondItem="od8-mZ-PdR" secondAttribute="trailing" id="6OO-EE-3Wm"/>
                             <constraint firstItem="tQ9-jg-3g0" firstAttribute="centerX" secondItem="WPa-Zj-hNl" secondAttribute="centerX" id="84C-ac-IKe"/>
                             <constraint firstItem="WPa-Zj-hNl" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tQ9-jg-3g0" secondAttribute="trailing" constant="20" id="Cmf-5f-u8P"/>
                             <constraint firstItem="rTo-Uw-QfB" firstAttribute="centerX" secondItem="WPa-Zj-hNl" secondAttribute="centerX" id="GX7-Y3-shA"/>
+                            <constraint firstItem="od8-mZ-PdR" firstAttribute="top" secondItem="H6f-t2-GnK" secondAttribute="bottom" id="H8s-Em-t70"/>
                             <constraint firstItem="WPa-Zj-hNl" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rTo-Uw-QfB" secondAttribute="trailing" constant="20" id="LKu-hQ-aXc"/>
                             <constraint firstItem="rTo-Uw-QfB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WPa-Zj-hNl" secondAttribute="leading" constant="20" id="Ldh-CX-fDq"/>
                             <constraint firstItem="WPa-Zj-hNl" firstAttribute="trailing" secondItem="uL5-Qa-Mq2" secondAttribute="trailing" id="RHS-9C-2rf"/>
                             <constraint firstItem="Mj6-Y7-EcW" firstAttribute="centerX" secondItem="WPa-Zj-hNl" secondAttribute="centerX" id="TBA-ht-4hY"/>
                             <constraint firstItem="Mj6-Y7-EcW" firstAttribute="top" secondItem="rTo-Uw-QfB" secondAttribute="bottom" constant="24" id="Zd6-sf-PVo"/>
                             <constraint firstItem="WPa-Zj-hNl" firstAttribute="bottom" secondItem="tQ9-jg-3g0" secondAttribute="bottom" constant="118" id="eCn-vF-0vs"/>
+                            <constraint firstItem="od8-mZ-PdR" firstAttribute="leading" secondItem="ek2-3k-4bB" secondAttribute="leading" id="gwh-9c-bCg"/>
                             <constraint firstItem="WPa-Zj-hNl" firstAttribute="trailing" secondItem="H6f-t2-GnK" secondAttribute="trailing" id="iFG-E9-8Cr"/>
                             <constraint firstItem="tQ9-jg-3g0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WPa-Zj-hNl" secondAttribute="leading" constant="20" id="kH6-pb-WBb"/>
                             <constraint firstItem="uL5-Qa-Mq2" firstAttribute="bottom" secondItem="WPa-Zj-hNl" secondAttribute="bottom" id="m9g-xc-6qz"/>
@@ -85,6 +95,7 @@
                     </view>
                     <connections>
                         <outlet property="bgView" destination="uL5-Qa-Mq2" id="e7V-ht-Gwq"/>
+                        <outlet property="bgView2" destination="od8-mZ-PdR" id="4xy-Qh-a2a"/>
                         <outlet property="descLabel" destination="tQ9-jg-3g0" id="Rer-WO-Zr0"/>
                         <outlet property="progressBgView" destination="H6f-t2-GnK" id="pK4-Ko-eba"/>
                         <outlet property="progressHeightLayout" destination="9Gi-cR-u6c" id="LvN-JG-CgJ"/>
@@ -105,6 +116,9 @@
         <namedColor name="weakTextColor">
             <color red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

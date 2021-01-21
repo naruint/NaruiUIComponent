@@ -40,6 +40,7 @@ class NaruMindColorValueSelectViewController: UIViewController {
     
     @IBOutlet weak var bgView: UIView!
     
+    @IBOutlet weak var bgView2: UIView!
     
     @IBOutlet weak var progressHeightLayout: NSLayoutConstraint!
     
@@ -113,7 +114,7 @@ class NaruMindColorValueSelectViewController: UIViewController {
 
     func updateUIColors() {
         
-        for view in [bgView, progressBgView] {
+        for view in [bgView, progressBgView, bgView2] {
             view?.backgroundColor = colors.last
         }
         for label in [textLabel, valueLabel, descLabel] {
