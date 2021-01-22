@@ -84,7 +84,9 @@ public class NaruTermAgreeButton: UIView {
         }.disposed(by: disposeBag)
         
         rightButton.rx.tap.bind { [unowned self](_) in
-            didTouchupRightBtn()
+            if rightButtonEnabled {
+                didTouchupRightBtn()
+            }
         }.disposed(by: disposeBag)
         
         NotificationCenter.default.addObserver(forName: .naruTermAgreeSelectionChange, object: nil, queue: nil) { [weak self](noti) in
@@ -112,7 +114,7 @@ public class NaruTermAgreeButton: UIView {
         }
         
         rightButton.isHidden = isTotalAgree || rightButtonEnabled == false
-        rightImageView.isHidden = isTotalAgree
+        rightImageView.isHidden = isTotalAgree || rightButtonEnabled == false
    
         backgroundColor = isSelected ? seBGColor : noBGColor
 
