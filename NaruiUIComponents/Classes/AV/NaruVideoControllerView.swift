@@ -134,6 +134,8 @@ public class NaruVideoControllerView: UIView {
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(loadingView)
+        durationLabel.textColor = UIColor.white
+        currentTimeLabel.textColor = UIColor.white
         playButton.layer.zPosition = 100
         titleLabel.text = currentTime.formatted_ms_String
         durationLabel.text = duration.formatted_ms_String ?? "00:00"
