@@ -80,6 +80,7 @@ class NaruMindColorValueSelectViewController: UIViewController {
             self?.view.layoutIfNeeded()
             self?.textLabel.alpha = 1
             self?.valueLabel.alpha = 1
+            self?.descLabel.textColor = self?.colors.first ?? .black
         }
     }
     
@@ -117,11 +118,11 @@ class NaruMindColorValueSelectViewController: UIViewController {
         for view in [bgView, progressBgView, bgView2] {
             view?.backgroundColor = colors.last
         }
-        for label in [textLabel, valueLabel, descLabel] {
+        for label in [textLabel, valueLabel] {
             label?.textColor = colors.first
         }
         slider.minimumTrackTintColor = colors.first
-        slider.maximumTrackTintColor = colors.first
+        slider.maximumTrackTintColor = colors.first?.withAlphaComponent(0.2)
         slider.thumbTintColor = colors.first
         if let model = viewModel {
             let normalImage = colors.first!.circleImage(diameter: 40, innerColor: model.mindColor, innerDiameter: 8)
