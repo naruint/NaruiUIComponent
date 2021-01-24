@@ -57,7 +57,9 @@ public class NaruVideoControllerView: UIView {
                 // print("시청시간 : \(NaruTimmer.shared.timeResult)")
             }
         }
-        NaruTimmer.shared.reset()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            NaruTimmer.shared.reset()
+        }
     }
     
     public var isPlaying:Bool {

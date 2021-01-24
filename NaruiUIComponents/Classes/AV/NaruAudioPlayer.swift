@@ -200,7 +200,9 @@ public class NaruAudioPlayer {
         if players.count == 0 {
             NaruTimmer.shared.stop()
             NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo, title: title ?? ""))
-            NaruTimmer.shared.reset()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                NaruTimmer.shared.reset()
+            }
         }
     }
     
@@ -215,7 +217,9 @@ public class NaruAudioPlayer {
         if NaruTimmer.shared.timeResult > 0.01 {
             NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo, title: title ?? ""))
         }
-        NaruTimmer.shared.reset()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            NaruTimmer.shared.reset()
+        }
     }
     
     public var isPlaying:Bool {
