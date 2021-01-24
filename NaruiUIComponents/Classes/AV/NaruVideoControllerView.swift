@@ -35,6 +35,12 @@ public class NaruVideoControllerView: UIView {
     
     deinit {
         subLandScapeController = nil
+        reportPlayTime()
+        bgPlayerView.player = nil
+        // print("deinit NaruVideoControllerView")
+    }
+    
+    func reportPlayTime() {
         NaruTimmer.shared.stop()
         if let model = viewModel {
             if NaruTimmer.shared.timeResult > 0 {
@@ -52,7 +58,6 @@ public class NaruVideoControllerView: UIView {
             }
         }
         NaruTimmer.shared.reset()
-        // print("deinit NaruVideoControllerView")
     }
     
     public var isPlaying:Bool {
@@ -219,9 +224,6 @@ public class NaruVideoControllerView: UIView {
         if isAllowPIP == false {
             return
         }
-        if bgPlayerView.presentingViewController != nil {
-            return
-        }
         if #available(iOS 14.2, *) {
             bgPlayerView.player = avPlayer
             bgPlayerView.canStartPictureInPictureAutomaticallyFromInline = true
@@ -307,6 +309,7 @@ public class NaruVideoControllerView: UIView {
     func updatePlayBtn() {
         if isPlaying == false {
             NaruTimmer.shared.stop()
+            reportPlayTime()
         } else {
             NaruTimmer.shared.start()
             lastControllViewShowupTime = Date()
