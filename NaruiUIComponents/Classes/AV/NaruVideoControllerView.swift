@@ -41,14 +41,14 @@ public class NaruVideoControllerView: UIView {
     }
     
     func reportPlayTime() {
-        NaruTimmer.shared.stop()
+        NaruTimmer.videoTimer.stop()
         if let model = viewModel {
-            if NaruTimmer.shared.timeResult > 0 {
+            if NaruTimmer.videoTimer.timeResult > 0 {
                 let result = ResultModel(
                     id: model.id,
                     midaDvcd: model.mdiaDvcd,
                     title: model.title,
-                    watchTime: NaruTimmer.shared.timeResult,
+                    watchTime: NaruTimmer.videoTimer.timeResult,
                     currentTime: currentTime,
                     duration: duration)
                 NotificationCenter.default.post(
@@ -58,7 +58,7 @@ public class NaruVideoControllerView: UIView {
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            NaruTimmer.shared.reset()
+            NaruTimmer.videoTimer.reset()
         }
     }
     
@@ -310,10 +310,10 @@ public class NaruVideoControllerView: UIView {
     
     func updatePlayBtn() {
         if isPlaying == false {
-            NaruTimmer.shared.stop()
+            NaruTimmer.videoTimer.stop()
             reportPlayTime()
         } else {
-            NaruTimmer.shared.start()
+            NaruTimmer.videoTimer.start()
             lastControllViewShowupTime = Date()
         }
         playButton.isSelected = isPlaying
@@ -367,7 +367,7 @@ public class NaruVideoControllerView: UIView {
             }
         }
         
-        NaruTimmer.shared.reset()
+        NaruTimmer.videoTimer.reset()
         self.viewModel = viewModel
         let avPlayer = AVPlayer(url: viewModel.url)
         titleLabel.text = viewModel.title

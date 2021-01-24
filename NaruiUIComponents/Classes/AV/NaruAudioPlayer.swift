@@ -178,7 +178,7 @@ public class NaruAudioPlayer {
                 }
                 secondMusicURL = url
             }
-            NaruTimmer.shared.reset()
+            NaruTimmer.audioTimer.reset()
         }
     }
     
@@ -198,10 +198,10 @@ public class NaruAudioPlayer {
             }
         }
         if players.count == 0 {
-            NaruTimmer.shared.stop()
-            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo, title: title ?? ""))
+            NaruTimmer.audioTimer.stop()
+            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.audioTimer.timeResult, seqNo: seqNo, title: title ?? ""))
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                NaruTimmer.shared.reset()
+                NaruTimmer.audioTimer.reset()
             }
         }
     }
@@ -213,12 +213,12 @@ public class NaruAudioPlayer {
             player.stop()
         }
         players.removeAll()
-        NaruTimmer.shared.stop()
-        if NaruTimmer.shared.timeResult > 0.01 {
-            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.shared.timeResult, seqNo: seqNo, title: title ?? ""))
+        NaruTimmer.audioTimer.stop()
+        if NaruTimmer.audioTimer.timeResult > 0.01 {
+            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.audioTimer.timeResult, seqNo: seqNo, title: title ?? ""))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            NaruTimmer.shared.reset()
+            NaruTimmer.audioTimer.reset()
         }
     }
     
@@ -265,7 +265,7 @@ public class NaruAudioPlayer {
                 player.play()
             }
             NotificationCenter.default.post(name: .naruAudioPlayDidStart, object: nil)
-            NaruTimmer.shared.start()
+            NaruTimmer.audioTimer.start()
         }
         var needPrepareURL:[URL] = []
         for url in musicUrls {
@@ -308,14 +308,14 @@ public class NaruAudioPlayer {
     public func stop() {
         pause()
         players.removeAll()
-        NaruTimmer.shared.stop()
+        NaruTimmer.audioTimer.stop()
     }
     
     public func pause() {
         for player in players.values {
             player.stop()
         }
-        NaruTimmer.shared.stop()
+        NaruTimmer.audioTimer.stop()
     }
    
     public func seek(time:TimeInterval) {

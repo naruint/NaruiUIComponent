@@ -11,7 +11,9 @@ public extension Notification.Name {
 }
 
 public class NaruTimmer {
-    static let shared = NaruTimmer()
+    static let audioTimer = NaruTimmer()
+    static let videoTimer = NaruTimmer()
+    
     public init() {
         
     }
