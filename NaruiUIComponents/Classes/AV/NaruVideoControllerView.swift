@@ -15,7 +15,7 @@ public extension Notification.Name {
     static let naruVideoWatchFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
 }
 public class NaruVideoControllerView: UIView {
-    public var isAllowPIP:Bool = true
+    public var isAllowPIP:Bool = false
     public var kvoRateContext = 0
     public var avPlayer:AVPlayer? = nil {
         didSet {
