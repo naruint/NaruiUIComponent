@@ -15,6 +15,7 @@ public extension Notification.Name {
     static let naruVideoWatchFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
 }
 public class NaruVideoControllerView: UIView {
+    public var isAllowPIP:Bool = true
     public var kvoRateContext = 0
     public var avPlayer:AVPlayer? = nil {
         didSet {
@@ -83,6 +84,8 @@ public class NaruVideoControllerView: UIView {
     
     let loadingView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
+    let bgPlayerView = AVPlayerViewController()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initUI()
@@ -211,6 +214,29 @@ public class NaruVideoControllerView: UIView {
        
         backButton.isHidden = true
     }
+    
+    func initPIP() {
+        if isAllowPIP == false {
+            return
+        }
+        if bgPlayerView.presentingViewController != nil {
+            return
+        }
+        if #available(iOS 14.2, *) {
+            bgPlayerView.player = avPlayer
+            bgPlayerView.canStartPictureInPictureAutomaticallyFromInline = true
+            bgPlayerView.allowsPictureInPicturePlayback = true
+            bgPlayerView.updatesNowPlayingInfoCenter = true
+            UIApplication.shared.lastPresentedViewController?.addChild(bgPlayerView)
+            UIApplication.shared.lastPresentedViewController?.view.addSubview(bgPlayerView.view)
+            bgPlayerView.view.alpha = 0
+            bgPlayerView.view.frame = CGRect.init(x: 100, y: 100, width: 100, height: 50)
+        }
+    }
+    
+   
+    
+    
     
     var avControllContainerViewHide = false {
         didSet {
@@ -358,6 +384,7 @@ public class NaruVideoControllerView: UIView {
         addObserver()
         updateSlider()
         updatePlayBtn()
+        initPIP()
     }
 
     public func addObserver() {
