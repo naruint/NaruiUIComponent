@@ -211,7 +211,7 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: "Video", sender: nil)
         case .videoTest2:
             let vc = NaruLandscapeVideoViewController()
-            vc.playerControllerView.isAllowPIP = false
+//            vc.playerControllerView.isAllowPIP = false
             present(vc, animated: true) {
                 let viewModel = NaruVideoControllerView.ViewModel(
                     id: "002",

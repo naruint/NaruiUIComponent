@@ -36,7 +36,7 @@ public class NaruVideoControllerView: UIView {
     deinit {
         subLandScapeController = nil
         reportPlayTime()
-        bgPlayerView.player = nil
+        NaruVideoControllerView.bgPlayerView.player = nil
         // print("deinit NaruVideoControllerView")
     }
     
@@ -89,7 +89,7 @@ public class NaruVideoControllerView: UIView {
     
     let loadingView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
-    let bgPlayerView = AVPlayerViewController()
+    static let bgPlayerView = AVPlayerViewController()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -180,6 +180,7 @@ public class NaruVideoControllerView: UIView {
         
         fullScreenButton.rx.tap.bind {[unowned self] (_) in
             if let vc = fullScreenController {
+                
                 vc.dismiss(animated: true, completion: nil)
             } else {
                 let vc = subLandScapeController ?? NaruLandscapeVideoViewController()
@@ -225,14 +226,13 @@ public class NaruVideoControllerView: UIView {
             return
         }
         if #available(iOS 14.2, *) {
-            bgPlayerView.player = avPlayer
-            bgPlayerView.canStartPictureInPictureAutomaticallyFromInline = true
-            bgPlayerView.allowsPictureInPicturePlayback = true
-            bgPlayerView.updatesNowPlayingInfoCenter = true
-            UIApplication.shared.lastPresentedViewController?.addChild(bgPlayerView)
-            UIApplication.shared.lastPresentedViewController?.view.addSubview(bgPlayerView.view)
-            bgPlayerView.view.alpha = 0
-            bgPlayerView.view.frame = CGRect.init(x: 100, y: 100, width: 100, height: 50)
+            NaruVideoControllerView.bgPlayerView.player = avPlayer
+            NaruVideoControllerView.bgPlayerView.canStartPictureInPictureAutomaticallyFromInline = true
+            NaruVideoControllerView.bgPlayerView.allowsPictureInPicturePlayback = true
+            NaruVideoControllerView.bgPlayerView.updatesNowPlayingInfoCenter = true
+            addSubview(NaruVideoControllerView.bgPlayerView.view)
+            NaruVideoControllerView.bgPlayerView.view.alpha = 0
+            NaruVideoControllerView.bgPlayerView.view.frame = frame
         }
     }
     
