@@ -404,8 +404,10 @@ public class NaruVideoControllerView: UIView {
         })
     }
 
-    public func seek(second:Int) {
-        avPlayer?.seek(to: CMTime(seconds: Double(second * 1000), preferredTimescale: 1000))
+    public func seek(second:Double) {
+        let time:CMTime = CMTime(seconds: second, preferredTimescale: 1000)
+        avPlayer?.seek(to: time)
+        slider.value = Float(second / duration)
     }
     
     var isRegistRateObserver = false
