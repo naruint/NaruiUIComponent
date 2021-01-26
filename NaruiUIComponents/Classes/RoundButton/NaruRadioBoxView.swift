@@ -25,6 +25,16 @@ public class NaruRadioBoxView: UIView {
         }
     }
     
+    public var isSelected:Bool {
+        set {
+            radioButton.isSelected = newValue
+            updateUI()
+        }
+        get {
+            radioButton.isSelected
+        }
+    }
+    
     @IBOutlet weak var button: UIButton!
     
     let disposeBag = DisposeBag()
