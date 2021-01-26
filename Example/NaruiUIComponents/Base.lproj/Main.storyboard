@@ -621,6 +621,21 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="seTitleColor">
                                                             <color key="value" name="normalTextColor"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="noBgColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="seBgColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="diBgColor">
+                                                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="diTitleColor">
+                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="diColor">
+                                                            <color key="value" name="warmPink"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -1432,6 +1447,8 @@
                         <outlet property="term2" destination="k12-AS-TSp" id="Q6K-MF-rpz"/>
                         <outlet property="term3" destination="xeO-72-ucV" id="Pa9-2I-ybZ"/>
                         <outlet property="textView" destination="xi2-QZ-VdV" id="QZa-oT-0X0"/>
+                        <outletCollection property="radioButtons" destination="fIc-ek-ry5" collectionClass="NSMutableArray" id="fJA-nT-FF6"/>
+                        <outletCollection property="radioButtons" destination="vCf-ns-YEf" collectionClass="NSMutableArray" id="s7V-x1-geE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDW-T2-7UW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -25,10 +25,14 @@ class InputUITestTableViewController: UITableViewController {
     @IBOutlet weak var button: NaruGradientButton!
     @IBOutlet weak var term2: NaruTermAgreeButton!
     @IBOutlet weak var term3: NaruTermAgreeButton!
+    @IBOutlet var radioButtons: [NaruRadioBoxView]!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "UI Input Test"
         
+        for btn in radioButtons {
+            btn.isEnable = Bool.random()
+        }
         
         navigationItem.largeTitleDisplayMode = .always        
         navigationController?.navigationBar.prefersLargeTitles = true

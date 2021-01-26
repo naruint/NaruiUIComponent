@@ -35,17 +35,46 @@ public class NaruRadioBoxView: UIView {
             button.setTitle(title, for: .normal)
         }
     }
+    /** normal Line Color*/
     @IBInspectable var noColor:UIColor = .white
+    /** selected Line tColor*/
     @IBInspectable var seColor:UIColor = .white
+    /** disabled line color*/
+    @IBInspectable var diColor:UIColor = .gray
     
+
+    /** normal title color*/
     @IBInspectable var noTitleColor:UIColor? = nil {
         didSet {
             button.setTitleColor(noTitleColor ?? noColor, for: .normal)
         }
     }
+    /** selected title color*/
     @IBInspectable var seTitleColor:UIColor? = nil{
         didSet {
             button.setTitleColor(seTitleColor ?? seColor, for: .selected)
+        }
+    }
+    /** disabled text color */
+    @IBInspectable var diTitleColor:UIColor? = nil {
+        didSet {
+            button.setTitleColor(diTitleColor, for: .disabled)
+        }
+    }
+    
+    @IBInspectable var noBgColor: UIColor = .white {
+        didSet {
+            button.setBackgroundImage(noBgColor.image, for: .normal)
+        }
+    }
+    @IBInspectable var seBgColor: UIColor = .white {
+        didSet {
+            button.setBackgroundImage(seBgColor.image, for: .selected)
+        }
+    }
+    @IBInspectable var diBgColor: UIColor = .gray {
+        didSet {
+            button.setBackgroundImage(diBgColor.image, for: .disabled)
         }
     }
 
@@ -98,16 +127,16 @@ public class NaruRadioBoxView: UIView {
     }
     
     func updateUI() {
-        alpha = isEnable ? 1 : 0.5
-        
         var color:UIColor {
             if isEnable == false {
-                return noColor
+                return diColor
             }
             return button.isSelected ? seColor : noColor
         }
+        
         button.tintColor = color
         layer.borderColor = color.cgColor
+        
         layer.cornerRadius = 2
         layer.borderWidth = 1
     }
