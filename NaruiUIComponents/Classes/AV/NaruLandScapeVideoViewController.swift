@@ -8,8 +8,12 @@
 import Foundation
 import UIKit
 import AVKit
+public protocol NaruLandscapeVideoViewControllerDelegate:class {
+    func naruLandscapeVideoViewControllerDidDismiss(seqNum:String?)
+}
 
 public class NaruLandscapeVideoViewController: UIViewController {
+    weak var delegate:NaruLandscapeVideoViewControllerDelegate? = nil
     public override var prefersStatusBarHidden: Bool { true }
     public override var prefersHomeIndicatorAutoHidden: Bool { true }
             
@@ -75,7 +79,10 @@ public class NaruLandscapeVideoViewController: UIViewController {
     
     public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
-        super.dismiss(animated: flag, completion: completion)
+        super.dismiss(animated: flag) {
+            self.delegate?.naruLandscapeVideoViewControllerDidDismiss(seqNum: self.viewModel?.id)
+            completion?()
+        }
     }
     
     private func addPlayerController() {
@@ -96,4 +103,5 @@ public class NaruLandscapeVideoViewController: UIViewController {
         
         view.addConstraints([top, bottom, leading, trailing])
     }
+    
 }
