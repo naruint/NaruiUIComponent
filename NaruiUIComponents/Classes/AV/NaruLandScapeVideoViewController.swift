@@ -13,7 +13,7 @@ public protocol NaruLandscapeVideoViewControllerDelegate:class {
 }
 
 public class NaruLandscapeVideoViewController: UIViewController {
-    weak var delegate:NaruLandscapeVideoViewControllerDelegate? = nil
+    public weak var delegate:NaruLandscapeVideoViewControllerDelegate? = nil
     public override var prefersStatusBarHidden: Bool { true }
     public override var prefersHomeIndicatorAutoHidden: Bool { true }
             
