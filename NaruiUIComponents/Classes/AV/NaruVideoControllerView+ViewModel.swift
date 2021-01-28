@@ -16,6 +16,8 @@ public extension NaruVideoControllerView {
         public let title:String
         /** 제생 시작 시각*/
         public let currentTime:TimeInterval
+        /** 전채 시간*/
+        public let duration:TimeInterval
         /** 설명 시작시간*/
         public let startDescTime:TimeInterval
         /** 설명 종료시간*/
@@ -29,6 +31,7 @@ public extension NaruVideoControllerView {
             midaDvcd:String,
             title:String,
             currentTime:TimeInterval,
+            duration:TimeInterval,
             startDescTime:TimeInterval,
             endDescTime:TimeInterval,
             url:URL,
@@ -36,6 +39,7 @@ public extension NaruVideoControllerView {
             self.id = id
             self.title = title
             self.currentTime = currentTime
+            self.duration = duration
             self.startDescTime = startDescTime
             self.endDescTime = endDescTime
             self.url = url

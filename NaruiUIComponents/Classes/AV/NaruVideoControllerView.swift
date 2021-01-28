@@ -334,7 +334,7 @@ public class NaruVideoControllerView: UIView {
         }
         slider.isEnabled = duration > 0
 
-        durationLabel.text = duration.formatted_ms_String ?? "00:00"
+        durationLabel.text = duration.formatted_ms_String ?? viewModel.duration.formatted_ms_String
         
         hideDescButton = !(viewModel.startDescTime < currentTime && currentTime <= viewModel.endDescTime)
         
@@ -371,6 +371,7 @@ public class NaruVideoControllerView: UIView {
         self.viewModel = viewModel
         let avPlayer = AVPlayer(url: viewModel.url)
         titleLabel.text = viewModel.title
+        durationLabel.text = viewModel.duration.formatted_ms_String
         self.avPlayer = avPlayer
         if viewModel.currentTime > 0 {
             self.avPlayer?.seek(to: CMTime(seconds: viewModel.currentTime, preferredTimescale: 1000))
@@ -383,7 +384,7 @@ public class NaruVideoControllerView: UIView {
             artworkImageURL: viewModel.thumbnailURL,
             artworkImagePlaceHolder: pi,
             currentTime: viewModel.currentTime,
-            duration: TimeInterval(avPlayer.currentItem?.duration.seconds ?? 0),
+            duration: TimeInterval(avPlayer.currentItem?.duration.seconds ?? viewModel.duration ),
             rate: avPlayer.rate)
 
         addObserver()
