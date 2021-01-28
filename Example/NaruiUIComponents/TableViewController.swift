@@ -212,6 +212,7 @@ class TableViewController: UITableViewController {
         case .videoTest2:
             let vc = NaruLandscapeVideoViewController()
 //            vc.playerControllerView.isAllowPIP = false
+            vc.isAutoDismissWhenFinish = true
             present(vc, animated: true) {
                 let viewModel = NaruVideoControllerView.ViewModel(
                     id: "002",

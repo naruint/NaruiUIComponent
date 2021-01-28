@@ -18,6 +18,7 @@ public class NaruLandscapeVideoViewController: UIViewController {
     public override var prefersHomeIndicatorAutoHidden: Bool { true }
             
     public var isLandscapeOnly:Bool = true
+    public var isAutoDismissWhenFinish:Bool = false
     public var viewModel:NaruVideoControllerView.ViewModel? {
         set {
             playerControllerView.viewModel = newValue
@@ -56,6 +57,15 @@ public class NaruLandscapeVideoViewController: UIViewController {
 
         NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
         playerControllerView.fullScreenController = self
+        NotificationCenter.default.addObserver(forName: .naruVideoWatchFinished, object: nil, queue: nil) { [weak self](noti) in
+            guard let info = noti.object as? NaruVideoControllerView.ResultModel else {
+                return
+            }
+            if info.isWatchFinish && self?.isAutoDismissWhenFinish == true {
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
         
     public override func viewWillAppear(_ animated: Bool) {
