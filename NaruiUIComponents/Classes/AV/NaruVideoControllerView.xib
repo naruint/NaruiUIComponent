@@ -28,8 +28,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lhj-b3-UDx">
-                    <rect key="frame" x="0.0" y="44" width="414" height="256"/>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhj-b3-UDx">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oI-Dz-BMV" userLabel="dimView">
                     <rect key="frame" x="0.0" y="44" width="414" height="306"/>
@@ -125,19 +126,15 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4oI-Dz-BMV" secondAttribute="bottom" constant="-50" id="86E-1u-PAX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="auK-e7-Lw0" secondAttribute="trailing" constant="22" id="HIY-Sa-FB6"/>
-                <constraint firstItem="lhj-b3-UDx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HXH-42-j85"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lhj-b3-UDx" secondAttribute="trailing" id="Ny5-qq-DCw"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lhj-b3-UDx" secondAttribute="bottom" id="bsR-md-X6Y"/>
                 <constraint firstItem="4oI-Dz-BMV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hZp-TL-SED"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4oI-Dz-BMV" secondAttribute="trailing" id="mxx-eL-m6y"/>
-                <constraint firstItem="lhj-b3-UDx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sZK-fY-iN9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="auK-e7-Lw0" secondAttribute="bottom" constant="50" id="vpc-71-WxI"/>
                 <constraint firstItem="4oI-Dz-BMV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vvj-qZ-cBL"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="139" y="63"/>
+            <point key="canvasLocation" x="137.68115942028987" y="62.946428571428569"/>
         </view>
     </objects>
     <resources>
