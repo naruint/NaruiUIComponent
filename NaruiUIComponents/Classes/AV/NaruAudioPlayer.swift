@@ -26,6 +26,7 @@ public class NaruAudioPlayer {
         public let time:TimeInterval
         public let seqNo:String
         public let title:String
+        public let isComplete:Bool
     }
     
    
@@ -53,7 +54,7 @@ public class NaruAudioPlayer {
             self.isPlaying = isPlaying
         }
     }
-    
+    public var isAutoCloseWhenPlayOnce:Bool = false
     public var isLoopPlayForever:Bool = false {
         didSet {
             setLoop()
@@ -163,6 +164,16 @@ public class NaruAudioPlayer {
             }
             return .noActionableNowPlayingItem
         }
+        
+        NotificationCenter.default.addObserver(forName: .naruAudioPlayerStatusDidChange, object: nil, queue: nil) {[weak self] (noti) in
+            if let p = self?.firstPlayer {
+                if p.currentTime / p.duration > 0.98 && self?.isAutoCloseWhenPlayOnce == true{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                        self?.removeAllMusic()
+                    }
+                }
+            }
+        }
     }
     
     public func insertMusic(url:URL?, isFirstTrack:Bool) {
@@ -183,6 +194,12 @@ public class NaruAudioPlayer {
     }
     
     public func removeMusic(url:URL?) {
+        var isComplete = false
+        if let p = firstPlayer {
+            if p.currentTime / p.duration > 0.98 {
+                isComplete = true
+            }
+        }
         if let url = url, let index = musicUrls.firstIndex(where: { (u) -> Bool in
             return u == url
         }) {
@@ -199,7 +216,10 @@ public class NaruAudioPlayer {
         }
         if players.count == 0 {
             NaruTimmer.audioTimer.stop()
-            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.audioTimer.timeResult, seqNo: seqNo, title: title ?? ""))
+            NotificationCenter.default.post(
+                name: .naruAudioPlayFinished,
+                object: TimeResult(time: NaruTimmer.audioTimer.timeResult, seqNo: seqNo, title: title ?? "",isComplete: isComplete)
+            )
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                 NaruTimmer.audioTimer.reset()
             }
@@ -209,13 +229,31 @@ public class NaruAudioPlayer {
     public func removeAllMusic() {
         firstMusicURL = nil
         secondMusicURL = nil
+        var isComplete = false
+
+        if let player = firstPlayer {
+            print("time : \(player.currentTime) / \(player.duration) : \(player.currentTime / player.duration)")
+            if player.currentTime / player.duration > 0.98 {
+                isComplete = true
+            }
+        }
         for player in players.values {
+            print("time : \(player.currentTime) / \(player.duration) : \(player.currentTime / player.duration)")
+            if player.currentTime / player.duration > 0.98 {
+                isComplete = true
+            }
             player.stop()
         }
         players.removeAll()
         NaruTimmer.audioTimer.stop()
         if NaruTimmer.audioTimer.timeResult > 0.01 {
-            NotificationCenter.default.post(name: .naruAudioPlayFinished, object: TimeResult(time: NaruTimmer.audioTimer.timeResult, seqNo: seqNo, title: title ?? ""))
+            NotificationCenter.default.post(name: .naruAudioPlayFinished,
+                                            object: TimeResult(
+                                                time: NaruTimmer.audioTimer.timeResult,
+                                                seqNo: seqNo,
+                                                title: title ?? "",
+                                                isComplete: isComplete
+                                            ))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             NaruTimmer.audioTimer.reset()
@@ -241,8 +279,9 @@ public class NaruAudioPlayer {
         }
     }
     
-    public func play(title:String,subTitle:String, artworkImageURL:URL?, artworkImagePlaceHolder:UIImage ,seqNo:String) {
+    public func play(title:String,subTitle:String, artworkImageURL:URL?, artworkImagePlaceHolder:UIImage ,seqNo:String, isAutoClose:Bool = false) {
         self.seqNo = seqNo
+        self.isAutoCloseWhenPlayOnce = isAutoClose
         
         play { [unowned self] in
             setupNowPlaying(title: title, subTitle: subTitle, artworkImageURL: artworkImageURL, artworkImagePlaceHolder: artworkImagePlaceHolder)

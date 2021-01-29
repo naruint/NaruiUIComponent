@@ -53,7 +53,7 @@ class TableViewController: UITableViewController {
             }
             
             let ac = UIAlertController(
-                title: nil,
+                title: time.isComplete ? "끝까지 감상" : "중간에 멈춤",
                 message: "\(time.seqNo)\n\(time.title)\n\(time.time)초 들었다", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             self?.present(ac, animated: true, completion: nil)
