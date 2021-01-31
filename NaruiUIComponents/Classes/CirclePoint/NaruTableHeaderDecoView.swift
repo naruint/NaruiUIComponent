@@ -14,6 +14,7 @@ public class NaruTableHeaderDecoView: UIView {
         case start
         case middle
         case end
+        case none
     }
     
     public var style : Style = .middle {
@@ -110,6 +111,8 @@ public class NaruTableHeaderDecoView: UIView {
                 drawline(bottom: false)
             case .end:
                 drawline(bottom: true)
+            case .none:
+                break
             }
             
         }
