@@ -15,6 +15,17 @@ public class NaruTagCollectionView: UIView {
     @IBInspectable var cell_highlightBgColor:UIColor? = nil
     @IBInspectable var textColor:UIColor = .black
     @IBInspectable var prefix:String = "#"
+    
+    public func setCellStyle(borderColor:UIColor, bgColor:UIColor, selectedBgColor:UIColor, highlightBgColor:UIColor,textColor:UIColor,prefix:String) {
+        cell_borderColor = borderColor
+        cell_bgColor = bgColor
+        cell_selectedBgColor = selectedBgColor
+        cell_highlightBgColor = highlightBgColor
+        self.textColor = textColor
+        self.prefix = prefix
+        self.collectionView.reloadData()
+    }
+    
     public var tags:[String] = [] {
         didSet {
             collectionView.reloadData()
