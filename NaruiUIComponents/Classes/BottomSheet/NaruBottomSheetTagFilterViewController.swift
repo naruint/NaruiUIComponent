@@ -106,6 +106,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         }
         
         applyButton.rx.tap.bind { [unowned self](_) in
+           
             NotificationCenter.default.post(name: .naruBottomSheetTagFilterSelectionDidChange, object: result)
             dismiss(animated: true, completion: nil)
         }.disposed(by: disposeBag)
@@ -113,6 +114,7 @@ public class NaruBottomSheetTagFilterViewController: UIViewController {
         
     public func setTags(selectedTags:[String:[String]]){
         preSelectedTags = selectedTags
+        result = selectedTags
         self.tableView?.reloadData()
     }
     
