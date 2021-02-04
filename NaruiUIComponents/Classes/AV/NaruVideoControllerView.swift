@@ -253,6 +253,14 @@ public class NaruVideoControllerView: UIView {
                     self?.tapLock = false
                 }
             }
+            if avControllContainerViewHide {
+                hideDescButton = true
+            } else {
+                let s = self.viewModel?.startDescTime ?? -1
+                let e = self.viewModel?.endDescTime ?? -1
+                let t = self.currentTime
+                hideDescButton = !(s < t && t <= e)
+            }
         }
     }
 
@@ -336,7 +344,9 @@ public class NaruVideoControllerView: UIView {
 
         durationLabel.text = duration.formatted_ms_String ?? viewModel.duration.formatted_ms_String
         
-        hideDescButton = !(viewModel.startDescTime < currentTime && currentTime <= viewModel.endDescTime)
+        if avControllContainerViewHide == false {
+            hideDescButton = !(viewModel.startDescTime < currentTime && currentTime <= viewModel.endDescTime)
+        }
         
         if let lastTime = lastControllViewShowupTime?.timeIntervalSince1970 {
             let now = Date().timeIntervalSince1970
