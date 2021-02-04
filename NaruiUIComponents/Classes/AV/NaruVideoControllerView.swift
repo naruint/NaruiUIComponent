@@ -389,16 +389,16 @@ public class NaruVideoControllerView: UIView {
         if viewModel.currentTime > 0 {
             self.avPlayer?.seek(to: CMTime(seconds: viewModel.currentTime, preferredTimescale: 1000))
         }
-        let pi = UIColor.white.image
+//        let pi = UIColor.white.image
         
-        NowPlayUtill.setupNowPlaying(
-            title: viewModel.title,
-            subTitle: "",
-            artworkImageURL: viewModel.thumbnailURL,
-            artworkImagePlaceHolder: pi,
-            currentTime: viewModel.currentTime,
-            duration: TimeInterval(avPlayer.currentItem?.duration.seconds ?? viewModel.duration ),
-            rate: avPlayer.rate)
+//        NowPlayUtill.setupNowPlaying(
+//            title: viewModel.title,
+//            subTitle: "",
+//            artworkImageURL: viewModel.thumbnailURL,
+//            artworkImagePlaceHolder: pi,
+//            currentTime: viewModel.currentTime,
+//            duration: TimeInterval(avPlayer.currentItem?.duration.seconds ?? viewModel.duration ),
+//            rate: avPlayer.rate)
 
         addObserver()
         updateSlider()
