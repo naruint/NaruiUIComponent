@@ -361,8 +361,6 @@ public class NaruVideoControllerView: UIView {
         thumbImageView.isHidden = url == nil
         thumbImageView.frame.size = thumbImageView.superview?.frame.size ?? .zero
         thumbImageView.frame.origin = .zero
-        thumbImageView.layer.borderWidth = 1
-        thumbImageView.layer.borderColor = UIColor.red.cgColor
         thumbImageView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         thumbImageView.contentMode = .scaleAspectFit
         thumbImageView.kf.setImage(with: url, placeholder: placeHolder)
