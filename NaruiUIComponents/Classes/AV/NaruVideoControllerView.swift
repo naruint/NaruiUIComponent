@@ -362,8 +362,14 @@ public class NaruVideoControllerView: UIView {
         thumbImageView.frame.size = thumbImageView.superview?.frame.size ?? .zero
         thumbImageView.frame.origin = .zero
         thumbImageView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        thumbImageView.contentMode = .scaleAspectFit
-        thumbImageView.kf.setImage(with: url, placeholder: placeHolder)
+        if thumbImageView.frame.size.height == UIScreen.main.bounds.size.height {
+            thumbImageView.contentMode = .scaleAspectFit
+        } else {
+            thumbImageView.contentMode = .scaleAspectFill
+        }
+        thumbImageView.kf.setImage(with: url, placeholder: placeHolder, options: nil, progressBlock: nil) { [weak self](result) in
+            self?.thumbImageView.isHidden =  self?.thumbImageView.image == nil
+        }
     }
         
     public func openVideo(viewModel:ViewModel) {
@@ -376,9 +382,7 @@ public class NaruVideoControllerView: UIView {
         }
         
         if thumbImageView.image == nil {
-            thumbImageView.kf.setImage(with: viewModel.thumbnailURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self](result) in
-                self?.thumbImageView.isHidden =  self?.thumbImageView.image == nil
-            }
+            setThumbImage(url: viewModel.thumbnailURL, placeHolder: nil)
         }
         
         NaruTimmer.videoTimer.reset()
