@@ -347,6 +347,12 @@ public class NaruVideoControllerView: UIView {
         if avControllContainerViewHide == false {
             hideDescButton = !(viewModel.startDescTime < currentTime && currentTime <= viewModel.endDescTime)
         }
+        if Int(viewModel.startDescTime) == Int(currentTime) {
+            hideDescButton = false
+        }
+        if Int(viewModel.startDescTime) + 3 == Int(currentTime) {
+            hideDescButton = true
+        }
         
         if let lastTime = lastControllViewShowupTime?.timeIntervalSince1970 {
             let now = Date().timeIntervalSince1970
