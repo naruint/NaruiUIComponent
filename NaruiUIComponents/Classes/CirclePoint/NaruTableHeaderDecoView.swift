@@ -104,6 +104,9 @@ public class NaruTableHeaderDecoView: UIView {
         
         func drawDot(color:UIColor) {
             let max = Int(bounds.height / dashDistance / 2 - 3)
+            if max < 0 {
+                return
+            }
             func drawline(bottom:Bool) {
                 let x:CGFloat = CGFloat(bounds.midX - 1)
                 for i in 0...max  {
