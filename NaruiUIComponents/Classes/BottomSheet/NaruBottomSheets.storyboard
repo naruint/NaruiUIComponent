@@ -51,7 +51,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGb-Yu-o6A">
-                                <rect key="frame" x="0.0" y="44" width="414" height="743"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="MKV-jf-T1b">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
@@ -186,7 +186,7 @@
                             <constraint firstItem="kAg-do-CJq" firstAttribute="bottom" secondItem="6yX-lk-3Yg" secondAttribute="bottom" id="7HG-eQ-tTQ"/>
                             <constraint firstItem="kAg-do-CJq" firstAttribute="trailing" secondItem="6yX-lk-3Yg" secondAttribute="trailing" id="NRp-N3-Lgc"/>
                             <constraint firstItem="hGb-Yu-o6A" firstAttribute="leading" secondItem="kAg-do-CJq" secondAttribute="leading" id="Wcl-vC-7H0"/>
-                            <constraint firstItem="kAg-do-CJq" firstAttribute="bottom" secondItem="hGb-Yu-o6A" secondAttribute="bottom" constant="75" id="gEV-fy-bI6"/>
+                            <constraint firstItem="kAg-do-CJq" firstAttribute="bottom" secondItem="hGb-Yu-o6A" secondAttribute="bottom" constant="100" id="gEV-fy-bI6"/>
                             <constraint firstItem="kAg-do-CJq" firstAttribute="trailing" secondItem="hGb-Yu-o6A" secondAttribute="trailing" id="vAZ-AQ-nAV"/>
                             <constraint firstItem="6yX-lk-3Yg" firstAttribute="leading" secondItem="kAg-do-CJq" secondAttribute="leading" id="wFw-Ue-5lw"/>
                         </constraints>
