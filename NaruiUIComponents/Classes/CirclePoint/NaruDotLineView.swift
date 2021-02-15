@@ -32,6 +32,9 @@ class NaruDotLineView: UIView {
         if isHorizontal {
             max = Int((bounds.width - paddingLeft - paddingRight) / dashDistance )
         }
+        if max < 0 {
+            return
+        }
         for i in 0...max  {
             let shapeLayer = CAShapeLayer()
             var x:CGFloat = CGFloat(bounds.midX - dotSize / 2)

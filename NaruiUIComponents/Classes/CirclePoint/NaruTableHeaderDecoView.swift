@@ -53,6 +53,12 @@ public class NaruTableHeaderDecoView: UIView {
         }
     }
     
+    public var image:UIImage? = nil {
+        didSet {
+            redraw()
+        }
+    }
+    
     public func set(style:Style,
                     text:String?,
                     circleColor:UIColor?,
@@ -68,7 +74,7 @@ public class NaruTableHeaderDecoView: UIView {
     }
         
 
-    private func redraw() {
+    public func redraw() {
         for layer in layer.sublayers ?? [] {
             layer.removeFromSuperlayer()
         }
@@ -77,6 +83,14 @@ public class NaruTableHeaderDecoView: UIView {
 
     public override func draw(_ rect: CGRect) {
         func drawCircle(size:CGFloat, color:UIColor?) {
+            if let image = image {
+                let imgView = UIImageView(image: image)
+                imgView.sizeToFit()
+                imgView.frame.origin.x = bounds.midX - imgView.frame.width / 2
+                imgView.frame.origin.y = bounds.midY - imgView.frame.height / 2
+                layer.addSublayer(imgView.layer)
+                return
+            }
             let shapeLayer = CAShapeLayer()
             if let color = color {
                 shapeLayer.path = UIBezierPath(ovalIn: CGRect(x: bounds.midX - size / 2, y: bounds.midY - size / 2, width: size, height: size)).cgPath
@@ -90,6 +104,9 @@ public class NaruTableHeaderDecoView: UIView {
         
         func drawDot(color:UIColor) {
             let max = Int(bounds.height / dashDistance / 2 - 3)
+            if max < 0 {
+                return
+            }
             func drawline(bottom:Bool) {
                 let x:CGFloat = CGFloat(bounds.midX - 1)
                 for i in 0...max  {
