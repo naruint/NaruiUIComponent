@@ -15,6 +15,7 @@ public extension Notification.Name {
     static let naruVideoWatchFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
 }
 public class NaruVideoControllerView: UIView {
+    public var isDisableSkipDescButton = false
     public var isAllowPIP:Bool = false
     public var kvoRateContext = 0
     public var avPlayer:AVPlayer? = nil {
@@ -109,6 +110,7 @@ public class NaruVideoControllerView: UIView {
     
     var hideDescButton = true {
         didSet {
+            skipDescButton.isHidden = isDisableSkipDescButton
             if oldValue != hideDescButton {
                 UIView.animate(withDuration: 0.5) {[weak self]in
                     self?.skipDescButton.alpha = self?.hideDescButton ?? false ? 0 : 1
