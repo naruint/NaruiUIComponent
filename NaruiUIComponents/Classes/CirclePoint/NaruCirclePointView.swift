@@ -33,6 +33,9 @@ public class NaruCirclePointView: UIView {
     
     public override func draw(_ rect: CGRect) {
         let y = rect.size.height / 2 - circleSize / 2
+        for layer in layer.sublayers ?? [] {
+            layer.removeFromSuperlayer()
+        }
         for i in 0..<maxLevel {
             let x = circleSize * CGFloat(i) + padding * CGFloat(i)
             let shapeLayer = CAShapeLayer()
