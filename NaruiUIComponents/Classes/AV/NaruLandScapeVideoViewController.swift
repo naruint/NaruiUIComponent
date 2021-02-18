@@ -99,12 +99,13 @@ public class NaruLandscapeVideoViewController: UIViewController {
         
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
-        
+                
         // swap width & height becox the mainScreen is still in portrait
         playerControllerView.frame = CGRect(x: 0, y: 0, width: screenHeight, height: screenWidth)
         
         playerControllerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(playerControllerView)
+        
         
         let top = NSLayoutConstraint(item: playerControllerView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0)
         let bottom = NSLayoutConstraint(item: playerControllerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)

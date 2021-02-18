@@ -15,6 +15,13 @@ public extension Notification.Name {
     static let naruVideoWatchFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
 }
 public class NaruVideoControllerView: UIView {
+    //MARK:Layout
+    
+    @IBOutlet weak var layoutBackBtnLeading: NSLayoutConstraint!
+    @IBOutlet weak var layoutFullScreenButtonTrailing: NSLayoutConstraint!
+    @IBOutlet weak var layoutDurationLabelTrailing: NSLayoutConstraint!
+    @IBOutlet weak var layoutCurrentTimeLeading: NSLayoutConstraint!
+    
     public var isDisableSkipDescButton = false
     public var isAllowPIP:Bool = false
     public var kvoRateContext = 0
@@ -223,6 +230,19 @@ public class NaruVideoControllerView: UIView {
         slider.addTarget(self, action: #selector(self.onSliderValueChanged(slider:event:)), for: .valueChanged)
        
         backButton.isHidden = true
+        print("video frame test --------------------------")
+        print(self.frame.width)
+        if frame.width == 0 {
+            layoutBackBtnLeading.constant = 34
+            layoutFullScreenButtonTrailing.constant = 34
+            layoutDurationLabelTrailing.constant = 44
+            layoutCurrentTimeLeading.constant = 44
+        } else {
+            layoutBackBtnLeading.constant = 14
+            layoutFullScreenButtonTrailing.constant = 14
+            layoutDurationLabelTrailing.constant = 24
+            layoutCurrentTimeLeading.constant = 24
+        }
     }
     
     func initPIP() {

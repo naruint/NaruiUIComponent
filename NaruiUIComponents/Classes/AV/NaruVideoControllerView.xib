@@ -16,6 +16,10 @@
                 <outlet property="currentTimeLabel" destination="3NR-bZ-wlR" id="mzz-b2-Qfd"/>
                 <outlet property="durationLabel" destination="6SW-ZR-Klb" id="L0Q-wQ-gqq"/>
                 <outlet property="fullScreenButton" destination="cqn-4J-YsO" id="pxE-7b-ty5"/>
+                <outlet property="layoutBackBtnLeading" destination="rbi-Mx-XPq" id="B9t-0R-Trq"/>
+                <outlet property="layoutCurrentTimeLeading" destination="wbm-pg-hpg" id="flo-jy-OiJ"/>
+                <outlet property="layoutDurationLabelTrailing" destination="30v-nD-7LI" id="4si-1N-8Gs"/>
+                <outlet property="layoutFullScreenButtonTrailing" destination="EQD-HM-gfH" id="C31-Rl-JkY"/>
                 <outlet property="playButton" destination="LMa-Ag-dxp" id="P8v-2p-XZO"/>
                 <outlet property="skipDescButton" destination="auK-e7-Lw0" id="TPh-bo-XLm"/>
                 <outlet property="slider" destination="qWa-bq-QNf" id="1Ro-9p-Lo7"/>
@@ -114,7 +118,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auK-e7-Lw0">
-                    <rect key="frame" x="297" y="222" width="95" height="28"/>
+                    <rect key="frame" x="295" y="222" width="95" height="28"/>
                     <color key="tintColor" name="white"/>
                     <state key="normal" image="skipNarationBtn">
                         <color key="titleColor" name="white"/>
@@ -124,8 +128,8 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="auK-e7-Lw0" firstAttribute="trailing" secondItem="6SW-ZR-Klb" secondAttribute="trailing" id="6BH-JB-xrM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4oI-Dz-BMV" secondAttribute="bottom" constant="-50" id="86E-1u-PAX"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="auK-e7-Lw0" secondAttribute="trailing" constant="22" id="HIY-Sa-FB6"/>
                 <constraint firstItem="4oI-Dz-BMV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hZp-TL-SED"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4oI-Dz-BMV" secondAttribute="trailing" id="mxx-eL-m6y"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="auK-e7-Lw0" secondAttribute="bottom" constant="50" id="vpc-71-WxI"/>
