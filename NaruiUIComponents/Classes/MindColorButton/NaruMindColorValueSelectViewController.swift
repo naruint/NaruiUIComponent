@@ -65,12 +65,12 @@ class NaruMindColorValueSelectViewController: UIViewController {
         }
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onTapView(_:)))
         self.view.addGestureRecognizer(gesture)
-        NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidLoaded, object: nil)
+        NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidLoaded, object: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidAppear, object: nil)
+        NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidAppear, object: self)
     }
     
     @objc func onTapView(_ sender:UITapGestureRecognizer) {
@@ -89,7 +89,7 @@ class NaruMindColorValueSelectViewController: UIViewController {
         
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag) {
-            NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidDismissed, object: self.viewModel)
+            NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidDismissed, object: self)
         }
     }
     
