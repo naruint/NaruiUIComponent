@@ -22,6 +22,18 @@ public class NaruDotLineView: UIView {
         backgroundColor = .clear
     }
     
+    public func setStyle(dotColor:UIColor, dotSize:CGFloat, distance:CGFloat, padding:UIEdgeInsets, isHorizontal:Bool) {
+        self.dotColor = dotColor
+        self.dotSize = dotSize
+        self.dashDistance = distance
+        self.paddingTop = padding.top
+        self.paddingBottom = padding.bottom
+        self.paddingLeft = padding.left
+        self.paddingRight = padding.right
+        self.isHorizontal = isHorizontal
+        drawDot()
+    }
+    
     func drawDot() {
         for slayer in layer.sublayers ?? [] {
             slayer.removeFromSuperlayer()
