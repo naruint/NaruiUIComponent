@@ -21,7 +21,7 @@ public class NaruVideoControllerView: UIView {
     @IBOutlet weak var layoutFullScreenButtonTrailing: NSLayoutConstraint!
     @IBOutlet weak var layoutDurationLabelTrailing: NSLayoutConstraint!
     @IBOutlet weak var layoutCurrentTimeLeading: NSLayoutConstraint!
-    
+    public var isFitPlayerLayerInVideoFrame = false
     public var isDisableSkipDescButton = false
     public var isAllowPIP:Bool = false
     public var kvoRateContext = 0
@@ -232,16 +232,18 @@ public class NaruVideoControllerView: UIView {
         backButton.isHidden = true
         print("video frame test --------------------------")
         print(self.frame.width)
-        if frame.width == 0 {
-            layoutBackBtnLeading.constant = 34
-            layoutFullScreenButtonTrailing.constant = 34
-            layoutDurationLabelTrailing.constant = 44
-            layoutCurrentTimeLeading.constant = 44
-        } else {
-            layoutBackBtnLeading.constant = 14
-            layoutFullScreenButtonTrailing.constant = 14
-            layoutDurationLabelTrailing.constant = 24
-            layoutCurrentTimeLeading.constant = 24
+        if isFitPlayerLayerInVideoFrame {
+            if frame.width == 0 {
+                layoutBackBtnLeading.constant = 34
+                layoutFullScreenButtonTrailing.constant = 34
+                layoutDurationLabelTrailing.constant = 44
+                layoutCurrentTimeLeading.constant = 44
+            } else {
+                layoutBackBtnLeading.constant = 14
+                layoutFullScreenButtonTrailing.constant = 14
+                layoutDurationLabelTrailing.constant = 24
+                layoutCurrentTimeLeading.constant = 24
+            }
         }
     }
     
