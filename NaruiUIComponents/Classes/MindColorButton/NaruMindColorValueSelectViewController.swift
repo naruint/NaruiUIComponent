@@ -33,9 +33,7 @@ class NaruMindColorValueSelectViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     
     @IBOutlet weak var valueLabel: UILabel!
-    
-    @IBOutlet weak var descLabel: UILabel!
-    
+        
     @IBOutlet weak var progressBgView: UIView!
     
     @IBOutlet weak var bgView: UIView!
@@ -70,6 +68,11 @@ class NaruMindColorValueSelectViewController: UIViewController {
         NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidLoaded, object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidAppear, object: nil)
+    }
+    
     @objc func onTapView(_ sender:UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
@@ -80,7 +83,6 @@ class NaruMindColorValueSelectViewController: UIViewController {
             self?.view.layoutIfNeeded()
             self?.textLabel.alpha = 1
             self?.valueLabel.alpha = 1
-            self?.descLabel.textColor = self?.colors.first ?? .black
         }
     }
     

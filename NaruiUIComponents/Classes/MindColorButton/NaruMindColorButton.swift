@@ -13,6 +13,10 @@ public extension Notification.Name {
     static let naruMindColorValueChangeControllerDidDismissed = Notification.Name("naruMindColorValueChangeControllerDidDismissed_observer")
     /** 마음건강 컬러 선택 컨트롤러 viewDidLoaded*/
     static let naruMindColorValueChangeControllerDidLoaded = Notification.Name("naruMindColorValueChangeControllerDidLoaded_observer")
+    /** 마음건강 컬러 선택 컨트롤러 viewDidAppear*/
+    static let naruMindColorValueChangeControllerDidAppear = Notification.Name("naruMindColorValueChangeControllerDidAppear_observer")
+
+    
 }
 
 
