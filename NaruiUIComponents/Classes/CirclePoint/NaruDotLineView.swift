@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NaruDotLineView: UIView {
+public class NaruDotLineView: UIView {
     @IBInspectable var dashDistance:CGFloat = 10
     @IBInspectable var paddingTop:CGFloat = 10
     @IBInspectable var paddingBottom:CGFloat = 10
@@ -17,13 +17,12 @@ class NaruDotLineView: UIView {
     @IBInspectable var isHorizontal:Bool = false
     @IBInspectable var dotColor:UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         drawDot()
         backgroundColor = .clear
     }
     
     func drawDot() {
-        
         for slayer in layer.sublayers ?? [] {
             slayer.removeFromSuperlayer()
         }
@@ -50,7 +49,7 @@ class NaruDotLineView: UIView {
         }
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         drawDot()
     }
