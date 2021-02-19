@@ -24,6 +24,10 @@ class MindColorTestViewController : UIViewController {
         super.viewDidLoad()
         for (index,rview) in ringProgressView.enumerated() {
             rview.viewModel = ringDatas[index]
+            rview.setStyle(ringWidth: 20,
+                           innerPadding: 2,
+                           textColor: [UIColor.red],
+                           fonts: [UIFont.systemFont(ofSize: 22,weight: .bold), UIFont.systemFont(ofSize: 11,weight: .semibold)])
         }
         tagCollectionView.tags = ["바보","강아지","고양이","태권브이","고구마","감자"]
         

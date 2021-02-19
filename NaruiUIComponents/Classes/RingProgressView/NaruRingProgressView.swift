@@ -29,22 +29,62 @@ public class NaruRingProgressView: UIView {
             viewModel?.secondLabelText = text
         }
     }
-    @IBInspectable var ringWitth:CGFloat = 6
     
+    @IBInspectable var innerPadding:CGFloat = 3
+    @IBInspectable var ringWidth:CGFloat = 6
     @IBInspectable var forgroundColor:UIColor = .red
     
+    @IBInspectable var titleFont:UIFont {
+        set {
+            firstLabel.font = newValue
+        }
+        get {
+            return firstLabel.font
+        }
+    }
+    
+    @IBInspectable var descFont:UIFont {
+        set {
+            secondLabel.font = newValue
+        }
+        get {
+            return secondLabel.font
+        }
+    }
     
     @IBInspectable var backgroundRingColor:UIColor = .gray
     
-    @IBInspectable var textColor:UIColor = .black {
-        didSet {
-            for label in [firstLabel, secondLabel] {
-                label?.textColor = textColor
-            }
+    @IBInspectable var firstTextColor:UIColor  {
+        set {
+            firstLabel.textColor = newValue
+        }
+        get {
+            return firstLabel.textColor
+        }
+    }
+    
+    @IBInspectable var secondTextColor:UIColor {
+        set {
+            secondLabel.textColor = newValue
+        }
+        get {
+            return secondLabel.textColor
         }
     }
     
     @IBOutlet weak var progressContainerView: UIView!
+    
+    public func setStyle(ringWidth:CGFloat,
+                         innerPadding:CGFloat,
+                         textColor:[UIColor], fonts:[UIFont]) {
+        self.ringWidth = ringWidth
+        self.innerPadding = innerPadding
+        self.firstTextColor = textColor.first ?? .black
+        self.secondTextColor = textColor.last ?? .black
+        self.titleFont = fonts.first ?? UIFont.systemFont(ofSize: 20,weight: .bold)
+        self.descFont = fonts.last ?? UIFont.systemFont(ofSize: 11, weight: .semibold)
+    }
+    
     //MARK: - arrangeView
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,6 +95,7 @@ public class NaruRingProgressView: UIView {
         super.init(coder: coder)
         arrangeView()
     }
+    
     let progressView = RingProgressView()
     
     func arrangeView() {
@@ -90,9 +131,9 @@ public class NaruRingProgressView: UIView {
         firstLabel.text = data.firstLabelText
         secondLabel.text = data.secondLabelText
         secondLabel.isHidden = data.secondLabelText.isEmpty == true
-        progressView.ringWidth = ringWitth
+        progressView.ringWidth = ringWidth
         for layout in innerCircleLayouts {
-            layout.constant = ringWitth + 6
+            layout.constant = ringWidth + innerPadding
         }
         
         progressView.startColor = data.forgroundColor
