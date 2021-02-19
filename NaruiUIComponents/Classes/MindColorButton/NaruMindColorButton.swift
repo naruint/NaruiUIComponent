@@ -163,8 +163,8 @@ public class NaruMindColorButton: UIView {
             guard let s = self else {
                 return
             }
-            if let model = noti.object as? ViewModel {
-                if model.title == s.text {
+            if let vc = noti.object as? NaruMindColorValueSelectViewController {
+                if vc.viewModel?.title == s.text {
                     s.isHighlighted = false
                 }
             }
