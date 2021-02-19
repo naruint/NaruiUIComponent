@@ -55,6 +55,7 @@ public class NaruAudioPlayer {
         }
     }
     public var isAutoCloseWhenPlayOnce:Bool = false
+    
     public var isLoopPlayForever:Bool = false {
         didSet {
             setLoop()
@@ -167,8 +168,8 @@ public class NaruAudioPlayer {
         
         NotificationCenter.default.addObserver(forName: .naruAudioPlayerStatusDidChange, object: nil, queue: nil) {[weak self] (noti) in
             if let p = self?.firstPlayer {
-                if p.currentTime / p.duration > 0.98 && self?.isAutoCloseWhenPlayOnce == true{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                if self?.isAutoCloseWhenPlayOnce == true {
+                    if p.currentTime == p.duration {
                         self?.removeAllMusic()
                     }
                 }
@@ -394,7 +395,7 @@ public class NaruAudioPlayer {
         }
 //        let value:Float = Float(player.currentTime / player.duration)
 //        // print("updateTime : \( player.currentTime) \(player.duration) \(value)")
-        DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
+        DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
             self?.updateTime()
         }
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime
@@ -407,15 +408,28 @@ public class NaruAudioPlayer {
                 secondPlayer?.stop()
                 timmerSwitch = false
             }
-            NotificationCenter.default.post(
-                name: .naruAudioPlayerStatusDidChange,
-                object: PlayTimeInfo(
-                    title: title,
-                    subTitle: subTitle,
-                    currentTime: player.currentTime,
-                    duration: player.duration,
-                    isPlaying: player.isPlaying)
-            )
+            if floor(player.currentTime) == ceil(player.duration) {
+                NotificationCenter.default.post(
+                    name: .naruAudioPlayerStatusDidChange,
+                    object: PlayTimeInfo(
+                        title: title,
+                        subTitle: subTitle,
+                        currentTime: player.duration,
+                        duration: player.duration,
+                        isPlaying: player.isPlaying)
+                )
+            } else {
+                NotificationCenter.default.post(
+                    name: .naruAudioPlayerStatusDidChange,
+                    object: PlayTimeInfo(
+                        title: title,
+                        subTitle: subTitle,
+                        currentTime: player.currentTime,
+                        duration: player.duration,
+                        isPlaying: player.isPlaying)
+                )
+            }
+            
         }
     }
 }
