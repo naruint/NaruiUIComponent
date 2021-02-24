@@ -217,6 +217,7 @@ public class NaruVideoControllerView: UIView {
                 avPlayer?.seek(to: CMTime(seconds: viewModel.endDescTime, preferredTimescale: 1000), completionHandler: { (_) in
                     updateSlider()
                 })
+                skipDescButton.alpha = 0
             }
         }.disposed(by: disposeBag)
 
