@@ -374,7 +374,7 @@ public class NaruVideoControllerView: UIView {
         if Int(viewModel.startDescTime) == Int(currentTime) {
             hideDescButton = false
         }
-        if Int(viewModel.startDescTime) + 3 == Int(currentTime) {
+        if Int(viewModel.startDescTime) + 9 == Int(currentTime) {
             hideDescButton = true
         }
         

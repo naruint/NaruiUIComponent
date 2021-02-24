@@ -20,10 +20,10 @@ class VideoTableViewController: UITableViewController {
             title: "자전거 타자",
             currentTime: 0,
             duration:300,
-            startDescTime: 20,
+            startDescTime: 5,
             endDescTime: 70,
             url: URL(string: "https://www.dropbox.com/s/0sc26e8shaukm48/Unicycle%20%EB%A1%9C%EB%9D%BC%ED%83%80%EA%B8%B0.mp4?dl=1")!, thumbnailURL: URL(string: "https://newsimg.hankookilbo.com/cms/articlerelease/2019/04/29/201904291390027161_3.jpg"))
-        videoController.isDisableSkipDescButton = true
+//        videoController.isDisableSkipDescButton = true
         videoController.openVideo(viewModel: viewModel)
 
 //        videoController.targetViewController = self
