@@ -12,9 +12,9 @@ import Alamofire
 public extension Notification.Name {
     static let naruAudioPlayerStatusDidChange = Notification.Name("naruAudioPlayerStatusDidChange_observer")
     /** 오디오 청취 시간 측정값을 리턴하는 notification */
-    static let naruAudioPlayFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
+    static let naruAudioPlayFinished = Notification.Name("naruAudioWatchFinished_observer")
     /** 오디오 제생 시작하는 시점 알려주는 노티*/
-    static let naruAudioPlayDidStart = Notification.Name(rawValue: "naruAudioPlayDidStart_observer")
+    static let naruAudioPlayDidStart = Notification.Name("naruAudioPlayDidStart_observer")
 }
 /**
  insertMusic(url:URL?, isFirstTrack:Bool) // 음원 넣기

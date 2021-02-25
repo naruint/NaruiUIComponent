@@ -13,6 +13,7 @@ import NVActivityIndicatorView
 public extension Notification.Name {
     /** 비디오 시청 시간 측정값을 리턴하는 notification */
     static let naruVideoWatchFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
+    static let naruVideoPlayerStatusDidChange = Notification.Name(rawValue: "naruVideoPlayerStatusDidChange_observer")
 }
 public class NaruVideoControllerView: UIView {
     //MARK:Layout
@@ -111,6 +112,7 @@ public class NaruVideoControllerView: UIView {
         super.init(coder: coder)
         initUI()
     }
+    
         
     let disposeBag = DisposeBag()
     var touchSliderLock = false
@@ -245,6 +247,10 @@ public class NaruVideoControllerView: UIView {
                 layoutDurationLabelTrailing.constant = 24
                 layoutCurrentTimeLeading.constant = 24
             }
+        }
+        
+        NotificationCenter.default.addObserver(forName: .naruVideoPlayerStatusDidChange, object: nil, queue: nil) { [weak self](noti) in
+            self?.updateSlider()
         }
     }
     
@@ -447,10 +453,11 @@ public class NaruVideoControllerView: UIView {
             UIView.animate(withDuration: 0.25) {
                 self?.thumbImageView.alpha = 0
             }
-            self?.updateSlider()
             if self?.avPlayer?.rate ?? 0 > 0  {
                 self?.registRateObserver()
             }
+            NotificationCenter.default.post(name: .naruVideoPlayerStatusDidChange, object: time)
+            //            self?.updateSlider()
         })
     }
 
