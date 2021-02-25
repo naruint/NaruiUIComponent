@@ -53,7 +53,7 @@ public class NaruTimmer {
         timeStemps.removeAll()
     }
     
-    var timeResult:TimeInterval {
+    public var timeResult:TimeInterval {
         var start:TimeInterval = 0
         var result:TimeInterval = 0
         
