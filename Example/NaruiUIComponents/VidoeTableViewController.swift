@@ -8,11 +8,33 @@
 
 import UIKit
 import NaruiUIComponents
+import CoreMotion
 
 class VideoTableViewController: UITableViewController {
-
+    let motionManager = CMMotionManager()
     @IBOutlet weak var videoController: NaruVideoControllerView!
     override func viewDidLoad() {
+        motionManager.accelerometerUpdateInterval = 0.2
+        if motionManager.isAccelerometerAvailable {
+            motionManager.startAccelerometerUpdates(to: .main) { [weak self](data, error) in
+                if error != nil {
+                    self?.motionManager.stopAccelerometerUpdates()
+                }
+                else {
+                    if let acc = data?.acceleration {
+                        print("------------- motion ---------")
+                        print(acc)
+                        if acc.x.magnitude > 0.9 {
+                            self?.videoController?.isFullScreen = true
+                        }
+                        if acc.y.magnitude > 0.9 {
+                            self?.videoController?.isFullScreen = false
+                        }
+                    }
+                }
+            }
+        }
+        
         super.viewDidLoad()
         let viewModel = NaruVideoControllerView.ViewModel(
             id: "002",

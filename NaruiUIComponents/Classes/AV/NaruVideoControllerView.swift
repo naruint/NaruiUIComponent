@@ -43,7 +43,6 @@ public class NaruVideoControllerView: UIView {
     private var currentTime:TimeInterval = 0
     
     deinit {
-        subLandScapeController = nil
         reportPlayTime()
         NaruVideoControllerView.bgPlayerView.player = nil
         // print("deinit NaruVideoControllerView")
@@ -96,7 +95,12 @@ public class NaruVideoControllerView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     
-    var subLandScapeController:NaruLandscapeVideoViewController? = nil
+    var subLandScapeController:NaruLandscapeVideoViewController? {
+        if fullScreenController == nil {
+            return NaruLandscapeVideoViewController()
+        }
+        return nil
+    }
     
     let loadingView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
@@ -192,26 +196,7 @@ public class NaruVideoControllerView: UIView {
         }.disposed(by: disposeBag)
         
         fullScreenButton.rx.tap.bind {[unowned self] (_) in
-            if let vc = fullScreenController {
-                
-                vc.dismiss(animated: true, completion: nil)
-            } else {
-                let vc = subLandScapeController ?? NaruLandscapeVideoViewController()
-                if subLandScapeController == nil {
-                    subLandScapeController = vc
-                } else {
-                    NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
-                }
-                vc.isLandscapeOnly = false
-                vc.playerControllerView.avPlayer = avPlayer
-                vc.playerControllerView.viewModel = viewModel
-                vc.title = viewModel?.title
-                vc.playerControllerView.titleLabel.text = viewModel?.title
-                UIApplication.shared.lastPresentedViewController?.present(vc, animated: true, completion: nil)
-                
-                
-            }
-
+            toggleFullScreen()
         }.disposed(by: disposeBag)
 
         skipDescButton.rx.tap.bind { [unowned self](_) in
@@ -270,8 +255,52 @@ public class NaruVideoControllerView: UIView {
     }
     
    
+    public var isFullScreen:Bool = false {
+        didSet {
+            if oldValue != isFullScreen {
+                setFullScreen(isFull: isFullScreen)
+            }
+        }
+    }
     
+    func toggleFullScreen() {
+        guard let vc = subLandScapeController else {
+            self.fullScreenController?.dismiss(animated: true, completion: nil)
+            NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
+            return
+        }
+        vc.isLandscapeOnly = false
+        vc.playerControllerView.avPlayer = avPlayer
+        vc.playerControllerView.viewModel = viewModel
+        vc.title = viewModel?.title
+        vc.playerControllerView.titleLabel.text = viewModel?.title
+        UIApplication.shared.lastPresentedViewController?.present(vc, animated: true, completion: nil)
+        NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
+    }
     
+    func setFullScreen(isFull:Bool) {
+        if isFull {
+            if UIApplication.shared.lastPresentedViewController is NaruLandscapeVideoViewController {
+                return
+            }
+            if let vc = subLandScapeController {
+                vc.isLandscapeOnly = false
+                vc.playerControllerView.avPlayer = avPlayer
+                vc.playerControllerView.viewModel = viewModel
+                vc.title = viewModel?.title
+                vc.playerControllerView.titleLabel.text = viewModel?.title
+                fullScreenController = vc
+                UIApplication.shared.lastPresentedViewController?.present(vc, animated: true, completion: nil)
+                NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
+            }
+        }
+        else {
+            if let vc = UIApplication.shared.lastPresentedViewController as? NaruLandscapeVideoViewController {
+                vc.dismiss(animated: true, completion: nil)
+            }
+            NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
+        }
+    }
     
     var avControllContainerViewHide = false {
         didSet {
