@@ -185,16 +185,16 @@ public class NaruVideoControllerView: UIView {
         playButton.rx.tap.bind {[unowned self](_) in
             if avPlayer?.isPlaying == true {
                 avPlayer?.pause()
-                NotificationCenter.default.post(name: .naruVideoPlayerPauseButtonTouchup, object: viewModel.id)
+                NotificationCenter.default.post(name: .naruVideoPlayerPauseButtonTouchup, object: viewModel?.id )
             } else {
                 if avPlayer?.currentItem?.currentTime().seconds ?? 0 > (avPlayer?.currentItem?.duration.seconds ?? 0) - 0.1 {
                     avPlayer?.seek(to: CMTime.zero, completionHandler: { (fin) in
                         avPlayer?.play()
-                        NotificationCenter.default.post(name: .naruVideoPlayerPlayButtonTouchup, object: viewModel.id)
+                        NotificationCenter.default.post(name: .naruVideoPlayerPlayButtonTouchup, object: viewModel?.id)
                     })
                 } else {
                     avPlayer?.play()
-                    NotificationCenter.default.post(name: .naruVideoPlayerPlayButtonTouchup, object: viewModel.id)
+                    NotificationCenter.default.post(name: .naruVideoPlayerPlayButtonTouchup, object: viewModel?.id)
                 }
             }
         }.disposed(by: disposeBag)
