@@ -14,6 +14,11 @@ public extension Notification.Name {
     /** 비디오 시청 시간 측정값을 리턴하는 notification */
     static let naruVideoWatchFinished = Notification.Name(rawValue: "naruVideoWatchFinished_observer")
     static let naruVideoPlayerStatusDidChange = Notification.Name(rawValue: "naruVideoPlayerStatusDidChange_observer")
+    /** 제생 */
+    static let naruVideoPlayerPlayButtonTouchup = Notification.Name(rawValue: "naruVideoPlayerPlayButtonTouchup_observer")
+    /** 멈춤*/
+    static let naruVideoPlayerPauseButtonTouchup = Notification.Name(rawValue: "naruVideoPlayerPauseButtonTouchup_observer")
+    
 }
 public class NaruVideoControllerView: UIView {
     //MARK:Layout
@@ -180,13 +185,16 @@ public class NaruVideoControllerView: UIView {
         playButton.rx.tap.bind {[unowned self](_) in
             if avPlayer?.isPlaying == true {
                 avPlayer?.pause()
+                NotificationCenter.default.post(name: .naruVideoPlayerPauseButtonTouchup, object: nil)
             } else {
                 if avPlayer?.currentItem?.currentTime().seconds ?? 0 > (avPlayer?.currentItem?.duration.seconds ?? 0) - 0.1 {
                     avPlayer?.seek(to: CMTime.zero, completionHandler: { (fin) in
                         avPlayer?.play()
+                        NotificationCenter.default.post(name: .naruVideoPlayerPlayButtonTouchup, object: nil)
                     })
                 } else {
                     avPlayer?.play()
+                    NotificationCenter.default.post(name: .naruVideoPlayerPlayButtonTouchup, object: nil)
                 }
             }
         }.disposed(by: disposeBag)
