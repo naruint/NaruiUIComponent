@@ -18,6 +18,8 @@ public extension Notification.Name {
     static let naruVideoPlayerPlayButtonTouchup = Notification.Name(rawValue: "naruVideoPlayerPlayButtonTouchup_observer")
     /** 멈춤*/
     static let naruVideoPlayerPauseButtonTouchup = Notification.Name(rawValue: "naruVideoPlayerPauseButtonTouchup_observer")
+    /** 설명 건너뛰기 버튼 */
+    static let naruVideoPlayerSkipDescButtonTouchup = Notification.Name(rawValue: "naruVideoPlayerSkipDescButtonTouchup_observer")
     
 }
 public class NaruVideoControllerView: UIView {
@@ -211,6 +213,7 @@ public class NaruVideoControllerView: UIView {
             if let viewModel = viewModel {
                 avPlayer?.seek(to: CMTime(seconds: viewModel.endDescTime, preferredTimescale: 1000), completionHandler: { (_) in
                     updateSlider()
+                    NotificationCenter.default.post(name: .naruVideoPlayerSkipDescButtonTouchup, object: viewModel.id)
                 })
                 skipDescButton.alpha = 0
             }
