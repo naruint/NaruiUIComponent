@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon16Mix.png",
+      "filename" : "01Button08EtcClassMix.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icon16Mix@2x.png",
+      "filename" : "01Button08EtcClassMix@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icon16Mix@3x.png",
+      "filename" : "01Button08EtcClassMix@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
