@@ -15,14 +15,19 @@ class NaruGraphItemView: UIView {
 
     var data:NaruGraphView.Data? = nil {
         didSet {
-            let height = frame.height - weakDayLabel.frame.height - dayLabel.frame.height
-            
-            if let value = data?.value {
-                let newHeigt = height * CGFloat(value)
-                layoutBarHeight.constant = newHeigt
+            DispatchQueue.main.async {[weak self]in
+                guard let s = self else {
+                    return
+                }
+                let height = s.frame.height - s.weakDayLabel.frame.height - s.dayLabel.frame.height
+                
+                if let value = s.data?.value {
+                    let newHeigt = height * CGFloat(value)
+                    s.layoutBarHeight.constant = newHeigt
+                }
+                s.dayLabel.text = "\(s.data?.date.day ?? 0)"
+                s.weakDayLabel.text = s.data?.date.dayWeakString
             }
-            dayLabel.text = "\(data?.date.day ?? 0)"
-            weakDayLabel.text = data?.date.dayWeakString
         }
     }
     let disposeBag = DisposeBag()

@@ -42,7 +42,9 @@ public class NaruRadioBoxView: UIView {
     @IBInspectable var idx:Int = 0
     @IBInspectable var title:String = "" {
         didSet {
-            button.setTitle(title, for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitle(self?.title, for: .normal)
+            }
         }
     }
     /** normal Line Color*/
@@ -56,35 +58,47 @@ public class NaruRadioBoxView: UIView {
     /** normal title color*/
     @IBInspectable var noTitleColor:UIColor? = nil {
         didSet {
-            button.setTitleColor(noTitleColor ?? noColor, for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitleColor(self?.noTitleColor ?? self?.noColor, for: .normal)
+            }
         }
     }
     /** selected title color*/
     @IBInspectable var seTitleColor:UIColor? = nil{
         didSet {
-            button.setTitleColor(seTitleColor ?? seColor, for: .selected)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitleColor(self?.seTitleColor ?? self?.seColor, for: .selected)
+            }
         }
     }
     /** disabled text color */
     @IBInspectable var diTitleColor:UIColor? = nil {
         didSet {
-            button.setTitleColor(diTitleColor, for: .disabled)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitleColor(self?.diTitleColor, for: .disabled)
+            }
         }
     }
     
     @IBInspectable var noBgColor: UIColor = .white {
         didSet {
-            button.setBackgroundImage(noBgColor.image, for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.noBgColor.image, for: .normal)
+            }
         }
     }
     @IBInspectable var seBgColor: UIColor = .white {
         didSet {
-            button.setBackgroundImage(seBgColor.image, for: .selected)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.seBgColor.image, for: .selected)
+            }
         }
     }
     @IBInspectable var diBgColor: UIColor = .gray {
         didSet {
-            button.setBackgroundImage(diBgColor.image, for: .disabled)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.diBgColor.image, for: .disabled)
+            }
         }
     }
 

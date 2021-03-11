@@ -22,7 +22,10 @@ public class NaruTextView: UIView {
     //MARK:IBInspectable
     @IBInspectable var placeholder:String? = nil {
         didSet {
-            placeHolderLabel.text = placeholder
+            DispatchQueue.main.async {[weak self]in
+                self?.placeHolderLabel.text = self?.placeholder
+            }
+            
         }
     }
     @IBInspectable var text:String? {
@@ -36,8 +39,10 @@ public class NaruTextView: UIView {
         
     @IBInspectable var buttonTitle:String? = nil {
         didSet {
-            button.setTitle(buttonTitle, for: .normal)
-            button.isHidden = buttonTitle == nil
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitle(self?.buttonTitle, for: .normal)
+                self?.button.isHidden = self?.buttonTitle == nil
+            }
         }
     }
     /** 텍스트 입력 한계*/

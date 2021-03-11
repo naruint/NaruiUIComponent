@@ -26,7 +26,9 @@ public class NaruRingProgressView: UIView {
     
     @IBInspectable var text:String = "" {
         didSet {
-            viewModel?.secondLabelText = text
+            DispatchQueue.main.async {[weak self]in
+                self?.viewModel?.secondLabelText = self?.text ?? ""
+            }
         }
     }
     

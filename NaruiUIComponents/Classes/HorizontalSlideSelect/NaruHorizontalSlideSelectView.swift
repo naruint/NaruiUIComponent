@@ -30,11 +30,14 @@ class NaruHorizontalSlideSelectView: UIView {
     var isOn:Bool = false
     var datas:[NaruHorizontalSlideSelectViewController.AnswerModel] = [] {
         didSet {
-            DispatchQueue.main.async { [unowned self] in
-                stackView.title = datas[selectedIndex].title
-                stackView.subTitle = datas[selectedIndex].subTitle
-                makeTrackPointView()
-                fixLayout(isOn: false)
+            DispatchQueue.main.async { [weak self] in
+                guard let s = self else {
+                    return
+                }
+                s.stackView.title = s.datas[s.selectedIndex].title
+                s.stackView.subTitle = s.datas[s.selectedIndex].subTitle
+                s.makeTrackPointView()
+                s.fixLayout(isOn: false)
             }
         }
     }
@@ -264,11 +267,17 @@ class NaruHorizontalSlideSelectStackView:UIStackView {
     
     var isPress:Bool = false {
         didSet {
-            if title != nil {
-                titleLabel.text = isPress ? "" : title!
-            }
-            if subTitle != nil {
-                subTitleLabel.text = isPress ? "" : subTitle!
+            DispatchQueue.main.async {[weak self]in
+                guard let s = self else {
+                    return
+                }
+                if s.title != nil {
+                    s.titleLabel.text = s.isPress ? "" : s.title!
+                }
+                if s.subTitle != nil {
+                    s.subTitleLabel.text = s.isPress ? "" : s.subTitle!
+                }
+
             }
         }
     }

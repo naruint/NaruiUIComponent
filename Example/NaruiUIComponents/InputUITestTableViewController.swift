@@ -31,7 +31,7 @@ class InputUITestTableViewController: UITableViewController {
         title = "UI Input Test"
         
         for btn in radioButtons {
-            btn.isEnable = Bool.random()
+//            btn.isEnable = Bool.random()
         }
         
         navigationItem.largeTitleDisplayMode = .always        

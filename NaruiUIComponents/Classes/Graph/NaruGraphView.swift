@@ -35,11 +35,13 @@ public class NaruGraphView: UIView {
     
     public var data:ViewModel? = nil {
         didSet {
-            guard let data = data else {
-                return
-            }
-            for (index,item) in data.values.enumerated() {
-                graphItemViews[index].data = item
+            DispatchQueue.main.async {[weak self]in
+                guard let data = self?.data else {
+                    return
+                }
+                for (index,item) in data.values.enumerated() {
+                    self?.graphItemViews[index].data = item
+                }
             }
         }
     }

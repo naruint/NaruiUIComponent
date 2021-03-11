@@ -20,15 +20,15 @@ public class NaruCheckButton: UIButton {
     //MARK:IBInspectable
     @IBInspectable var normalColor:UIColor = .white {
         didSet {
-            DispatchQueue.main.async {[unowned self] in
-                setTintColor()
+            DispatchQueue.main.async {[weak self] in
+                self?.setTintColor()
             }
         }
     }
     @IBInspectable var selectedColor:UIColor = .gray {
         didSet {
-            DispatchQueue.main.async {[unowned self] in
-                setTintColor()
+            DispatchQueue.main.async {[weak self] in
+                self?.setTintColor()
             }
         }
     }

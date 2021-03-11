@@ -18,18 +18,9 @@ public class NaruPeopleNumberInputView: UIView {
     
     @IBInspectable var title:String = ""
     
-    @IBInspectable var titleColor:UIColor = .black {
-        didSet {
-            titleLabel.textColor = titleColor
-        }
-    }
+    @IBInspectable var titleColor:UIColor = .black
     
-    @IBInspectable var textColor:UIColor = .black {
-        didSet {
-            birthdayTextField.textColor = textColor
-            centerLineView.backgroundColor = textColor
-        }
-    }
+    @IBInspectable var textColor:UIColor = .black
     
     @IBInspectable var noLineColor:UIColor = .gray
     @IBInspectable var seLineColor:UIColor = .black
@@ -124,11 +115,17 @@ public class NaruPeopleNumberInputView: UIView {
     
     public var isFocusedForce:Bool = false {
         didSet {
-            updateUI()
+            DispatchQueue.main.async {[weak self]in
+                self?.updateUI()
+            }            
         }
     }
     
     func updateUI() {
+        titleLabel.textColor = titleColor
+        birthdayTextField.textColor = textColor
+        centerLineView.backgroundColor = textColor
+        
         bottomStackView.isHidden = !isFocused
         titleLabel.font = UIFont.systemFont(ofSize: isFocused ? 11 : 17)
         titleLabel.text = title

@@ -112,34 +112,44 @@ public class NaruPhoneNumberTextField: UIView {
     /** normal Btn Color*/
     @IBInspectable var noBtnColor:UIColor = .black {
         didSet {
-            button.setBackgroundImage(noBtnColor.image, for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.noBtnColor.image, for: .normal)
+            }
         }
     }
     /** selected btn color */
     @IBInspectable var seBtnColor:UIColor = .gray {
         didSet {
-            button.setBackgroundImage(seBtnColor.image, for: .selected)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.seBtnColor.image, for: .selected)
+            }
         }
     }
     /** highlighted btn color*/
     @IBInspectable var hiBtnColor:UIColor = .gray {
         didSet {
-            button.setBackgroundImage(hiBtnColor.image, for: .highlighted)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.hiBtnColor.image, for: .highlighted)
+            }
         }
     }
 
     /** disabled btn color*/
     @IBInspectable var diBtnColor:UIColor = .gray {
         didSet {
-            button.setBackgroundImage(diBtnColor.image, for: .disabled)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.diBtnColor.image, for: .disabled)
+            }
         }
     }
     /** button text color*/
     @IBInspectable var btnTxtColor:UIColor? {
         set {
-            button.setTitleColor(newValue, for: .normal)
-            button.setTitleColor(newValue, for: .selected)
-            button.setTitleColor(newValue, for: .disabled)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitleColor(newValue, for: .normal)
+                self?.button.setTitleColor(newValue, for: .selected)
+                self?.button.setTitleColor(newValue, for: .disabled)
+            }
         }
         get {
             button.titleColor(for: .normal)
@@ -148,7 +158,9 @@ public class NaruPhoneNumberTextField: UIView {
     
     @IBInspectable var titleForBtn:String? {
         set {
-            button.setTitle("  \(newValue ?? " ")  ", for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitle("  \(newValue ?? " ")  ", for: .normal)
+            }
         }
         get {
             button.title(for: .normal)
@@ -157,13 +169,17 @@ public class NaruPhoneNumberTextField: UIView {
     
     @IBInspectable var title:String? = "" {
         didSet {
-            titleLabel.text = title
+            DispatchQueue.main.async {[weak self]in
+                self?.titleLabel.text = self?.title
+            }
         }
     }
     /** 타이틀 라벨 의 텍스트 컬러*/
     @IBInspectable var titleColor:UIColor? {
         set {
-            titleLabel.textColor = newValue
+            DispatchQueue.main.async {[weak self]in
+                self?.titleLabel.textColor = newValue
+            }
         }
         get {
             titleLabel.textColor
@@ -172,10 +188,12 @@ public class NaruPhoneNumberTextField: UIView {
     /** 텍스트 필드의 텍스트 컬러*/
     @IBInspectable var textColor:UIColor? {
         set {
-            for tf in [firstTextField, secondTextField] {
-                tf?.textColor = newValue
+            DispatchQueue.main.async {[weak self]in
+                for tf in [self?.firstTextField, self?.secondTextField] {
+                    tf?.textColor = newValue
+                }
+                self?.firstTextField.rightView?.tintColor = newValue
             }
-            firstTextField.rightView?.tintColor = newValue
         }
         get {
             firstTextField.textColor
@@ -183,14 +201,18 @@ public class NaruPhoneNumberTextField: UIView {
     }
     @IBInspectable var placeHolder:String? = nil {
         didSet {
-            secondTextField.placeholder = placeHolder
+            DispatchQueue.main.async {[weak self]in
+                self?.secondTextField.placeholder = self?.placeHolder
+            }
         }
     }
     
     @IBInspectable var placeHolderColor:UIColor = .gray {
         didSet {
-            if let txt = placeHolder {
-                secondTextField.attributedPlaceholder = NSAttributedString(string: txt, attributes: [.foregroundColor:placeHolderColor])
+            DispatchQueue.main.async {[weak self]in
+                if let txt = self?.placeHolder {
+                    self?.secondTextField.attributedPlaceholder = NSAttributedString(string: txt, attributes: [.foregroundColor:self?.placeHolderColor ?? .black])
+                }
             }
         }
     }

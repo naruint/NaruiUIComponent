@@ -63,7 +63,9 @@ public class NaruGradientButton: UIView {
     }
     @IBInspectable var disabledBGColor:UIColor = .gray {
         didSet {
-            button.setBackgroundImage(disabledBGColor.image, for: .disabled)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.disabledBGColor.image, for: .disabled)
+            }
         }
     }
     

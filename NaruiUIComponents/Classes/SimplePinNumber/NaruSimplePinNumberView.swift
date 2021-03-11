@@ -17,7 +17,9 @@ public class NaruSimplePinNumberView: UIView {
     @IBInspectable var offColor:UIColor = .gray
     @IBInspectable var isSetCustomKeypad:Bool = false {
         didSet {
-            textField.isEnabled = !isSetCustomKeypad
+            DispatchQueue.main.async {[weak self]in
+                self?.textField.isEnabled = !(self?.isSetCustomKeypad ?? false)                
+            }
         }
     }
 

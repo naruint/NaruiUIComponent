@@ -47,10 +47,15 @@ public class NaruSelectBoxView: UIView {
 
     @IBInspectable var titles:String = "" {
         didSet {
-            for (index,title) in titles.components(separatedBy: ",").enumerated() {
-                // print(title)
-                if index < buttons.count {
-                    buttons[index].setTitle(title, for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                guard let s = self else {
+                    return
+                }
+                for (index,title) in s.titles.components(separatedBy: ",").enumerated() {
+                    // print(title)
+                    if index < s.buttons.count {
+                        s.buttons[index].setTitle(title, for: .normal)
+                    }
                 }
             }
         }
@@ -58,8 +63,10 @@ public class NaruSelectBoxView: UIView {
     
     @IBInspectable var selectedTColor:UIColor?  {
         set {
-            for btn in buttons {
-                btn.setTitleColor(newValue, for: .selected)
+            DispatchQueue.main.async {[weak self]in
+                for btn in self?.buttons ?? [] {
+                    btn.setTitleColor(newValue, for: .selected)
+                }
             }
         }
         get {
@@ -69,8 +76,10 @@ public class NaruSelectBoxView: UIView {
     
     @IBInspectable var normalTColor:UIColor? {
         set {
-            for btn in buttons {
-                btn.setTitleColor(newValue, for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                for btn in self?.buttons ?? [] {
+                    btn.setTitleColor(newValue, for: .normal)
+                }
             }
         }
         get {

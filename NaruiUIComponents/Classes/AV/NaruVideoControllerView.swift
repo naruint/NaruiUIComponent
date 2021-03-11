@@ -35,14 +35,18 @@ public class NaruVideoControllerView: UIView {
     public var kvoRateContext = 0
     public var avPlayer:AVPlayer? = nil {
         didSet {
-            if let avlayer = layer.sublayers?.first as? AVPlayerLayer {
-                avlayer.removeFromSuperlayer()
+            DispatchQueue.main.async {[weak self]in
+                if let avlayer = self?.layer.sublayers?.first as? AVPlayerLayer {
+                    avlayer.removeFromSuperlayer()
+                }
+                if let avPlayer = self?.avPlayer {
+                    let avlayerLayer = AVPlayerLayer(player: avPlayer)
+                    avlayerLayer.frame = self?.bounds ?? .zero
+                    avlayerLayer.frame.size.width = UIScreen.main.bounds.width
+                    avlayerLayer.frame.origin.x = 0
+                    self?.layer.insertSublayer(avlayerLayer, at: 0)
+                }
             }
-            let avlayer = AVPlayerLayer(player: avPlayer)
-            avlayer.frame = bounds
-            avlayer.frame.size.width = UIScreen.main.bounds.width
-            avlayer.frame.origin.x = 0
-            layer.insertSublayer(avlayer, at: 0)
         }
     }
     private var duration:TimeInterval = 0
@@ -84,9 +88,11 @@ public class NaruVideoControllerView: UIView {
     var viewModel:NaruVideoControllerView.ViewModel? = nil
     weak var fullScreenController:UIViewController? = nil {
         didSet {
-            if let vc = fullScreenController as? NaruLandscapeVideoViewController {
-                fullScreenButton.isHidden = vc.isLandscapeOnly
-                backButton.isHidden = !vc.isLandscapeOnly
+            DispatchQueue.main.async {[weak self]in
+                if let vc = self?.fullScreenController as? NaruLandscapeVideoViewController {
+                    self?.fullScreenButton.isHidden = vc.isLandscapeOnly
+                    self?.backButton.isHidden = !vc.isLandscapeOnly
+                }
             }
         }
     }
@@ -130,12 +136,15 @@ public class NaruVideoControllerView: UIView {
     
     var hideDescButton = true {
         didSet {
-            skipDescButton.isHidden = isDisableSkipDescButton
+            DispatchQueue.main.async {[weak self]in
+                self?.skipDescButton.isHidden = self?.isDisableSkipDescButton ?? true
+            }
             if oldValue != hideDescButton {
                 UIView.animate(withDuration: 0.5) {[weak self]in
                     self?.skipDescButton.alpha = self?.hideDescButton ?? false ? 0 : 1
                 }
             }
+                
         }
     }
         
@@ -269,7 +278,9 @@ public class NaruVideoControllerView: UIView {
     public var isFullScreen:Bool = false {
         didSet {
             if oldValue != isFullScreen {
-                setFullScreen(isFull: isFullScreen)
+                DispatchQueue.main.async {[weak self]in
+                    self?.setFullScreen(isFull: self?.isFullScreen ?? false)
+                }
             }
         }
     }

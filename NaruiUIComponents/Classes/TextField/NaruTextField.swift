@@ -304,7 +304,9 @@ public class NaruTextField: UIView {
     public var isSecureMode:Bool = false {
         didSet {
             if isSecureMode {
-                setPwdMode()
+                DispatchQueue.main.async {[weak self]in
+                    self?.setPwdMode()
+                }
             }
         }
     }

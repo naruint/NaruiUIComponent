@@ -143,7 +143,9 @@ extension NaruBottomSheetTagFilterViewController : UITableViewDataSource {
 class NaruBottomSheetTagFilterTableViewCell : UITableViewCell {
     var data:NaruBottomSheetTagFilterViewController.Model.FilterSet? = nil {
         didSet {
-            updateUI()
+            DispatchQueue.main.async {[weak self]in
+                self?.updateUI()
+            }
         }
     }
     

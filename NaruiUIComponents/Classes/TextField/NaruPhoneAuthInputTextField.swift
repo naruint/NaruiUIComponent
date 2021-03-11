@@ -53,32 +53,42 @@ public class NaruPhoneAuthInputTextField: UIView {
     /** normal Btn Color*/
     @IBInspectable var noBtnColor:UIColor = .black {
         didSet {
-            button.setBackgroundImage(noBtnColor.image, for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.noBtnColor.image, for: .normal)
+            }
         }
     }
     /** selected btn color */
     @IBInspectable var seBtnColor:UIColor = .gray {
         didSet {
-            button.setBackgroundImage(seBtnColor.image, for: .selected)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.seBtnColor.image, for: .selected)
+            }
         }
     }
     /** highlighted btn color*/
     @IBInspectable var hiBtnColor:UIColor = .gray {
         didSet {
-            button.setBackgroundImage(hiBtnColor.image, for: .highlighted)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.hiBtnColor.image, for: .highlighted)
+            }
         }
     }
 
     /** disabled btn color*/
     @IBInspectable var diBtnColor:UIColor = .gray {
         didSet {
-            button.setBackgroundImage(diBtnColor.image, for: .disabled)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setBackgroundImage(self?.diBtnColor.image, for: .disabled)
+            }
         }
     }
     /** button text color*/
     @IBInspectable var btnTxtColor:UIColor? {
         set {
-            button.setTitleColor(newValue, for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitleColor(newValue, for: .normal)
+            }
         }
         get {
             button.titleColor(for: .normal)
@@ -87,7 +97,9 @@ public class NaruPhoneAuthInputTextField: UIView {
     
     @IBInspectable var titleForBtn:String? {
         set {
-            button.setTitle("  \(newValue ?? " ")  ", for: .normal)
+            DispatchQueue.main.async {[weak self]in
+                self?.button.setTitle("  \(newValue ?? " ")  ", for: .normal)
+            }
         }
         get {
             button.title(for: .normal)
@@ -96,13 +108,17 @@ public class NaruPhoneAuthInputTextField: UIView {
     
     @IBInspectable var title:String? = nil {
         didSet {
-            titleLabel.text = title
+            DispatchQueue.main.async {[weak self]in
+                self?.titleLabel.text = self?.title
+            }
         }
     }
     
     @IBInspectable var titleColor:UIColor? {
         set {
-            titleLabel.textColor = newValue
+            DispatchQueue.main.async {[weak self]in
+                self?.titleLabel.textColor = newValue
+            }
         }
         get {
             titleLabel.textColor
@@ -111,7 +127,9 @@ public class NaruPhoneAuthInputTextField: UIView {
     
     @IBInspectable var textColor:UIColor? {
         set {
-            textField.textColor = newValue
+            DispatchQueue.main.async {[weak self]in
+                self?.textField.textColor = newValue
+            }
         }
         get {
             textField.textColor
@@ -122,8 +140,10 @@ public class NaruPhoneAuthInputTextField: UIView {
     
     @IBInspectable var placeHolderColor:UIColor = .gray {
         didSet {
-            if let txt = placeHolder {
-                textField.attributedPlaceholder = NSAttributedString(string: txt, attributes: [.foregroundColor:placeHolderColor])
+            DispatchQueue.main.async {[weak self]in
+                if let txt = self?.placeHolder {
+                    self?.textField.attributedPlaceholder = NSAttributedString(string: txt, attributes: [.foregroundColor:self?.placeHolderColor ?? .black])
+                }
             }
         }
     }

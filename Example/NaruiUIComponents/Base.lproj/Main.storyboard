@@ -665,7 +665,7 @@
                                                     <rect key="frame" x="10" y="10" width="370" height="60"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="idx">
-                                                            <integer key="value" value="2"/>
+                                                            <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="선택2"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="seColor">

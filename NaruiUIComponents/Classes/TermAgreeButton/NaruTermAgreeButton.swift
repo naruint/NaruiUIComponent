@@ -19,7 +19,9 @@ public class NaruTermAgreeButton: UIView {
     let disposeBag = DisposeBag()
     @IBInspectable var title:String = "" {
         didSet {
-            titleLabel.text = title
+            DispatchQueue.main.async {[weak self]in
+                self?.titleLabel.text = self?.title
+            }
         }
     }
     @IBInspectable var rightButtonEnabled:Bool = false
@@ -27,7 +29,9 @@ public class NaruTermAgreeButton: UIView {
     @IBInspectable var isTotalAgree:Bool = false
     @IBInspectable var isSelected:Bool = false {
         didSet {
-            updateUI()
+            DispatchQueue.main.async {[weak self]in
+                self?.updateUI()
+            }
         }
     }
     /** 선택했을 때 아웃 라인 컬러*/

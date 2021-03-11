@@ -76,12 +76,17 @@ public class NaruMindColorButton: UIView {
     
     public var isEnabled = true {
         didSet {
-            alpha = isEnabled ? 1.0 : 0.5
+            DispatchQueue.main.async {[weak self] in
+                self?.alpha = self?.isEnabled == true ? 1.0 : 0.5
+            }
         }
     }
     
     @IBInspectable var image:UIImage? {
         set {
+            DispatchQueue.main.async {
+                
+            }
             imageView.image = newValue
         }
         get {
@@ -101,10 +106,13 @@ public class NaruMindColorButton: UIView {
     
     public var progress:Int = 0 {
         didSet {
-            if progress > 0 {
-                valueLabel.text = "\(progress)"
-            } else {
-                valueLabel.text = nil
+            DispatchQueue.main.async {[weak self]in
+                if self?.progress ?? 0 > 0 {
+                    self?.valueLabel.text = "\(self?.progress ?? 0)"
+                } else {
+                    self?.valueLabel.text = nil
+                }
+
             }
         }
     }
@@ -121,8 +129,10 @@ public class NaruMindColorButton: UIView {
     
     var isHighlighted:Bool = false {
         didSet {
-            checkImageView.isHidden = !isHighlighted
-            valueLabel.isHidden = isHighlighted
+            DispatchQueue.main.async {[weak self]in
+                self?.checkImageView.isHidden = !(self?.isHighlighted ?? false)
+                self?.valueLabel.isHidden = self?.isHighlighted ?? false
+            }
         }
     }
     //MARK: - arrangeView
