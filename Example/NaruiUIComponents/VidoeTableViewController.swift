@@ -24,11 +24,11 @@ class VideoTableViewController: UITableViewController {
                     if let acc = data?.acceleration {
                         print("------------- motion ---------")
                         print(acc)
-                        if acc.x.magnitude > 0.9 {
-                            self?.videoController?.isFullScreen = true
+                        if acc.x < -0.7 {
+                            self?.videoController?.orientation = .landscapeRight
                         }
-                        if acc.y.magnitude > 0.9 {
-                            self?.videoController?.isFullScreen = false
+                        else if acc.x.magnitude < 0.3 {
+                            self?.videoController?.orientation = .portrait
                         }
                     }
                 }

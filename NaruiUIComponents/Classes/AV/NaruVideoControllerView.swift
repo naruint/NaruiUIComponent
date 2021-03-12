@@ -274,12 +274,16 @@ public class NaruVideoControllerView: UIView {
         }
     }
     
-   
-    public var isFullScreen:Bool = false {
+    public var orientation:UIInterfaceOrientation = .portrait {
         didSet {
-            if oldValue != isFullScreen {
-                DispatchQueue.main.async {[weak self]in
-                    self?.setFullScreen(isFull: self?.isFullScreen ?? false)
+            if oldValue != orientation {
+                switch orientation {
+                case .landscapeLeft:
+                    setOrientation(mask: .landscapeLeft, rotateTo: .landscapeLeft)
+                case .landscapeRight:
+                    setOrientation(mask: .landscapeRight, rotateTo: .landscapeRight)
+                default:
+                    setOrientation(mask: .portrait, rotateTo: .portrait)
                 }
             }
         }
@@ -300,9 +304,11 @@ public class NaruVideoControllerView: UIView {
         NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
     }
     
-    func setFullScreen(isFull:Bool) {
-        if isFull {
+    func setOrientation(mask:UIInterfaceOrientationMask, rotateTo:UIInterfaceOrientation) {
+        switch mask {
+        case .landscape, .landscapeRight, .landscapeLeft:
             if UIApplication.shared.lastPresentedViewController is NaruLandscapeVideoViewController {
+                NaruOrientationHelper.shared.lockOrientation(mask, andRotateTo: rotateTo)
                 return
             }
             if let vc = subLandScapeController {
@@ -312,15 +318,20 @@ public class NaruVideoControllerView: UIView {
                 vc.title = viewModel?.title
                 vc.playerControllerView.titleLabel.text = viewModel?.title
                 fullScreenController = vc
+                vc.modalPresentationStyle = .currentContext
                 UIApplication.shared.lastPresentedViewController?.present(vc, animated: true, completion: nil)
-                NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
+                NaruOrientationHelper.shared.lockOrientation(mask, andRotateTo: rotateTo)
             }
-        }
-        else {
+        default:
+            NaruOrientationHelper.shared.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+                NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
+            }
             if let vc = UIApplication.shared.lastPresentedViewController as? NaruLandscapeVideoViewController {
-                vc.dismiss(animated: true, completion: nil)
+                vc.dismiss(animated: true) {
+                    NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
+                }
             }
-            NaruOrientationHelper.shared.lockOrientation(.portrait, andRotateTo: .portrait)
         }
     }
     

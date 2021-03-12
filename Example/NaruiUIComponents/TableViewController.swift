@@ -23,6 +23,7 @@ class TableViewController: UITableViewController {
         case videoTest = "VideoTest"
         case videoTest2 = "VideoTest2"
         case BottomSheetTest = "BottomSheetTest"
+        case coreMotionTest = "coreMotionTest"
         
     }
     let player = NaruSimpleVideoPlayer()
@@ -193,6 +194,8 @@ class TableViewController: UITableViewController {
                 }
             }
             navigationController?.pushViewController(vc, animated: true)
+        case .coreMotionTest:
+            performSegue(withIdentifier: cellType.rawValue, sender: nil)
         case .twoDepthFilter:
             //MARK:twoDepthFilter
             performSegue(withIdentifier: "showTwoDepthFIlterTestView", sender: nil)
@@ -229,8 +232,8 @@ class TableViewController: UITableViewController {
             }
         case .BottomSheetTest:
             break
-            
         }
+        
     }
     
     

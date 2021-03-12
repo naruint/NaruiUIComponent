@@ -15,6 +15,7 @@
 		1B5CBC7D2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CBC7C2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift */; };
 		1B5CBCA825493AEE007093B1 /* InputUITestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */; };
 		1B74DC0C25494C74001FD749 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B74DC0B25494C74001FD749 /* Color.xcassets */; };
+		1B89B5CA25FB2A0600B64144 /* CoreMotionTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B89B5C925FB2A0600B64144 /* CoreMotionTestTableViewController.swift */; };
 		1B8D2DD0254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D2DCF254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift */; };
 		1BA61B76256CCF4400FEF4B8 /* MindColorTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA61B75256CCF4400FEF4B8 /* MindColorTestViewController.swift */; };
 		1BAAAE6E255E4D19001FC4BB /* mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1BAAAE6D255E4D19001FC4BB /* mp4 */; };
@@ -49,6 +50,7 @@
 		1B5CBC7C2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoDepthFilterTestTableViewController.swift; sourceTree = "<group>"; };
 		1B5CBCA725493AEE007093B1 /* InputUITestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUITestTableViewController.swift; sourceTree = "<group>"; };
 		1B74DC0B25494C74001FD749 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		1B89B5C925FB2A0600B64144 /* CoreMotionTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMotionTestTableViewController.swift; sourceTree = "<group>"; };
 		1B8D2DCF254F8CBE00E95EE6 /* GraphTopTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopTestTableViewController.swift; sourceTree = "<group>"; };
 		1BA61B75256CCF4400FEF4B8 /* MindColorTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindColorTestViewController.swift; sourceTree = "<group>"; };
 		1BAAAE6D255E4D19001FC4BB /* mp4 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mp4; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				1B89B5C925FB2A0600B64144 /* CoreMotionTestTableViewController.swift */,
 				1BFAB5822579C0FA0066CD10 /* video */,
 				C3A89EFC2573522C006FAEC7 /* ImageCollectionViewController.swift */,
 				1BA61B75256CCF4400FEF4B8 /* MindColorTestViewController.swift */,
@@ -469,6 +472,7 @@
 				1BA61B76256CCF4400FEF4B8 /* MindColorTestViewController.swift in Sources */,
 				1B5CBC7D2548F4F7007093B1 /* TwoDepthFilterTestTableViewController.swift in Sources */,
 				C3A89EFD2573522C006FAEC7 /* ImageCollectionViewController.swift in Sources */,
+				1B89B5CA25FB2A0600B64144 /* CoreMotionTestTableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				1B0464F825662579001B1F95 /* SimplePinNumberTestViewController.swift in Sources */,
 			);

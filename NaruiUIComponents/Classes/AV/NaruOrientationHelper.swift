@@ -21,7 +21,7 @@ public class NaruOrientationHelper {
     public func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
         self.orientationLock = orientation
         self.rotateOrientation = rotateOrientation
-        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")        
     }
     
     public func reload() {
