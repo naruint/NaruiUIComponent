@@ -390,7 +390,7 @@ public class NaruAudioPlayer {
     
     func updateTime() {
         guard let player = self.firstPlayer else {
-            timmerSwitch = false
+            NaruAudioPlayer.shared.timmerSwitch = false
             return
         }
 //        let value:Float = Float(player.currentTime / player.duration)
@@ -400,20 +400,23 @@ public class NaruAudioPlayer {
         }
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime
         
-        DispatchQueue.main.async {[unowned self] in
-            if players.count == 0 {
+        DispatchQueue.main.async {[weak self] in
+            guard let s = self else {
                 return
             }
-            if firstPlayer?.isPlaying == false {
-                secondPlayer?.stop()
-                timmerSwitch = false
+            if s.players.count == 0 {
+                return
+            }
+            if s.firstPlayer?.isPlaying == false {
+                s.secondPlayer?.stop()
+                s.timmerSwitch = false
             }
             if floor(player.currentTime) == ceil(player.duration) {
                 NotificationCenter.default.post(
                     name: .naruAudioPlayerStatusDidChange,
                     object: PlayTimeInfo(
-                        title: title,
-                        subTitle: subTitle,
+                        title: s.title,
+                        subTitle: s.subTitle,
                         currentTime: player.duration,
                         duration: player.duration,
                         isPlaying: player.isPlaying)
@@ -422,8 +425,8 @@ public class NaruAudioPlayer {
                 NotificationCenter.default.post(
                     name: .naruAudioPlayerStatusDidChange,
                     object: PlayTimeInfo(
-                        title: title,
-                        subTitle: subTitle,
+                        title: s.title,
+                        subTitle: s.subTitle,
                         currentTime: player.currentTime,
                         duration: player.duration,
                         isPlaying: player.isPlaying)
