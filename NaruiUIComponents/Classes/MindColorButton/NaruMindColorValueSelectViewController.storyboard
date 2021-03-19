@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="od8-mZ-PdR">
                                 <rect key="frame" x="0.0" y="862" width="414" height="100"/>
-                                <color key="backgroundColor" name="brownGrey"/>
+                                <color key="backgroundColor" name="white"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="jLi-w7-hnx"/>
                                 </constraints>
@@ -42,7 +42,7 @@
                                         <color key="thumbTintColor" name="normalTextColor"/>
                                     </slider>
                                 </subviews>
-                                <color key="backgroundColor" name="weakTextColor"/>
+                                <color key="backgroundColor" name="white"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="2y0-8d-VBf"/>
                                     <constraint firstItem="I4V-SH-2MR" firstAttribute="centerY" secondItem="uL5-Qa-Mq2" secondAttribute="centerY" id="5FQ-zh-WQy"/>
@@ -99,14 +99,11 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="brownGrey">
-            <color red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="normalTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="weakTextColor">
-            <color red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="white">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

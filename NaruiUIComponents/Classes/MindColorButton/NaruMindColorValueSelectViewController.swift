@@ -71,6 +71,7 @@ class NaruMindColorValueSelectViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.post(name: .naruMindColorValueChangeControllerDidAppear, object: self)
+        updateUIColors()
     }
     
     @objc func onTapView(_ sender:UITapGestureRecognizer) {

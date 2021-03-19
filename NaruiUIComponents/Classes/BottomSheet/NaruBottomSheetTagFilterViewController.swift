@@ -182,7 +182,11 @@ class NaruBottomSheetTagFilterTableViewCell : UITableViewCell {
         let oldHeight = tagListViewHeight.constant
         
         tagListView.textFont = UIFont.systemFont(ofSize: 12)
-        let newHeight = tagListView.intrinsicContentSize.height
+        var newHeight = tagListView.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude)).height + 5
+        if #available(iOS 14.2, *) {
+            newHeight = tagListView.intrinsicContentSize.height
+        }
+
         if oldHeight != newHeight {
             tagListViewHeight.constant = newHeight + tagListView.paddingY + tagListView.marginY + 12
             NotificationCenter.default.post(name: .naruBottomSheetTableViewCellHeightDidChange, object: nil)
