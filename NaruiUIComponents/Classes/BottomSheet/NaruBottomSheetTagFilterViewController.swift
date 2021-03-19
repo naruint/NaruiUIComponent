@@ -183,7 +183,7 @@ class NaruBottomSheetTagFilterTableViewCell : UITableViewCell {
         
         tagListView.textFont = UIFont.systemFont(ofSize: 12)
         var newHeight = tagListView.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude)).height + 5
-        if #available(iOS 14.2, *) {
+        if #available(iOS 13.0, *) {
             newHeight = tagListView.intrinsicContentSize.height
         }
 
