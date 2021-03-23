@@ -15,6 +15,7 @@ public extension Notification.Name {
     static let naruAudioPlayFinished = Notification.Name("naruAudioWatchFinished_observer")
     /** 오디오 제생 시작하는 시점 알려주는 노티*/
     static let naruAudioPlayDidStart = Notification.Name("naruAudioPlayDidStart_observer")
+    static let naruAudioPlayDidPause = Notification.Name("naruAudioPlayDidPause_observer")
 }
 /**
  insertMusic(url:URL?, isFirstTrack:Bool) // 음원 넣기
@@ -356,6 +357,15 @@ public class NaruAudioPlayer {
             player.stop()
         }
         NaruTimmer.audioTimer.stop()
+        
+        var isComplete = false
+        if let p = firstPlayer {
+            if p.currentTime / p.duration > 0.98 {
+                isComplete = true
+            }
+        }
+        let result = TimeResult(time: NaruTimmer.audioTimer.timeResult, seqNo: seqNo, title: title ?? "", isComplete: isComplete)
+        NotificationCenter.default.post(name: .naruAudioPlayDidPause, object: result)
     }
    
     public func seek(time:TimeInterval) {
