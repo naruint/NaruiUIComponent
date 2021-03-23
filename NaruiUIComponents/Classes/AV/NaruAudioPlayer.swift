@@ -305,7 +305,8 @@ public class NaruAudioPlayer {
             for player in players.values {
                 player.play()
             }
-            NotificationCenter.default.post(name: .naruAudioPlayDidStart, object: nil)
+            let result = TimeResult(time: NaruTimmer.audioTimer.timeResult, seqNo: seqNo, title: title ?? "", isComplete: false)
+            NotificationCenter.default.post(name: .naruAudioPlayDidStart, object: result)
             NaruTimmer.audioTimer.start()
         }
         var needPrepareURL:[URL] = []
