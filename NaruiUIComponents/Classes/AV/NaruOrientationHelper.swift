@@ -18,6 +18,8 @@ public class NaruOrientationHelper {
     public var orientationLock = UIInterfaceOrientationMask.portrait
     var rotateOrientation:UIInterfaceOrientation = .portrait
         
+    public var canRotate = false
+ 
     public func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
         self.orientationLock = orientation
         self.rotateOrientation = rotateOrientation
